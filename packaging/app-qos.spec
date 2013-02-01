@@ -1,7 +1,7 @@
 
 Name: app-qos
 Epoch: 1
-Version: 1.4.0
+Version: 1.4.1
 Release: 1%{dist}
 Summary: QoS - Core
 License: LGPLv3
@@ -17,6 +17,7 @@ Summary: QoS - Core
 Requires: app-base-core
 Requires: app-network-core
 Requires: app-firewall-core >= 1:1.4.15
+Requires: mtr
 
 %description core
 The QoS app provides a way to prioritize traffic through your gateway.
