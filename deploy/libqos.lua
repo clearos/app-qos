@@ -184,6 +184,112 @@ function ValidateBandwidthLimit(name, rate_res, rate_limit)
     end
 end
 
+function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
+    local id = 0
+    local rule
+    local rate
+    local limit
+    local param
+    local ifn_name
+    local chain_qos
+
+    if direction == 1 then
+        execute(string.format("%s %s numdevs=%d",
+            MODPROBE, "imq",
+            TableCount(WANIF_CONFIG)))
+    end
+
+    for _, ifn in pairs(WANIF_CONFIG) do
+        if direction == 0 then
+            ifn_name = ifn
+            chain_qos = "BWQOS_UP_" .. ifn
+            execute(IPBIN .. " link set dev " .. ifn .. " qlen 30")
+        else
+            ifn_name = "imq" .. id
+            chain_qos = "BWQOS_DOWN_" .. ifn
+            execute(IPBIN .. " link set " .. ifn_name .. " up")
+        end
+
+        execute(TCBIN .. " qdisc add dev " .. ifn_name ..
+            " root handle 1: htb default " .. (id + 1) .. "6")
+        execute(TCBIN .. " class add dev " .. ifn_name ..
+            " parent 1: classid 1:1 htb rate " ..
+            rate_ifn[ifn] .. "kbit")
+
+        for i = 0, 6 do
+            rate = rate_res[ifn][i] * rate_ifn[ifn] / 100
+            limit = rate_limit[ifn][i] * rate_ifn[ifn] / 100
+
+            execute(TCBIN .. " class add dev " .. ifn_name ..
+                " parent 1:1 classid 1:" ..
+                (id + 1) .. i .. " htb rate " ..
+                rate .. "kbit ceil " .. limit .. "kbit prio " .. i)
+            execute(TCBIN .. " qdisc add dev " .. ifn_name ..
+                " parent 1:" .. (id + 1) .. i ..
+                " handle " .. (id + 1) .. i ..
+                ": sfq perturb 10")
+            execute(TCBIN .. " filter add dev " .. ifn_name ..
+                " parent 1:0 prio 0 protocol ip handle " ..
+                (id + 1) .. i ..
+                " fw flowid 1:" .. (id + 1) .. i)
+        end
+
+        -- Create QoS chain
+        iptc_create_chain("mangle", chain_qos)
+
+        -- Add configured MARK rules here
+        for _, rule in ipairs(priomark.ipv4) do
+            param = " "
+            if tonumber(rule.type) == direction then
+                if rule.proto ~= "-" then
+                    if string.sub(rule.proto, 1, 1) == "!" then
+                        param = param .. "! -p " ..
+                            string.sub(rule.proto, 2) .. " "
+                    else
+                        param = param .. "-p " .. rule.proto .. " "
+                    end
+                end
+                if rule.saddr ~= "-" then
+                    param = param .. "-s" .. rule.saddr .. " "
+                end
+                if rule.sport ~= "-" then
+                    param = param .. "--sport " .. rule.sport .. " "
+                end
+                if rule.daddr ~= "-" then
+                    param = param .. "-d " .. rule.daddr .. " "
+                end
+                if rule.dport ~= "-" then
+                    param = param .. "--dport " .. rule.dport .. " "
+                end
+
+                iptables("mangle", "-A " .. chain_qos .. param ..
+                    "-j MARK --set-mark " .. (id + 1) .. rule.prio)
+            end
+        end
+
+        for _, rule in ipairs(priomark.custom) do
+            param = " "
+            if tonumber(rule.type) == direction then
+                iptables("mangle", "-A " .. chain_qos .. 
+                    " " .. rule.param ..
+                    " -j MARK --set-mark " .. (id + 1) .. rule.prio)
+            end
+        end
+
+        if direction == 0 then
+            iptables("mangle",
+                "-I POSTROUTING -o " .. ifn .. " -j " .. chain_qos)
+        else
+            iptables("mangle",
+                "-A " .. chain_qos .. " -j IMQ --todev " .. id)
+            iptables("mangle",
+                "-I PREROUTING -i " .. ifn .. " -j " .. chain_qos)
+        end
+
+        id = id + 1
+    end
+end
+
 ------------------------------------------------------------------------------
 --
 -- RunBandwidthExternal
@@ -194,12 +300,6 @@ end
 
 function RunBandwidthExternal()
     local ifn
-    local imq_id = 0
-    local ifn_id = 0
-    local dev_qlen = 30
-    local r
-    local rate
-    local limit
     local rate_up = {}
     local rate_up_res = {}
     local rate_up_limit = {}
@@ -208,7 +308,6 @@ function RunBandwidthExternal()
     local rate_down_limit = {}
     local rule
     local rules
-    local param
     local priomark = { ipv4={}, ipv6={}, custom={} }
 
     echo("Running external QoS bandwidth manager")
@@ -260,12 +359,7 @@ function RunBandwidthExternal()
 
     for _, ifn in pairs(WANIF_CONFIG) do
         execute(TCBIN .. " qdisc del dev " .. ifn .. " root >/dev/null 2>&1")
-        execute(TCBIN .. " qdisc del dev imq" .. imq_id .. " root >/dev/null 2>&1")
-        execute(IPBIN .. " link set imq" .. imq_id .. " down 2>/dev/null 2>&1")
-        imq_id = imq_id + 1
     end
-
-    execute(string.format("%s %s >/dev/null 2>&1", RMMOD, "imq"))
 
     rate_up = ParseBandwidthVariable(QOS_UPSTREAM)
     rate_down = ParseBandwidthVariable(QOS_DOWNSTREAM)
@@ -285,161 +379,8 @@ function RunBandwidthExternal()
     ValidateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
     ValidateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit)
 
-    for _, ifn in pairs(WANIF_CONFIG) do
-        iptc_create_chain("mangle", "BWQOS_UP_" .. ifn)
-        execute(IPBIN .. " link set dev " .. ifn .. " qlen 30")
-        execute(TCBIN .. " qdisc add dev " .. ifn ..
-            " root handle 1: htb default " .. (ifn_id + 1) .. "6")
-        execute(TCBIN .. " class add dev " .. ifn ..
-            " parent 1: classid 1:1 htb rate " .. rate_up[ifn] .. "kbit")
-        for i = 0, 6 do
-            rate = rate_up_res[ifn][i] * rate_up[ifn] / 100
-            limit = rate_up_limit[ifn][i] * rate_up[ifn] / 100
-
-            execute(TCBIN .. " class add dev " .. ifn ..
-                " parent 1:1 classid 1:" ..
-                (ifn_id + 1) .. i .. " htb rate " ..
-                rate .. "kbit ceil " .. limit ..
-                "kbit prio " .. i)
-            execute(TCBIN .. " qdisc add dev " .. ifn ..
-                " parent 1:" .. (ifn_id + 1) .. i ..
-                " handle " .. (ifn_id + 1) .. i ..
-                ": sfq perturb 10")
-            execute(TCBIN .. " filter add dev " .. ifn ..
-                " parent 1:0 prio 0 protocol ip handle " ..
-                (ifn_id + 1) .. i ..
-                " fw flowid 1:" .. (ifn_id + 1) .. i)
-        end
-
-        -- Add configured MARK rules here
-        for _, rule in ipairs(priomark.ipv4) do
-            param = " "
-            if tonumber(rule.type) == 0 then
-                if rule.proto ~= "-" then
-                    if string.sub(rule.proto, 1, 1) == "!" then
-                        param = param .. "! -p " ..
-                            string.sub(rule.proto, 2) .. " "
-                    else
-                        param = param .. "-p " .. rule.proto .. " "
-                    end
-                end
-                if rule.saddr ~= "-" then
-                    param = param .. "-s" .. rule.saddr .. " "
-                end
-                if rule.sport ~= "-" then
-                    param = param .. "--sport " .. rule.sport .. " "
-                end
-                if rule.daddr ~= "-" then
-                    param = param .. "-d " .. rule.daddr .. " "
-                end
-                if rule.dport ~= "-" then
-                    param = param .. "--dport " .. rule.dport .. " "
-                end
-
-                iptables("mangle", "-A BWQOS_UP_" .. ifn .. param ..
-                    "-j MARK --set-mark " .. (ifn_id + 1) .. rule.prio)
-            end
-        end
-
-        for _, rule in ipairs(priomark.custom) do
-            param = " "
-            if tonumber(rule.type) == 0 then
-                iptables("mangle", "-A BWQOS_UP_" .. ifn .. 
-                    " " .. rule.param ..
-                    " -j MARK --set-mark " .. (ifn_id + 1) .. rule.prio)
-            end
-        end
-
-        iptables("mangle", "-I POSTROUTING -o " .. ifn ..
-            " -j BWQOS_UP_" .. ifn)
-
-        ifn_id = ifn_id + 1
-    end
-
-    execute(string.format("%s %s numdevs=%d",
-        MODPROBE, "imq",
-        TableCount(WANIF_CONFIG)))
-
-    imq_id = 0
-    for _, ifn in pairs(WANIF_CONFIG) do
-        execute(IPBIN .. " link set imq" .. imq_id .. " up")
-
-        execute(TCBIN .. " qdisc add dev imq" .. imq_id ..
-            " handle 1: root htb default " .. (imq_id + 1) .. "1")
-
-        execute(TCBIN .. " class add dev imq" .. imq_id ..
-            " parent 1: classid 1:1 htb rate " .. rate_down[ifn] .. "kbit")
-        for i = 0, 1 do
-            execute(TCBIN .. " class add dev imq" .. imq_id ..
-                " parent 1:1 classid 1:" .. (imq_id + 1) .. i ..
-                " htb rate " .. (rate_down[ifn] / 2) .. "kbit" ..
-                " ceil " .. rate_down[ifn] .. "kbit prio " .. i)
-        end
-
-        execute(TCBIN .. " qdisc add dev imq" .. imq_id ..
-            " parent 1:" .. (imq_id + 1) .. "0 handle " ..
-            (imq_id + 1) .. "0: sfq perturb 10")
-        execute(TCBIN .. " qdisc add dev imq" .. imq_id ..
-            " parent 1:" .. (imq_id + 1) .. "1 handle " ..
-            (imq_id + 1) .. "1: red limit 1000000 min 5000 max 100000 avpkt 1000 burst 50")
-
-        execute(TCBIN .. " filter add dev imq" .. imq_id ..
-            " parent 1:0 prio 0 protocol ip handle " ..
-            (imq_id + 1) .. "0 fw flowid 1:" .. (imq_id + 1) .. "0")
-        execute(TCBIN .. " filter add dev imq" .. imq_id ..
-            " parent 1:0 prio 0 protocol ip handle " ..
-            (imq_id + 1) .. "1 fw flowid 1:" .. (imq_id + 1) .. "1")
-
-        iptc_create_chain("mangle", "BWQOS_DOWN_" .. ifn)
-
-        iptables("mangle",
-            "-I PREROUTING -i " .. ifn .. " -j BWQOS_DOWN_" .. ifn)
-
-        iptables("mangle", "-A BWQOS_DOWN_" .. ifn ..
-            " ! -p tcp -j MARK --set-mark " ..  (imq_id + 1) .. "0")
-        iptables("mangle", "-A BWQOS_DOWN_" .. ifn ..
-            " -p tcp -m length --length :64 -j MARK --set-mark " ..
-            (imq_id + 1) .. "0")
-
-        -- Add user-defined MARK rules here
-        for _, rule in ipairs(priomark.ipv4) do
-            param = " "
-            if tonumber(rule.type) == 1 then
-                if rule.proto ~= "-" then
-                    param = param .. "-p " .. rule.proto .. " "
-                end
-                if rule.saddr ~= "-" then
-                    param = param .. "-s" .. rule.saddr .. " "
-                end
-                if rule.sport ~= "-" then
-                    param = param .. "--sport " .. rule.sport .. " "
-                end
-                if rule.daddr ~= "-" then
-                    param = param .. "-d " .. rule.daddr .. " "
-                end
-                if rule.dport ~= "-" then
-                    param = param .. "--dport " .. rule.dport .. " "
-                end
-
-                iptables("mangle", "-A BWQOS_DOWN_" .. ifn ..  param ..
-                    "-j MARK --set-mark " .. (imq_id + 1) .. rule.prio)
-            end
-        end
-
-        for _, rule in ipairs(priomark.custom) do
-            param = " "
-            if tonumber(rule.type) == 1 then
-                iptables("mangle", "-A BWQOS_DOWN_" .. ifn .. 
-                    " " .. rule.param ..
-                    " -j MARK --set-mark " .. (imq_id + 1) .. rule.prio)
-            end
-        end
-
-        iptables("mangle",
-            "-A BWQOS_DOWN_" .. ifn .. " -j IMQ --todev " .. imq_id)
-
-        imq_id = imq_id + 1
-    end
+    QosExecute(0, rate_up, rate_up_res, rate_up_limit, priomark)
+    QosExecute(1, rate_down, rate_down_res, rate_down_limit, priomark)
 end
 
 -- vi: syntax=lua ts=4
