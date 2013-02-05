@@ -62,6 +62,128 @@ function PackCustomRule(s)
     return s .. "\n"
 end
 
+function ParseBandwidthValue(v, buckets)
+    local i
+    local t = buckets
+    local entries = {}
+    local cfg
+    local ifn
+    local value = {}
+
+    if v == nil or string.len(v) == 0 then return t end
+
+    entries = Explode(" ", string.gsub(PackWhitespace(v), "\t", ""))
+
+    for _, cfg in pairs(entries) do
+        if cfg ~= nil and string.len(cfg) ~= 0 then
+            __, __, ifn, value[0], value[1], value[2],
+            value[3], value[4], value[5], value[6] = string.find(
+                cfg, "(%w+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)"
+            )
+
+            if ifn == nil or value == nil then
+                echo("Invalid bandwidth value syntax detected: " .. cfg)
+                return nil
+            end
+
+            for i = 0, 6 do
+                value[i] = tonumber(value[i])
+            end
+            t[ifn] = value
+        end
+    end
+
+    return t
+end
+
+function InitializeBandwidthReserved(rate_ifn)
+    local i
+    local ifn
+    local rate
+    local limit
+    local rate_res = {}
+
+    for ifn, rate in pairs(rate_ifn) do
+        rate_res[ifn] = {}
+        for i = 0, 6 do
+            rate_res[ifn][i] = tonumber(0)
+        end
+        limit = 100
+        while limit > 0 do
+            for i = 0, 6 do
+                rate_res[ifn][i] = rate_res[ifn][i] + 1
+                limit = limit - 1
+                if limit == 0 then break end
+            end
+        end
+    end
+
+    return rate_res
+end
+
+function InitializeBandwidthLimit(rate_ifn)
+    local i
+    local ifn
+    local rate
+    local rate_limit = {}
+
+    for ifn, rate in pairs(rate_ifn) do
+        rate_limit[ifn] = {}
+        for i = 0, 6 do
+            rate_limit[ifn][i] = 100
+        end
+    end
+
+    return rate_limit
+end
+
+function ValidateBandwidthReserved(name, rate_res)
+    local i
+    local r
+    local ifn
+    local rate
+    local limit
+
+    for ifn, r in pairs(rate_res) do
+        limit = 100
+        for _, rate in pairs(r) do
+            limit = limit - rate
+            if limit < 0 then
+                error(name .. " bandwidth overflow (>100%) for interface: " .. ifn)
+            end
+        end
+        if limit > 0 then
+            debug(string.format("%s bandwidth underflow, %d%%%% unassigned for interface: %s", name, limit, ifn))
+        end
+        while limit > 0 do
+            for i = 0, 6 do
+                rate_res[ifn][i] = rate_res[ifn][i] + 1
+                limit = limit - 1
+                debug(string.format("%s: adding 1%%%% to bucket #%d for interface: %s", name, i, ifn))
+                if limit == 0 then break end
+            end
+        end
+    end
+end
+
+function ValidateBandwidthLimit(name, rate_res, rate_limit)
+    local i
+    local r
+    local ifn
+    local limit
+
+    for ifn, r in pairs(rate_limit) do
+        for i, limit in pairs(r) do
+            if limit < rate_res[ifn][i] then
+                error(string.format("%s bandwidth underflow (<%d%%, bucket #%d) for interface: %s", name, rate_res[ifn][i], i, ifn))
+            end
+            if limit > 100 then
+                error(string.format("%s bandwidth overflow (>%d%%, bucket #%d) for interface: %s", name, 100, i, ifn))
+            end
+        end
+    end
+end
+
 ------------------------------------------------------------------------------
 --
 -- RunBandwidthExternal
@@ -75,8 +197,15 @@ function RunBandwidthExternal()
     local imq_id = 0
     local ifn_id = 0
     local dev_qlen = 30
+    local r
+    local rate
+    local limit
     local rate_up = {}
+    local rate_up_res = {}
+    local rate_up_limit = {}
     local rate_down = {}
+    local rate_down_res = {}
+    local rate_down_limit = {}
     local rule
     local rules
     local param
@@ -141,6 +270,21 @@ function RunBandwidthExternal()
     rate_up = ParseBandwidthVariable(QOS_UPSTREAM)
     rate_down = ParseBandwidthVariable(QOS_DOWNSTREAM)
 
+    rate_up_res = InitializeBandwidthReserved(rate_up)
+    rate_up_limit = InitializeBandwidthLimit(rate_up)
+    rate_down_res = InitializeBandwidthReserved(rate_down)
+    rate_down_limit = InitializeBandwidthLimit(rate_down)
+
+    rate_up_res = ParseBandwidthValue(QOS_UPSTREAM_BWRES, rate_up_res)
+    rate_up_limit = ParseBandwidthValue(QOS_UPSTREAM_BWLIMIT, rate_up_limit)
+    rate_down_res = ParseBandwidthValue(QOS_DOWNSTREAM_BWRES, rate_down_res)
+    rate_down_limit = ParseBandwidthValue(QOS_DOWNSTREAM_BWLIMIT, rate_down_limit)
+    
+    ValidateBandwidthReserved("Reserved upstream", rate_up_res)
+    ValidateBandwidthReserved("Reserved downstream", rate_down_res)
+    ValidateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
+    ValidateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit)
+
     for _, ifn in pairs(WANIF_CONFIG) do
         iptc_create_chain("mangle", "BWQOS_UP_" .. ifn)
         execute(IPBIN .. " link set dev " .. ifn .. " qlen 30")
@@ -149,10 +293,13 @@ function RunBandwidthExternal()
         execute(TCBIN .. " class add dev " .. ifn ..
             " parent 1: classid 1:1 htb rate " .. rate_up[ifn] .. "kbit")
         for i = 0, 6 do
+            rate = rate_up_res[ifn][i] * rate_up[ifn] / 100
+            limit = rate_up_limit[ifn][i] * rate_up[ifn] / 100
+
             execute(TCBIN .. " class add dev " .. ifn ..
                 " parent 1:1 classid 1:" ..
                 (ifn_id + 1) .. i .. " htb rate " ..
-                (rate_up[ifn] / 7) .. "kbit ceil " .. rate_up[ifn] ..
+                rate .. "kbit ceil " .. limit ..
                 "kbit prio " .. i)
             execute(TCBIN .. " qdisc add dev " .. ifn ..
                 " parent 1:" .. (ifn_id + 1) .. i ..
@@ -164,22 +311,7 @@ function RunBandwidthExternal()
                 " fw flowid 1:" .. (ifn_id + 1) .. i)
         end
 
-        -- All ICMP: highest priority
-        iptables("mangle", "-A BWQOS_UP_" .. ifn ..
-            " -p icmp -j MARK " ..
-            "--set-mark " .. (ifn_id + 1) .. "0")
-
-        -- All UDP: high priority
-        iptables("mangle", "-A BWQOS_UP_" .. ifn ..
-            " -p udp -j MARK " ..
-            "--set-mark " .. (ifn_id + 1) .. "1")
-
-        -- Small TCP packets (probably ACKs): high priority
-        iptables("mangle", "-A BWQOS_UP_" .. ifn ..
-            " -p tcp -m length --length :64 -j MARK " ..
-            "--set-mark " .. (ifn_id + 1) .. "1")
-
-        -- Add user-defined MARK rules here
+        -- Add configured MARK rules here
         for _, rule in ipairs(priomark.ipv4) do
             param = " "
             if tonumber(rule.type) == 0 then
