@@ -2,7 +2,7 @@
 --
 -- ClearOS Firewall
 --
--- External QoS Manager.
+-- External Bandwidth QoS Manager.
 -- See /etc/clearos/qos.conf for configuration settings.
 --
 ------------------------------------------------------------------------------
@@ -62,6 +62,35 @@ function PackCustomRule(s)
     return s .. "\n"
 end
 
+function ParseInterfaceValue(v)
+    local t = {}
+    local entries = {}
+    local cfg
+    local ifn
+    local rate
+    local r2q
+
+    if v == nil or string.len(v) == 0 then return t end
+
+    entries = Explode(" ", string.gsub(PackWhitespace(v), "\t", ""))
+
+    for _, cfg in pairs(entries) do
+        if cfg ~= nil and string.len(cfg) ~= 0 then
+            __, __, ifn, rate, r2q = string.find(cfg, "(%w+):(%d+):(%w+)")
+
+            if ifn == nil or rate == nil or r2q == nil then
+                error("Invalid interface configuration syntax detected: " .. cfg)
+            end
+
+            t[ifn] = {}
+            t[ifn]["rate"] = rate
+            t[ifn]["r2q"] = r2q
+        end
+    end
+
+    return t
+end
+
 function ParseBandwidthValue(v, buckets)
     local i
     local t = buckets
@@ -99,11 +128,10 @@ end
 function InitializeBandwidthReserved(rate_ifn)
     local i
     local ifn
-    local rate
     local limit
     local rate_res = {}
 
-    for ifn, rate in pairs(rate_ifn) do
+    for ifn, _ in pairs(rate_ifn) do
         rate_res[ifn] = {}
         for i = 0, 6 do
             rate_res[ifn][i] = tonumber(0)
@@ -124,10 +152,9 @@ end
 function InitializeBandwidthLimit(rate_ifn)
     local i
     local ifn
-    local rate
     local rate_limit = {}
 
-    for ifn, rate in pairs(rate_ifn) do
+    for ifn, _ in pairs(rate_ifn) do
         rate_limit[ifn] = {}
         for i = 0, 6 do
             rate_limit[ifn][i] = 100
@@ -184,6 +211,23 @@ function ValidateBandwidthLimit(name, rate_res, rate_limit)
     end
 end
 
+function CalculateRateToQuantum(rate)
+    local r2q = 1
+    local quantum = 20000
+
+    while quantum > 1500 do
+        quantum = (rate * 1000 / 8) / r2q
+        r2q = r2q + 1
+    end
+
+    r2q = r2q - 2
+    quantum = (rate * 1000 / 8) / r2q
+    debug("Auto-r2q for rate " .. rate ..
+        ": " .. r2q .. " (quantum: " .. quantum .. ")")
+
+    return r2q
+end
+
 function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
     local id = 0
     local rule
@@ -191,6 +235,7 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
     local limit
     local param
     local ifn_name
+    local ifn_conf
     local chain_qos
 
     if direction == 1 then
@@ -211,14 +256,15 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
         end
 
         execute(TCBIN .. " qdisc add dev " .. ifn_name ..
-            " root handle 1: htb default " .. (id + 1) .. "6")
+            " root handle 1: htb default " .. (id + 1) .. "6" ..
+            " r2q " .. rate_ifn[ifn]["r2q"])
         execute(TCBIN .. " class add dev " .. ifn_name ..
             " parent 1: classid 1:1 htb rate " ..
-            rate_ifn[ifn] .. "kbit")
+            rate_ifn[ifn]["rate"] .. "kbit")
 
         for i = 0, 6 do
-            rate = rate_res[ifn][i] * rate_ifn[ifn] / 100
-            limit = rate_limit[ifn][i] * rate_ifn[ifn] / 100
+            rate = rate_res[ifn][i] * rate_ifn[ifn]["rate"] / 100
+            limit = rate_limit[ifn][i] * rate_ifn[ifn]["rate"] / 100
 
             execute(TCBIN .. " class add dev " .. ifn_name ..
                 " parent 1:1 classid 1:" ..
@@ -300,6 +346,8 @@ end
 
 function RunBandwidthExternal()
     local ifn
+    local r2q
+    local rate
     local rate_up = {}
     local rate_up_res = {}
     local rate_up_limit = {}
@@ -361,8 +409,8 @@ function RunBandwidthExternal()
         execute(TCBIN .. " qdisc del dev " .. ifn .. " root >/dev/null 2>&1")
     end
 
-    rate_up = ParseBandwidthVariable(QOS_UPSTREAM)
-    rate_down = ParseBandwidthVariable(QOS_DOWNSTREAM)
+    rate_up = ParseInterfaceValue(QOS_UPSTREAM)
+    rate_down = ParseInterfaceValue(QOS_DOWNSTREAM)
 
     rate_up_res = InitializeBandwidthReserved(rate_up)
     rate_up_limit = InitializeBandwidthLimit(rate_up)
@@ -378,6 +426,33 @@ function RunBandwidthExternal()
     ValidateBandwidthReserved("Reserved downstream", rate_down_res)
     ValidateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
     ValidateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit)
+
+    for _, ifn in pairs(WANIF_CONFIG) do
+        rate_up[ifn]["min_rate"] = rate_up[ifn]["rate"]
+        rate_down[ifn]["min_rate"] = rate_down[ifn]["rate"]
+
+        for i, rate in pairs(rate_up_res[ifn]) do
+            rate = rate * rate_up[ifn]["rate"] / 100
+            if rate < tonumber(rate_up[ifn]["min_rate"]) then
+                rate_up[ifn]["min_rate"] = rate
+            end
+        end
+        for i, rate in pairs(rate_down_res[ifn]) do
+            rate = rate * rate_down[ifn]["rate"] / 100
+            if rate < tonumber(rate_down[ifn]["min_rate"]) then
+                rate_down[ifn]["min_rate"] = rate
+            end
+        end
+    end
+
+    for _, ifn in pairs(WANIF_CONFIG) do
+        if rate_up[ifn]["r2q"] == "auto" then
+            rate_up[ifn]["r2q"] = CalculateRateToQuantum(rate_up[ifn]["min_rate"])
+        end
+        if rate_down[ifn]["r2q"] == "auto" then
+            rate_down[ifn]["r2q"] = CalculateRateToQuantum(rate_down[ifn]["min_rate"])
+        end
+    end
 
     QosExecute(0, rate_up, rate_up_res, rate_up_limit, priomark)
     QosExecute(1, rate_down, rate_down_res, rate_down_limit, priomark)
