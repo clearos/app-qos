@@ -53,6 +53,7 @@ var buckets = 7;
 var last_bucket = 0;
 var last_delta = 0;
 var values = [15, 15, 14, 14, 14, 14, 14];
+var locks = [false, false, false, false, false, false, false];
 
 function init_state()
 {
@@ -81,7 +82,8 @@ function distribute(bucket, delta)
         if (delta != last_delta) last_bucket = buckets - 1;
         for (i = 0; i < buckets; i++) {
             if (bucket != last_bucket &&
-                values[last_bucket] > 1) {
+                values[last_bucket] > 1 &&
+                locks[last_bucket] == false) {
                 b = last_bucket;
                 break;
             }
@@ -97,7 +99,8 @@ function distribute(bucket, delta)
         if (delta != last_delta) last_bucket = 0;
         for (i = 0; i < buckets; i++) {
             if (bucket != last_bucket &&
-                values[last_bucket] < 100) {
+                values[last_bucket] < 100 &&
+                locks[last_bucket] == false) {
                 b = last_bucket;
                 break;
             }
@@ -148,6 +151,7 @@ $(function() {
     for (var i = 0; i < buckets; i++) {
         var bucket = '#bucket' + i;
         var amount = bucket + '_amount';
+        var lock = bucket + '_lock';
 
         $(bucket).slider({
             orientation: 'vertical',
@@ -159,7 +163,8 @@ $(function() {
                 var bucket = 0;
                 var delta = 0;
                 var diff = 0;
-                bucket = this.id.substr(-1);
+                var rx = /^.*(\d+).*$/;
+                bucket = this.id.replace(rx, "$1");
                 if (ui.value > $('#' + this.id).slider('value'))
                     delta = 1;
                 else
@@ -174,6 +179,29 @@ $(function() {
         $(amount).val(
             $(bucket).slider('value')
         );
+/*
+        $(amount).keyup(function() {
+            console.log($(this).val());
+        });
+
+        $(amount).keydown(function(event) {
+            var isnumeric = /^\d+$/;
+            if (event.which == 13) {
+                event.preventDefault();
+            }
+            else if (!isnumeric.test($(this).val())) {
+                console.log("Not numeric.");
+                event.preventDefault();
+                return false;
+            }
+        });
+*/
+        $(lock).click(function() {
+            var lock_check = $(this);
+            var rx = /^.*(\d+).*$/;
+            var bucket = this.id.replace(rx, "$1");
+            locks[bucket] = lock_check.is(':checked');
+        });
     }
 });
 

@@ -1,9 +1,15 @@
 .bucket {
-	height: 100px;
+	height: 80px;
 }
 
 .bucket_input {
 	border: 0;
 	font-weight: bold;
-	width: 30px;
+	width: 24px;
+	margin-top: 6px;
+	text-align: center;
+}
+
+.bucket_button {
+	margin-top: 6px;
 }

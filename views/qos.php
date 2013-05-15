@@ -44,12 +44,16 @@ echo "<table><tr>\n";
 
 for ($i = 0; $i < 7; $i++) {
 echo "<td>
+<center>
+<input type='checkbox' id='bucket{$i}_lock' />
 <div id='bucket$i' class='bucket'></div>
 <input type='text' id='bucket{$i}_amount' class='bucket_input' />
+</center>
 </td>\n";
 }
 
-echo "</tr></table>\n";
-echo anchor_javascript('bucket_reset', lang('qos_reset'), 'high');
-echo anchor_javascript('bucket_equalize', lang('qos_equalize'), 'high');
-echo anchor_javascript('bucket_ramp', lang('qos_ramp'), 'high');
+echo '<td>';
+echo "<div class='bucket_button'>" . anchor_javascript('bucket_ramp', lang('qos_ramp'), 'high') . '</div>';
+echo "<div class='bucket_button'>" . anchor_javascript('bucket_equalize', lang('qos_equalize'), 'high') . '</div>';
+echo "<div class='bucket_button'>" . anchor_javascript('bucket_reset', lang('qos_reset'), 'high') . '</div>';
+echo "</td></tr></table>\n";
