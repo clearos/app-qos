@@ -3,9 +3,9 @@
 /**
  * QoS controller.
  *
- * @category   Apps
- * @package    QoS
- * @subpackage Controllers
+ * @category   apps
+ * @package    qos
+ * @subpackage controllers
  * @author     Darryl Sokoloski <dsokoloski@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -43,9 +43,9 @@ use \Exception as Exception;
 /**
  * QoS controller.
  *
- * @category   Apps
- * @package    QoS
- * @subpackage Controllers
+ * @category   apps
+ * @package    qos
+ * @subpackage controllers
  * @author     Darryl Sokoloski <dsokoloski@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

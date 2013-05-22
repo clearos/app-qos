@@ -2,9 +2,9 @@
 /**
  * Qos javascript helper.
  *
- * @category   ClearOS
- * @package    Qos
- * @subpackage Javascript
+ * @category   apps
+ * @package    qos
+ * @subpackage javascript
  * @author     Darryl Sokoloski <dsokoloski@clearfoundation.com>
  * @copyright  2013 Darryl Sokoloski
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
