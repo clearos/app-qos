@@ -443,10 +443,10 @@ function RunBandwidthExternal()
     rate_down_res = ParseBandwidthValue(QOS_DOWNSTREAM_BWRES, rate_down_res)
     rate_down_limit = ParseBandwidthValue(QOS_DOWNSTREAM_BWLIMIT, rate_down_limit)
     
-    validateBandwidthReserved("Reserved upstream", rate_up_res)
-    validateBandwidthReserved("Reserved downstream", rate_down_res)
-    validateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
-    validateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit)
+    ValidateBandwidthReserved("Reserved upstream", rate_up_res)
+    ValidateBandwidthReserved("Reserved downstream", rate_down_res)
+    ValidateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
+    ValidateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit)
 
     for _, ifn in pairs(WANIF_CONFIG) do
         rate_up[ifn]["min_rate"] = rate_up[ifn]["rate"]
@@ -475,8 +475,8 @@ function RunBandwidthExternal()
         end
     end
 
-    qosExecute(0, rate_up, rate_up_res, rate_up_limit, priomark)
-    qosExecute(1, rate_down, rate_down_res, rate_down_limit, priomark)
+    QosExecute(0, rate_up, rate_up_res, rate_up_limit, priomark)
+    QosExecute(1, rate_down, rate_down_res, rate_down_limit, priomark)
 end
 
 -- vi: syntax=lua expandtab shiftwidth=4 softtabstop=4 tabstop=4
