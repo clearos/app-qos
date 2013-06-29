@@ -1,26 +1,31 @@
 
 Name: app-qos
 Epoch: 1
-version: 1.4.1
+Version: 1.0.0
 Release: 1%{dist}
-Summary: QoS - Core
-license: LGPLv3
-Group: ClearOS/Libraries
-Source: app-qos-%{version}.tar.gz
+Summary: QoS
+License: GPLv3
+Group: ClearOS/Apps
+Source: %{name}-%{version}.tar.gz
 Buildarch: noarch
+Requires: %{name}-core = 1:%{version}-%{release}
+Requires: app-base
+Requires: app-network
 
 %description
-The QoS app provides a way to prioritize traffic through your gateway.
+Bandwidth QoS Manager
 
 %package core
 Summary: QoS - Core
+License: LGPLv3
+Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-network-core
-Requires: app-firewall-core >= 1:1.4.15
+Requires: app-firewall-core >= 1:1.4.36
 Requires: mtr
 
 %description core
-The QoS app provides a way to prioritize traffic through your gateway.
+Bandwidth QoS Manager
 
 This package provides the core API and libraries.
 
@@ -35,6 +40,9 @@ cp -r * %{buildroot}/usr/clearos/apps/qos/
 install -d -m 0755 %{buildroot}/var/clearos/qos
 install -D -m 0644 packaging/qos.conf %{buildroot}/etc/clearos/qos.conf
 
+%post
+logger -p local6.notice -t installer 'app-qos - installing'
+
 %post core
 logger -p local6.notice -t installer 'app-qos-core - installing'
 
@@ -46,6 +54,11 @@ fi
 
 exit 0
 
+%preun
+if [ $1 -eq 0 ]; then
+    logger -p local6.notice -t installer 'app-qos - uninstalling'
+fi
+
 %preun core
 if [ $1 -eq 0 ]; then
     logger -p local6.notice -t installer 'app-qos-core - uninstalling'
@@ -53,6 +66,12 @@ if [ $1 -eq 0 ]; then
 fi
 
 exit 0
+
+%files
+%defattr(-,root,root)
+/usr/clearos/apps/qos/controllers
+/usr/clearos/apps/qos/htdocs
+/usr/clearos/apps/qos/views
 
 %files core
 %defattr(-,root,root)
