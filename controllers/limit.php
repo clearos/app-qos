@@ -1,7 +1,7 @@
 <?php
 
 /**
- * QoS controller.
+ * Bandwidth class limit controller.
  *
  * @category   apps
  * @package    qos
@@ -41,7 +41,7 @@ use \Exception as Exception;
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * QoS controller.
+ * Bandwidth class limit controller.
  *
  * @category   apps
  * @package    qos
@@ -52,13 +52,44 @@ use \Exception as Exception;
  * @link       http://www.clearfoundation.com/docs/developer/apps/mobile_demo/
  */
 
-class Qos extends ClearOS_Controller
+class Limit extends ClearOS_Controller
 {
     /**
-     * Index.
+     * Read-only index.
      */
 
     function index()
+    {
+        $this->view();
+    }
+
+    /**
+     * Read-only view.
+     */
+
+    function view()
+    {
+        $this->_view_edit('view');
+    }
+    
+    /**
+     * Edit view.
+     */
+
+    function edit()
+    {
+        $this->_view_edit('edit');
+    }
+
+    /**
+     * Bandwidth class limit controller
+     *
+     * @param string $form_type form type
+     *
+     * @return view
+     */
+
+    function _view_edit($form_type)
     {
         // Load dependencies
         //---------------
@@ -67,11 +98,13 @@ class Qos extends ClearOS_Controller
         //$this->load->library('network/Network');
         //$this->lang->load('qos');
 
-        // Load controllers
-        //-----------------
+        // Load views
+        //-----------
 
-        $controllers = array('qos/reserved', 'qos/limit');
-        $this->page->view_controllers($controllers, lang('qos_app_name'));
+        $data = array();
+        $data['form_type'] = $form_type;
+
+        $this->page->view_form('qos/limit', $data, lang('qos_app_name'));
     }
 }
 

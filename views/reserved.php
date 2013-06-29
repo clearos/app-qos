@@ -1,15 +1,15 @@
 <?php
 
 /**
- * QoS controller.
+ * Reserved bandwidth view.
  *
  * @category   apps
  * @package    qos
- * @subpackage controllers
+ * @subpackage views
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/mobile_demo/
+ * @link       http://www.clearfoundation.com/docs/developer/apps/base/
  */
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -25,54 +25,53 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.  
 //
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-// D E P E N D E N C I E S
+// Load dependencies
 ///////////////////////////////////////////////////////////////////////////////
 
-use \clearos\apps\network\Network as Network;
-use \Exception as Exception;
+$this->lang->load('base');
+$this->lang->load('qos');
+
+require_once('slider_array.inc.php');
 
 ///////////////////////////////////////////////////////////////////////////////
-// C L A S S
+// Form handler
 ///////////////////////////////////////////////////////////////////////////////
 
-/**
- * QoS controller.
- *
- * @category   apps
- * @package    qos
- * @subpackage controllers
- * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2013 ClearFoundation
- * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/mobile_demo/
- */
-
-class Qos extends ClearOS_Controller
-{
-    /**
-     * Index.
-     */
-
-    function index()
-    {
-        // Load dependencies
-        //---------------
-
-        //$this->load->library('qos/Qos');
-        //$this->load->library('network/Network');
-        //$this->lang->load('qos');
-
-        // Load controllers
-        //-----------------
-
-        $controllers = array('qos/reserved', 'qos/limit');
-        $this->page->view_controllers($controllers, lang('qos_app_name'));
-    }
+if ($form_type === 'edit') {
+    $read_only = FALSE;
+    $buttons = array( 
+        form_submit_update('submit-form'),
+        anchor_cancel('/app/qos')
+    );
+} else {
+    $read_only = TRUE;
+    $buttons = array( 
+        anchor_edit('/app/qos/reserved/edit')
+    );
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// Form 
+///////////////////////////////////////////////////////////////////////////////
+
+echo form_open('qos/reserved',
+    array('id' => 'device_form')
+);
+echo form_header(
+    lang('qos_priority_class') . ': ' .
+    lang('qos_class_reserved_title'), array('id' => 'qos'));
+
+if ($read_only == FALSE)
+    echo form_slider_array();
+
+echo field_button_set($buttons);
+
+echo form_footer();
+echo form_close();
 
 // vi: expandtab shiftwidth=4 softtabstop=4 tabstop=4

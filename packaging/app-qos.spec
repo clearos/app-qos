@@ -1,10 +1,10 @@
 
 Name: app-qos
 Epoch: 1
-Version: 1.4.1
+version: 1.4.1
 Release: 1%{dist}
 Summary: QoS - Core
-License: LGPLv3
+license: LGPLv3
 Group: ClearOS/Libraries
 Source: app-qos-%{version}.tar.gz
 Buildarch: noarch

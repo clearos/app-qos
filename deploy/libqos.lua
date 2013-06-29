@@ -283,42 +283,46 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
         -- Create QoS chain
         iptc_create_chain("mangle", chain_qos)
 
-        -- Add configured MARK rules here
+        -- Add configured MARK rules
         for _, rule in ipairs(priomark.ipv4) do
-            param = " "
-            if tonumber(rule.type) == direction then
-                if rule.proto ~= "-" then
-                    if string.sub(rule.proto, 1, 1) == "!" then
-                        param = param .. "! -p " ..
-                            string.sub(rule.proto, 2) .. " "
-                    else
-                        param = param .. "-p " .. rule.proto .. " "
+            if tonumber(rule.enabled) and (rule.ifn == ifn or rule.ifn == '*') then
+                param = " "
+                if tonumber(rule.type) == direction then
+                    if rule.proto ~= "-" then
+                        if string.sub(rule.proto, 1, 1) == "!" then
+                            param = param .. "! -p " ..
+                                string.sub(rule.proto, 2) .. " "
+                        else
+                            param = param .. "-p " .. rule.proto .. " "
+                        end
                     end
-                end
-                if rule.saddr ~= "-" then
-                    param = param .. "-s" .. rule.saddr .. " "
-                end
-                if rule.sport ~= "-" then
-                    param = param .. "--sport " .. rule.sport .. " "
-                end
-                if rule.daddr ~= "-" then
-                    param = param .. "-d " .. rule.daddr .. " "
-                end
-                if rule.dport ~= "-" then
-                    param = param .. "--dport " .. rule.dport .. " "
-                end
+                    if rule.saddr ~= "-" then
+                        param = param .. "-s" .. rule.saddr .. " "
+                    end
+                    if rule.sport ~= "-" then
+                        param = param .. "--sport " .. rule.sport .. " "
+                    end
+                    if rule.daddr ~= "-" then
+                        param = param .. "-d " .. rule.daddr .. " "
+                    end
+                    if rule.dport ~= "-" then
+                        param = param .. "--dport " .. rule.dport .. " "
+                    end
 
-                iptables("mangle", "-A " .. chain_qos .. param ..
-                    "-j MARK --set-mark " .. (id + 1) .. rule.prio)
+                    iptables("mangle", "-A " .. chain_qos .. param ..
+                        "-j MARK --set-mark " .. (id + 1) .. rule.prio)
+                end
             end
         end
 
-        for _, rule in ipairs(priomark.custom) do
-            param = " "
-            if tonumber(rule.type) == direction then
-                iptables("mangle", "-A " .. chain_qos .. 
-                    " " .. rule.param ..
-                    " -j MARK --set-mark " .. (id + 1) .. rule.prio)
+        for _, rule in ipairs(priomark.ipv4_custom) do
+            if tonumber(rule.enabled) and (rule.ifn == ifn or rule.ifn == '*') then
+                param = " "
+                if tonumber(rule.type) == direction then
+                    iptables("mangle", "-A " .. chain_qos .. 
+                        " " .. rule.param ..
+                        " -j MARK --set-mark " .. (id + 1) .. rule.prio)
+                end
             end
         end
 
@@ -367,10 +371,11 @@ function RunBandwidthExternal()
             if rule ~= nil and string.len(rule) ~= 0 then
                 rule = Explode("|", rule)
                 table.insert(priomark.ipv4, {
-                    name=rule[1], type=rule[2],
-                    prio=rule[3], proto=rule[4],
-                    saddr=rule[5], sport=rule[6],
-                    daddr=rule[7], dport=rule[8]
+                    name=rule[1], ifn=rule[2],
+                    enabled=rule[3], type=rule[4],
+                    prio=rule[5], proto=rule[6],
+                    saddr=rule[7], sport=rule[8],
+                    daddr=rule[9], dport=rule[10]
                 })
             end
         end
@@ -383,22 +388,38 @@ function RunBandwidthExternal()
             if rule ~= nil and string.len(rule) ~= 0 then
                 rule = Explode("|", rule)
                 table.insert(priomark.ipv6, {
-                    name=rule[1], type=rule[2],
-                    prio=rule[3], proto=rule[4],
-                    saddr=rule[5], sport=rule[6],
-                    daddr=rule[7], dport=rule[8]
+                    name=rule[1], ifn=rule[2],
+                    enabled=rule[3], type=rule[4],
+                    prio=rule[5], proto=rule[6],
+                    saddr=rule[7], sport=rule[8],
+                    daddr=rule[9], dport=rule[10]
                 })
             end
         end
     end
 
-    if QOS_PRIOMARK_CUSTOM ~= nil then
-        rules = Explode("\n", PackCustomRule(QOS_PRIOMARK_CUSTOM))
+    if QOS_PRIOMARK4_CUSTOM ~= nil then
+        rules = Explode("\n", PackCustomRule(QOS_PRIOMARK4_CUSTOM))
         for _, rule in pairs(rules) do
             if rule ~= nil and string.len(rule) ~= 0 then
                 rule = Explode("|", rule)
-                table.insert(priomark.custom, {
-                    name=rule[1], type=rule[2],
+                table.insert(priomark.ipv4_custom, {
+                    name=rule[1], ifn=rule[2],
+                    enabled=rule[3], type=rule[4],
+                    prio=rule[3], param=rule[4]
+                })
+            end
+        end
+    end
+
+    if QOS_PRIOMARK6_CUSTOM ~= nil then
+        rules = Explode("\n", PackCustomRule(QOS_PRIOMARK6_CUSTOM))
+        for _, rule in pairs(rules) do
+            if rule ~= nil and string.len(rule) ~= 0 then
+                rule = Explode("|", rule)
+                table.insert(priomark.ipv6_custom, {
+                    name=rule[1], ifn=rule[2],
+                    enabled=rule[3], type=rule[4],
                     prio=rule[3], param=rule[4]
                 })
             end
@@ -422,10 +443,10 @@ function RunBandwidthExternal()
     rate_down_res = ParseBandwidthValue(QOS_DOWNSTREAM_BWRES, rate_down_res)
     rate_down_limit = ParseBandwidthValue(QOS_DOWNSTREAM_BWLIMIT, rate_down_limit)
     
-    ValidateBandwidthReserved("Reserved upstream", rate_up_res)
-    ValidateBandwidthReserved("Reserved downstream", rate_down_res)
-    ValidateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
-    ValidateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit)
+    validateBandwidthReserved("Reserved upstream", rate_up_res)
+    validateBandwidthReserved("Reserved downstream", rate_down_res)
+    validateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
+    validateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit)
 
     for _, ifn in pairs(WANIF_CONFIG) do
         rate_up[ifn]["min_rate"] = rate_up[ifn]["rate"]
@@ -454,8 +475,8 @@ function RunBandwidthExternal()
         end
     end
 
-    QosExecute(0, rate_up, rate_up_res, rate_up_limit, priomark)
-    QosExecute(1, rate_down, rate_down_res, rate_down_limit, priomark)
+    qosExecute(0, rate_up, rate_up_res, rate_up_limit, priomark)
+    qosExecute(1, rate_down, rate_down_res, rate_down_limit, priomark)
 end
 
--- vi: syntax=lua ts=4
+-- vi: syntax=lua expandtab shiftwidth=4 softtabstop=4 tabstop=4

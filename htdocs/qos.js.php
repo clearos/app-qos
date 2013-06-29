@@ -1,12 +1,12 @@
 <?php
 /**
- * Qos javascript helper.
+ * qos javascript helper.
  *
  * @category   apps
  * @package    qos
  * @subpackage javascript
- * @author     Darryl Sokoloski <dsokoloski@clearfoundation.com>
- * @copyright  2013 Darryl Sokoloski
+ * @author     ClearFoundation <developer@clearfoundation.com>
+ * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/qos/
  */
@@ -49,17 +49,24 @@ clearos_load_language('qos');
 header('Content-Type:application/x-javascript');
 
 ?>
+var mode = 0;
 var buckets = 7;
 var last_bucket = 0;
 var last_delta = 0;
-var values = [15, 15, 14, 14, 14, 14, 14];
+var values = [0, 0, 0, 0, 0, 0, 0];
 var locks = [false, false, false, false, false, false, false];
 
 function init_state()
 {
     last_delta = 0;
     last_bucket = 0;
-    values = [15, 15, 14, 14, 14, 14, 14];
+    locks = [false, false, false, false, false, false, false];
+
+    if (mode == 0)
+        equalize();
+    else {
+        for (i = 0; i < buckets; i++) values[i] = 100;
+    }
 }
 
 function update_widgets()
@@ -67,6 +74,7 @@ function update_widgets()
     for (i = 0; i < buckets; i++) {
         $('#bucket' + i).slider('value', values[i]);
         $('#bucket' + i + '_amount').val(values[i]);
+        $('#bucket' + i + '_lock').attr('checked', locks[i]);
     }
 }
 
@@ -127,80 +135,157 @@ function distribute(bucket, delta)
     return true;
 }
 
-$(document).ready(function() {
-	$("#bucket_reset").click(function() {
-        init_state();
-        //values = values_conf;
-        update_widgets();
-	});
+function equalize()
+{
+    var bucket = 0;
+    var total = 100;
+    var locked = 0;
 
-	$("#bucket_equalize").click(function() {
-        init_state();
-        values = [15, 15, 14, 14, 14, 14, 14];
-        update_widgets();
-	});
-
-	$("#bucket_ramp").click(function() {
-        init_state();
-        values = [50, 25, 12, 6, 4, 2, 1];
-        update_widgets();
-	});
-});
-
-$(function() {
     for (var i = 0; i < buckets; i++) {
-        var bucket = '#bucket' + i;
-        var amount = bucket + '_amount';
-        var lock = bucket + '_lock';
+        if (locks[i]) {
+            total -= values[i];
+            locked++;
+            continue;
+        }
+        values[i] = 0;
+    }
 
-        $(bucket).slider({
-            orientation: 'vertical',
-            range: 'min',
-            min: 1,
-            max: 100,
-            value: values[i],
-            slide: function(event, ui) {
-                var bucket = 0;
-                var delta = 0;
-                var diff = 0;
+    if (locked == buckets) return;
+
+    for (var i = total; i > 0; ) {
+        if (locks[bucket] == false) {
+            values[bucket]++;
+            i--;
+        }
+        if (++bucket == buckets) bucket = 0;
+    }
+
+    update_widgets();
+}
+
+function ramp()
+{
+    var bucket = 0;
+    var total = 100;
+    var locked = 0;
+
+    for (var i = 0; i < buckets; i++) {
+        if (locks[i]) {
+            total -= values[i];
+            locked++;
+            continue;
+        }
+        total -= 1;
+        values[i] = 1;
+    }
+
+    if (locked == buckets) return;
+
+    for (var i = total; i > 0; ) {
+        if (locks[bucket] == false) {
+            var points = Math.abs(bucket - buckets);
+            if (points > i) points = i;
+            values[bucket] += points;
+            i -= points;
+        }
+        if (++bucket == buckets) bucket = 0;
+    }
+
+    update_widgets();
+}
+
+$(document).ready(function() {
+
+    if ($(location).attr('href').match('.*\/qos\/limit\/edit') != null) {
+
+        mode = 1;
+        init_state();
+
+        for (var i = 0; i < buckets; i++) {
+            var bucket = '#bucket' + i;
+            var amount = bucket + '_amount';
+
+            $(bucket).slider({
+                orientation: 'vertical',
+                range: 'min',
+                min: 1,
+                max: 100,
+                value: values[i],
+                slide: function(event, ui) {
+                    var bucket = 0;
+                    var rx = /^.*(\d+).*$/;
+                    bucket = this.id.replace(rx, "$1");
+                    values[bucket] = ui.value;
+                    update_widgets();
+                    return false;
+                }
+            });
+
+            $(amount).val(
+                $(bucket).slider('value')
+            );
+        }
+
+        $("#bucket_reset").click(function() {
+            init_state();
+            update_widgets();
+        });
+    }
+    else if ($(location).attr('href').match('.*\/qos\/reserved\/edit') != null) {
+
+        init_state();
+
+        for (var i = 0; i < buckets; i++) {
+            var bucket = '#bucket' + i;
+            var amount = bucket + '_amount';
+            var lock = bucket + '_lock';
+
+            $(bucket).slider({
+                orientation: 'vertical',
+                range: 'min',
+                min: 1,
+                max: 100,
+                value: values[i],
+                slide: function(event, ui) {
+                    var bucket = 0;
+                    var delta = 0;
+                    var diff = 0;
+                    var rx = /^.*(\d+).*$/;
+                    bucket = this.id.replace(rx, "$1");
+                    if (ui.value > $('#' + this.id).slider('value'))
+                        delta = 1;
+                    else
+                        delta = -1;
+                    diff = ui.value - $('#' + this.id).slider('value');
+                    for (i = 0; i < Math.abs(diff); i++)
+                        if (! distribute(bucket, delta)) break;
+                    return false;
+                }
+            });
+
+            $(amount).val(
+                $(bucket).slider('value')
+            );
+
+            $(lock).click(function() {
+                var lock_check = $(this);
                 var rx = /^.*(\d+).*$/;
-                bucket = this.id.replace(rx, "$1");
-                if (ui.value > $('#' + this.id).slider('value'))
-                    delta = 1;
-                else
-                    delta = -1;
-                diff = ui.value - $('#' + this.id).slider('value');
-                for (i = 0; i < Math.abs(diff); i++)
-                    if (! distribute(bucket, delta)) break;
-                return false;
-            }
+                var bucket = this.id.replace(rx, '$1');
+                locks[bucket] = lock_check.is(':checked');
+            });
+        }
+
+        $("#bucket_reset").click(function() {
+            init_state();
+            update_widgets();
         });
 
-        $(amount).val(
-            $(bucket).slider('value')
-        );
-/*
-        $(amount).keyup(function() {
-            console.log($(this).val());
+        $("#bucket_equalize").click(function() {
+            equalize();
         });
 
-        $(amount).keydown(function(event) {
-            var isnumeric = /^\d+$/;
-            if (event.which == 13) {
-                event.preventDefault();
-            }
-            else if (!isnumeric.test($(this).val())) {
-                console.log("Not numeric.");
-                event.preventDefault();
-                return false;
-            }
-        });
-*/
-        $(lock).click(function() {
-            var lock_check = $(this);
-            var rx = /^.*(\d+).*$/;
-            var bucket = this.id.replace(rx, "$1");
-            locks[bucket] = lock_check.is(':checked');
+        $("#bucket_ramp").click(function() {
+            ramp();
         });
     }
 });

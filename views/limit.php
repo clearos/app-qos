@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Warning view.
+ * Bandwidth class limit view.
  *
  * @category   apps
  * @package    qos
  * @subpackage views
- * @author     Darryl Sokoloski <dsokoloski@clearfoundation.com>
- * @copyright  2013 Darryl Sokoloski
+ * @author     ClearFoundation <developer@clearfoundation.com>
+ * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/base/
  */
@@ -36,24 +36,42 @@
 $this->lang->load('base');
 $this->lang->load('qos');
 
+require_once('slider_array.inc.php');
+
+///////////////////////////////////////////////////////////////////////////////
+// Form handler
+///////////////////////////////////////////////////////////////////////////////
+
+if ($form_type === 'edit') {
+    $read_only = FALSE;
+    $buttons = array( 
+        form_submit_update('submit-form'),
+        anchor_cancel('/app/qos')
+    );
+} else {
+    $read_only = TRUE;
+    $buttons = array( 
+        anchor_edit('/app/qos/limit/edit')
+    );
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Form 
 ///////////////////////////////////////////////////////////////////////////////
 
-echo "<table><tr>\n";
+echo form_open('qos/limit',
+    array('id' => 'limit_form')
+);
+echo form_header(
+    lang('qos_priority_class') . ': ' .
+    lang('qos_class_limit_title'), array('id' => 'qos'));
 
-for ($i = 0; $i < 7; $i++) {
-echo "<td>
-<center>
-<input type='checkbox' id='bucket{$i}_lock' />
-<div id='bucket$i' class='bucket'></div>
-<input type='text' id='bucket{$i}_amount' class='bucket_input' />
-</center>
-</td>\n";
-}
+if ($read_only == FALSE)
+    echo form_slider_array(FALSE);
 
-echo '<td>';
-echo "<div class='bucket_button'>" . anchor_javascript('bucket_ramp', lang('qos_ramp'), 'high') . '</div>';
-echo "<div class='bucket_button'>" . anchor_javascript('bucket_equalize', lang('qos_equalize'), 'high') . '</div>';
-echo "<div class='bucket_button'>" . anchor_javascript('bucket_reset', lang('qos_reset'), 'high') . '</div>';
-echo "</td></tr></table>\n";
+echo field_button_set($buttons);
+
+echo form_footer();
+echo form_close();
+
+// vi: expandtab shiftwidth=4 softtabstop=4 tabstop=4
