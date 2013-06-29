@@ -33,7 +33,7 @@
 // D E P E N D E N C I E S
 ///////////////////////////////////////////////////////////////////////////////
 
-use \clearos\apps\network\Network as Network;
+use \clearos\apps\qos\Qos as Qos;
 use \Exception as Exception;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -76,9 +76,9 @@ class Reserved extends ClearOS_Controller
      * Edit view.
      */
 
-    function edit()
+    function edit($ifn)
     {
-        $this->_view_edit('edit');
+        $this->_view_edit('edit', $ifn);
     }
 
     /**
@@ -89,20 +89,21 @@ class Reserved extends ClearOS_Controller
      * @return view
      */
 
-    function _view_edit($form_type)
+    function _view_edit($form_type, $ifn = NULL)
     {
         // Load dependencies
         //---------------
 
-        //$this->load->library('qos/Qos');
-        //$this->load->library('network/Network');
-        //$this->lang->load('qos');
+        $this->load->library('qos/Qos');
+        $this->lang->load('qos');
 
         // Load views
         //-----------
 
         $data = array();
         $data['form_type'] = $form_type;
+        $data['priority_classes'] = Qos::PRIORITY_CLASSES;
+        $data['default_values'] = array(16, 15, 14, 14, 14, 14, 13);
 
         $this->page->view_form('qos/reserved', $data, lang('qos_app_name'));
     }

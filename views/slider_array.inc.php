@@ -6,47 +6,48 @@
 // framework / theme engine.
 ///////////////////////////////////////////////////////////////////////////////
 
-function form_slider_array($linked = TRUE)
+function form_slider_array($id, $title, $mode = 0, $sliders = 7, $defaults = array())
 {
-    ob_flush();
+    $colspan = $sliders + 1;
 
-    echo "<center><table><tr>\n";
+    $widget = '';
+    $widget .= "<center><table><tr><th colspan='$colspan'>$title</th></tr><tr>\n";
 
-    for ($i = 0; $i < 7; $i++) {
-        $bucket = $i + 1;
-    echo "
-        <td>
-        <center>
-    ";
-    if ($linked == FALSE) {
-        echo "
-        <div class='bucket_label'>$bucket</div>
-        ";
+    for ($i = 0; $i < $sliders; $i++) {
+        $slider = $i + 1;
+    $widget .= "<td><center>";
+    if ($mode == 1) {
+        $widget .= "<div class='slider_label'>$slider</div>";
     }
     else {
-        echo "
-        <label style='display: block' for='bucket{$i}_lock' />$bucket</label>
-        <input type='checkbox' id='bucket{$i}_lock' />
-        ";
+        $widget .= "<label style='display: block' for='${$id}{$i}_lock' />$slider</label><input type='checkbox' id='{$id}{$i}_lock' />";
     }
-    echo "
-        <div id='bucket$i' class='bucket'></div>
-        <input type='text' id='bucket{$i}_amount' class='bucket_input' />
-        </center>
-        </td>\n";
+    $widget .= "<div id='${id}$i' class='slider'></div><input type='text' id='${id}{$i}_amount' class='slider_input' /></center></td>\n";
     }
 
-    echo '<td>';
-    if ($linked == TRUE) {
-        echo "<div class='bucket_button'>" .
-            anchor_javascript('bucket_ramp', lang('qos_ramp'), 'high') . '</div>';
-        echo "<div class='bucket_button'>" .
-            anchor_javascript('bucket_equalize', lang('qos_equalize'), 'high') . '</div>';
+    $widget .= '<td>';
+    switch ($mode) {
+    case 0:
+        $widget .= "<div class='slider_button'>" .
+            anchor_javascript("${id}_ramp", lang('qos_ramp'), 'high') . '</div>';
+        $widget .= "<div class='slider_button'>" .
+            anchor_javascript("${id}_equalize", lang('qos_equalize'), 'high') . '</div>';
+    default:
+        $widget .= "<div class='slider_button'>" .
+            anchor_javascript("${id}_reset", lang('qos_reset'), 'high') . '</div>';
     }
-    echo "<div class='bucket_button'>" . anchor_javascript('bucket_reset', lang('qos_reset'), 'high') . '</div>';
-    echo "</td></tr></table></center>\n";
+    $widget .= "</td></tr></table></center>\n";
+    $widget .= "<script>create_slider_array('$id', $mode, $sliders);</script>\n";
 
-    return form_banner(ob_get_clean());
+    if (count($defaults) == $sliders) {
+        $widget .= "<script>\n";
+        for ($i = 0; $i < $sliders; $i++)
+            $widget .= "set_default_value('$id', $i, $defaults[$i]);\n";
+        $widget .= "reset('$id');\n";
+        $widget .= "</script>\n";
+    }
+
+    return $widget;
 }
 
 // vi: expandtab shiftwidth=4 softtabstop=4 tabstop=4

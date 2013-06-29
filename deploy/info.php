@@ -33,7 +33,6 @@ $app['requires'] = array(
 $app['core_requires'] = array(
     'app-network-core',
     'app-firewall-core >= 1:1.4.36',
-    'mtr',
 );
 
 $app['core_directory_manifest'] = array(

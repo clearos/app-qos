@@ -1,8 +1,8 @@
-.bucket {
+.slider {
 	height: 80px;
 }
 
-.bucket_input {
+.slider_input {
 	border: 0;
 	font-weight: bold;
 	width: 24px;
@@ -10,10 +10,10 @@
 	text-align: center;
 }
 
-.bucket_button {
+.slider_button {
 	margin-top: 6px;
 }
 
-.bucket_label {
+.slider_label {
 	margin-bottom: 8px;
 }

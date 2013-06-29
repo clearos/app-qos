@@ -8,7 +8,7 @@
  * @subpackage views
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2013 ClearFoundation
- * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
+ * @license    GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/base/
  */
 
@@ -66,8 +66,13 @@ echo form_header(
     lang('qos_priority_class') . ': ' .
     lang('qos_class_limit_title'), array('id' => 'qos'));
 
-if ($read_only == FALSE)
-    echo form_slider_array(FALSE);
+if ($read_only == FALSE) {
+    $defaults = array();
+    echo form_banner(form_slider_array('pcuplimit', 'Upstream', 1,
+        $priority_classes, $default_values));
+    echo form_banner(form_slider_array('pcdownlimit', 'Downstream', 1,
+        $priority_classes, $default_values));
+}
 
 echo field_button_set($buttons);
 

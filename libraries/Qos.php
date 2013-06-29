@@ -1,7 +1,7 @@
 <?php
 
 /**
- * qos class.
+ * QoS class.
  *
  * @category    apps
  * @package     qos
@@ -94,7 +94,7 @@ clearos_load_library('base/Validation_Exception');
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * qos class.
+ * QoS class.
  *
  * @category    apps
  * @package     qos
@@ -143,7 +143,7 @@ class Qos extends Engine
     ///////////////////////////////////////////////////////////////////////////////
 
     /**
-     * qos constructor.
+     * QoS constructor.
      */
 
     public function __construct()
@@ -373,8 +373,8 @@ class Qos extends Engine
      * all configured external interfaces.  The $type parameter is used to
      * select the type of configuration which can be either:
      *
-     *   qos::PRIORITY_CLASS_RESERVED   For priority class reservation values
-     *   qos::PRIORITY_CLASS_LIMIT      For priority class limit values
+     *   Qos::PRIORITY_CLASS_RESERVED   For priority class reservation values
+     *   Qos::PRIORITY_CLASS_LIMIT      For priority class limit values
      *
      * If a non-empty associative array is returned, it will contain the
      * following fields:
@@ -819,13 +819,13 @@ class Qos extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         if (!is_array($values))
-            return lang('qos_invalid_reservation_values');
-        if (count($values) != self::PRIORITY_BUCKETS)
-            return lang('qos_invalid_reservation_values');
+            return lang('qos_invalid_reservation_value');
+        if (count($values) != self::PRIORITY_CLASSES)
+            return lang('qos_invalid_reservation_value');
         $total = 0;
         foreach ($values as $value) $total += $value;
         if ($total != 100)
-            return lang('qos_invalid_reservation_values');
+            return lang('qos_invalid_reservation_value');
         return '';
     }
 
@@ -841,12 +841,12 @@ class Qos extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         if (!is_array($values))
-            return lang('qos_invalid_reservation_values');
-        if (count($values) != self::PRIORITY_BUCKETS)
-            return lang('qos_invalid_reservation_values');
+            return lang('qos_invalid_limit_value');
+        if (count($values) != self::PRIORITY_CLASSES)
+            return lang('qos_invalid_limit_value');
         foreach ($values as $value) {
             if ($value < 1 || $value > 100)
-                return lang('qos_invalid_reservation_values');
+                return lang('qos_invalid_limit_value');
         }
         return '';
     }

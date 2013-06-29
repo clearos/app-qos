@@ -7,7 +7,7 @@
  * @subpackage javascript
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2013 ClearFoundation
- * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
+ * @license    GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/qos/
  */
 
@@ -49,245 +49,266 @@ clearos_load_language('qos');
 header('Content-Type:application/x-javascript');
 
 ?>
-var mode = 0;
-var buckets = 7;
-var last_bucket = 0;
-var last_delta = 0;
-var values = [0, 0, 0, 0, 0, 0, 0];
-var locks = [false, false, false, false, false, false, false];
+var state = [];
 
-function init_state()
+function init_state(id, mode, sliders)
 {
-    last_delta = 0;
-    last_bucket = 0;
-    locks = [false, false, false, false, false, false, false];
+    state[id] = [];
+    state[id]['last_delta'] = 0;
+    state[id]['last_slider'] = 0;
+    state[id]['mode'] = 0;
+    state[id]['sliders'] = sliders;
 
-    if (mode == 0)
-        equalize();
+    state[id]['values'] = [];
+    state[id]['defaults'] = [];
+    state[id]['locks'] = [];
+
+    for (i = 0; i < sliders; i++) {
+        state[id]['values'][i] = 0;
+        state[id]['defaults'][i] = 0;
+        state[id]['locks'][i] = false;
+    }
+
+    if (state[id]['mode'] == 0)
+        equalize(id);
     else {
-        for (i = 0; i < buckets; i++) values[i] = 100;
+        for (i = 0; i < sliders; i++) state[id]['values'][i] = 100;
     }
 }
 
-function update_widgets()
+function update_sliders(id)
 {
-    for (i = 0; i < buckets; i++) {
-        $('#bucket' + i).slider('value', values[i]);
-        $('#bucket' + i + '_amount').val(values[i]);
-        $('#bucket' + i + '_lock').attr('checked', locks[i]);
+    for (i = 0; i < state[id]['sliders']; i++) {
+        $('#' + id + '' + i).slider('value', state[id]['values'][i]);
+        $('#' + id + '' + i + '_amount').val(state[id]['values'][i]);
+        $('#' + id + '' + i + '_lock').attr('checked', state[id]['locks'][i]);
     }
 }
 
-function distribute(bucket, delta)
+function set_default_value(id, slider, value)
+{
+    state[id]['defaults'][slider] = value;
+}
+
+function reset(id)
+{
+    for (i = 0; i < state[id]['sliders']; i++) {
+        if (state[id]['defaults'][i] == 0) continue;
+        state[id]['values'][i] = state[id]['defaults'][i];
+    }
+
+    update_sliders(id);
+}
+
+function distribute(id, slider, delta)
 {
     var b = -1;
 
     if (delta != 1 && delta != -1) return false;
-    if (bucket < 0 || bucket >= buckets) return false;
+    if (slider < 0 || slider >= state[id]['sliders']) return false;
 
     if (delta > 0) {
-        if (values[bucket] == 100) return false;
-        if (delta != last_delta) last_bucket = buckets - 1;
-        for (i = 0; i < buckets; i++) {
-            if (bucket != last_bucket &&
-                values[last_bucket] > 1 &&
-                locks[last_bucket] == false) {
-                b = last_bucket;
+        if (state[id]['values'][slider] == 100) return false;
+        if (delta != state[id]['last_delta'])
+            state[id]['last_slider'] = state[id]['sliders'] - 1;
+        for (i = 0; i < state[id]['sliders']; i++) {
+            if (slider != state[id]['last_slider'] &&
+                state[id]['values'][state[id]['last_slider']] > 1 &&
+                state[id]['locks'][state[id]['last_slider']] == false) {
+                b = state[id]['last_slider'];
                 break;
             }
 
-            if (--last_bucket < 0) last_bucket = buckets - 1;
+            if (--state[id]['last_slider'] < 0)
+                state[id]['last_slider'] = state[id]['sliders'] - 1;
         }
 
-        if (b != -1)
-            if (--last_bucket < 0) last_bucket = buckets - 1;
+        if (b != -1) {
+            if (--state[id]['last_slider'] < 0)
+                state[id]['last_slider'] = state[id]['sliders'] - 1;
+        }
     }
     else if (delta < 0) {
-        if (values[bucket] == 1) return false;
-        if (delta != last_delta) last_bucket = 0;
-        for (i = 0; i < buckets; i++) {
-            if (bucket != last_bucket &&
-                values[last_bucket] < 100 &&
-                locks[last_bucket] == false) {
-                b = last_bucket;
+        if (state[id]['values'][slider] == 1) return false;
+        if (delta != state[id]['last_delta']) state[id]['last_slider'] = 0;
+        for (i = 0; i < state[id]['sliders']; i++) {
+            if (slider != state[id]['last_slider'] &&
+                state[id]['values'][state[id]['last_slider']] < 100 &&
+                state[id]['locks'][state[id]['last_slider']] == false) {
+                b = state[id]['last_slider'];
                 break;
             }
 
-            if (++last_bucket == buckets) last_bucket = 0;
+            if (++state[id]['last_slider'] == state[id]['sliders'])
+                state[id]['last_slider'] = 0;
         }
 
-        if (b != -1)        
-            if (++last_bucket == buckets) last_bucket = 0;
+        if (b != -1) {
+            if (++state[id]['last_slider'] == state[id]['sliders'])
+                state[id]['last_slider'] = 0;
+        }
     }
 
-    last_delta = delta;
+    state[id]['last_delta'] = delta;
 
     if (b == -1) {
-        console.log("Search exhausted, can't solve.");
+        console.log(id + ": Search exhausted, can't solve.");
         return false;
     }
 
-    values[bucket] += delta;
-    values[b] += -delta;
+    state[id]['values'][slider] += delta;
+    state[id]['values'][b] += -delta;
 
-    update_widgets();
+    update_sliders(id);
 
     return true;
 }
 
-function equalize()
+function equalize(id)
 {
-    var bucket = 0;
+    var slider = 0;
     var total = 100;
     var locked = 0;
 
-    for (var i = 0; i < buckets; i++) {
-        if (locks[i]) {
-            total -= values[i];
+    for (var i = 0; i < state[id]['sliders']; i++) {
+        if (state[id]['locks'][i]) {
+            total -= state[id]['values'][i];
             locked++;
             continue;
         }
-        values[i] = 0;
+        state[id]['values'][i] = 0;
     }
 
-    if (locked == buckets) return;
+    if (locked == state[id]['sliders']) return;
 
     for (var i = total; i > 0; ) {
-        if (locks[bucket] == false) {
-            values[bucket]++;
+        if (state[id]['locks'][slider] == false) {
+            state[id]['values'][slider]++;
             i--;
         }
-        if (++bucket == buckets) bucket = 0;
+        if (++slider == state[id]['sliders']) slider = 0;
     }
 
-    update_widgets();
+    update_sliders(id);
 }
 
-function ramp()
+function ramp(id)
 {
-    var bucket = 0;
+    var slider = 0;
     var total = 100;
     var locked = 0;
 
-    for (var i = 0; i < buckets; i++) {
-        if (locks[i]) {
-            total -= values[i];
+    for (var i = 0; i < state[id]['sliders']; i++) {
+        if (state[id]['locks'][i]) {
+            total -= state[id]['values'][i];
             locked++;
             continue;
         }
         total -= 1;
-        values[i] = 1;
+        state[id]['values'][i] = 1;
     }
 
-    if (locked == buckets) return;
+    if (locked == state[id]['sliders']) return;
 
     for (var i = total; i > 0; ) {
-        if (locks[bucket] == false) {
-            var points = Math.abs(bucket - buckets);
+        if (state[id]['locks'][slider] == false) {
+            var points = Math.abs(slider - state[id]['sliders']);
             if (points > i) points = i;
-            values[bucket] += points;
+            state[id]['values'][slider] += points;
             i -= points;
         }
-        if (++bucket == buckets) bucket = 0;
+        if (++slider == state[id]['sliders']) slider = 0;
     }
 
-    update_widgets();
+    update_sliders(id);
 }
 
-$(document).ready(function() {
+function create_slider_array(id, mode, sliders)
+{
+    init_state(id, mode, sliders);
 
-    if ($(location).attr('href').match('.*\/qos\/limit\/edit') != null) {
+    for (var i = 0; i < sliders; i++) {
+        var name = '#' + id + '' + i;
+        var amount = name + '_amount';
+        var lock = name + '_lock';
 
-        mode = 1;
-        init_state();
-
-        for (var i = 0; i < buckets; i++) {
-            var bucket = '#bucket' + i;
-            var amount = bucket + '_amount';
-
-            $(bucket).slider({
+        switch (mode) {
+        case 0:
+            $(name).slider({
                 orientation: 'vertical',
                 range: 'min',
                 min: 1,
                 max: 100,
-                value: values[i],
+                value: state[id]['values'][i],
                 slide: function(event, ui) {
-                    var bucket = 0;
-                    var rx = /^.*(\d+).*$/;
-                    bucket = this.id.replace(rx, "$1");
-                    values[bucket] = ui.value;
-                    update_widgets();
-                    return false;
-                }
-            });
-
-            $(amount).val(
-                $(bucket).slider('value')
-            );
-        }
-
-        $("#bucket_reset").click(function() {
-            init_state();
-            update_widgets();
-        });
-    }
-    else if ($(location).attr('href').match('.*\/qos\/reserved\/edit') != null) {
-
-        init_state();
-
-        for (var i = 0; i < buckets; i++) {
-            var bucket = '#bucket' + i;
-            var amount = bucket + '_amount';
-            var lock = bucket + '_lock';
-
-            $(bucket).slider({
-                orientation: 'vertical',
-                range: 'min',
-                min: 1,
-                max: 100,
-                value: values[i],
-                slide: function(event, ui) {
-                    var bucket = 0;
+                    var slider = 0;
                     var delta = 0;
                     var diff = 0;
                     var rx = /^.*(\d+).*$/;
-                    bucket = this.id.replace(rx, "$1");
+                    slider = this.id.replace(rx, "$1");
                     if (ui.value > $('#' + this.id).slider('value'))
                         delta = 1;
                     else
                         delta = -1;
                     diff = ui.value - $('#' + this.id).slider('value');
                     for (i = 0; i < Math.abs(diff); i++)
-                        if (! distribute(bucket, delta)) break;
+                        if (! distribute(id, slider, delta)) break;
                     return false;
                 }
             });
 
-            $(amount).val(
-                $(bucket).slider('value')
-            );
-
             $(lock).click(function() {
                 var lock_check = $(this);
                 var rx = /^.*(\d+).*$/;
-                var bucket = this.id.replace(rx, '$1');
-                locks[bucket] = lock_check.is(':checked');
+                var slider = this.id.replace(rx, '$1');
+                state[id]['locks'][slider] = lock_check.is(':checked');
             });
+
+            break;
+
+        case 1:
+            $(name).slider({
+                orientation: 'vertical',
+                range: 'min',
+                min: 1,
+                max: 100,
+                value: state[id]['values'][i],
+                slide: function(event, ui) {
+                    var slider = 0;
+                    var rx = /^.*(\d+).*$/;
+                    var slider = this.id.replace(rx, "$1");
+                    state[id]['values'][slider] = ui.value;
+                    update_sliders(id);
+                    return false;
+                }
+            });
+            break;
         }
 
-        $("#bucket_reset").click(function() {
-            init_state();
-            update_widgets();
+        $(amount).val($(name).slider('value'));
+    }
+
+    switch (mode) {
+    case 0:
+        $('#' + id + '_equalize').click(function() {
+            var rx_id = /^([A-z]+)_.*$/;
+            var id = this.id.replace(rx_id, "$1");
+            equalize(id);
         });
 
-        $("#bucket_equalize").click(function() {
-            equalize();
+        $('#' + id + '_ramp').click(function() {
+            var rx_id = /^([A-z]+)_.*$/;
+            var id = this.id.replace(rx_id, "$1");
+            ramp(id);
         });
 
-        $("#bucket_ramp").click(function() {
-            ramp();
+    default:
+        $('#' + id + '_reset').click(function() {
+            var rx_id = /^([A-z]+)_.*$/;
+            var id = this.id.replace(rx_id, "$1");
+            reset(id);
         });
     }
-});
+}
 
 // vi: expandtab shiftwidth=4 softtabstop=4 tabstop=4 syntax=javascript

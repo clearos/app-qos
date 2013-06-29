@@ -66,8 +66,12 @@ echo form_header(
     lang('qos_priority_class') . ': ' .
     lang('qos_class_reserved_title'), array('id' => 'qos'));
 
-if ($read_only == FALSE)
-    echo form_slider_array();
+if ($read_only == FALSE) {
+    echo form_banner(form_slider_array('pcupres', 'Upstream', 0,
+        $priority_classes, $default_values));
+    echo form_banner(form_slider_array('pcdownres', 'Downstream', 0,
+        $priority_classes, $default_values));
+}
 
 echo field_button_set($buttons);
 

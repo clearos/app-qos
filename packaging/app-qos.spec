@@ -22,7 +22,6 @@ Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-network-core
 Requires: app-firewall-core >= 1:1.4.36
-Requires: mtr
 
 %description core
 Bandwidth QoS Manager
