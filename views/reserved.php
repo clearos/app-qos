@@ -9,7 +9,7 @@
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/base/
+ * @link       http://www.clearfoundation.com/docs/developer/apps/qos/
  */
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -33,49 +33,74 @@
 // Load dependencies
 ///////////////////////////////////////////////////////////////////////////////
 
-$this->lang->load('base');
 $this->lang->load('qos');
-
-require_once('slider_array.inc.php');
+$this->lang->load('network');
 
 ///////////////////////////////////////////////////////////////////////////////
-// Form handler
+// Form or summary table
 ///////////////////////////////////////////////////////////////////////////////
 
-if ($form_type === 'edit') {
-    $read_only = FALSE;
-    $buttons = array( 
-        form_submit_update('submit-form'),
-        anchor_cancel('/app/qos')
-    );
-} else {
-    $read_only = TRUE;
-    $buttons = array( 
-        anchor_edit('/app/qos/reserved/edit')
+if ($read_only) {
+    $headers = array(lang('network_interface'));
+    for ($i = 0; $i < $priority_classes; $i++)
+        $headers[] = $i + 1;
+
+    $rows = array();
+    foreach ($pc_config as $direction => $entries) {
+        foreach ($entries as $ifn => $values)
+            $rows[$ifn][$direction] = $values;
+    }
+
+    $items = array();
+    foreach ($rows as $ifn => $row) {
+        $item['title'] = $ifn;
+        $item['action'] = '';
+        $item['anchors'] = button_set(array(
+            anchor_edit("/app/qos/reserved/edit/$ifn"),
+            anchor_delete("/app/qos/reserved/delete/$ifn")
+        ));
+        $item['details'] = array($ifn);
+        for ($i = 0; $i < $priority_classes; $i++) {
+            $item['details'][] =
+                "<div id='" . $ifn . $i . "'>{$row['up'][$i]}%</div>" .
+                "<div id='" . $ifn . $i . "'>{$row['down'][$i]}%</div>";
+        }
+        $items[] = $item;
+    }
+
+    echo summary_table(
+        lang('qos_priority_class') . ': ' .
+        lang('qos_class_reserved_title'),
+        array(),
+        $headers,
+        $items,
+        array('id' => 'pcreserved_summary')
     );
 }
+else {
+    require_once('slider_array.inc.php');
 
-///////////////////////////////////////////////////////////////////////////////
-// Form 
-///////////////////////////////////////////////////////////////////////////////
+    echo form_open('qos/reserved',
+        array('id' => 'reserved_form')
+    );
+    echo form_header(
+        lang('qos_priority_class') . ': ' .
+        lang('qos_class_reserved_title') . ': ' . $ifn,
+        array('id' => 'qos_pcreserved'));
 
-echo form_open('qos/reserved',
-    array('id' => 'device_form')
-);
-echo form_header(
-    lang('qos_priority_class') . ': ' .
-    lang('qos_class_reserved_title'), array('id' => 'qos'));
+    echo form_banner(form_slider_array('pcupreserved', lang('qos_upstream'), 0,
+        $priority_classes, $default_values_up));
+    echo form_banner(form_slider_array('pcdownreserved', lang('qos_downstream'), 0,
+        $priority_classes, $default_values_down));
 
-if ($read_only == FALSE) {
-    echo form_banner(form_slider_array('pcupres', 'Upstream', 0,
-        $priority_classes, $default_values));
-    echo form_banner(form_slider_array('pcdownres', 'Downstream', 0,
-        $priority_classes, $default_values));
+    echo field_button_set(
+        array( 
+            form_submit_update('submit-form'),
+            anchor_cancel('/app/qos')
+    ));
+
+    echo form_footer();
+    echo form_close();
 }
-
-echo field_button_set($buttons);
-
-echo form_footer();
-echo form_close();
 
 // vi: expandtab shiftwidth=4 softtabstop=4 tabstop=4

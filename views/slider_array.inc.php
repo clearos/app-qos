@@ -6,23 +6,23 @@
 // framework / theme engine.
 ///////////////////////////////////////////////////////////////////////////////
 
-function form_slider_array($id, $title, $mode = 0, $sliders = 7, $defaults = array())
+function form_slider_array($id, $title, $mode, $sliders, $defaults = array(), $units = '%')
 {
-    $colspan = $sliders + 1;
-
-    $widget = '';
-    $widget .= "<center><table><tr><th colspan='$colspan'>$title</th></tr><tr>\n";
+    $widget = "<center><h1>$title</h1><table><tr><tr>\n";
 
     for ($i = 0; $i < $sliders; $i++) {
         $slider = $i + 1;
-    $widget .= "<td><center>";
-    if ($mode == 1) {
-        $widget .= "<div class='slider_label'>$slider</div>";
-    }
-    else {
-        $widget .= "<label style='display: block' for='${$id}{$i}_lock' />$slider</label><input type='checkbox' id='{$id}{$i}_lock' />";
-    }
-    $widget .= "<div id='${id}$i' class='slider'></div><input type='text' id='${id}{$i}_amount' class='slider_input' /></center></td>\n";
+        $widget .= "<td><center>";
+        if ($mode == 1)
+            $widget .= "<div class='slider_label'>$slider</div>";
+        else {
+            $widget .= "<label style='display: block' for='${$id}{$i}_lock' />";
+            $widget .= "$slider</label><input type='checkbox' id='{$id}{$i}_lock' />";
+        }
+    
+        $widget .= "<div id='${id}$i' class='slider'>";
+        $widget .= "</div><input type='text' id='${id}{$i}_amount' class='slider_input' />$units";
+        $widget .= "</center></td>\n";
     }
 
     $widget .= '<td>';

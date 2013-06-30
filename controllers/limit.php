@@ -82,6 +82,24 @@ class Limit extends ClearOS_Controller
     }
 
     /**
+     * Delete configuration.
+     */
+
+    function delete($ifn)
+    {
+        // Load dependencies
+        //------------------
+
+        $this->load->library('qos/Qos');
+        $this->lang->load('qos');
+
+        // Delete configuration
+        //---------------------
+
+        //$this->qos->get_priority_class_config(Qos::PRIORITY_CLASS_LIMIT);
+    }
+
+    /**
      * Priority class bandwidth limit controller
      *
      * @param string $form_type form type
@@ -92,18 +110,31 @@ class Limit extends ClearOS_Controller
     function _view_edit($form_type, $ifn = NULL)
     {
         // Load dependencies
-        //---------------
+        //------------------
 
         $this->load->library('qos/Qos');
         $this->lang->load('qos');
+
+        // Load data 
+        //----------
+        $pc_config =
+            $this->qos->get_priority_class_config(Qos::PRIORITY_CLASS_LIMIT);
 
         // Load views
         //-----------
 
         $data = array();
-        $data['form_type'] = $form_type;
+        $data['ifn'] = $ifn;
+        $data['read_only'] = ($form_type == 'edit') ? FALSE : TRUE;
         $data['priority_classes'] = Qos::PRIORITY_CLASSES;
-        $data['default_values'] = array(100, 100, 100, 100, 100, 100, 10);
+
+        if ($data['read_only']) {
+            $data['pc_config'] = $pc_config;
+        }
+        else {
+            $data['default_values_up'] = $pc_config['up'][$ifn];
+            $data['default_values_down'] = $pc_config['down'][$ifn];
+        }
 
         $this->page->view_form('qos/limit', $data, lang('qos_app_name'));
     }

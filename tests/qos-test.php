@@ -36,9 +36,9 @@ $ifn_config = $qos->get_interface_config();
 var_dump($ifn_config);
 */
 
-/*
 $pc_config = $qos->get_priority_class_config(Qos::PRIORITY_CLASS_RESERVED);
 var_dump($pc_config);
+/*
 
 $qos->set_priority_class_config(Qos::PRIORITY_CLASS_RESERVED,
     'ppp2',
@@ -58,7 +58,6 @@ $priomark_rules = $qos->get_priomark_rules(Qos::PRIOMARK_TYPE_IPV4);
 var_dump($priomark_rules);
 $priomark_rules = $qos->get_priomark_rules(Qos::PRIOMARK_TYPE_IPV4_CUSTOM);
 var_dump($priomark_rules);
-*/
 $priomark_rules = $qos->get_priomark_rules();
 var_dump($priomark_rules);
 

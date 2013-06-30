@@ -97,13 +97,26 @@ class Reserved extends ClearOS_Controller
         $this->load->library('qos/Qos');
         $this->lang->load('qos');
 
+        // Load data 
+        //----------
+        $pc_config =
+            $this->qos->get_priority_class_config(Qos::PRIORITY_CLASS_RESERVED);
+
         // Load views
         //-----------
 
         $data = array();
-        $data['form_type'] = $form_type;
+        $data['ifn'] = $ifn;
+        $data['read_only'] = ($form_type == 'edit') ? FALSE : TRUE;
         $data['priority_classes'] = Qos::PRIORITY_CLASSES;
-        $data['default_values'] = array(16, 15, 14, 14, 14, 14, 13);
+
+        if ($data['read_only']) {
+            $data['pc_config'] = $pc_config;
+        }
+        else {
+            $data['default_values_up'] = $pc_config['up'][$ifn];
+            $data['default_values_down'] = $pc_config['down'][$ifn];
+        }
 
         $this->page->view_form('qos/reserved', $data, lang('qos_app_name'));
     }
