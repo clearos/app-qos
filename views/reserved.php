@@ -56,8 +56,7 @@ if ($read_only) {
         $item['title'] = $ifn;
         $item['action'] = '';
         $item['anchors'] = button_set(array(
-            anchor_edit("/app/qos/reserved/edit/$ifn"),
-            anchor_delete("/app/qos/reserved/delete/$ifn")
+            anchor_edit("/app/qos/reserved/edit/$ifn")
         ));
         $item['details'] = array($ifn);
         for ($i = 0; $i < $priority_classes; $i++) {
@@ -69,7 +68,6 @@ if ($read_only) {
     }
 
     echo summary_table(
-        lang('qos_priority_class') . ': ' .
         lang('qos_class_reserved_title'),
         array(),
         $headers,
@@ -84,14 +82,17 @@ else {
         array('id' => 'reserved_form')
     );
     echo form_header(
-        lang('qos_priority_class') . ': ' .
-        lang('qos_class_reserved_title') . ': ' . $ifn,
+        lang('qos_class_reserved_title'),
         array('id' => 'qos_pcreserved'));
 
-    echo form_banner(form_slider_array('pcupreserved', lang('qos_upstream'), 0,
+    echo form_banner(form_slider_array('pcupreserved',
+        lang('qos_upstream') . ' - ' . $ifn, 0,
         $priority_classes, $default_values_up));
-    echo form_banner(form_slider_array('pcdownreserved', lang('qos_downstream'), 0,
+    echo form_banner(form_slider_array('pcdownreserved',
+        lang('qos_downstream') . ' - ' . $ifn, 0,
         $priority_classes, $default_values_down));
+
+    echo "<input type='hidden' name='ifn' value='$ifn'>\n";
 
     echo field_button_set(
         array( 

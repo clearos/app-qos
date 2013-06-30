@@ -92,10 +92,30 @@ class Reserved extends ClearOS_Controller
     function _view_edit($form_type, $ifn = NULL)
     {
         // Load dependencies
-        //---------------
+        //------------------
 
         $this->load->library('qos/Qos');
         $this->lang->load('qos');
+
+        // Handle form submit
+        //-------------------
+        if ($this->input->post('submit-form')) {
+            try {
+                $values = array();
+                for ($i = 0; $i < Qos::PRIORITY_CLASSES; $i++) {
+                    $values['up'][$i] =
+                        $this->input->post("pcupreserved{$i}_amount");
+                    $values['down'][$i] =
+                        $this->input->post("pcdownreserved{$i}_amount");
+                }
+                $this->qos->set_priority_class_config(Qos::PRIORITY_CLASS_RESERVED,
+                    $this->input->post('ifn'), $values['up'], $values['down']);
+                redirect('/qos/qos');
+            } catch (Exception $e) {
+                $this->page->view_exception($e);
+                return;
+            }
+        }
 
         // Load data 
         //----------

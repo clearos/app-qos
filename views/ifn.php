@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Bandwidth class limit view.
+ * Interface configuration view.
  *
  * @category   apps
  * @package    qos
@@ -41,56 +41,75 @@ $this->lang->load('network');
 ///////////////////////////////////////////////////////////////////////////////
 
 if ($read_only) {
-    $headers = array(lang('network_interface'));
-    for ($i = 0; $i < $priority_classes; $i++)
-        $headers[] = $i + 1;
+    $headers = array(
+        lang('network_interface'),
+        lang('qos_upstream'),
+        lang('qos_downstream'),
+        lang('qos_rate_to_quantum'),
+    );
 
     $rows = array();
-    foreach ($pc_config as $direction => $entries) {
-        foreach ($entries as $ifn => $values)
-            $rows[$ifn][$direction] = $values;
+    foreach ($interfaces as $direction => $config) {
+        foreach ($config as $ifn => $settings) {
+            $rows[$ifn][$direction]['speed'] = $settings['speed'];
+            $rows[$ifn][$direction]['r2q'] = $settings['r2q'];
+        }
     }
 
     $items = array();
-    foreach ($rows as $ifn => $row) {
+
+    foreach ($rows as $ifn => $config) {
         $item['title'] = $ifn;
         $item['action'] = '';
         $item['anchors'] = button_set(array(
-            anchor_edit("/app/qos/limit/edit/$ifn")
+            anchor_edit("/app/qos/ifn/edit/$ifn"),
+            anchor_delete("/app/qos/ifn/delete/$ifn")
         ));
-        $item['details'] = array($ifn);
-        for ($i = 0; $i < $priority_classes; $i++) {
-            $item['details'][] =
-                "<div id='" . $ifn . $i . "'>{$row['up'][$i]}%</div>" .
-                "<div id='" . $ifn . $i . "'>{$row['down'][$i]}%</div>";
-        }
+        $r2q_up = ($config['up']['r2q'] == 'auto') ?
+            lang('qos_auto') : $config['up']['r2q'];
+        $r2q_down = ($config['down']['r2q'] == 'auto') ?
+            lang('qos_auto') : $config['down']['r2q'];
+        $item['details'] = array(
+            $ifn,
+            "<span id='" . $ifn . "_up'>{$config['up']['speed']}</span>",
+            "<span id='" . $ifn . "_down'>{$config['down']['speed']}</span>",
+            "<span id='" . $ifn . "_r2q_up'>$r2q_up / $r2q_down</span>",
+        );
+        $items[] = $item;
+    }
+
+    foreach ($external_interfaces as $ifn) {
+        if (array_key_exists($ifn, $row)) continue;
+
+        $item['title'] = $ifn;
+        $item['action'] = '';
+        $item['anchors'] = button_set(array(
+            anchor_add("/app/qos/ifn/add/$ifn"),
+        ));
+        $item['details'] = array(
+            $ifn,
+            "<span id='" . $ifn . "_up'>-</span>",
+            "<span id='" . $ifn . "_down'>-</span>",
+            "<span id='" . $ifn . "_r2q_up'>-</span>",
+        );
         $items[] = $item;
     }
 
     echo summary_table(
-        lang('qos_class_limit_title'),
+        lang('qos_interfaces_title'),
         array(),
         $headers,
         $items,
-        array('id' => 'pclimit_summary')
+        array('id' => 'ifn_summary')
     );
 }
 else {
-    require_once('slider_array.inc.php');
-
-    echo form_open('qos/limit',
-        array('id' => 'limit_form')
+    echo form_open('qos/ifn',
+        array('id' => 'ifn_form')
     );
     echo form_header(
-        lang('qos_class_limit_title'),
-        array('id' => 'qos_pclimit'));
-
-    echo form_banner(form_slider_array('pcuplimit',
-        lang('qos_upstream') . ' - ' . $ifn, 1,
-        $priority_classes, $default_values_up));
-    echo form_banner(form_slider_array('pcdownlimit',
-        lang('qos_downstream') . ' - ' . $ifn, 1,
-        $priority_classes, $default_values_down));
+        lang('qos_interface_edit_title'),
+        array('id' => 'qos_ifn'));
 
     echo "<input type='hidden' name='ifn' value='$ifn'>\n";
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * QoS controller.
+ * External interfaces controller
  *
  * @category   apps
  * @package    qos
@@ -33,7 +33,7 @@
 // D E P E N D E N C I E S
 ///////////////////////////////////////////////////////////////////////////////
 
-use \clearos\apps\network\Network as Network;
+use \clearos\apps\qos\Qos as Qos;
 use \Exception as Exception;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -41,7 +41,7 @@ use \Exception as Exception;
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * QoS controller.
+ * External interfaces controller.
  *
  * @category   apps
  * @package    qos
@@ -52,26 +52,84 @@ use \Exception as Exception;
  * @link       http://www.clearfoundation.com/docs/developer/apps/mobile_demo/
  */
 
-class Qos extends ClearOS_Controller
+class Ifn extends ClearOS_Controller
 {
     /**
-     * Index.
+     * Read-only index.
      */
 
     function index()
     {
+        $this->view();
+    }
+
+    /**
+     * Read-only view.
+     */
+
+    function view()
+    {
+        $this->_view_edit('view');
+    }
+    
+    /**
+     * Edit view.
+     */
+
+    function edit($ifn)
+    {
+        $this->_view_edit('edit', $ifn);
+    }
+
+    /**
+     * External interfaces controller
+     *
+     * @param string $form_type form type
+     *
+     * @return view
+     */
+
+    function _view_edit($form_type, $ifn = NULL)
+    {
         // Load dependencies
-        //---------------
+        //------------------
 
-        //$this->load->library('qos/Qos');
-        //$this->load->library('network/Network');
-        //$this->lang->load('qos');
+        $this->load->library('qos/Qos');
+        $this->load->library('network/Iface_Manager');
+        $this->lang->load('qos');
 
-        // Load controllers
-        //-----------------
+        // Handle form submit
+        //-------------------
+        if ($this->input->post('submit-form')) {
+            try {
+                redirect('/qos/qos');
+            } catch (Exception $e) {
+                $this->page->view_exception($e);
+                return;
+            }
+        }
 
-        $controllers = array('qos/ifn', 'qos/reserved', 'qos/limit');
-        $this->page->view_controllers($controllers, lang('qos_app_name'));
+        // Load data 
+        //----------
+        $ifn_config = $this->qos->get_interface_config();
+        $ifn_external = $this->iface_manager->get_external_interfaces();
+
+        // Load views
+        //-----------
+
+        $data = array();
+        $data['ifn'] = $ifn;
+        $data['read_only'] = ($form_type == 'edit') ? FALSE : TRUE;
+        $data['interfaces'] = $ifn_config;
+        $data['interfaces'] = $ifn_config;
+        $data['external_interfaces'] = $ifn_external;
+
+        if ($data['read_only']) {
+        }
+        else {
+        }
+
+        $this->page->view_form('qos/ifn', $data, lang('qos_app_name'));
     }
 }
 

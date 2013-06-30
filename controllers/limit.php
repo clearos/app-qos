@@ -82,24 +82,6 @@ class Limit extends ClearOS_Controller
     }
 
     /**
-     * Delete configuration.
-     */
-
-    function delete($ifn)
-    {
-        // Load dependencies
-        //------------------
-
-        $this->load->library('qos/Qos');
-        $this->lang->load('qos');
-
-        // Delete configuration
-        //---------------------
-
-        //$this->qos->get_priority_class_config(Qos::PRIORITY_CLASS_LIMIT);
-    }
-
-    /**
      * Priority class bandwidth limit controller
      *
      * @param string $form_type form type
@@ -114,6 +96,26 @@ class Limit extends ClearOS_Controller
 
         $this->load->library('qos/Qos');
         $this->lang->load('qos');
+
+        // Handle form submit
+        //-------------------
+        if ($this->input->post('submit-form')) {
+            try {
+                $values = array();
+                for ($i = 0; $i < Qos::PRIORITY_CLASSES; $i++) {
+                    $values['up'][$i] =
+                        $this->input->post("pcuplimit{$i}_amount");
+                    $values['down'][$i] =
+                        $this->input->post("pcdownlimit{$i}_amount");
+                }
+                $this->qos->set_priority_class_config(Qos::PRIORITY_CLASS_LIMIT,
+                    $this->input->post('ifn'), $values['up'], $values['down']);
+                redirect('/qos/qos');
+            } catch (Exception $e) {
+                $this->page->view_exception($e);
+                return;
+            }
+        }
 
         // Load data 
         //----------

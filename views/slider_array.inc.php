@@ -21,7 +21,7 @@ function form_slider_array($id, $title, $mode, $sliders, $defaults = array(), $u
         }
     
         $widget .= "<div id='${id}$i' class='slider'>";
-        $widget .= "</div><input type='text' id='${id}{$i}_amount' class='slider_input' />$units";
+        $widget .= "</div><input type='text' name='{$id}{$i}_amount' id='{$id}{$i}_amount' class='slider_input' />$units";
         $widget .= "</center></td>\n";
     }
 
