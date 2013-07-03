@@ -33,7 +33,7 @@
 // D E P E N D E N C I E S
 ///////////////////////////////////////////////////////////////////////////////
 
-use \clearos\apps\qos\Qos as Qos;
+use \clearos\apps\qos\Qos as Qos_Lib;
 use \Exception as Exception;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -60,7 +60,10 @@ class Ifn extends ClearOS_Controller
 
     function index()
     {
-        $this->view();
+        $ifn = NULL;
+        if ($this->input->post('submit-form'))
+            $ifn = $this->input->post('ifn');
+        $this->_view_edit('view', $ifn);
     }
 
     /**
@@ -82,6 +85,39 @@ class Ifn extends ClearOS_Controller
     }
 
     /**
+     * Add view.
+     */
+
+    function add($ifn)
+    {
+        $this->_view_edit('add', $ifn);
+    }
+
+    /**
+     * Delete view.
+     */
+
+    function delete($ifn)
+    {
+        // Load dependencies
+        //------------------
+
+        $this->load->library('qos/Qos');
+
+        // Delete interface configuration
+        //-------------------------------
+
+        try {
+            $this->qos->delete_interface_config($ifn);
+
+            redirect('/qos/qos');
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
+    }
+
+    /**
      * External interfaces controller
      *
      * @param string $form_type form type
@@ -98,10 +134,41 @@ class Ifn extends ClearOS_Controller
         $this->load->library('network/Iface_Manager');
         $this->lang->load('qos');
 
+        // Set validation rules
+        //---------------------
+/*
+        $this->form_validation->set_policy(
+            'identifier', 'ether_wake/Ether_Wake',
+            'validate_ident', TRUE
+        );
+        $this->form_validation->set_policy(
+            'password', 'ether_wake/Ether_Wake',
+            'validate_password', FALSE
+        );
+
+        $form_ok = $this->form_validation->run();
+*/
+        $form_ok = TRUE;
+
         // Handle form submit
         //-------------------
-        if ($this->input->post('submit-form')) {
+
+        if ($this->input->post('submit-form') && ($form_ok === TRUE)) {
             try {
+                $this->qos->set_interface_config(
+                    $this->input->post('ifn'),
+                    array(
+                        $this->input->post('speed_up'),
+                        $this->input->post('speed_down')
+                    ),
+                    array(
+                        ($this->input->post('r2q_auto_up') == 'on') ?
+                            'auto' : $this->input->post('r2q_up'),
+                        ($this->input->post('r2q_auto_down') == 'on') ?
+                            'auto' : $this->input->post('r2q_down')
+                    )
+                );
+
                 redirect('/qos/qos');
             } catch (Exception $e) {
                 $this->page->view_exception($e);
@@ -111,6 +178,7 @@ class Ifn extends ClearOS_Controller
 
         // Load data 
         //----------
+
         $ifn_config = $this->qos->get_interface_config();
         $ifn_external = $this->iface_manager->get_external_interfaces();
 
@@ -119,14 +187,35 @@ class Ifn extends ClearOS_Controller
 
         $data = array();
         $data['ifn'] = $ifn;
-        $data['read_only'] = ($form_type == 'edit') ? FALSE : TRUE;
-        $data['interfaces'] = $ifn_config;
+        $data['form_type'] = $form_type;
         $data['interfaces'] = $ifn_config;
         $data['external_interfaces'] = $ifn_external;
 
-        if ($data['read_only']) {
+        if ($form_type == 'add') {
+            $data['r2q_auto_up'] = TRUE;
+            $data['r2q_auto_down'] = TRUE;
         }
-        else {
+        else if ($form_type == 'edit') {
+            if (array_key_exists('up', $ifn_config) &&
+                array_key_exists($ifn, $ifn_config['up'])) {
+                $data['speed_up'] = $ifn_config['up'][$ifn]['speed'];
+                $data['r2q_auto_up'] =
+                    ($ifn_config['up'][$ifn]['r2q'] == 'auto') ?
+                        TRUE : FALSE;
+                $data['r2q_up'] =
+                    ($ifn_config['up'][$ifn]['r2q'] == 'auto') ?
+                        '' : $ifn_config['up'][$ifn]['r2q'];
+            }
+            if (array_key_exists('down', $ifn_config) &&
+                array_key_exists($ifn, $ifn_config['down'])) {
+                $data['speed_down'] = $ifn_config['down'][$ifn]['speed'];
+                $data['r2q_auto_down'] =
+                    ($ifn_config['down'][$ifn]['r2q'] == 'auto') ?
+                        TRUE : FALSE;
+                $data['r2q_down'] =
+                    ($ifn_config['down'][$ifn]['r2q'] == 'auto') ?
+                        '' : $ifn_config['down'][$ifn]['r2q'];
+            }
         }
 
         $this->page->view_form('qos/ifn', $data, lang('qos_app_name'));

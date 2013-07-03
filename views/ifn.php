@@ -40,7 +40,7 @@ $this->lang->load('network');
 // Form or summary table
 ///////////////////////////////////////////////////////////////////////////////
 
-if ($read_only) {
+if ($form_type == 'view') {
     $headers = array(
         lang('network_interface'),
         lang('qos_upstream'),
@@ -71,15 +71,15 @@ if ($read_only) {
             lang('qos_auto') : $config['down']['r2q'];
         $item['details'] = array(
             $ifn,
-            "<span id='" . $ifn . "_up'>{$config['up']['speed']}</span>",
-            "<span id='" . $ifn . "_down'>{$config['down']['speed']}</span>",
-            "<span id='" . $ifn . "_r2q_up'>$r2q_up / $r2q_down</span>",
+            "<span id='{$ifn}_up'>{$config['up']['speed']}</span>",
+            "<span id='{$ifn}_down'>{$config['down']['speed']}</span>",
+            "<span id='{$ifn}_r2q_up'>$r2q_up / $r2q_down</span>",
         );
         $items[] = $item;
     }
 
     foreach ($external_interfaces as $ifn) {
-        if (array_key_exists($ifn, $row)) continue;
+        if (array_key_exists($ifn, $rows)) continue;
 
         $item['title'] = $ifn;
         $item['action'] = '';
@@ -88,9 +88,9 @@ if ($read_only) {
         ));
         $item['details'] = array(
             $ifn,
-            "<span id='" . $ifn . "_up'>-</span>",
-            "<span id='" . $ifn . "_down'>-</span>",
-            "<span id='" . $ifn . "_r2q_up'>-</span>",
+            "<span id='{$ifn}_up'>-</span>",
+            "<span id='{$ifn}_down'>-</span>",
+            "<span id='{$ifn}_r2q_up'>-</span>",
         );
         $items[] = $item;
     }
@@ -108,14 +108,39 @@ else {
         array('id' => 'ifn_form')
     );
     echo form_header(
-        lang('qos_interface_edit_title'),
+        ($form_type == 'add') ? 
+            lang('qos_interface_add_title') : lang('qos_interface_edit_title'),
         array('id' => 'qos_ifn'));
 
+    // Upstream
+    echo form_banner('<center><h1>' . lang('qos_upstream') . " - $ifn</h1></center>");
+
+    // Speed
+    echo field_input('speed_up', $speed_up, lang('network_speed'), FALSE);
+
+    // Rate-to-quantum, auto-checkbox
+    echo field_checkbox('r2q_auto_up', $r2q_auto_up,
+        lang('qos_automatic') . ' ' . lang('qos_rate_to_quantum') . '?', FALSE);
+    echo field_input('r2q_up', $r2q_up, lang('qos_rate_to_quantum'), FALSE);
+
+    // Downstream
+    echo form_banner('<center><h1>' . lang('qos_downstream') . " - $ifn</h1></center>");
+
+    // Speed, downstream
+    echo field_input('speed_down', $speed_down, lang('network_speed'), FALSE);
+
+    // Rate-to-quantum, auto-checkbox
+    echo field_checkbox('r2q_auto_down', $r2q_auto_down,
+        lang('qos_automatic') . ' ' . lang('qos_rate_to_quantum') . '?', FALSE);
+    echo field_input('r2q_down', $r2q_down, lang('qos_rate_to_quantum'), FALSE);
+
+    // Interface hidden field
     echo "<input type='hidden' name='ifn' value='$ifn'>\n";
 
     echo field_button_set(
         array( 
-            form_submit_update('submit-form'),
+            ($form_type == 'add') ?
+                form_submit_add('submit-form') : form_submit_update('submit-form'),
             anchor_cancel('/app/qos')
     ));
 

@@ -311,4 +311,30 @@ function create_slider_array(id, mode, sliders)
     }
 }
 
+$(document).ready(function() {
+    if ($('#r2q_auto_up').is(':checked'))
+        $("#r2q_up").attr("disabled", "disabled");
+    else
+        $("#r2q_up").removeAttr("disabled");
+
+    if ($('#r2q_auto_down').is(':checked'))
+        $("#r2q_down").attr("disabled", "disabled");
+    else
+        $("#r2q_down").removeAttr("disabled");
+
+    $('#r2q_auto_up').change(function() {
+        if ($(this).is(':checked'))
+            $("#r2q_up").attr("disabled", "disabled");
+        else
+            $("#r2q_up").removeAttr("disabled");
+    });
+
+    $('#r2q_auto_down').change(function() {
+        if ($(this).is(':checked'))
+            $("#r2q_down").attr("disabled", "disabled");
+        else
+            $("#r2q_down").removeAttr("disabled");
+    });
+});
+
 // vi: expandtab shiftwidth=4 softtabstop=4 tabstop=4 syntax=javascript

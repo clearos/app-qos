@@ -34,6 +34,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 use \clearos\apps\network\Network as Network;
+use \clearos\apps\qos\Qos as Qos_Lib;
 use \Exception as Exception;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -63,14 +64,26 @@ class Qos extends ClearOS_Controller
         // Load dependencies
         //---------------
 
-        //$this->load->library('qos/Qos');
-        //$this->load->library('network/Network');
-        //$this->lang->load('qos');
+        $this->load->library('qos/Qos');
+        $this->lang->load('qos');
+
+
+        // Load data
+        //----------
+
+        $pc_limit =
+            $this->qos->get_priority_class_config(Qos_Lib::PRIORITY_CLASS_LIMIT);
+        $pc_reserved  =
+            $this->qos->get_priority_class_config(Qos_Lib::PRIORITY_CLASS_RESERVED);
 
         // Load controllers
         //-----------------
 
-        $controllers = array('qos/ifn', 'qos/reserved', 'qos/limit');
+        $controllers = array('qos/ifn');
+        if (count($pc_limit))
+            $controllers[] = 'qos/reserved';
+        if (count($pc_reserved))
+            $controllers[] = 'qos/limit';
         $this->page->view_controllers($controllers, lang('qos_app_name'));
     }
 }

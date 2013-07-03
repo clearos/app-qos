@@ -33,7 +33,7 @@
 // D E P E N D E N C I E S
 ///////////////////////////////////////////////////////////////////////////////
 
-use \clearos\apps\qos\Qos as Qos;
+use \clearos\apps\qos\Qos as Qos_Lib;
 use \Exception as Exception;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -102,14 +102,16 @@ class Reserved extends ClearOS_Controller
         if ($this->input->post('submit-form')) {
             try {
                 $values = array();
-                for ($i = 0; $i < Qos::PRIORITY_CLASSES; $i++) {
+                for ($i = 0; $i < Qos_Lib::PRIORITY_CLASSES; $i++) {
                     $values['up'][$i] =
                         $this->input->post("pcupreserved{$i}_amount");
                     $values['down'][$i] =
                         $this->input->post("pcdownreserved{$i}_amount");
                 }
-                $this->qos->set_priority_class_config(Qos::PRIORITY_CLASS_RESERVED,
+                $this->qos->set_priority_class_config(
+                    Qos_Lib::PRIORITY_CLASS_RESERVED,
                     $this->input->post('ifn'), $values['up'], $values['down']);
+
                 redirect('/qos/qos');
             } catch (Exception $e) {
                 $this->page->view_exception($e);
@@ -120,7 +122,7 @@ class Reserved extends ClearOS_Controller
         // Load data 
         //----------
         $pc_config =
-            $this->qos->get_priority_class_config(Qos::PRIORITY_CLASS_RESERVED);
+            $this->qos->get_priority_class_config(Qos_Lib::PRIORITY_CLASS_RESERVED);
 
         // Load views
         //-----------
@@ -128,7 +130,7 @@ class Reserved extends ClearOS_Controller
         $data = array();
         $data['ifn'] = $ifn;
         $data['read_only'] = ($form_type == 'edit') ? FALSE : TRUE;
-        $data['priority_classes'] = Qos::PRIORITY_CLASSES;
+        $data['priority_classes'] = Qos_Lib::PRIORITY_CLASSES;
 
         if ($data['read_only']) {
             $data['pc_config'] = $pc_config;

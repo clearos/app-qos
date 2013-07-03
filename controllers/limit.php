@@ -33,7 +33,7 @@
 // D E P E N D E N C I E S
 ///////////////////////////////////////////////////////////////////////////////
 
-use \clearos\apps\qos\Qos as Qos;
+use \clearos\apps\qos\Qos as Qos_Lib;
 use \Exception as Exception;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -108,7 +108,8 @@ class Limit extends ClearOS_Controller
                     $values['down'][$i] =
                         $this->input->post("pcdownlimit{$i}_amount");
                 }
-                $this->qos->set_priority_class_config(Qos::PRIORITY_CLASS_LIMIT,
+                $this->qos->set_priority_class_config(
+                    Qos_Lib::PRIORITY_CLASS_LIMIT,
                     $this->input->post('ifn'), $values['up'], $values['down']);
                 redirect('/qos/qos');
             } catch (Exception $e) {
@@ -120,7 +121,7 @@ class Limit extends ClearOS_Controller
         // Load data 
         //----------
         $pc_config =
-            $this->qos->get_priority_class_config(Qos::PRIORITY_CLASS_LIMIT);
+            $this->qos->get_priority_class_config(Qos_Lib::PRIORITY_CLASS_LIMIT);
 
         // Load views
         //-----------
@@ -128,7 +129,7 @@ class Limit extends ClearOS_Controller
         $data = array();
         $data['ifn'] = $ifn;
         $data['read_only'] = ($form_type == 'edit') ? FALSE : TRUE;
-        $data['priority_classes'] = Qos::PRIORITY_CLASSES;
+        $data['priority_classes'] = Qos_Lib::PRIORITY_CLASSES;
 
         if ($data['read_only']) {
             $data['pc_config'] = $pc_config;
