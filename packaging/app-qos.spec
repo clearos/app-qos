@@ -21,7 +21,7 @@ License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-network-core
-Requires: app-firewall-core >= 1:1.4.36
+Requires: app-firewall-core >= 1:1.4.37
 
 %description core
 Bandwidth QoS Manager

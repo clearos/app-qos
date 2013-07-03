@@ -25,6 +25,14 @@
 
 ------------------------------------------------------------------------------
 --
+-- G L O B A L S
+--
+------------------------------------------------------------------------------
+
+QOS_WANIF = {}
+
+------------------------------------------------------------------------------
+--
 -- F U N C T I O N S
 --
 ------------------------------------------------------------------------------
@@ -107,7 +115,7 @@ function ParseBandwidthValue(v, buckets)
         if cfg ~= nil and string.len(cfg) ~= 0 then
             __, __, ifn, value[0], value[1], value[2],
             value[3], value[4], value[5], value[6] = string.find(
-                cfg, "(%w+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)"
+                cfg, "([%w*]+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%d+)"
             )
 
             if ifn == nil or value == nil then
@@ -222,29 +230,46 @@ function CalculateRateToQuantum(rate)
 
     r2q = r2q - 2
     quantum = (rate * 1000 / 8) / r2q
-    debug("Auto-r2q for rate " .. rate ..
+    debug("Auto-r2q for minimum rate " .. rate ..
         ": " .. r2q .. " (quantum: " .. quantum .. ")")
 
     return r2q
 end
 
 function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
+    local config
     local id = 0
     local rule
     local rate
     local limit
+    local rate_default = {}
+    local limit_default = {}
     local param
     local ifn_name
     local ifn_conf
     local chain_qos
 
+    for ifn, config in pairs(rate_res) do
+        if ifn == '*' then
+            rate_default = config
+            break
+        end
+    end
+
+    for ifn, config in pairs(rate_limit) do
+        if ifn == '*' then
+            limit_default = config
+            break
+        end
+    end
+
     if direction == 1 then
         execute(string.format("%s %s numdevs=%d",
             MODPROBE, "imq",
-            TableCount(WANIF_CONFIG)))
+            TableCount(QOS_WANIF)))
     end
 
-    for _, ifn in pairs(WANIF_CONFIG) do
+    for _, ifn in pairs(QOS_WANIF) do
         if direction == 0 then
             ifn_name = ifn
             chain_qos = "BWQOS_UP_" .. ifn
@@ -263,8 +288,16 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
             rate_ifn[ifn]["rate"] .. "kbit")
 
         for i = 0, 6 do
-            rate = rate_res[ifn][i] * rate_ifn[ifn]["rate"] / 100
-            limit = rate_limit[ifn][i] * rate_ifn[ifn]["rate"] / 100
+            if rate_res[ifn] == nil then
+                rate = rate_default[i] * rate_default["rate"] / 100
+            else
+                rate = rate_res[ifn][i] * rate_ifn[ifn]["rate"] / 100
+            end
+            if rate_res[ifn] == nil then
+                limit = rate_default[i] * rate_default["rate"] / 100
+            else
+                limit = rate_limit[ifn][i] * rate_ifn[ifn]["rate"] / 100
+            end
 
             execute(TCBIN .. " class add dev " .. ifn_name ..
                 " parent 1:1 classid 1:" ..
@@ -350,6 +383,7 @@ end
 
 function RunBandwidthExternal()
     local ifn
+    local ifn_wan
     local r2q
     local rate
     local rate_up = {}
@@ -360,7 +394,7 @@ function RunBandwidthExternal()
     local rate_down_limit = {}
     local rule
     local rules
-    local priomark = { ipv4={}, ipv6={}, custom={} }
+    local priomark = { ipv4={}, ipv6={}, ipv4_custom={}, ipv6_custom }
 
     echo("Running external QoS bandwidth manager")
 
@@ -406,7 +440,7 @@ function RunBandwidthExternal()
                 table.insert(priomark.ipv4_custom, {
                     name=rule[1], ifn=rule[2],
                     enabled=rule[3], type=rule[4],
-                    prio=rule[3], param=rule[4]
+                    prio=rule[5], param=rule[6]
                 })
             end
         end
@@ -420,7 +454,7 @@ function RunBandwidthExternal()
                 table.insert(priomark.ipv6_custom, {
                     name=rule[1], ifn=rule[2],
                     enabled=rule[3], type=rule[4],
-                    prio=rule[3], param=rule[4]
+                    prio=rule[5], param=rule[6]
                 })
             end
         end
@@ -448,9 +482,30 @@ function RunBandwidthExternal()
     ValidateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
     ValidateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit)
 
-    for _, ifn in pairs(WANIF_CONFIG) do
+    for ifn, _ in pairs(rate_up) do
+        for __, ifn_wan in pairs(WANIF_CONFIG) do
+            if ifn == ifn_wan then
+                table.insert(QOS_WANIF, ifn)
+            end
+        end
+    end
+
+    for _, ifn in pairs(QOS_WANIF) do
         rate_up[ifn]["min_rate"] = rate_up[ifn]["rate"]
         rate_down[ifn]["min_rate"] = rate_down[ifn]["rate"]
+
+        for i, rate in pairs(rate_up_res["*"]) do
+            rate = rate * rate_up[ifn]["rate"] / 100
+            if rate < tonumber(rate_up[ifn]["min_rate"]) then
+                rate_up[ifn]["min_rate"] = rate
+            end
+        end
+        for i, rate in pairs(rate_down_res["*"]) do
+            rate = rate * rate_down[ifn]["rate"] / 100
+            if rate < tonumber(rate_down[ifn]["min_rate"]) then
+                rate_down[ifn]["min_rate"] = rate
+            end
+        end
 
         for i, rate in pairs(rate_up_res[ifn]) do
             rate = rate * rate_up[ifn]["rate"] / 100
@@ -466,7 +521,7 @@ function RunBandwidthExternal()
         end
     end
 
-    for _, ifn in pairs(WANIF_CONFIG) do
+    for _, ifn in pairs(QOS_WANIF) do
         if rate_up[ifn]["r2q"] == "auto" then
             rate_up[ifn]["r2q"] = CalculateRateToQuantum(rate_up[ifn]["min_rate"])
         end

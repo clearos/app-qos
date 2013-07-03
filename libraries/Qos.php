@@ -571,21 +571,35 @@ class Qos extends Engine
 
             if (preg_match("/$key=\"([^\"]*)\"/", $contents, $parts) &&
                 strlen($parts[1])) {
-                $rules = trim(str_replace(array("\n", "\\", "\t"), ' ', $parts[1]));
+
+                $delim = ' ';
+
+                switch ($type) {
+                case self::PRIOMARK_TYPE_IPV4:
+                case self::PRIOMARK_TYPE_IPV6:
+                    $rules = trim(str_replace(array("\n", "\\", "\t"), ' ', $parts[1]));
+                    break;
+
+                case self::PRIOMARK_TYPE_IPV4_CUSTOM:
+                case self::PRIOMARK_TYPE_IPV6_CUSTOM:
+                    $delim = "\n";
+                    $rules = trim(str_replace(array("\\", "\t"), ' ', $parts[1]));
+                    break;
+                }
 
                 while (strstr($rules, '  '))
                     $rules = str_replace('  ', ' ', $rules);
 
                 if ( !strlen($rules)) return $priomark_rules;
 
-                foreach (explode(' ', $rules) as $rule) {
+                foreach (explode($delim, $rules) as $rule) {
 
                     $fields = array();
                     switch ($type) {
                     case self::PRIOMARK_TYPE_IPV4:
                     case self::PRIOMARK_TYPE_IPV6:
                         $config = explode('|', $rule, count($this->priomark_fields));
-                        if (count($config) != count($this->priomark_fields)) break;
+                        if (count($config) != count($this->priomark_fields)) continue;
                         $fields = $this->priomark_fields;
                         break;
 
@@ -594,14 +608,14 @@ class Qos extends Engine
                         $config = explode('|', $rule,
                             count($this->priomark_fields_custom));
                         if (count($config) != count($this->priomark_fields_custom))
-                            break;
+                            continue;
                         $fields = $this->priomark_fields_custom;
                         break;
                     }
 
                     $priomark_rule = array();
                     foreach ($fields as $i => $key)
-                        $priomark_rule[$key] = $config[$i];
+                        $priomark_rule[$key] = trim($config[$i]);
                     if (! count($priomark_rule)) continue;
                     $priomark_rules[$priomark_rule['nickname']] = $priomark_rule;
                 }
