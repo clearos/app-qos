@@ -41,7 +41,7 @@ $this->lang->load('network');
 // Form or summary table
 ///////////////////////////////////////////////////////////////////////////////
 
-if ($read_only) {
+if ($form_type == 'view') {
     $headers = array(lang('network_interface'));
     for ($i = 0; $i < $priority_classes; $i++)
         $headers[] = $i + 1;
@@ -65,17 +65,21 @@ if ($read_only) {
         $item['details'] = array($key_lang);
         for ($i = 0; $i < $priority_classes; $i++) {
             $item['details'][] =
-                "<div id='" . $key . $i . "'>{$row['up'][$i]}%</div>" .
-                "<div id='" . $key . $i . "'>{$row['down'][$i]}%</div>";
+                '<div id=\'' . $key . $i . "'>{$row['up'][$i]}%</div>" .
+                '<div id=\'' . $key . $i . "'>{$row['down'][$i]}%</div>";
         }
         $items[] = $item;
     }
 
+    $header_buttons = array();
+    if (count($available_external_interfaces)) {
+        $header_buttons[] = anchor_custom(
+            "/app/qos/$type_name/add", lang('base_add'));
+    }
+
     echo summary_table(
         lang("qos_class_{$type_name}_title"),
-        array(
-            anchor_custom("/app/qos/$type_name/add", lang('base_add')),
-        ),
+        $header_buttons,
         $headers,
         $items,
         array('id' => "pc{$type_name}_summary")
@@ -94,18 +98,37 @@ else {
     $key_lang = ($ifn == 'all') ? lang('base_all') : $ifn;
     $mode = ($type_name == 'limit') ? 1 : 0;
 
+    $upstream_lang = lang('qos_upstream');
+    $downstream_lang = lang('qos_downstream');
+
+    if ($form_type == 'add') {
+        $interfaces = array();
+        foreach ($available_external_interfaces as $ifn) 
+            $interfaces[$ifn] = $ifn;
+        echo field_simple_dropdown('ifn',
+            $interfaces, '',
+            lang('network_interface'), FALSE);
+    }
+    else {
+        $upstream_lang .= " - $key_lang";
+        $downstream_lang .= " - $key_lang";
+    }
+
     echo form_banner(form_slider_array("pcup$type_name",
-        lang('qos_upstream') . ' - ' . $key_lang, $mode,
+        $upstream_lang, $mode,
         $priority_classes, $default_values_up));
     echo form_banner(form_slider_array("pcdown$type_name",
-        lang('qos_downstream') . ' - ' . $key_lang, $mode,
+        $downstream_lang, $mode,
         $priority_classes, $default_values_down));
 
-    echo "<input type='hidden' name='ifn' value='$ifn'>\n";
+    if ($form_type != 'add')
+        echo "<input type='hidden' name='ifn' value='$ifn'>\n";
 
     echo field_button_set(
         array( 
-            form_submit_update('submit-form'),
+            ($form_type == 'add') ?
+                form_submit_add('submit-form') :
+                form_submit_update('submit-form'),
             anchor_cancel('/app/qos')
     ));
 

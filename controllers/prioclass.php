@@ -72,19 +72,18 @@ class Prioclass extends ClearOS_Controller
         // Set class variables
         //--------------------
 
-        $this->type = $type;
-
-        switch ($this->type) {
+        switch ($type) {
         case Qos_Lib::PRIORITY_CLASS_LIMIT:
+            $this->type = Qos_Lib::PRIORITY_CLASS_LIMIT;
             $this->pc_amount_up = "pcuplimit%d_amount";
             $this->pc_amount_down = "pcdownlimit%d_amount";
             break;
-        case Qos_Lib::PRIORITY_CLASS_RESERVED:
+
+        default:
+            $this->type = Qos_Lib::PRIORITY_CLASS_RESERVED;
             $this->pc_amount_up = "pcupreserved%d_amount";
             $this->pc_amount_down = "pcdownreserved%d_amount";
             break;
-        default:
-            // TODO: Throw exception?
         }
 
         // Construct parent
@@ -121,6 +120,15 @@ class Prioclass extends ClearOS_Controller
     }
 
     /**
+     * Add view.
+     */
+
+    function add()
+    {
+        $this->_view_edit('add');
+    }
+
+    /**
      * Priority class bandwidth limit controller
      *
      * @param string $form_type form type
@@ -130,8 +138,14 @@ class Prioclass extends ClearOS_Controller
 
     function _view_edit($form_type, $ifn = NULL)
     {
+        // Load dependencies
+        //------------------
+
+        $this->load->library('network/Iface_Manager');
+
         // Handle form submit
         //-------------------
+
         if ($this->input->post('submit-form')) {
             try {
                 $values = array();
@@ -155,25 +169,45 @@ class Prioclass extends ClearOS_Controller
 
         // Load data 
         //----------
+
         $pc_config = $this->qos->get_priority_class_config($this->type);
+        $ifn_external = $this->iface_manager->get_external_interfaces();
+
+        $directions = array('up', 'down');
+        foreach ($directions as $direction) {
+            if (! array_key_exists($direction, $pc_config)) continue;
+            foreach ($pc_config[$direction] as $i => $config) {
+                if (! in_array($i, $ifn_external)) continue;
+                foreach ($ifn_external as $key => $value) {
+                    if ($i != $value) continue; 
+                    unset($ifn_external[$key]);
+                }
+            }
+        }
 
         // Load views
         //-----------
 
         $data = array();
         $data['ifn'] = $ifn;
-        $data['read_only'] = ($form_type == 'edit') ? FALSE : TRUE;
+        $data['form_type'] = $form_type;
         $data['priority_classes'] = Qos_Lib::PRIORITY_CLASSES;
         $data['type_name'] =
             ($this->type == Qos_Lib::PRIORITY_CLASS_LIMIT) ? 'limit' : 'reserved';
 
-        if ($data['read_only']) {
+        if ($data['form_type'] == 'view') {
             $data['pc_config'] = $pc_config;
+            $data['available_external_interfaces'] = $ifn_external;
         }
-        else {
+        else if ($data['form_type'] == 'edit') {
             $key = ($ifn == 'all') ? '*' : $ifn;
             $data['default_values_up'] = $pc_config['up'][$key];
             $data['default_values_down'] = $pc_config['down'][$key];
+        }
+        else if ($data['form_type'] == 'add') {
+            $data['default_values_up'] = array();
+            $data['default_values_down'] = array();
+            $data['available_external_interfaces'] = $ifn_external;
         }
 
         $this->page->view_form('qos/prioclass', $data, lang('qos_app_name'));
