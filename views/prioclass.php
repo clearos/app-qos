@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Bandwidth class limit view.
+ * Bandwidth priority class view.
  *
  * @category   apps
  * @package    qos
@@ -34,6 +34,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 $this->lang->load('qos');
+$this->lang->load('base');
 $this->lang->load('network');
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,43 +54,51 @@ if ($read_only) {
 
     $items = array();
     foreach ($rows as $ifn => $row) {
-        $item['title'] = $ifn;
+        $key = ($ifn == '*') ? 'all' : $ifn;
+        $key_lang = ($ifn == '*') ? lang('base_all') : $ifn;
+
+        $item['title'] = $key_lang;
         $item['action'] = '';
         $item['anchors'] = button_set(array(
-            anchor_edit("/app/qos/limit/edit/$ifn")
+            anchor_edit("/app/qos/$type_name/edit/$key")
         ));
-        $item['details'] = array($ifn);
+        $item['details'] = array($key_lang);
         for ($i = 0; $i < $priority_classes; $i++) {
             $item['details'][] =
-                "<div id='" . $ifn . $i . "'>{$row['up'][$i]}%</div>" .
-                "<div id='" . $ifn . $i . "'>{$row['down'][$i]}%</div>";
+                "<div id='" . $key . $i . "'>{$row['up'][$i]}%</div>" .
+                "<div id='" . $key . $i . "'>{$row['down'][$i]}%</div>";
         }
         $items[] = $item;
     }
 
     echo summary_table(
-        lang('qos_class_limit_title'),
-        array(),
+        lang("qos_class_{$type_name}_title"),
+        array(
+            anchor_custom("/app/qos/$type_name/add", lang('base_add')),
+        ),
         $headers,
         $items,
-        array('id' => 'pclimit_summary')
+        array('id' => "pc{$type_name}_summary")
     );
 }
 else {
     require_once('slider_array.inc.php');
 
-    echo form_open('qos/limit',
-        array('id' => 'limit_form')
+    echo form_open("qos/$type_name",
+        array('id' => "{$type_name}_form")
     );
     echo form_header(
-        lang('qos_class_limit_title'),
-        array('id' => 'qos_pclimit'));
+        lang("qos_class_{$type_name}_title"),
+        array('id' => "qos_pc$type_name"));
 
-    echo form_banner(form_slider_array('pcuplimit',
-        lang('qos_upstream') . ' - ' . $ifn, 1,
+    $key_lang = ($ifn == 'all') ? lang('base_all') : $ifn;
+    $mode = ($type_name == 'limit') ? 1 : 0;
+
+    echo form_banner(form_slider_array("pcup$type_name",
+        lang('qos_upstream') . ' - ' . $key_lang, $mode,
         $priority_classes, $default_values_up));
-    echo form_banner(form_slider_array('pcdownlimit',
-        lang('qos_downstream') . ' - ' . $ifn, 1,
+    echo form_banner(form_slider_array("pcdown$type_name",
+        lang('qos_downstream') . ' - ' . $key_lang, $mode,
         $priority_classes, $default_values_down));
 
     echo "<input type='hidden' name='ifn' value='$ifn'>\n";

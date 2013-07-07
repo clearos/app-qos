@@ -120,7 +120,7 @@ else {
 
     // Rate-to-quantum, auto-checkbox
     echo field_checkbox('r2q_auto_up', $r2q_auto_up,
-        lang('qos_automatic') . ' ' . lang('qos_rate_to_quantum') . '?', FALSE);
+        lang('qos_rate_to_quantum_auto') . '?', FALSE);
     echo field_input('r2q_up', $r2q_up, lang('qos_rate_to_quantum'), FALSE);
 
     // Downstream
@@ -131,7 +131,7 @@ else {
 
     // Rate-to-quantum, auto-checkbox
     echo field_checkbox('r2q_auto_down', $r2q_auto_down,
-        lang('qos_automatic') . ' ' . lang('qos_rate_to_quantum') . '?', FALSE);
+        lang('qos_rate_to_quantum_auto') . '?', FALSE);
     echo field_input('r2q_down', $r2q_down, lang('qos_rate_to_quantum'), FALSE);
 
     // Interface hidden field
