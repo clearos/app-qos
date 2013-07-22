@@ -75,6 +75,7 @@ class Qos extends ClearOS_Controller
             $this->qos->get_priority_class_config(Qos_Lib::PRIORITY_CLASS_LIMIT);
         $pc_reserved  =
             $this->qos->get_priority_class_config(Qos_Lib::PRIORITY_CLASS_RESERVED);
+        $priomark_rules = $this->qos->get_priomark_rules();
 
         // Load controllers
         //-----------------
@@ -84,7 +85,11 @@ class Qos extends ClearOS_Controller
             $controllers[] = 'qos/reserved';
         if (count($pc_reserved))
             $controllers[] = 'qos/limit';
-        $this->page->view_controllers($controllers, lang('qos_app_name'));
+        $controllers[] = 'qos/upstream';
+        $controllers[] = 'qos/downstream';
+
+        $options['type'] = MY_Page::TYPE_WIDE_CONFIGURATION;
+        $this->page->view_controllers($controllers, lang('qos_app_name'), $options);
     }
 }
 

@@ -59,9 +59,16 @@ if ($form_type == 'view') {
 
         $item['title'] = $key_lang;
         $item['action'] = '';
-        $item['anchors'] = button_set(array(
+
+        $buttons = array(
             anchor_edit("/app/qos/$type_name/edit/$key")
-        ));
+        );
+        if ($ifn != '*') {
+            $buttons[] =
+                anchor_delete("/app/qos/$type_name/delete/$key");
+        }
+        $item['anchors'] = button_set($buttons);
+
         $item['details'] = array($key_lang);
         for ($i = 0; $i < $priority_classes; $i++) {
             $item['details'][] =
@@ -85,6 +92,39 @@ if ($form_type == 'view') {
         array('id' => "pc{$type_name}_summary")
     );
 }
+else if ($form_type == 'add' && $ifn == NULL) {
+    if (count($available_external_interfaces) == 0)
+        redirect('/qos/qos');
+    if (count($available_external_interfaces) == 1) {
+        reset($available_external_interfaces);
+        $ifn = current($available_external_interfaces);
+        redirect("/qos/{$type_name}/add/$ifn");
+    }
+
+    echo form_open("qos/$type_name/add",
+        array('id' => "{$type_name}_form")
+    );
+    echo form_header(
+        lang("qos_class_{$type_name}_title"),
+        array('id' => "qos_pc$type_name"));
+
+    $interfaces = array();
+    foreach ($available_external_interfaces as $ifn) 
+        $interfaces[$ifn] = $ifn;
+    echo field_simple_dropdown('ifn',
+        $interfaces, '',
+        lang('network_interface'), FALSE);
+
+    echo field_button_set(
+        array( 
+            form_submit_next('submit-form-ifn-select'),
+            anchor_cancel('/app/qos')
+        )
+    );
+
+    echo form_footer();
+    echo form_close();
+}
 else {
     require_once('slider_array.inc.php');
 
@@ -98,21 +138,8 @@ else {
     $key_lang = ($ifn == 'all') ? lang('base_all') : $ifn;
     $mode = ($type_name == 'limit') ? 1 : 0;
 
-    $upstream_lang = lang('qos_upstream');
-    $downstream_lang = lang('qos_downstream');
-
-    if ($form_type == 'add') {
-        $interfaces = array();
-        foreach ($available_external_interfaces as $ifn) 
-            $interfaces[$ifn] = $ifn;
-        echo field_simple_dropdown('ifn',
-            $interfaces, '',
-            lang('network_interface'), FALSE);
-    }
-    else {
-        $upstream_lang .= " - $key_lang";
-        $downstream_lang .= " - $key_lang";
-    }
+    $upstream_lang = lang('qos_upstream') . " - $key_lang";
+    $downstream_lang = lang('qos_downstream') . " - $key_lang";
 
     echo form_banner(form_slider_array("pcup$type_name",
         $upstream_lang, $mode,
@@ -121,8 +148,7 @@ else {
         $downstream_lang, $mode,
         $priority_classes, $default_values_down));
 
-    if ($form_type != 'add')
-        echo "<input type='hidden' name='ifn' value='$ifn'>\n";
+    echo "<input type='hidden' name='ifn' value='$ifn'>\n";
 
     echo field_button_set(
         array( 

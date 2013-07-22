@@ -123,9 +123,18 @@ class Prioclass extends ClearOS_Controller
      * Add view.
      */
 
-    function add()
+    function add($ifn)
     {
-        $this->_view_edit('add');
+        $this->_view_edit('add', $ifn);
+    }
+
+    /**
+     * Delete view.
+     */
+
+    function delete($ifn)
+    {
+        $this->_view_edit('delete', $ifn);
     }
 
     /**
@@ -166,6 +175,19 @@ class Prioclass extends ClearOS_Controller
                 return;
             }
         }
+        else if ($this->input->post('submit-form-ifn-select'))
+            $ifn = $this->input->post('ifn');
+
+        if ($form_type == 'delete') {
+            try {
+                $this->qos->delete_priority_class($this->type, $ifn);
+
+                redirect('/qos/qos');
+            } catch (Exception $e) {
+                $this->page->view_exception($e);
+                return;
+            }
+        }
 
         // Load data 
         //----------
@@ -185,8 +207,8 @@ class Prioclass extends ClearOS_Controller
             }
         }
 
-        // Load views
-        //-----------
+        // Load view
+        //----------
 
         $data = array();
         $data['ifn'] = $ifn;
@@ -207,6 +229,12 @@ class Prioclass extends ClearOS_Controller
         else if ($data['form_type'] == 'add') {
             $data['default_values_up'] = array();
             $data['default_values_down'] = array();
+            if ($this->type == Qos_Lib::PRIORITY_CLASS_LIMIT) {
+                for ($i = 0; $i < Qos_Lib::PRIORITY_CLASSES; $i++) { 
+                    $data['default_values_up'][$i] = 100;
+                    $data['default_values_down'][$i] = 100;
+                }
+            }
             $data['available_external_interfaces'] = $ifn_external;
         }
 

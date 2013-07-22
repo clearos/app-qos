@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Priority class bandwidth limit controller
+ * Upstream priomark rules controller
  *
  * @category   apps
  * @package    qos
@@ -33,7 +33,7 @@
 // D E P E N D E N C I E S
 ///////////////////////////////////////////////////////////////////////////////
 
-require_once('prioclass.php');
+require_once('priomark.php');
 
 use \clearos\apps\qos\Qos as Qos_Lib;
 use \Exception as Exception;
@@ -43,7 +43,7 @@ use \Exception as Exception;
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * Bandwidth class limit controller.
+ * Upstream priomark rules controller.
  *
  * @category   apps
  * @package    qos
@@ -54,7 +54,7 @@ use \Exception as Exception;
  * @link       http://www.clearfoundation.com/docs/developer/apps/mobile_demo/
  */
 
-class Limit extends Prioclass
+class Upstream extends Priomark
 {
     /**
      * Constructor
@@ -62,7 +62,12 @@ class Limit extends Prioclass
 
     function __construct()
     {
-        parent::__construct(Qos_Lib::PRIORITY_CLASS_LIMIT);
+        // Load dependencies
+        //------------------
+
+        $this->load->library('qos/Qos');
+
+        parent::__construct(Qos_Lib::PRIOMARK_TYPE_IPV4, Qos_Lib::DIRECTION_UP);
     }
 }
 

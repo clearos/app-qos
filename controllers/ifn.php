@@ -168,6 +168,40 @@ class Ifn extends ClearOS_Controller
                             'auto' : $this->input->post('r2q_down')
                     )
                 );
+        
+                $types = array(
+                    Qos_Lib::PRIORITY_CLASS_RESERVED, Qos_Lib::PRIORITY_CLASS_LIMIT);
+
+                foreach ($types as $type) {
+                    $pc_config = $this->qos->get_priority_class_config($type);
+                    if (! array_key_exists('up', $pc_config) ||
+                        ! array_key_exists('down', $pc_config) ||
+                        ! array_key_exists('*', $pc_config['up']) ||
+                        ! array_key_exists('*', $pc_config['down'])) {
+
+                        $values = array();
+                        for ($i = 0; $i < Qos_Lib::PRIORITY_CLASSES; $i++)
+                            $values[] = 0;
+
+                        switch ($type) {
+                        case Qos_Lib::PRIORITY_CLASS_RESERVED:
+                            $i = 0;
+                            for ($total = 100; $total > 0; $total--) {
+                                $values[$i++] += 1;
+                                if ($i == Qos_Lib::PRIORITY_CLASSES) $i = 0;
+                            }
+                            break;
+
+                        case Qos_Lib::PRIORITY_CLASS_LIMIT:
+                            for ($i = 0; $i < Qos_Lib::PRIORITY_CLASSES; $i++)
+                                $values[$i] = 100;
+                            break;
+                        }
+
+                        $this->qos->set_priority_class_config(
+                            $type, '*', $values, $values);
+                    }
+                }
 
                 redirect('/qos/qos');
             } catch (Exception $e) {

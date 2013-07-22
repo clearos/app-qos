@@ -259,35 +259,6 @@ class Qos extends Engine
         
             $this->_save_interface_config($ifn_config);
         }
-
-        $types = array(self::PRIORITY_CLASS_RESERVED, self::PRIORITY_CLASS_LIMIT);
-        foreach ($types as $type) {
-            $pc_config = $this->get_priority_class_config($type);
-            if (! array_key_exists('up', $pc_config) ||
-                ! array_key_exists('down', $pc_config) ||
-                ! array_key_exists($ifn, $pc_config['up']) ||
-                ! array_key_exists($ifn, $pc_config['down'])) {
-
-                $values = array();
-                for ($i = 0; $i < self::PRIORITY_CLASSES; $i++) $values[] = 0;
-
-                switch ($type) {
-                case self::PRIORITY_CLASS_RESERVED:
-                    $i = 0;
-                    for ($total = 100; $total > 0; $total--) {
-                        $values[$i++] += 1;
-                        if ($i == self::PRIORITY_CLASSES) $i = 0;
-                    }
-                    break;
-
-                case self::PRIORITY_CLASS_LIMIT:
-                    for ($i = 0; $i < self::PRIORITY_CLASSES; $i++) $values[$i] = 100;
-                    break;
-                }
-
-                $this->set_priority_class_config($type, $ifn, $values, $values);
-            }
-        }
     }
 
     /**
@@ -315,8 +286,8 @@ class Qos extends Engine
                 unset($ifn_config[$direction][$ifn]);
         }
 
-        $this->_delete_priority_class(self::PRIORITY_CLASS_RESERVED, $ifn);
-        $this->_delete_priority_class(self::PRIORITY_CLASS_LIMIT, $ifn);
+        $this->delete_priority_class(self::PRIORITY_CLASS_RESERVED, $ifn);
+        $this->delete_priority_class(self::PRIORITY_CLASS_LIMIT, $ifn);
 
         $disabled = 0;
         $priomark_rules = $this->get_priomark_rules();
@@ -488,7 +459,7 @@ class Qos extends Engine
      *
      */
 
-    private function _delete_priority_class($type, $ifn)
+    function delete_priority_class($type, $ifn)
     {
         clearos_profile(__METHOD__, __LINE__);
 
