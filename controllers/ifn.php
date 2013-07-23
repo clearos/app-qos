@@ -94,6 +94,54 @@ class Ifn extends ClearOS_Controller
     }
 
     /**
+     * Enable QoS Engine.
+     */
+
+    function enable()
+    {
+        // Load dependencies
+        //------------------
+
+        $this->load->library('qos/Qos');
+
+        // Enable QoS Engine
+        //------------------
+
+        try {
+            $this->qos->enable_engine();
+
+            redirect('/qos/qos');
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
+    }
+
+    /**
+     * Disable QoS Engine.
+     */
+
+    function disable()
+    {
+        // Load dependencies
+        //------------------
+
+        $this->load->library('qos/Qos');
+
+        // Enable QoS Engine
+        //------------------
+
+        try {
+            $this->qos->enable_engine(FALSE);
+
+            redirect('/qos/qos');
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
+    }
+
+    /**
      * Delete view.
      */
 
@@ -136,19 +184,31 @@ class Ifn extends ClearOS_Controller
 
         // Set validation rules
         //---------------------
-/*
+
         $this->form_validation->set_policy(
-            'identifier', 'ether_wake/Ether_Wake',
-            'validate_ident', TRUE
+            'speed_up', 'qos/Qos',
+            'validate_speed', TRUE
         );
         $this->form_validation->set_policy(
-            'password', 'ether_wake/Ether_Wake',
-            'validate_password', FALSE
+            'speed_down', 'qos/Qos',
+            'validate_speed', TRUE
         );
+        if ($this->input->post('submit-form')) {
+            if ($this->input->post('r2q_auto_up') != 'on') {
+                $this->form_validation->set_policy(
+                    'r2q_up', 'qos/Qos',
+                    'validate_r2q', TRUE
+                );
+            }
+            if ($this->input->post('r2q_auto_down') != 'on') {
+                $this->form_validation->set_policy(
+                    'r2q_down', 'qos/Qos',
+                    'validate_r2q', TRUE
+                );
+            }
+        }
 
         $form_ok = $this->form_validation->run();
-*/
-        $form_ok = TRUE;
 
         // Handle form submit
         //-------------------
@@ -224,6 +284,7 @@ class Ifn extends ClearOS_Controller
         $data['form_type'] = $form_type;
         $data['interfaces'] = $ifn_config;
         $data['external_interfaces'] = $ifn_external;
+        $data['engine_status'] = $this->qos->get_engine_status();
 
         if ($form_type == 'add') {
             $data['r2q_auto_up'] = TRUE;

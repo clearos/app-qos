@@ -95,16 +95,28 @@ if ($form_type == 'view') {
         $items[] = $item;
     }
 
+    $header_buttons = array();
+    if ($engine_status === TRUE) {
+        $header_buttons[] = anchor_custom(
+            '/app/qos/ifn/disable', lang('qos_engine_disable'));
+    }
+    else {
+        if (count($rows) > 0) {
+            $header_buttons[] = anchor_custom(
+                '/app/qos/ifn/enable', lang('qos_engine_enable'));
+        }
+    }
+
     echo summary_table(
         lang('qos_interfaces_title'),
-        array(),
+        $header_buttons,
         $headers,
         $items,
         array('id' => 'ifn_summary')
     );
 }
 else {
-    echo form_open('qos/ifn',
+    echo form_open("qos/ifn/add/$ifn",
         array('id' => 'ifn_form')
     );
     echo form_header(
@@ -116,7 +128,8 @@ else {
     echo form_banner('<center><h1>' . lang('qos_upstream') . " - $ifn</h1></center>");
 
     // Speed
-    echo field_input('speed_up', $speed_up, lang('network_speed'), FALSE);
+    echo field_input('speed_up', $speed_up,
+        lang('network_speed') . ' (' . lang('base_kilobits_per_second') . ')', FALSE);
 
     // Rate-to-quantum, auto-checkbox
     echo field_checkbox('r2q_auto_up', $r2q_auto_up,
@@ -127,7 +140,8 @@ else {
     echo form_banner('<center><h1>' . lang('qos_downstream') . " - $ifn</h1></center>");
 
     // Speed, downstream
-    echo field_input('speed_down', $speed_down, lang('network_speed'), FALSE);
+    echo field_input('speed_down', $speed_down,
+        lang('network_speed') . ' (' . lang('base_kilobits_per_second') . ')', FALSE);
 
     // Rate-to-quantum, auto-checkbox
     echo field_checkbox('r2q_auto_down', $r2q_auto_down,

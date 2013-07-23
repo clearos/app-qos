@@ -79,7 +79,6 @@ use \clearos\apps\base\File_No_Match_Exception as File_No_Match_Exception;
 use \clearos\apps\base\File_Not_Found_Exception as File_Not_Found_Exception;
 use \clearos\apps\base\Folder_Not_Found_Exception as Folder_Not_Found_Exception;
 use \clearos\apps\base\Validation_Exception as Validation_Exception;
-//use \clearos\apps\qos\Send_Wake_Exception as Send_Wake_Exception;
 use \Exception as Exception;
 
 clearos_load_library('base/Engine_Exception');
@@ -87,7 +86,6 @@ clearos_load_library('base/File_No_Match_Exception');
 clearos_load_library('base/File_Not_Found_Exception');
 clearos_load_library('base/Folder_Not_Found_Exception');
 clearos_load_library('base/Validation_Exception');
-//clearos_load_library('qos/Send_Wake_Exception');
 
 ///////////////////////////////////////////////////////////////////////////////
 // C L A S S
@@ -184,6 +182,58 @@ class Qos extends Engine
             throw new File_No_Match_Exception(self::FILE_CONFIG, $key);
 
         return trim($file->lookup_value("/^$key\s*=\s*/"), " \t\n\r\0\x0B\"'");
+    }
+
+    /**
+     * Get QoS engine status.
+     *
+     * This method returns the QoS engine status (enabled or disabled).
+     *
+     * @return  boolean TRUE if enabled
+     */
+
+    public function get_engine_status()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        try {
+            $enabled = $this->_get_config_value('QOS_ENABLE');
+            if ($enabled == 'on') return TRUE;
+        }
+        catch (File_No_Match_Exception $e) {
+        }
+
+        return FALSE;
+    }
+
+    /**
+     * Enable/disable QoS engine.
+     *
+     * This method enables or disables the QoS engine.
+     *
+     * @param   boolean $enable TRUE to enable the QoS engine
+     */
+
+    public function enable_engine($enable = TRUE)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $value = NULL;
+        try {
+            $value = $this->_get_config_value('QOS_ENABLE');
+            if ($enable && $value == 'on') return;
+            if ($enable === FALSE && $value == 'off') return;
+        }
+        catch (File_No_Match_Exception $e) {
+        }
+
+        $value = ($enable === TRUE) ? 'on' : 'off';
+
+        $file = new File(self::FILE_CONFIG);
+        if (! $file->exists()) return;
+        $file->replace_lines("/^QOS_ENABLE.*$/", "QOS_ENABLE=\"$value\"\n", 1);
+
+        // TODO: Restart firewall...
     }
 
     /**
@@ -604,13 +654,13 @@ class Qos extends Engine
      *
      */
 
-    public function add_priomark_rule(
+    public function add_priomark_rule($type,
         $nickname, $ifn, $direction, $priority,
         $protocol, $saddr, $sport, $daddr, $dport)
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        $this->_add_priomark_rule(self::PRIOMARK_TYPE_IPV4,
+        $this->_add_priomark_rule($type,
             $nickname, $ifn, $direction, $priority, NULL,
             $protocol, $saddr, $sport, $daddr, $dport);
     }
@@ -620,12 +670,12 @@ class Qos extends Engine
      *
      */
 
-    public function add_priomark_rule_custom(
+    public function add_priomark_rule_custom($type,
         $nickname, $ifn, $direction, $priority, $params)
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        $this->_add_priomark_rule(self::PRIOMARK_TYPE_IPV4_CUSTOM,
+        $this->_add_priomark_rule($type,
             $nickname, $ifn, $direction, $priority, $params);
     }
 
@@ -834,6 +884,36 @@ class Qos extends Engine
                 return lang('qos_invalid_limit_value');
         }
         return '';
+    }
+
+    public static function validate_nickname($nickname)
+    {
+        if (preg_match('/^[A-z0-9_]+$/', $nickname)) return '';
+        return lang('qos_invalid_nickname');
+    }
+
+    public static function validate_address($address)
+    {
+        if ($address == '-' || inet_pton($address) !== FALSE) return '';
+        return lang('qos_invalid_address');
+    }
+
+    public static function validate_port($port)
+    {
+        if ($port == '-' || preg_match('/^[0-9]+$/', $port)) return '';
+        return lang('qos_invalid_port');
+    }
+
+    public static function validate_speed($speed)
+    {
+        if (preg_match('/^[0-9]+$/', $speed) && $speed > 0) return '';
+        return lang('qos_invalid_speed');
+    }
+
+    public static function validate_r2q($r2q)
+    {
+        if (preg_match('/^[0-9]+$/', $r2q) && $r2q > 0) return '';
+        return lang('qos_invalid_r2q');
     }
 }
 

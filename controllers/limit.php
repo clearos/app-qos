@@ -62,6 +62,11 @@ class Limit extends Prioclass
 
     function __construct()
     {
+        // Load dependencies
+        //------------------
+
+        $this->load->library('qos/Qos');
+
         parent::__construct(Qos_Lib::PRIORITY_CLASS_LIMIT);
     }
 }

@@ -41,6 +41,8 @@ $this->lang->load('firewall');
 $this->lang->load('network');
 $this->lang->load('qos');
 
+$controller = ($direction == Qos_Lib::DIRECTION_UP) ? 'upstream' : 'downstream';
+
 ///////////////////////////////////////////////////////////////////////////////
 // Form or summary table
 ///////////////////////////////////////////////////////////////////////////////
@@ -48,14 +50,14 @@ $this->lang->load('qos');
 if ($form_type == 'view') {
     $headers = array(
         lang('qos_name'),
-        lang('network_interface'),
         lang('qos_priority'),
+        lang('network_interface'),
         lang('network_protocol'),
-        lang('qos_source'),
-        lang('qos_destination'),
+        lang('qos_source') . ' / ' . lang('qos_destination'),
     );
 
     $items = array();
+    $items_disabled = 0;
 
     foreach ($priomark_rules as $type => $rules) {
 
@@ -67,8 +69,11 @@ if ($form_type == 'view') {
 
             $key = urlencode(base64_encode($nickname));
 
-            $state = ($config['enabled'] == Qos_Lib::PRIOMARK_ENABLED) ?
-                'disable' : 'enable';
+            $state = 'enable';
+            if ($config['enabled'] == Qos_Lib::PRIOMARK_ENABLED)
+                $state = 'disable';
+            else
+                $items_disabled++;
             $state_anchor = 'anchor_' . $state;
 
             $ifn = lang('qos_all');
@@ -79,11 +84,12 @@ if ($form_type == 'view') {
                 $protocol = lang('qos_not') . ' ';
                 $protocol .= strtoupper(substr($config['protocol'], 1));
             }
-            else if (strlen($config['protocol']))
-                $protocol = strtoupper($config['protocol']);
-
-            $controller = ($direction == Qos_Lib::DIRECTION_UP) ?
-                'upstream' : 'downstream';
+            else if (strlen($config['protocol'])) {
+                if ($config['protocol'] == '-')
+                    $protocol = lang('qos_all');
+                else
+                    $protocol = strtoupper($config['protocol']);
+            }
 
             $saddr = lang('qos_any');
             if ($config['saddr'] != '-') $saddr = $config['saddr'];
@@ -106,24 +112,32 @@ if ($form_type == 'view') {
             ));
             $item['details'] = array(
                 $nickname,
+                "<span id='{$key}_priority'>" . ($config['priority'] + 1) . '</span>',
                 "<span id='{$key}_interface'>$ifn</span>",
-                "<span id='{$key}_priority'>{$config['priority']}</span>",
                 "<span id='{$key}_protocol'>$protocol</span>",
-                "<span id='{$key}_source'>$source</span>",
-                "<span id='{$key}_destination'>$destination</span>",
+                "<span id='{$key}_address_port'>$source / $destination</span>",
             );
             $items[] = $item;
         }
     }
 
+    $header_buttons = array();
+    if ($items_disabled > 0) {
+        $header_buttons[] = anchor_custom(
+            "/app/qos/$controller/enable_all", lang('qos_enable_all'));
+    }
+    $header_buttons[] = anchor_custom(
+        "/app/qos/$controller/add", lang('base_add'));
+
     echo summary_table(
         lang(($direction == Qos_Lib::DIRECTION_UP) ?
             'qos_priomark_upstream_rules' : 'qos_priomark_downstream_rules'),
-        array(),
+        $header_buttons,
         $headers,
         $items,
         array('id' => ($direction == Qos_Lib::DIRECTION_UP) ?
-            'priomark_upstream_rules' : 'priomark_downstream_rules')
+            'priomark_upstream_rules' : 'priomark_downstream_rules',
+            'grouping' => true)
     );
 }
 else {
@@ -133,7 +147,7 @@ else {
 
     $interface = lang('qos_all');
     $interfaces = array('*' => lang('qos_all'));
-    foreach ($external_interfaces as $ifn)
+    foreach ($avail_interfaces as $ifn)
         $interfaces[$ifn] = $ifn;
 
     $config = NULL;
@@ -161,6 +175,10 @@ else {
         }
     }
 
+    $protocols = array('-' => lang('qos_any'),
+        'tcp' => 'TCP', '!tcp' => lang('qos_not') . ' TCP',
+        'udp' => 'UDP', '!udp' => lang('qos_not') . ' UDP');
+
     $enabled = TRUE;
     $priority = 4;
     $protocol = '-';
@@ -173,6 +191,8 @@ else {
         $enabled = $config['enabled'];
         $priority = $config['priority'];
         $protocol = $config['protocol'];
+        if ($protocol != '-' && !array_key_exists($protocol, $protocols))
+            $protocols[$protocol] = strtoupper($protocol);
         if ($config['saddr'] != '-')
             $saddr = $config['saddr'];
         if ($config['sport'] != '-')
@@ -193,14 +213,12 @@ else {
             $priority_classes[$i] = $i + 1;
     }
 
-    $protocols = array('-' => lang('qos_any'), 'tcp' => 'TCP', 'udp' => 'UDP');
-
-    echo form_open('qos/priomark',
-        array('id' => 'priomark_form')
+    echo form_open("qos/$controller/$form_type",
+        array('id' => "priomark_{$controller}_form")
     );
     echo form_header(
         lang($title_lang),
-        array('id' => 'qos_priomark'));
+        array('id' => "qos_priomark_$controller"));
 
     // Nickname
     echo field_input('nickname', $nickname, lang('firewall_nickname'), $read_only);
@@ -235,7 +253,7 @@ else {
     echo field_button_set(
         array( 
             ($form_type == 'add') ?
-                form_submit_add('submit-form') : form_submit_update('submit-form'),
+                form_submit_add('submit-add') : form_submit_update('submit-edit'),
             anchor_cancel('/app/qos')
     ));
 

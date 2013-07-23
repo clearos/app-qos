@@ -71,6 +71,8 @@ class Qos extends ClearOS_Controller
         // Load data
         //----------
 
+        $interfaces =
+            $this->qos->get_interface_config();
         $pc_limit =
             $this->qos->get_priority_class_config(Qos_Lib::PRIORITY_CLASS_LIMIT);
         $pc_reserved  =
@@ -81,12 +83,14 @@ class Qos extends ClearOS_Controller
         //-----------------
 
         $controllers = array('qos/ifn');
-        if (count($pc_limit))
+        if (count($interfaces) && count($pc_limit))
             $controllers[] = 'qos/reserved';
-        if (count($pc_reserved))
+        if (count($interfaces) && count($pc_reserved))
             $controllers[] = 'qos/limit';
-        $controllers[] = 'qos/upstream';
-        $controllers[] = 'qos/downstream';
+        if (count($interfaces)) {
+            $controllers[] = 'qos/upstream';
+            $controllers[] = 'qos/downstream';
+        }
 
         $options['type'] = MY_Page::TYPE_WIDE_CONFIGURATION;
         $this->page->view_controllers($controllers, lang('qos_app_name'), $options);
