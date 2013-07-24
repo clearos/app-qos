@@ -394,7 +394,7 @@ function RunBandwidthExternal()
     local rate_down_limit = {}
     local rule
     local rules
-    local priomark = { ipv4={}, ipv6={}, ipv4_custom={}, ipv6_custom }
+    local priomark = { ipv4={}, ipv6={}, ipv4_custom={}, ipv6_custom={} }
 
     echo("Running external QoS bandwidth manager")
 

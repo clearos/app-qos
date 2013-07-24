@@ -42,7 +42,7 @@ $this->lang->load('network');
 ///////////////////////////////////////////////////////////////////////////////
 
 if ($form_type == 'view') {
-    $headers = array(lang('network_interface'));
+    $headers = array(lang('qos_direction'), lang('network_interface'));
     for ($i = 0; $i < $priority_classes; $i++)
         $headers[] = $i + 1;
 
@@ -52,30 +52,39 @@ if ($form_type == 'view') {
             $rows[$ifn][$direction] = $values;
     }
 
+    $directions = array('up', 'down');
     $items = array();
-    foreach ($rows as $ifn => $row) {
-        $key = ($ifn == '*') ? 'all' : $ifn;
-        $key_lang = ($ifn == '*') ? lang('base_all') : $ifn;
+    foreach ($directions as $direction) {
 
-        $item['title'] = $key_lang;
-        $item['action'] = '';
+        $dir_lang = ($direction == 'up') ?
+            lang('qos_upstream') : lang('qos_downstream');
 
-        $buttons = array(
-            anchor_edit("/app/qos/$type_name/edit/$key")
-        );
-        if ($ifn != '*') {
-            $buttons[] =
-                anchor_delete("/app/qos/$type_name/delete/$key");
+        foreach ($rows as $ifn => $row) {
+            $key = ($ifn == '*') ? 'all' : $ifn;
+            $key_lang = ($ifn == '*') ? lang('base_all') : $ifn;
+
+            $item['title'] = $key_lang;
+            $item['action'] = '';
+
+            $buttons = array(
+                anchor_edit("/app/qos/$type_name/edit/$key")
+            );
+            if ($ifn != '*') {
+                $buttons[] =
+                    anchor_delete("/app/qos/$type_name/delete/$key");
+            }
+            $item['anchors'] = button_set($buttons);
+
+            $item['details'] = array(
+                $dir_lang,
+                "<span id=\'$key\'>{$key_lang}</span>");
+
+            for ($i = 0; $i < $priority_classes; $i++) {
+                $item['details'][] =
+                    '<span id=\'' . $key . $i . "'>{$row[$direction][$i]}%</span>";
+            }
+            $items[] = $item;
         }
-        $item['anchors'] = button_set($buttons);
-
-        $item['details'] = array($key_lang);
-        for ($i = 0; $i < $priority_classes; $i++) {
-            $item['details'][] =
-                '<div id=\'' . $key . $i . "'>{$row['up'][$i]}%</div>" .
-                '<div id=\'' . $key . $i . "'>{$row['down'][$i]}%</div>";
-        }
-        $items[] = $item;
     }
 
     $header_buttons = array();
@@ -89,7 +98,7 @@ if ($form_type == 'view') {
         $header_buttons,
         $headers,
         $items,
-        array('id' => "pc{$type_name}_summary")
+        array('id' => "pc{$type_name}_summary", 'grouping' => TRUE)
     );
 }
 else if ($form_type == 'add' && $ifn == NULL) {

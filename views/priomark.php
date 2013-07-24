@@ -137,7 +137,7 @@ if ($form_type == 'view') {
         $items,
         array('id' => ($direction == Qos_Lib::DIRECTION_UP) ?
             'priomark_upstream_rules' : 'priomark_downstream_rules',
-            'grouping' => true)
+            'grouping' => TRUE)
     );
 }
 else {

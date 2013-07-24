@@ -189,7 +189,7 @@ class Priomark extends ClearOS_Controller
             $rule = $this->_priomark_lookup($nickname);
             if ($rule == NULL) {
                 clearos_load_library('qos/Priomark_Not_Found_Exception');
-                throw new Priomark_Not_Found_Exception($nickanme);
+                throw new Priomark_Not_Found_Exception($nickname);
             }
             if (! $this->_is_valid_interface($rule['interface'])) {
                 clearos_load_library('qos/Priomark_Invalid_Interface_Exception');
@@ -315,14 +315,16 @@ class Priomark extends ClearOS_Controller
                     if (array_key_exists($this->input->post('nickname'),
                         $this->priomark_rules[$this->type])) {
                         clearos_load_library('qos/Priomark_Exists_Exception');
-                        throw new Priomark_Exists_Exception($nickanme);
+                        throw new Priomark_Exists_Exception(
+                            $this->input->post('nickname'));
                     }
                 }
                 else if ($this->input->post('submit-edit')) {
                     if (! array_key_exists($this->input->post('nickname'),
                         $this->priomark_rules[$this->type])) {
                         clearos_load_library('qos/Priomark_Not_Found_Exception');
-                        throw new Priomark_Not_Found_Exception($nickanme);
+                        throw new Priomark_Not_Found_Exception(
+                            $this->input->post('nickname'));
                     }
                     $this->qos->delete_priomark_rule(
                         $this->type, $this->input->post('nickname'));
@@ -345,7 +347,7 @@ class Priomark extends ClearOS_Controller
                 );
 
                 if ($this->input->post('enabled') === FALSE ||
-                    ! $this->_is_valid_interface($this->input->post['interface'])) {
+                    ! $this->_is_valid_interface($this->input->post('interface'))) {
                     $this->qos->enable_priomark_rule(
                         $this->type, $this->input->post('nickname'),
                         $this->direction, Qos_Lib::PRIOMARK_DISABLED

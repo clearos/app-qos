@@ -196,6 +196,7 @@ class Prioclass extends ClearOS_Controller
         // Load data 
         //----------
 
+        $interfaces = $this->qos->get_interface_config();
         $pc_config = $this->qos->get_priority_class_config($this->type);
         $ifn_external = $this->iface_manager->get_external_interfaces();
 
@@ -220,10 +221,21 @@ class Prioclass extends ClearOS_Controller
         $data['priority_classes'] = Qos_Lib::PRIORITY_CLASSES;
         $data['type_name'] =
             ($this->type == Qos_Lib::PRIORITY_CLASS_LIMIT) ? 'limit' : 'reserved';
+        $data['available_external_interfaces'] = array();
+
+        $directions = array('up', 'down');
+        foreach ($directions as $direction) {
+            foreach ($ifn_external as $interface) {
+                if (array_key_exists($direction, $interfaces) &&
+                    array_key_exists($interface, $interfaces[$direction]) &&
+                    ! in_array($interface, $data['available_external_interfaces'])) {
+                    $data['available_external_interfaces'][] = $interface;
+                }
+            }
+        }
 
         if ($data['form_type'] == 'view') {
             $data['pc_config'] = $pc_config;
-            $data['available_external_interfaces'] = $ifn_external;
         }
         else if ($data['form_type'] == 'edit') {
             $key = ($ifn == 'all') ? '*' : $ifn;
@@ -239,7 +251,6 @@ class Prioclass extends ClearOS_Controller
                     $data['default_values_down'][$i] = 100;
                 }
             }
-            $data['available_external_interfaces'] = $ifn_external;
         }
 
         $this->page->view_form('qos/prioclass', $data, lang('qos_app_name'));

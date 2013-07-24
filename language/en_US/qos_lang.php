@@ -9,6 +9,7 @@ $lang['qos_auto'] = 'Auto';
 $lang['qos_class_limit_title'] = 'Bandwidth Limiting by Priority Class';
 $lang['qos_class_reserved_title'] = 'Bandwidth Reservation by Priority Class';
 $lang['qos_destination'] = 'Destination';
+$lang['qos_direction'] = 'Direction';
 $lang['qos_downstream'] = 'Downstream';
 $lang['qos_edit_priomark_downstream_rule'] = 'Edit Downstream Priority Class Rule';
 $lang['qos_edit_priomark_upstream_rule'] = 'Edit Upstream Priority Class Rule';
