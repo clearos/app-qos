@@ -166,6 +166,8 @@ class Priomark extends ClearOS_Controller
             $nickname = base64_decode(urldecode($key));
             $this->qos->delete_priomark_rule($this->type, $nickname);
 
+            $this->qos->firewall_restart();
+
             redirect('/qos/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
@@ -198,6 +200,8 @@ class Priomark extends ClearOS_Controller
                 Qos_Lib::PRIOMARK_ENABLED
             );
 
+            $this->qos->firewall_restart();
+
             redirect('/qos/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
@@ -229,6 +233,8 @@ class Priomark extends ClearOS_Controller
                 }
             }
 
+            $this->qos->firewall_restart();
+
             redirect('/qos/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
@@ -251,6 +257,8 @@ class Priomark extends ClearOS_Controller
                 $this->type, $nickname, $this->direction,
                 Qos_Lib::PRIOMARK_DISABLED
             );
+
+            $this->qos->firewall_restart();
 
             redirect('/qos/qos');
         } catch (Exception $e) {
@@ -343,6 +351,8 @@ class Priomark extends ClearOS_Controller
                         $this->direction, Qos_Lib::PRIOMARK_DISABLED
                     );
                 }
+
+                $this->qos->firewall_restart();
 
                 redirect('/qos/qos');
             }

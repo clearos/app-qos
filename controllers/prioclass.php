@@ -169,6 +169,8 @@ class Prioclass extends ClearOS_Controller
                 $this->qos->set_priority_class_config(
                     $this->type, $key, $values['up'], $values['down']);
 
+                $this->qos->firewall_restart();
+
                 redirect('/qos/qos');
             } catch (Exception $e) {
                 $this->page->view_exception($e);
@@ -181,6 +183,8 @@ class Prioclass extends ClearOS_Controller
         if ($form_type == 'delete') {
             try {
                 $this->qos->delete_priority_class($this->type, $ifn);
+
+                $this->qos->firewall_restart();
 
                 redirect('/qos/qos');
             } catch (Exception $e) {

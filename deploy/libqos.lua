@@ -490,6 +490,11 @@ function RunBandwidthExternal()
         end
     end
 
+    if TableCount(QOS_WANIF) == 0 then
+        echo("No external interfaces configured for QoS, aborting...")
+        return
+    end
+
     for _, ifn in pairs(QOS_WANIF) do
         rate_up[ifn]["min_rate"] = rate_up[ifn]["rate"]
         rate_down[ifn]["min_rate"] = rate_down[ifn]["rate"]

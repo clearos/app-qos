@@ -59,17 +59,15 @@ clearos_load_language('qos');
 
 use \clearos\apps\base\Engine as Engine;
 use \clearos\apps\base\File as File;
-use \clearos\apps\base\Folder as Folder;
 use \clearos\apps\base\Shell as Shell;
 use \clearos\apps\base\Webconfig as Webconfig;
-use \clearos\apps\network\Network_Utils as Network_Utils;
+use \clearos\apps\firewall\Firewall as Firewall;
 
 clearos_load_library('base/Engine');
 clearos_load_library('base/File');
-clearos_load_library('base/Folder');
 clearos_load_library('base/Shell');
 clearos_load_library('base/Webconfig');
-clearos_load_library('network/Network_Utils');
+clearos_load_library('firewall/Firewall');
 
 // Exceptions
 //-----------
@@ -77,14 +75,12 @@ clearos_load_library('network/Network_Utils');
 use \clearos\apps\base\Engine_Exception as Engine_Exception;
 use \clearos\apps\base\File_No_Match_Exception as File_No_Match_Exception;
 use \clearos\apps\base\File_Not_Found_Exception as File_Not_Found_Exception;
-use \clearos\apps\base\Folder_Not_Found_Exception as Folder_Not_Found_Exception;
 use \clearos\apps\base\Validation_Exception as Validation_Exception;
 use \Exception as Exception;
 
 clearos_load_library('base/Engine_Exception');
 clearos_load_library('base/File_No_Match_Exception');
 clearos_load_library('base/File_Not_Found_Exception');
-clearos_load_library('base/Folder_Not_Found_Exception');
 clearos_load_library('base/Validation_Exception');
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -110,6 +106,7 @@ class Qos extends Engine
     ///////////////////////////////////////////////////////////////////////////////
 
     const FILE_CONFIG = '/etc/clearos/qos.conf';
+    const FILE_BANDWIDTH_CONFIG = '/etc/clearos/bandwidth.conf';
 
     const PRIORITY_CLASSES = 7;
     const PRIORITY_CLASS_RESERVED = 1;
@@ -233,7 +230,40 @@ class Qos extends Engine
         if (! $file->exists()) return;
         $file->replace_lines("/^QOS_ENABLE.*$/", "QOS_ENABLE=\"$value\"\n", 1);
 
-        // TODO: Restart firewall...
+        $fw_restart = TRUE;
+
+        if ($enable === TRUE) {
+            try {
+                $file = new File(self::FILE_BANDWIDTH_CONFIG);
+                $value = $this->_get_config_value('BANDWIDTH_QOS');
+
+                if ($value == 'on' && $file->exists()) {
+                    $file->replace_lines(
+                        '/^BANDWIDTH_QOS.*$/', "BANDWIDTH_QOS=\"off\"\n", 1);
+                    $fw_restart = FALSE;
+                }
+            }
+            catch (File_No_Match_Exception $e) {
+            }
+            catch (File_Not_Found_Exception $e) {
+            }
+        }
+
+        if ($fw_restart) $this->firewall_restart();
+    }
+
+    /**
+     * Restart the firewall.
+     *
+     * This method restart the firewall.
+     */
+
+    public function firewall_restart()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $firewall = new Firewall();
+        $firewall->restart();
     }
 
     /**

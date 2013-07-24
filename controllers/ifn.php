@@ -158,6 +158,8 @@ class Ifn extends ClearOS_Controller
         try {
             $this->qos->delete_interface_config($ifn);
 
+            $this->qos->firewall_restart();
+
             redirect('/qos/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
@@ -262,6 +264,8 @@ class Ifn extends ClearOS_Controller
                             $type, '*', $values, $values);
                     }
                 }
+
+                $this->qos->firewall_restart();
 
                 redirect('/qos/qos');
             } catch (Exception $e) {

@@ -116,7 +116,7 @@ if ($form_type == 'view') {
     );
 }
 else {
-    echo form_open("qos/ifn/add/$ifn",
+    echo form_open("qos/ifn/$form_type/$ifn",
         array('id' => 'ifn_form')
     );
     echo form_header(
