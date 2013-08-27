@@ -133,23 +133,28 @@ function ParseBandwidthValue(v, buckets)
     return t
 end
 
-function InitializeBandwidthReserved(rate_ifn)
+function InitializeBandwidthReserved(rate_ifn, rate_res)
     local i
     local ifn
     local limit
-    local rate_res = {}
 
     for ifn, _ in pairs(rate_ifn) do
-        rate_res[ifn] = {}
-        for i = 0, 6 do
-            rate_res[ifn][i] = tonumber(0)
-        end
-        limit = 100
-        while limit > 0 do
-            for i = 0, 6 do
-                rate_res[ifn][i] = rate_res[ifn][i] + 1
-                limit = limit - 1
-                if limit == 0 then break end
+        if rate_res[ifn] == nil then
+            if rate_res['*'] ~= nil then
+                rate_res[ifn] = rate_res['*']
+            else
+                rate_res[ifn] = {}
+                for i = 0, 6 do
+                    rate_res[ifn][i] = tonumber(0)
+                end
+                limit = 100
+                while limit > 0 do
+                    for i = 0, 6 do
+                        rate_res[ifn][i] = rate_res[ifn][i] + 1
+                        limit = limit - 1
+                        if limit == 0 then break end
+                    end
+                end
             end
         end
     end
@@ -157,15 +162,20 @@ function InitializeBandwidthReserved(rate_ifn)
     return rate_res
 end
 
-function InitializeBandwidthLimit(rate_ifn)
+function InitializeBandwidthLimit(rate_ifn, rate_limit)
     local i
     local ifn
-    local rate_limit = {}
 
     for ifn, _ in pairs(rate_ifn) do
-        rate_limit[ifn] = {}
-        for i = 0, 6 do
-            rate_limit[ifn][i] = 100
+        if rate_limit[ifn] == nil then
+            if rate_limit['*'] ~= nil then
+                rate_limit[ifn] = rate_limit['*']
+            else
+                rate_limit[ifn] = {}
+                for i = 0, 6 do
+                    rate_limit[ifn][i] = 100
+                end
+            end
         end
     end
 
@@ -242,26 +252,10 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
     local rule
     local rate
     local limit
-    local rate_default = {}
-    local limit_default = {}
     local param
     local ifn_name
     local ifn_conf
     local chain_qos
-
-    for ifn, config in pairs(rate_res) do
-        if ifn == '*' then
-            rate_default = config
-            break
-        end
-    end
-
-    for ifn, config in pairs(rate_limit) do
-        if ifn == '*' then
-            limit_default = config
-            break
-        end
-    end
 
     if direction == 1 then
         execute(string.format("%s %s numdevs=%d",
@@ -288,16 +282,8 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
             rate_ifn[ifn]["rate"] .. "kbit")
 
         for i = 0, 6 do
-            if rate_res[ifn] == nil then
-                rate = rate_default[i] * rate_default["rate"] / 100
-            else
-                rate = rate_res[ifn][i] * rate_ifn[ifn]["rate"] / 100
-            end
-            if rate_res[ifn] == nil then
-                limit = rate_default[i] * rate_default["rate"] / 100
-            else
-                limit = rate_limit[ifn][i] * rate_ifn[ifn]["rate"] / 100
-            end
+            rate = rate_res[ifn][i] * rate_ifn[ifn]["rate"] / 100
+            limit = rate_limit[ifn][i] * rate_ifn[ifn]["rate"] / 100
 
             execute(TCBIN .. " class add dev " .. ifn_name ..
                 " parent 1:1 classid 1:" ..
@@ -467,16 +453,16 @@ function RunBandwidthExternal()
     rate_up = ParseInterfaceValue(QOS_UPSTREAM)
     rate_down = ParseInterfaceValue(QOS_DOWNSTREAM)
 
-    rate_up_res = InitializeBandwidthReserved(rate_up)
-    rate_up_limit = InitializeBandwidthLimit(rate_up)
-    rate_down_res = InitializeBandwidthReserved(rate_down)
-    rate_down_limit = InitializeBandwidthLimit(rate_down)
-
     rate_up_res = ParseBandwidthValue(QOS_UPSTREAM_BWRES, rate_up_res)
     rate_up_limit = ParseBandwidthValue(QOS_UPSTREAM_BWLIMIT, rate_up_limit)
     rate_down_res = ParseBandwidthValue(QOS_DOWNSTREAM_BWRES, rate_down_res)
     rate_down_limit = ParseBandwidthValue(QOS_DOWNSTREAM_BWLIMIT, rate_down_limit)
     
+    rate_up_res = InitializeBandwidthReserved(rate_up, rate_up_res)
+    rate_up_limit = InitializeBandwidthLimit(rate_up, rate_up_limit)
+    rate_down_res = InitializeBandwidthReserved(rate_down, rate_down_res)
+    rate_down_limit = InitializeBandwidthLimit(rate_down, rate_down_limit)
+
     ValidateBandwidthReserved("Reserved upstream", rate_up_res)
     ValidateBandwidthReserved("Reserved downstream", rate_down_res)
     ValidateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
