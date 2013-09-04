@@ -194,7 +194,8 @@ function ValidateBandwidthReserved(name, rate_res)
         for _, rate in pairs(r) do
             limit = limit - rate
             if limit < 0 then
-                error(name .. " bandwidth overflow (>100%) for interface: " .. ifn)
+                echo(name .. " bandwidth overflow (>100%) for interface: " .. ifn)
+                return false
             end
         end
         if limit > 0 then
@@ -209,6 +210,8 @@ function ValidateBandwidthReserved(name, rate_res)
             end
         end
     end
+
+    return true
 end
 
 function ValidateBandwidthLimit(name, rate_res, rate_limit)
@@ -220,13 +223,17 @@ function ValidateBandwidthLimit(name, rate_res, rate_limit)
     for ifn, r in pairs(rate_limit) do
         for i, limit in pairs(r) do
             if limit < rate_res[ifn][i] then
-                error(string.format("%s bandwidth underflow (<%d%%, bucket #%d) for interface: %s", name, rate_res[ifn][i], i, ifn))
+                echo(string.format("%s bandwidth underflow (<%d%%, bucket #%d) for interface: %s", name, rate_res[ifn][i], i, ifn))
+                return false
             end
             if limit > 100 then
-                error(string.format("%s bandwidth overflow (>%d%%, bucket #%d) for interface: %s", name, 100, i, ifn))
+                echo(string.format("%s bandwidth overflow (>%d%%, bucket #%d) for interface: %s", name, 100, i, ifn))
+                return false
             end
         end
     end
+
+    return true
 end
 
 function CalculateRateToQuantum(rate)
@@ -288,7 +295,7 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
             execute(TCBIN .. " class add dev " .. ifn_name ..
                 " parent 1:1 classid 1:" ..
                 (id + 1) .. i .. " htb rate " ..
-                rate .. "kbit ceil " .. limit .. "kbit prio " .. i)
+                math.floor(rate) .. "kbit ceil " .. math.floor(limit) .. "kbit prio " .. i)
             execute(TCBIN .. " qdisc add dev " .. ifn_name ..
                 " parent 1:" .. (id + 1) .. i ..
                 " handle " .. (id + 1) .. i ..
@@ -446,10 +453,6 @@ function RunBandwidthExternal()
         end
     end
 
-    for _, ifn in pairs(WANIF_CONFIG) do
-        execute(TCBIN .. " qdisc del dev " .. ifn .. " root >/dev/null 2>&1")
-    end
-
     rate_up = ParseInterfaceValue(QOS_UPSTREAM)
     rate_down = ParseInterfaceValue(QOS_DOWNSTREAM)
 
@@ -457,16 +460,18 @@ function RunBandwidthExternal()
     rate_up_limit = ParseBandwidthValue(QOS_UPSTREAM_BWLIMIT, rate_up_limit)
     rate_down_res = ParseBandwidthValue(QOS_DOWNSTREAM_BWRES, rate_down_res)
     rate_down_limit = ParseBandwidthValue(QOS_DOWNSTREAM_BWLIMIT, rate_down_limit)
-    
+  
     rate_up_res = InitializeBandwidthReserved(rate_up, rate_up_res)
     rate_up_limit = InitializeBandwidthLimit(rate_up, rate_up_limit)
     rate_down_res = InitializeBandwidthReserved(rate_down, rate_down_res)
     rate_down_limit = InitializeBandwidthLimit(rate_down, rate_down_limit)
 
-    ValidateBandwidthReserved("Reserved upstream", rate_up_res)
-    ValidateBandwidthReserved("Reserved downstream", rate_down_res)
-    ValidateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit)
-    ValidateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit)
+    if ValidateBandwidthReserved("Reserved upstream", rate_up_res) == false or
+        ValidateBandwidthReserved("Reserved downstream", rate_down_res) == false or
+        ValidateBandwidthLimit("Upstream limit", rate_up_res, rate_up_limit) == false or
+        ValidateBandwidthLimit("Downstream limit", rate_down_res, rate_down_limit) == false then
+        return
+    end
 
     for ifn, _ in pairs(rate_up) do
         for __, ifn_wan in pairs(WANIF_CONFIG) do

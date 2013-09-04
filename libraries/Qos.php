@@ -76,12 +76,14 @@ use \clearos\apps\base\Engine_Exception as Engine_Exception;
 use \clearos\apps\base\File_No_Match_Exception as File_No_Match_Exception;
 use \clearos\apps\base\File_Not_Found_Exception as File_Not_Found_Exception;
 use \clearos\apps\base\Validation_Exception as Validation_Exception;
+use \clearos\apps\qos\Prioclass_Limit_Underflow_Exception as Prioclass_Limit_Underflow_Exception;
 use \Exception as Exception;
 
 clearos_load_library('base/Engine_Exception');
 clearos_load_library('base/File_No_Match_Exception');
 clearos_load_library('base/File_Not_Found_Exception');
 clearos_load_library('base/Validation_Exception');
+clearos_load_library('qos/Prioclass_Limit_Underflow_Exception');
 
 ///////////////////////////////////////////////////////////////////////////////
 // C L A S S
@@ -479,6 +481,8 @@ class Qos extends Engine
     /**
      * Set priority class parameters.
      *
+     * @throws  Prioclass_Limit_Underflow_Exception
+     *
      */
 
     public function set_priority_class_config($type, $ifn, $values_up, $values_down)
@@ -486,9 +490,24 @@ class Qos extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         $pc_config = $this->get_priority_class_config($type);
-
         $pc_config['up'][$ifn] = $values_up;
         $pc_config['down'][$ifn] = $values_down;
+
+        if ($type == self::PRIORITY_CLASS_LIMIT) {
+            $pc_reserved = $this->get_priority_class_config(self::PRIORITY_CLASS_RESERVED);
+
+            $directions = array('up', 'down');
+            foreach ($directions as $direction) {
+                $key = '*';
+                if (array_key_exists($ifn, $pc_reserved[$direction])) $key = $ifn;
+                else if (! array_key_exists($key, $pc_reserved[$direction])) continue;
+                for ($prio = 0; $prio < self::PRIORITY_CLASSES; $prio++) {
+                    if ($pc_config[$direction][$ifn][$prio] >= 
+                        $pc_reserved[$direction][$key][$prio]) continue;
+                    throw new Prioclass_Limit_Underflow_Exception($prio);
+                }
+            }
+        }
 
         $this->_save_priority_class_config($type, $pc_config);
     }
@@ -526,7 +545,7 @@ class Qos extends Engine
                 foreach ($config[$direction] as $ifn => $params) {
                     $value .= " $ifn:";
                     foreach ($params as $percent) $value .= "$percent:";
-                    $value = trim($value, ':');
+                    $value = rtrim($value, ':');
                 }
             }
             $value = trim($value);

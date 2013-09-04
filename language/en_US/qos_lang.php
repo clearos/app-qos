@@ -39,3 +39,4 @@ $lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
 $lang['qos_reset'] = 'Reset';
 $lang['qos_source'] = 'Source';
 $lang['qos_upstream'] = 'Upstream';
+$lang['qos_prioclass_limit_underflow'] = 'A priority class limit can not be set to a value less than the class\' corresponding bandwidth reservation.  See the User Guide for more information.  Limit underflow detected for priority class #';
