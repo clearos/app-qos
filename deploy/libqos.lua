@@ -311,7 +311,7 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
 
         -- Add configured MARK rules
         for _, rule in ipairs(priomark.ipv4) do
-            if tonumber(rule.enabled) and (rule.ifn == ifn or rule.ifn == '*') then
+            if tonumber(rule.enabled) == 1 and (rule.ifn == ifn or rule.ifn == '*') then
                 param = " "
                 if tonumber(rule.type) == direction then
                     if rule.proto ~= "-" then
@@ -342,7 +342,7 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
         end
 
         for _, rule in ipairs(priomark.ipv4_custom) do
-            if tonumber(rule.enabled) and (rule.ifn == ifn or rule.ifn == '*') then
+            if tonumber(rule.enabled) == 1 and (rule.ifn == ifn or rule.ifn == '*') then
                 param = " "
                 if tonumber(rule.type) == direction then
                     iptables("mangle", "-A " .. chain_qos .. 
