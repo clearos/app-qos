@@ -1,7 +1,7 @@
 
 Name: app-qos
 Epoch: 1
-Version: 1.5.2
+Version: 1.5.20
 Release: 1%{dist}
 Summary: QoS
 License: GPLv3
@@ -75,7 +75,6 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/qos/packaging
-%exclude /usr/clearos/apps/qos/tests
 %dir /usr/clearos/apps/qos
 %dir /var/clearos/qos
 /usr/clearos/apps/qos/deploy
