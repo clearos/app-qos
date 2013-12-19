@@ -1,7 +1,7 @@
 
 Name: app-qos
 Epoch: 1
-Version: 1.5.20
+Version: 1.5.21
 Release: 1%{dist}
 Summary: QoS
 License: GPLv3
@@ -13,7 +13,7 @@ Requires: app-base
 Requires: app-network
 
 %description
-Bandwidth QoS Manager
+The Quality of Service (QoS) app is a network feature that allows administrators to prioritize certain types of Internet traffic.  Enabling QoS decreases the likelihood that at any given time, a single user or device might degrade network performance by saturating available bandwidth.
 
 %package core
 Summary: QoS - Core
@@ -24,7 +24,7 @@ Requires: app-network-core
 Requires: app-firewall-core >= 1:1.5.1
 
 %description core
-Bandwidth QoS Manager
+The Quality of Service (QoS) app is a network feature that allows administrators to prioritize certain types of Internet traffic.  Enabling QoS decreases the likelihood that at any given time, a single user or device might degrade network performance by saturating available bandwidth.
 
 This package provides the core API and libraries.
 
