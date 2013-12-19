@@ -69,9 +69,10 @@ function init_state(id, mode, sliders)
         state[id]['locks'][i] = false;
     }
 
-    if (state[id]['mode'] == 0)
-        equalize(id);
-    else {
+    if (state[id]['mode'] == 0) {
+        // TODO - Causing JS to bomb out.
+        //equalize(id);
+    } else {
         for (i = 0; i < sliders; i++) state[id]['values'][i] = 100;
     }
 }

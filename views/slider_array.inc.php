@@ -37,10 +37,10 @@ function form_slider_array($id, $title, $mode, $sliders, $defaults = array(), $u
             anchor_javascript("${id}_reset", lang('qos_reset'), 'high') . '</div>';
     }
     $widget .= "</td></tr></table></center>\n";
-    $widget .= "<script>create_slider_array('$id', $mode, $sliders);</script>\n";
+    $widget .= "<script type='text/javascript'>create_slider_array('$id', $mode, $sliders);</script>\n";
 
     if (count($defaults) == $sliders) {
-        $widget .= "<script>\n";
+        $widget .= "<script type='text/javascript'>\n";
         for ($i = 0; $i < $sliders; $i++)
             $widget .= "set_default_value('$id', $i, $defaults[$i]);\n";
         $widget .= "reset('$id');\n";
