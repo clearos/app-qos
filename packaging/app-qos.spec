@@ -1,7 +1,7 @@
 
 Name: app-qos
 Epoch: 1
-Version: 1.5.22
+Version: 1.6.5
 Release: 1%{dist}
 Summary: QoS
 License: GPLv3
