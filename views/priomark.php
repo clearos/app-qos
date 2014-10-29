@@ -213,9 +213,7 @@ else {
             $priority_classes[$i] = $i + 1;
     }
 
-    echo form_open("qos/$controller/$form_type",
-        array('id' => "priomark_{$controller}_form")
-    );
+    echo form_open("qos/$controller/$form_type", array('id' => "priomark_{$controller}_form"));
     echo form_header(
         lang($title_lang),
         array('id' => "qos_priomark_$controller"));

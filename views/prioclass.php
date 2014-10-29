@@ -110,9 +110,7 @@ else if ($form_type == 'add' && $ifn == NULL) {
         redirect("/qos/{$type_name}/add/$ifn");
     }
 
-    echo form_open("qos/$type_name/add",
-        array('id' => "{$type_name}_form")
-    );
+    echo form_open("qos/$type_name/add", array('id' => "{$type_name}_form"));
     echo form_header(
         lang("qos_class_{$type_name}_title"),
         array('id' => "qos_pc$type_name"));
@@ -137,9 +135,7 @@ else if ($form_type == 'add' && $ifn == NULL) {
 else {
     require_once('slider_array.inc.php');
 
-    echo form_open("qos/$type_name",
-        array('id' => "{$type_name}_form")
-    );
+    echo form_open("qos/$type_name", array('id' => "{$type_name}_form"));
     echo form_header(
         lang("qos_class_{$type_name}_title"),
         array('id' => "qos_pc$type_name"));

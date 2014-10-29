@@ -122,9 +122,7 @@ if ($form_type == 'view') {
     );
 }
 else {
-    echo form_open("qos/ifn/$form_type/$ifn",
-        array('id' => 'ifn_form')
-    );
+    echo form_open("qos/ifn/$form_type/$ifn", array('id' => 'ifn_form'));
     echo form_header(
         ($form_type == 'add') ? 
             lang('qos_interface_add_title') : lang('qos_interface_edit_title'),
