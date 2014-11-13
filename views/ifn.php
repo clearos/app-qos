@@ -36,12 +36,6 @@
 $this->lang->load('qos');
 $this->lang->load('network');
 
-// Lazy -- adding warning here instead of new controller
-echo infobox_warning('Beta', 'This software is still considered beta.  If
-you have any feedback, we would like hear it!  You can post a message in the
-<a href="http://www.clearfoundation.com/component/option,com_kunena/Itemid,232/catid,39/func,showcat/">Developer Forums</a> or
-drop us an e-mail at <a href="mailto:developer@clearfoundation.com">developer@clearfoundation.com</a>.');
-
 ///////////////////////////////////////////////////////////////////////////////
 // Form or summary table
 ///////////////////////////////////////////////////////////////////////////////
