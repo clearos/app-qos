@@ -168,7 +168,7 @@ class Priomark extends ClearOS_Controller
 
             $this->qos->firewall_restart();
 
-            redirect('/qos/qos');
+            redirect('/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -202,7 +202,7 @@ class Priomark extends ClearOS_Controller
 
             $this->qos->firewall_restart();
 
-            redirect('/qos/qos');
+            redirect('/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -235,7 +235,7 @@ class Priomark extends ClearOS_Controller
 
             $this->qos->firewall_restart();
 
-            redirect('/qos/qos');
+            redirect('/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -260,7 +260,7 @@ class Priomark extends ClearOS_Controller
 
             $this->qos->firewall_restart();
 
-            redirect('/qos/qos');
+            redirect('/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -356,7 +356,7 @@ class Priomark extends ClearOS_Controller
 
                 $this->qos->firewall_restart();
 
-                redirect('/qos/qos');
+                redirect('/qos');
             }
             catch (Exception $e) {
                 $this->page->view_exception($e);

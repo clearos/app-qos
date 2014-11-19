@@ -110,7 +110,7 @@ class Ifn extends ClearOS_Controller
         try {
             $this->qos->enable_engine();
 
-            redirect('/qos/qos');
+            redirect('/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -134,7 +134,7 @@ class Ifn extends ClearOS_Controller
         try {
             $this->qos->enable_engine(FALSE);
 
-            redirect('/qos/qos');
+            redirect('/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -160,7 +160,7 @@ class Ifn extends ClearOS_Controller
 
             $this->qos->firewall_restart();
 
-            redirect('/qos/qos');
+            redirect('/qos');
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -267,7 +267,7 @@ class Ifn extends ClearOS_Controller
 
                 $this->qos->firewall_restart();
 
-                redirect('/qos/qos');
+                redirect('/qos');
             } catch (Exception $e) {
                 $this->page->view_exception($e);
                 return;

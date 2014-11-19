@@ -36,12 +36,6 @@
 $this->lang->load('qos');
 $this->lang->load('network');
 
-// Lazy -- adding warning here instead of new controller
-echo infobox_warning('Beta', 'This software is still considered beta.  If
-you have any feedback, we would like hear it!  You can post a message in the
-<a href="http://www.clearfoundation.com/component/option,com_kunena/Itemid,232/catid,39/func,showcat/">Developer Forums</a> or
-drop us an e-mail at <a href="mailto:developer@clearfoundation.com">developer@clearfoundation.com</a>.');
-
 ///////////////////////////////////////////////////////////////////////////////
 // Form or summary table
 ///////////////////////////////////////////////////////////////////////////////
@@ -77,9 +71,9 @@ if ($form_type == 'view') {
             lang('qos_auto') : $config['down']['r2q'];
         $item['details'] = array(
             $ifn,
-            "<span id='{$ifn}_up'>{$config['up']['speed']}</span>",
-            "<span id='{$ifn}_down'>{$config['down']['speed']}</span>",
-            "<span id='{$ifn}_r2q_up'>$r2q_up / $r2q_down</span>",
+            $config['up']['speed'],
+            $config['down']['speed'],
+            $r2q_up . '/' . $r2q_down
         );
         $items[] = $item;
     }
@@ -92,12 +86,7 @@ if ($form_type == 'view') {
         $item['anchors'] = button_set(array(
             anchor_add("/app/qos/ifn/add/$ifn"),
         ));
-        $item['details'] = array(
-            $ifn,
-            "<span id='{$ifn}_up'>-</span>",
-            "<span id='{$ifn}_down'>-</span>",
-            "<span id='{$ifn}_r2q_up'>-</span>",
-        );
+        $item['details'] = array($ifn, '', '', '');
         $items[] = $item;
     }
 
@@ -123,37 +112,28 @@ if ($form_type == 'view') {
 }
 else {
     echo form_open("qos/ifn/$form_type/$ifn", array('id' => 'ifn_form'));
+    // Interface hidden field
+    echo "<input type='hidden' name='ifn' value='$ifn'>\n";
+
     echo form_header(
         ($form_type == 'add') ? 
             lang('qos_interface_add_title') : lang('qos_interface_edit_title'),
         array('id' => 'qos_ifn'));
 
+
     // Upstream
-    echo form_banner('<center><h1>' . lang('qos_upstream') . " - $ifn</h1></center>");
-
-    // Speed
-    echo field_input('speed_up', $speed_up,
-        lang('network_speed') . ' (' . lang('base_kilobits_per_second') . ')', FALSE);
-
-    // Rate-to-quantum, auto-checkbox
-    echo field_checkbox('r2q_auto_up', $r2q_auto_up,
-        lang('qos_rate_to_quantum_auto') . '?', FALSE);
+    echo fieldset_header(lang('qos_upstream'));
+    echo field_input('speed_up', $speed_up, lang('network_speed') . ' (' . lang('base_kilobits_per_second') . ')', FALSE);
+    echo field_checkbox('r2q_auto_up', $r2q_auto_up, lang('qos_rate_to_quantum_auto') . '?', FALSE);
     echo field_input('r2q_up', $r2q_up, lang('qos_rate_to_quantum'), FALSE);
+    echo fieldset_footer();
 
     // Downstream
-    echo form_banner('<center><h1>' . lang('qos_downstream') . " - $ifn</h1></center>");
-
-    // Speed, downstream
-    echo field_input('speed_down', $speed_down,
-        lang('network_speed') . ' (' . lang('base_kilobits_per_second') . ')', FALSE);
-
-    // Rate-to-quantum, auto-checkbox
-    echo field_checkbox('r2q_auto_down', $r2q_auto_down,
-        lang('qos_rate_to_quantum_auto') . '?', FALSE);
+    echo fieldset_header(lang('qos_downstream'));
+    echo field_input('speed_down', $speed_down, lang('network_speed') . ' (' . lang('base_kilobits_per_second') . ')', FALSE);
+    echo field_checkbox('r2q_auto_down', $r2q_auto_down, lang('qos_rate_to_quantum_auto') . '?', FALSE);
     echo field_input('r2q_down', $r2q_down, lang('qos_rate_to_quantum'), FALSE);
-
-    // Interface hidden field
-    echo "<input type='hidden' name='ifn' value='$ifn'>\n";
+    echo fieldset_footer();
 
     echo field_button_set(
         array( 

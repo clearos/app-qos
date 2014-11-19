@@ -83,10 +83,6 @@ class Qos extends ClearOS_Controller
         //-----------------
 
         $controllers = array('qos/ifn');
-        if (count($interfaces) && count($pc_limit))
-            $controllers[] = 'qos/reserved';
-        if (count($interfaces) && count($pc_reserved))
-            $controllers[] = 'qos/limit';
         if (count($interfaces)) {
             $controllers[] = 'qos/upstream';
             $controllers[] = 'qos/downstream';

@@ -103,7 +103,7 @@ if ($form_type == 'view') {
 }
 else if ($form_type == 'add' && $ifn == NULL) {
     if (count($available_external_interfaces) == 0)
-        redirect('/qos/qos');
+        redirect('/qos');
     if (count($available_external_interfaces) == 1) {
         reset($available_external_interfaces);
         $ifn = current($available_external_interfaces);
