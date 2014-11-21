@@ -53,7 +53,8 @@ if ($form_type == 'view') {
         lang('qos_priority'),
         lang('network_interface'),
         lang('network_protocol'),
-        lang('qos_source') . ' / ' . lang('qos_destination'),
+        lang('qos_source') . ' / ' . 
+        lang('qos_destination'),
     );
 
     $items = array();
@@ -76,7 +77,7 @@ if ($form_type == 'view') {
                 $items_disabled++;
             $state_anchor = 'anchor_' . $state;
 
-            $ifn = lang('qos_all');
+            $ifn = lang('base_all');
             if ($config['interface'] != '*') $ifn = $config['interface'];
 
             $protocol = lang('qos_any');
@@ -86,7 +87,7 @@ if ($form_type == 'view') {
             }
             else if (strlen($config['protocol'])) {
                 if ($config['protocol'] == '-')
-                    $protocol = lang('qos_all');
+                    $protocol = lang('base_all');
                 else
                     $protocol = strtoupper($config['protocol']);
             }
@@ -95,9 +96,9 @@ if ($form_type == 'view') {
             if ($config['saddr'] != '-') $saddr = $config['saddr'];
             $daddr = lang('qos_any');
             if ($config['daddr'] != '-') $daddr = $config['daddr'];
-            $sport = lang('qos_all');
+            $sport = lang('base_all');
             if ($config['sport'] != '-') $sport = $config['sport'];
-            $dport = lang('qos_all');
+            $dport = lang('base_all');
             if ($config['dport'] != '-') $dport = $config['dport'];
 
             $source = "$saddr : $sport";
@@ -129,9 +130,13 @@ if ($form_type == 'view') {
     $header_buttons[] = anchor_custom(
         "/app/qos/$controller/add", lang('base_add'));
 
+    if ($direction == Qos_Lib::DIRECTION_UP)
+        $title = lang('qos_priomark_upstream_rules');
+    else
+        $title = lang('qos_priomark_downstream_rules');
+
     echo summary_table(
-        lang(($direction == Qos_Lib::DIRECTION_UP) ?
-            'qos_priomark_upstream_rules' : 'qos_priomark_downstream_rules'),
+        $title,
         $header_buttons,
         $headers,
         $items,
@@ -141,12 +146,10 @@ if ($form_type == 'view') {
     );
 }
 else {
-    $title_lang = '';
-
     $read_only = FALSE;
 
-    $interface = lang('qos_all');
-    $interfaces = array('*' => lang('qos_all'));
+    $interface = lang('base_all');
+    $interfaces = array('*' => lang('base_all'));
     foreach ($avail_interfaces as $ifn)
         $interfaces[$ifn] = $ifn;
 
@@ -158,13 +161,18 @@ else {
         $config = $priomark_rules[$priomark_type][$nickname];
 
     if ($form_type == 'add') {
-        $title_lang = ($direction == Qos_Lib::DIRECTION_UP) ?
-            'qos_add_priomark_upstream_rule' : 'qos_add_priomark_downstream_rule';
+        if ($direction == Qos_Lib::DIRECTION_UP)
+            $title_lang = lang('qos_add_priomark_upstream_rule');
+        else
+            $title_lang = lang('qos_add_priomark_downstream_rule');
     }
+
     else {
         $read_only = TRUE;
-        $title_lang = ($direction == Qos_Lib::DIRECTION_UP) ?
-            'qos_edit_priomark_upstream_rule' : 'qos_edit_priomark_downstream_rule';
+        if ($direction == Qos_Lib::DIRECTION_UP)
+            $title_lang = lang('qos_edit_priomark_upstream_rule');
+        else
+            $title_lang = lang('qos_edit_priomark_downstream_rule');
 
         if ($config != NULL) {
             if ($config['interface'] != '*') {
@@ -215,7 +223,7 @@ else {
 
     echo form_open("qos/$controller/$form_type", array('id' => "priomark_{$controller}_form"));
     echo form_header(
-        lang($title_lang),
+        $title_lang,
         array('id' => "qos_priomark_$controller"));
 
     // Nickname

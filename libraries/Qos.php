@@ -49,6 +49,8 @@ require_once $bootstrap . '/bootstrap.php';
 ///////////////////////////////////////////////////////////////////////////////
 
 clearos_load_language('qos');
+clearos_load_language('firewall');
+clearos_load_language('network');
 
 ///////////////////////////////////////////////////////////////////////////////
 // D E P E N D E N C I E S
@@ -938,19 +940,19 @@ class Qos extends Engine
     public static function validate_nickname($nickname)
     {
         if (preg_match('/^[A-z0-9_]+$/', $nickname)) return '';
-        return lang('qos_invalid_nickname');
+        return lang('firewall_nickname_invalid');
     }
 
     public static function validate_address($address)
     {
         if ($address == '-' || inet_pton($address) !== FALSE) return '';
-        return lang('qos_invalid_address');
+        return lang('firewall_address_invalid');
     }
 
     public static function validate_port($port)
     {
         if ($port == '-' || preg_match('/^[0-9]+$/', $port)) return '';
-        return lang('qos_invalid_port');
+        return lang('network_port_invalid');
     }
 
     public static function validate_speed($speed)

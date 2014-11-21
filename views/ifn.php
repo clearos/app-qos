@@ -43,8 +43,8 @@ $this->lang->load('network');
 if ($form_type == 'view') {
     $headers = array(
         lang('network_interface'),
-        lang('qos_upstream'),
-        lang('qos_downstream'),
+        lang('network_upstream'),
+        lang('network_downstream'),
         lang('qos_rate_to_quantum'),
     );
 
@@ -66,9 +66,9 @@ if ($form_type == 'view') {
             anchor_delete("/app/qos/ifn/delete/$ifn")
         ));
         $r2q_up = ($config['up']['r2q'] == 'auto') ?
-            lang('qos_auto') : $config['up']['r2q'];
+            lang('base_automatic') : $config['up']['r2q'];
         $r2q_down = ($config['down']['r2q'] == 'auto') ?
-            lang('qos_auto') : $config['down']['r2q'];
+            lang('base_automatic') : $config['down']['r2q'];
         $item['details'] = array(
             $ifn,
             $config['up']['speed'],
@@ -103,7 +103,7 @@ if ($form_type == 'view') {
     }
 
     echo summary_table(
-        lang('qos_interfaces_title'),
+        lang('network_external_network_interfaces'),
         $header_buttons,
         $headers,
         $items,
@@ -115,21 +115,22 @@ else {
     // Interface hidden field
     echo "<input type='hidden' name='ifn' value='$ifn'>\n";
 
-    echo form_header(
-        ($form_type == 'add') ? 
-            lang('qos_interface_add_title') : lang('qos_interface_edit_title'),
-        array('id' => 'qos_ifn'));
+    if ($form_type == 'add') 
+        $form_title = lang('qos_interface_add_title');
+    else
+        $form_title = lang('qos_interface_edit_title');
 
+    echo form_header($form_title, array('id' => 'qos_ifn'));
 
     // Upstream
-    echo fieldset_header(lang('qos_upstream'));
+    echo fieldset_header(lang('network_upstream'));
     echo field_input('speed_up', $speed_up, lang('network_speed') . ' (' . lang('base_kilobits_per_second') . ')', FALSE);
     echo field_checkbox('r2q_auto_up', $r2q_auto_up, lang('qos_rate_to_quantum_auto') . '?', FALSE);
     echo field_input('r2q_up', $r2q_up, lang('qos_rate_to_quantum'), FALSE);
     echo fieldset_footer();
 
     // Downstream
-    echo fieldset_header(lang('qos_downstream'));
+    echo fieldset_header(lang('network_downstream'));
     echo field_input('speed_down', $speed_down, lang('network_speed') . ' (' . lang('base_kilobits_per_second') . ')', FALSE);
     echo field_checkbox('r2q_auto_down', $r2q_auto_down, lang('qos_rate_to_quantum_auto') . '?', FALSE);
     echo field_input('r2q_down', $r2q_down, lang('qos_rate_to_quantum'), FALSE);

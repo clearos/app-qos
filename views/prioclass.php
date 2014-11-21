@@ -57,7 +57,7 @@ if ($form_type == 'view') {
     foreach ($directions as $direction) {
 
         $dir_lang = ($direction == 'up') ?
-            lang('qos_upstream') : lang('qos_downstream');
+            lang('network_upstream') : lang('network_downstream');
 
         foreach ($rows as $ifn => $row) {
             $key = ($ifn == '*') ? 'all' : $ifn;
@@ -143,8 +143,8 @@ else {
     $key_lang = ($ifn == 'all') ? lang('base_all') : $ifn;
     $mode = ($type_name == 'limit') ? 1 : 0;
 
-    $upstream_lang = lang('qos_upstream') . " - $key_lang";
-    $downstream_lang = lang('qos_downstream') . " - $key_lang";
+    $upstream_lang = lang('network_upstream') . " - $key_lang";
+    $downstream_lang = lang('network_downstream') . " - $key_lang";
 
     echo form_banner(form_slider_array("pcup$type_name",
         $upstream_lang, $mode,

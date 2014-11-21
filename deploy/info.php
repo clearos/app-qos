@@ -11,7 +11,7 @@ $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
 $app['license'] = 'GPLv3';
 $app['license_core'] = 'LGPLv3';
-$app['summary'] = lang('ibvpn_app_name');
+$app['summary'] = lang('qos_app_name');
 $app['description'] = lang('qos_app_description');
 
 /////////////////////////////////////////////////////////////////////////////
@@ -32,7 +32,7 @@ $app['requires'] = array(
 
 $app['core_requires'] = array(
     'app-network-core',
-    'app-firewall-core >= 1:1.5.20',
+    'app-firewall-core >= 1:2.0.0',
 );
 
 $app['core_directory_manifest'] = array(

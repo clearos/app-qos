@@ -91,7 +91,8 @@ class Invalid_Priomark_Type_Exception extends Engine_Exception
     public function __construct($type, $code = CLEAROS_ERROR)
     {
         $this->type = $type;
-        parent::__construct(lang('qos_invalid_priomark_type'), $code);
+        // TODO: review translation
+        parent::__construct('Invalid mark type', $code);
     }
 
     /**

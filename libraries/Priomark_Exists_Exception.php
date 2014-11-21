@@ -48,6 +48,7 @@ require_once $bootstrap . '/bootstrap.php';
 ///////////////////////////////////////////////////////////////////////////////
 
 clearos_load_language('qos');
+clearos_load_language('firewall');
 
 ///////////////////////////////////////////////////////////////////////////////
 // D E P E N D E N C I E S
@@ -91,8 +92,7 @@ class Priomark_Exists_Exception extends Engine_Exception
     public function __construct($nickname, $code = CLEAROS_ERROR)
     {
         $this->nickname = $nickname;
-        parent::__construct(
-            lang('qos_priomark_already_exists') . ": $nickname", $code);
+        parent::__construct(lang('firewall_rule_already_exists'), $code);
     }
 
     /**
