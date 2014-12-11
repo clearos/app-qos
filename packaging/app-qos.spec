@@ -1,7 +1,7 @@
 
 Name: app-qos
 Epoch: 1
-Version: 1.6.5
+Version: 2.0.5
 Release: 1%{dist}
 Summary: QoS
 License: GPLv3
@@ -21,7 +21,7 @@ License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-network-core
-Requires: app-firewall-core >= 1:1.5.20
+Requires: app-firewall-core >= 1:2.0.0
 
 %description core
 The Quality of Service (QoS) app is a network feature that allows administrators to prioritize certain types of Internet traffic.  Enabling QoS decreases the likelihood that at any given time, a single user or device might degrade network performance by saturating available bandwidth.
