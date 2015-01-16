@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'qos';
-$app['version'] = '2.0.5';
+$app['version'] = '2.0.14';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -20,7 +20,7 @@ $app['description'] = lang('qos_app_description');
 
 $app['name'] = lang('qos_app_name');
 $app['category'] = lang('base_category_network');
-$app['subcategory'] = lang('base_subcategory_bandwidth_and_qos');
+$app['subcategory'] = lang('base_subcategory_bandwidth_control');
 
 /////////////////////////////////////////////////////////////////////////////
 // Packaging
@@ -31,6 +31,7 @@ $app['requires'] = array(
 );
 
 $app['core_requires'] = array(
+    'app-base >= 1:2.0.12',
     'app-network-core',
     'app-firewall-core >= 1:2.0.0',
 );

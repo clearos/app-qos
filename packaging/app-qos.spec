@@ -1,9 +1,9 @@
 
 Name: app-qos
 Epoch: 1
-Version: 2.0.5
+Version: 2.0.14
 Release: 1%{dist}
-Summary: QoS
+Summary: Bandwidth and QoS Manager
 License: GPLv3
 Group: ClearOS/Apps
 Source: %{name}-%{version}.tar.gz
@@ -13,18 +13,19 @@ Requires: app-base
 Requires: app-network
 
 %description
-The Quality of Service (QoS) app is a network feature that allows administrators to prioritize certain types of Internet traffic.  Enabling QoS decreases the likelihood that at any given time, a single user or device might degrade network performance by saturating available bandwidth.
+The Bandwidth and QoS Manager app is a network feature that allows administrators to prioritize certain types of Internet traffic.  Enabling QoS decreases the likelihood that at any given time, a single user or device might degrade network performance by saturating available bandwidth.
 
 %package core
-Summary: QoS - Core
+Summary: Bandwidth and QoS Manager - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
+Requires: app-base >= 1:2.0.12
 Requires: app-network-core
 Requires: app-firewall-core >= 1:2.0.0
 
 %description core
-The Quality of Service (QoS) app is a network feature that allows administrators to prioritize certain types of Internet traffic.  Enabling QoS decreases the likelihood that at any given time, a single user or device might degrade network performance by saturating available bandwidth.
+The Bandwidth and QoS Manager app is a network feature that allows administrators to prioritize certain types of Internet traffic.  Enabling QoS decreases the likelihood that at any given time, a single user or device might degrade network performance by saturating available bandwidth.
 
 This package provides the core API and libraries.
 
