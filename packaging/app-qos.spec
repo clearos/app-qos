@@ -1,7 +1,7 @@
 
 Name: app-qos
 Epoch: 1
-Version: 2.0.14
+Version: 2.0.18
 Release: 1%{dist}
 Summary: Bandwidth and QoS Manager
 License: GPLv3
