@@ -2,7 +2,7 @@
 Name: app-qos
 Epoch: 1
 Version: 2.1.6
-Release: 1%{dist}
+Release: 2%{dist}
 Summary: Bandwidth and QoS Manager
 License: GPLv3
 Group: ClearOS/Apps
