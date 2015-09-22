@@ -64,12 +64,14 @@ use \clearos\apps\base\File as File;
 use \clearos\apps\base\Shell as Shell;
 use \clearos\apps\base\Webconfig as Webconfig;
 use \clearos\apps\firewall\Firewall as Firewall;
+use \clearos\apps\network\Iface as Iface;
 
 clearos_load_library('base/Engine');
 clearos_load_library('base/File');
 clearos_load_library('base/Shell');
 clearos_load_library('base/Webconfig');
 clearos_load_library('firewall/Firewall');
+clearos_load_library('network/Iface');
 
 // Exceptions
 //-----------
@@ -150,7 +152,7 @@ class Qos extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         $this->interface_fields = array(
-            'interface', 'speed', 'r2q'
+            'interface', 'r2q'
         );
 
         $this->priomark_fields = array(
@@ -280,7 +282,6 @@ class Qos extends Engine
      * name containing the following fields:
      *
      *   interface  The external interface name
-     *   speed      The connection speed in kbits per second
      *   r2q        The desired rate-to-quantum value which may be set to: auto
      *
      * @return  array interface configuration as an associative array
@@ -315,22 +316,43 @@ class Qos extends Engine
     }
 
     /**
+     * Get external interface speeds (up/downstream).
+     *
+     * This method returns the configuration values for an external interface's
+     * up/downsteam as defined in /etc/clearos/network.conf
+     *
+     * @return  array interface speeds as an associative array
+     */
+
+    public function get_interface_speeds($ifn)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $speeds = array('upstream' => 0, 'downstream' => 0);
+
+        $ifn_obj = new Iface($ifn);
+        $speeds['upstream'] = $ifn_obj->get_max_upstream();
+        $speeds['downstream'] = $ifn_obj->get_max_downstream();
+
+        return $speeds;
+    }
+
+    /**
      * Set external interface configuration values.
      *
      * This method sets configuration values for an external interface assigned
      * to the QOS_[UP|DOWN]STREAM keywords.
      *
-     * The $speed and $r2q paramters are arrays which contain two values, the
+     * The $r2q paramter is an array which contain two values, the
      * first (index 0) is the upstream value and the second (index 1) is the
      * corresponding downstream value.
      *
      * @param   string $ifn external interface name
-     * @param   array $speed external interface connection speed in kbits/s
      * @param   array $r2q desired rate-to-quantum value or 'auto'
      * @throws  File_No_Match_Exception
      */
 
-    public function set_interface_config($ifn, $speed, $r2q = array('auto', 'auto'))
+    public function set_interface_config($ifn, $r2q = array('auto', 'auto'))
     {
         clearos_profile(__METHOD__, __LINE__);
 
@@ -338,7 +360,6 @@ class Qos extends Engine
 
         $directions = array('up' => 0, 'down' => 1);
         foreach ($directions as $direction => $index) {
-            $ifn_config[$direction][$ifn]['speed'] = $speed[$index];
             $ifn_config[$direction][$ifn]['r2q'] = $r2q[$index];
         
             $this->_save_interface_config($ifn_config);
@@ -414,7 +435,7 @@ class Qos extends Engine
             if (array_key_exists($direction, $config)) {
                 ksort($config[$direction]);
                 foreach ($config[$direction] as $ifn => $params)
-                    $value .= " $ifn:{$params['speed']}:{$params['r2q']}";
+                    $value .= " $ifn:{$params['r2q']}";
             }
             $value = trim($value);
             $file->replace_lines("/^$key.*$/", "$key=\"$value\"\n", 1);
@@ -953,12 +974,6 @@ class Qos extends Engine
     {
         if ($port == '-' || preg_match('/^[0-9]+$/', $port)) return '';
         return lang('network_port_invalid');
-    }
-
-    public static function validate_speed($speed)
-    {
-        if (preg_match('/^[0-9]+$/', $speed) && $speed > 0) return '';
-        return lang('qos_invalid_speed');
     }
 
     public static function validate_r2q($r2q)

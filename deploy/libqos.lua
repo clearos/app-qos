@@ -70,7 +70,7 @@ function PackCustomRule(s)
     return s .. "\n"
 end
 
-function ParseInterfaceValue(v)
+function ParseInterfaceValue(v, direction)
     local t = {}
     local entries = {}
     local cfg
@@ -84,19 +84,43 @@ function ParseInterfaceValue(v)
 
     for _, cfg in pairs(entries) do
         if cfg ~= nil and string.len(cfg) ~= 0 then
-            __, __, ifn, rate, r2q = string.find(cfg, "(%w+):(%d+):(%w+)")
+            __, __, ifn, r2q = string.find(cfg, "(%w+):(%w+)")
 
-            if ifn == nil or rate == nil or r2q == nil then
+            if ifn == nil or r2q == nil then
                 error("Invalid interface configuration syntax detected: " .. cfg)
             end
 
             t[ifn] = {}
-            t[ifn]["rate"] = rate
+            t[ifn]["rate"] = LoadInterfaceSpeed(ifn, direction)
             t[ifn]["r2q"] = r2q
         end
     end
 
     return t
+end
+
+function LoadInterfaceSpeed(ifn, direction)
+    local fh = io.open('/etc/clearos/network.conf', 'r')
+    local key = string.upper(ifn) .. '_MAX_' .. string.upper(direction)
+    local speed = 0
+    local value
+    local line
+
+    if fh == nil then
+        return speed
+    end
+
+    for line in fh:lines() do
+        _, _, value = string.find(line,
+            key .. '%s*=%s*(%d+)')
+        if value ~= nil then
+            speed = value
+            break
+        end
+    end
+
+    io.close(fh)
+    return speed
 end
 
 function ParseBandwidthValue(v, buckets)
@@ -436,8 +460,8 @@ function RunBandwidthExternal()
         end
     end
 
-    rate_up = ParseInterfaceValue(QOS_UPSTREAM)
-    rate_down = ParseInterfaceValue(QOS_DOWNSTREAM)
+    rate_up = ParseInterfaceValue(QOS_UPSTREAM, 'upstream')
+    rate_down = ParseInterfaceValue(QOS_DOWNSTREAM, 'downstream')
 
     rate_up_res = ParseBandwidthValue(QOS_UPSTREAM_BWRES, rate_up_res)
     rate_up_limit = ParseBandwidthValue(QOS_UPSTREAM_BWLIMIT, rate_up_limit)

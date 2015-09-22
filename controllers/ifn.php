@@ -187,30 +187,28 @@ class Ifn extends ClearOS_Controller
         // Set validation rules
         //---------------------
 
-        $this->form_validation->set_policy(
-            'speed_up', 'qos/Qos',
-            'validate_speed', TRUE
-        );
-        $this->form_validation->set_policy(
-            'speed_down', 'qos/Qos',
-            'validate_speed', TRUE
-        );
+        $form_ok = TRUE;
+        $form_validate = FALSE;
+
         if ($this->input->post('submit-form')) {
-            if ($this->input->post('r2q_auto_up') != 'on') {
+            if ($this->input->post('r2q_auto_up') != 1) {
                 $this->form_validation->set_policy(
                     'r2q_up', 'qos/Qos',
                     'validate_r2q', TRUE
                 );
+                $form_validate = TRUE;
             }
-            if ($this->input->post('r2q_auto_down') != 'on') {
+            if ($this->input->post('r2q_auto_down') != 1) {
                 $this->form_validation->set_policy(
                     'r2q_down', 'qos/Qos',
                     'validate_r2q', TRUE
                 );
+                $form_validate = TRUE;
             }
-        }
 
-        $form_ok = $this->form_validation->run();
+            if ($form_validate == TRUE)
+                $form_ok = $this->form_validation->run();
+        }
 
         // Handle form submit
         //-------------------
@@ -220,13 +218,9 @@ class Ifn extends ClearOS_Controller
                 $this->qos->set_interface_config(
                     $this->input->post('ifn'),
                     array(
-                        $this->input->post('speed_up'),
-                        $this->input->post('speed_down')
-                    ),
-                    array(
-                        ($this->input->post('r2q_auto_up') == 'on') ?
+                        ($this->input->post('r2q_auto_up') == 1) ?
                             'auto' : $this->input->post('r2q_up'),
-                        ($this->input->post('r2q_auto_down') == 'on') ?
+                        ($this->input->post('r2q_auto_down') == 1) ?
                             'auto' : $this->input->post('r2q_down')
                     )
                 );
@@ -291,13 +285,19 @@ class Ifn extends ClearOS_Controller
         $data['engine_status'] = $this->qos->get_engine_status();
 
         if ($form_type == 'add') {
+            $speeds = $this->qos->get_interface_speeds($ifn);
+            if ($speeds == NULL ||
+                $speeds['upstream'] == 0 || $speeds['downstream'] == 0)
+                $data['warning'] = TRUE;
+            else
+                $data['warning'] = FALSE;
+
             $data['r2q_auto_up'] = TRUE;
             $data['r2q_auto_down'] = TRUE;
         }
         else if ($form_type == 'edit') {
             if (array_key_exists('up', $ifn_config) &&
                 array_key_exists($ifn, $ifn_config['up'])) {
-                $data['speed_up'] = $ifn_config['up'][$ifn]['speed'];
                 $data['r2q_auto_up'] =
                     ($ifn_config['up'][$ifn]['r2q'] == 'auto') ?
                         TRUE : FALSE;
@@ -307,7 +307,6 @@ class Ifn extends ClearOS_Controller
             }
             if (array_key_exists('down', $ifn_config) &&
                 array_key_exists($ifn, $ifn_config['down'])) {
-                $data['speed_down'] = $ifn_config['down'][$ifn]['speed'];
                 $data['r2q_auto_down'] =
                     ($ifn_config['down'][$ifn]['r2q'] == 'auto') ?
                         TRUE : FALSE;
