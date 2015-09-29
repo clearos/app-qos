@@ -1,8 +1,8 @@
 
 Name: app-qos
 Epoch: 1
-Version: 2.1.6
-Release: 2%{dist}
+Version: 2.1.7
+Release: 1%{dist}
 Summary: Bandwidth and QoS Manager
 License: GPLv3
 Group: ClearOS/Apps
@@ -52,8 +52,6 @@ fi
 
 [ -x /usr/clearos/apps/qos/deploy/upgrade ] && /usr/clearos/apps/qos/deploy/upgrade
 
-
-
 exit 0
 
 %preun
@@ -66,8 +64,6 @@ if [ $1 -eq 0 ]; then
     logger -p local6.notice -t installer 'app-qos-core - uninstalling'
     [ -x /usr/clearos/apps/qos/deploy/uninstall ] && /usr/clearos/apps/qos/deploy/uninstall
 fi
-
-
 
 exit 0
 
