@@ -972,7 +972,10 @@ class Qos extends Engine
 
     public static function validate_port($port)
     {
-        if ($port == '-' || preg_match('/^[0-9]+$/', $port)) return '';
+        if ($port == '-' ||
+            preg_match('/^[0-9]+$/', $port) ||
+            preg_match('/^[0-9]+:[0-9]+$/', $port) ||
+            preg_match('/^[0-9,]+$/', $port)) return '';
         return lang('network_port_invalid');
     }
 

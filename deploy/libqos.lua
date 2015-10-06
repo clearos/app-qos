@@ -270,6 +270,8 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
     local ifn_name
     local ifn_conf
     local chain_qos
+    local multiport_src = false
+    local multiport_dst = false
 
     if direction == 1 then
         execute(string.format("%s %s numdevs=%d",
@@ -321,6 +323,16 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
             if tonumber(rule.enabled) == 1 and (rule.ifn == ifn or rule.ifn == '*') then
                 param = " "
                 if tonumber(rule.type) == direction then
+                    if string.find(rule.sport, ':') ~= nil or string.find(rule.sport, ',') ~= nil then
+                        multiport_src = true
+                    else
+                        multiport_src = false
+                    end
+                    if string.find(rule.dport, ':') ~= nil or string.find(rule.sport, ',') ~= nil then
+                        multiport_dst = true
+                    else
+                        multiport_dst = false
+                    end
                     if rule.proto ~= "-" then
                         if string.sub(rule.proto, 1, 1) == "!" then
                             param = param .. "! -p " ..
@@ -329,17 +341,28 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
                             param = param .. "-p " .. rule.proto .. " "
                         end
                     end
+                    if multiport_src or multiport_dst then
+                        param = param .. "-m multiport "
+                    end
                     if rule.saddr ~= "-" then
                         param = param .. "-s" .. rule.saddr .. " "
                     end
                     if rule.sport ~= "-" then
-                        param = param .. "--sport " .. rule.sport .. " "
+                            if multiport_src == false then
+                                param = param .. "--sport " .. rule.sport .. " "
+                            else
+                                param = param .. "--sports " .. rule.sport .. " "
+                            end
                     end
                     if rule.daddr ~= "-" then
                         param = param .. "-d " .. rule.daddr .. " "
                     end
                     if rule.dport ~= "-" then
-                        param = param .. "--dport " .. rule.dport .. " "
+                            if multiport_dst == false then
+                                param = param .. "--dport " .. rule.dport .. " "
+                            else
+                                param = param .. "--dports " .. rule.dport .. " "
+                            end
                     end
 
                     iptables("mangle", "-A " .. chain_qos .. param ..
