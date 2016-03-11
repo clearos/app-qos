@@ -260,18 +260,86 @@ function ValidateBandwidthLimit(name, rate_res, rate_limit)
     return true
 end
 
+function AddRules(direction, ifn, chain_qos, rules, rules_custom)
+    local id = 0
+    local rule
+    local param
+    local multiport_src = false
+    local multiport_dst = false
+
+    -- Add configured MARK rules
+    for _, rule in ipairs(rules) do
+        if tonumber(rule.enabled) == 1 and (rule.ifn == ifn or rule.ifn == '*') then
+            param = " "
+            if tonumber(rule.type) == direction then
+                if string.find(rule.sport, ':') ~= nil or string.find(rule.sport, ',') ~= nil then
+                    multiport_src = true
+                else
+                    multiport_src = false
+                end
+                if string.find(rule.dport, ':') ~= nil or string.find(rule.sport, ',') ~= nil then
+                    multiport_dst = true
+                else
+                    multiport_dst = false
+                end
+                if rule.proto ~= "-" then
+                    if string.sub(rule.proto, 1, 1) == "!" then
+                        param = param .. "! -p " ..
+                            string.sub(rule.proto, 2) .. " "
+                    else
+                        param = param .. "-p " .. rule.proto .. " "
+                    end
+                end
+                if multiport_src or multiport_dst then
+                    param = param .. "-m multiport "
+                end
+                if rule.saddr ~= "-" then
+                    param = param .. "-s" .. rule.saddr .. " "
+                end
+                if rule.sport ~= "-" then
+                        if multiport_src == false then
+                            param = param .. "--sport " .. rule.sport .. " "
+                        else
+                            param = param .. "--sports " .. rule.sport .. " "
+                        end
+                end
+                if rule.daddr ~= "-" then
+                    param = param .. "-d " .. rule.daddr .. " "
+                end
+                if rule.dport ~= "-" then
+                        if multiport_dst == false then
+                            param = param .. "--dport " .. rule.dport .. " "
+                        else
+                            param = param .. "--dports " .. rule.dport .. " "
+                        end
+                end
+
+                iptables("mangle", "-A " .. chain_qos .. param ..
+                    "-j MARK --set-mark " .. (id + 1) .. rule.prio)
+            end
+        end
+    end
+
+    for _, rule in ipairs(rules_custom) do
+        if tonumber(rule.enabled) == 1 and (rule.ifn == ifn or rule.ifn == '*') then
+            param = " "
+            if tonumber(rule.type) == direction then
+                iptables("mangle", "-A " .. chain_qos .. 
+                    " " .. rule.param ..
+                    " -j MARK --set-mark " .. (id + 1) .. rule.prio)
+            end
+        end
+    end
+end
+
 function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
     local config
     local id = 0
-    local rule
     local rate
     local limit
-    local param
     local ifn_name
     local ifn_conf
     local chain_qos
-    local multiport_src = false
-    local multiport_dst = false
 
     if direction == 1 then
         execute(string.format("%s %s numdevs=%d",
@@ -318,68 +386,11 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
         -- Create QoS chain
         iptc_create_chain("mangle", chain_qos)
 
-        -- Add configured MARK rules
-        for _, rule in ipairs(priomark.ipv4) do
-            if tonumber(rule.enabled) == 1 and (rule.ifn == ifn or rule.ifn == '*') then
-                param = " "
-                if tonumber(rule.type) == direction then
-                    if string.find(rule.sport, ':') ~= nil or string.find(rule.sport, ',') ~= nil then
-                        multiport_src = true
-                    else
-                        multiport_src = false
-                    end
-                    if string.find(rule.dport, ':') ~= nil or string.find(rule.sport, ',') ~= nil then
-                        multiport_dst = true
-                    else
-                        multiport_dst = false
-                    end
-                    if rule.proto ~= "-" then
-                        if string.sub(rule.proto, 1, 1) == "!" then
-                            param = param .. "! -p " ..
-                                string.sub(rule.proto, 2) .. " "
-                        else
-                            param = param .. "-p " .. rule.proto .. " "
-                        end
-                    end
-                    if multiport_src or multiport_dst then
-                        param = param .. "-m multiport "
-                    end
-                    if rule.saddr ~= "-" then
-                        param = param .. "-s" .. rule.saddr .. " "
-                    end
-                    if rule.sport ~= "-" then
-                            if multiport_src == false then
-                                param = param .. "--sport " .. rule.sport .. " "
-                            else
-                                param = param .. "--sports " .. rule.sport .. " "
-                            end
-                    end
-                    if rule.daddr ~= "-" then
-                        param = param .. "-d " .. rule.daddr .. " "
-                    end
-                    if rule.dport ~= "-" then
-                            if multiport_dst == false then
-                                param = param .. "--dport " .. rule.dport .. " "
-                            else
-                                param = param .. "--dports " .. rule.dport .. " "
-                            end
-                    end
-
-                    iptables("mangle", "-A " .. chain_qos .. param ..
-                        "-j MARK --set-mark " .. (id + 1) .. rule.prio)
-                end
-            end
-        end
-
-        for _, rule in ipairs(priomark.ipv4_custom) do
-            if tonumber(rule.enabled) == 1 and (rule.ifn == ifn or rule.ifn == '*') then
-                param = " "
-                if tonumber(rule.type) == direction then
-                    iptables("mangle", "-A " .. chain_qos .. 
-                        " " .. rule.param ..
-                        " -j MARK --set-mark " .. (id + 1) .. rule.prio)
-                end
-            end
+        -- Add rules
+        if FW_PROTO == "ipv4" then
+            AddRules(direction, ifn, chain_qos, priomark.ipv4, priomark.ipv4_custom)
+        else
+            AddRules(direction, ifn, chain_qos, priomark.ipv6, priomark.ipv6_custom)
         end
 
         if direction == 0 then
