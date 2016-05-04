@@ -294,7 +294,7 @@ function AddRules(direction, ifn, chain_qos, rules, rules_custom)
                     param = param .. "-m multiport "
                 end
                 if rule.saddr ~= "-" then
-                    param = param .. "-s" .. rule.saddr .. " "
+                    param = param .. "-s " .. rule.saddr .. " "
                 end
                 if rule.sport ~= "-" then
                         if multiport_src == false then
