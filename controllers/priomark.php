@@ -282,27 +282,11 @@ class Priomark extends ClearOS_Controller
         // Set validation rules
         //---------------------
 
-        $this->form_validation->set_policy(
-            'nickname', 'qos/Qos',
-            'validate_nickname', TRUE
-        );
-        $this->form_validation->set_policy(
-            'saddr', 'qos/Qos',
-            'validate_address', FALSE
-        );
-        $this->form_validation->set_policy(
-            'sport', 'qos/Qos',
-            'validate_port', FALSE
-        );
-        $this->form_validation->set_policy(
-            'daddr', 'qos/Qos',
-            'validate_address', FALSE
-        );
-        $this->form_validation->set_policy(
-            'dport', 'qos/Qos',
-            'validate_port', FALSE
-        );
-
+        $this->form_validation->set_policy('nickname', 'qos/Qos', 'validate_nickname', TRUE);
+        $this->form_validation->set_policy('saddr', 'qos/Qos','validate_address', FALSE);
+        $this->form_validation->set_policy('sport', 'qos/Qos', 'validate_port', FALSE);
+        $this->form_validation->set_policy('daddr', 'qos/Qos', 'validate_address', FALSE);
+        $this->form_validation->set_policy('dport', 'qos/Qos', 'validate_port', FALSE);
         $this->form_validation->set_policy('interface', 'qos/Qos', 'validate_interface', FALSE);
         $this->form_validation->set_policy('enabled', 'qos/Qos', 'validate_state', FALSE);
         $this->form_validation->set_policy('priority', 'qos/Qos', 'validate_priority', TRUE);
