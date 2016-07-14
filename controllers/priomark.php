@@ -305,6 +305,19 @@ class Priomark extends ClearOS_Controller
 
         $form_ok = $this->form_validation->run();
 
+        // Extra validation
+        //-----------------
+
+        $sport_check = $this->input->post('sport');
+        $dport_check = $this->input->post('dport');
+        $protocol_check = $this->input->post('protocol');
+        $valid_protocols = array('udp', 'tcp');
+
+        if ((!empty($dport_check) || !empty($sport_check)) && !in_array($protocol_check, $valid_protocols)) {
+            $this->form_validation->set_error('protocol', lang('qos_protocol_must_be_specified_using_ports'));
+            $form_ok = FALSE;
+        }
+
         // Handle form submit
         //-------------------
 
