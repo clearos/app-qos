@@ -958,6 +958,30 @@ class Qos extends Engine
         return '';
     }
 
+    public static function validate_interface($iface)
+    {
+        // TODO
+        return '';
+    }
+
+    public static function validate_priority($priority)
+    {
+        // TODO
+        return '';
+    }
+
+    public static function validate_protocol($protocol)
+    {
+        // TODO
+        return '';
+    }
+
+    public static function validate_state($state)
+    {
+        // TODO
+        return '';
+    }
+
     public static function validate_nickname($nickname)
     {
         if (preg_match('/^[A-z0-9_]+$/', $nickname)) return '';

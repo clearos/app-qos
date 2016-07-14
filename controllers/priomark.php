@@ -303,6 +303,11 @@ class Priomark extends ClearOS_Controller
             'validate_port', FALSE
         );
 
+        $this->form_validation->set_policy('interface', 'qos/Qos', 'validate_interface', FALSE);
+        $this->form_validation->set_policy('enabled', 'qos/Qos', 'validate_state', FALSE);
+        $this->form_validation->set_policy('priority', 'qos/Qos', 'validate_priority', TRUE);
+        $this->form_validation->set_policy('protocol', 'qos/Qos', 'validate_protocol', TRUE);
+
         $form_ok = $this->form_validation->run();
 
         // Extra validation
