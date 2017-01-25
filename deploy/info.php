@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'qos';
-$app['version'] = '2.1.9';
+$app['version'] = '2.2.0';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -33,7 +33,7 @@ $app['requires'] = array(
 $app['core_requires'] = array(
     'app-base >= 1:2.0.12',
     'app-network-core',
-    'app-firewall-core >= 1:2.0.0',
+    'app-firewall-core >= 1:2.2.21',
 );
 
 $app['core_directory_manifest'] = array(

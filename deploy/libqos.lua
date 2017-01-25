@@ -29,7 +29,7 @@
 --
 ------------------------------------------------------------------------------
 
-QOS_WANIF = {}
+QOS_IFLIST = {}
 
 ------------------------------------------------------------------------------
 --
@@ -294,7 +294,7 @@ function AddRules(direction, ifn, chain_qos, rules, rules_custom)
                     param = param .. "-m multiport "
                 end
                 if rule.saddr ~= "-" then
-                    param = param .. "-s" .. rule.saddr .. " "
+                    param = param .. "-s " .. rule.saddr .. " "
                 end
                 if rule.sport ~= "-" then
                         if multiport_src == false then
@@ -344,10 +344,10 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
     if direction == 1 then
         execute(string.format("%s %s numdevs=%d",
             MODPROBE, "imq",
-            TableCount(QOS_WANIF)))
+            TableCount(QOS_IFLIST)))
     end
 
-    for _, ifn in pairs(QOS_WANIF) do
+    for _, ifn in pairs(QOS_IFLIST) do
         if direction == 0 then
             ifn_name = ifn
             chain_qos = "BWQOS_UP_" .. ifn
@@ -417,7 +417,8 @@ end
 
 function RunBandwidthExternal()
     local ifn
-    local ifn_wan
+    local ifn_qos
+    local ifn_exists
     local r2q
     local rate
     local rate_up = {}
@@ -515,19 +516,42 @@ function RunBandwidthExternal()
     end
 
     for ifn, _ in pairs(rate_up) do
-        for __, ifn_wan in pairs(WANIF_CONFIG) do
-            if ifn == ifn_wan then
-                table.insert(QOS_WANIF, ifn)
+        ifn_exists = false
+        for __, ifn_qos in pairs(QOS_IFLIST) do
+            if ifn == ifn_qos then
+                ifn_exists = true
             end
+        end
+        if ifn_exists ~= true then
+            table.insert(QOS_IFLIST, ifn)
         end
     end
 
-    if TableCount(QOS_WANIF) == 0 then
-        echo("No external interfaces configured for QoS, aborting...")
-        return
+    for ifn, _ in pairs(rate_down) do
+        ifn_exists = false
+        for __, ifn_qos in pairs(QOS_IFLIST) do
+            if ifn == ifn_qos then
+                ifn_exists = true
+            end
+        end
+        if ifn_exists ~= true then
+            table.insert(QOS_IFLIST, ifn)
+        end
     end
 
-    for _, ifn in pairs(QOS_WANIF) do
+    if TableCount(QOS_IFLIST) == 0 then
+        echo("No external interfaces configured for QoS, aborting...")
+        return
+    else
+        TablePrint(QOS_IFLIST)
+    end
+
+    -- Remove any qdisc associated with all configured interfaces
+    for _, ifn in pairs(QOS_IFLIST) do
+        execute(TCBIN .. " qdisc del dev " .. ifn .. " root >/dev/null 2>&1")
+    end
+
+    for _, ifn in pairs(QOS_IFLIST) do
         rate_up[ifn]["min_rate"] = rate_up[ifn]["rate"]
         rate_down[ifn]["min_rate"] = rate_down[ifn]["rate"]
 
@@ -558,12 +582,12 @@ function RunBandwidthExternal()
         end
     end
 
-    for _, ifn in pairs(QOS_WANIF) do
+    for _, ifn in pairs(QOS_IFLIST) do
         if rate_up[ifn]["r2q"] == "auto" then
-            rate_up[ifn]["r2q"] = CalculateRateToQuantum(rate_up[ifn]["min_rate"])
+            rate_up[ifn]["r2q"] = CalculateRateToQuantum(ifn, rate_up[ifn]["min_rate"])
         end
         if rate_down[ifn]["r2q"] == "auto" then
-            rate_down[ifn]["r2q"] = CalculateRateToQuantum(rate_down[ifn]["min_rate"])
+            rate_down[ifn]["r2q"] = CalculateRateToQuantum(ifn, rate_down[ifn]["min_rate"])
         end
     end
 
