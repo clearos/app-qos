@@ -61,32 +61,26 @@ clearos_load_language('network');
 
 use \clearos\apps\base\Engine as Engine;
 use \clearos\apps\base\File as File;
-use \clearos\apps\base\Shell as Shell;
-use \clearos\apps\base\Webconfig as Webconfig;
 use \clearos\apps\firewall\Firewall as Firewall;
 use \clearos\apps\network\Iface as Iface;
+use \clearos\apps\network\Network_Utils as Network_Utils;
 
 clearos_load_library('base/Engine');
 clearos_load_library('base/File');
-clearos_load_library('base/Shell');
-clearos_load_library('base/Webconfig');
 clearos_load_library('firewall/Firewall');
 clearos_load_library('network/Iface');
+clearos_load_library('network/Network_Utils');
 
 // Exceptions
 //-----------
 
-use \clearos\apps\base\Engine_Exception as Engine_Exception;
+use \Exception as Exception;
 use \clearos\apps\base\File_No_Match_Exception as File_No_Match_Exception;
 use \clearos\apps\base\File_Not_Found_Exception as File_Not_Found_Exception;
-use \clearos\apps\base\Validation_Exception as Validation_Exception;
 use \clearos\apps\qos\Prioclass_Limit_Underflow_Exception as Prioclass_Limit_Underflow_Exception;
-use \Exception as Exception;
 
-clearos_load_library('base/Engine_Exception');
 clearos_load_library('base/File_No_Match_Exception');
 clearos_load_library('base/File_Not_Found_Exception');
-clearos_load_library('base/Validation_Exception');
 clearos_load_library('qos/Prioclass_Limit_Underflow_Exception');
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -958,6 +952,30 @@ class Qos extends Engine
         return '';
     }
 
+    public static function validate_interface($iface)
+    {
+        // TODO
+        return '';
+    }
+
+    public static function validate_priority($priority)
+    {
+        // TODO
+        return '';
+    }
+
+    public static function validate_protocol($protocol)
+    {
+        // TODO
+        return '';
+    }
+
+    public static function validate_state($state)
+    {
+        // TODO
+        return '';
+    }
+
     public static function validate_nickname($nickname)
     {
         if (preg_match('/^[A-z0-9_]+$/', $nickname)) return '';
@@ -966,16 +984,22 @@ class Qos extends Engine
 
     public static function validate_address($address)
     {
-        if ($address == '-' || inet_pton($address) !== FALSE) return '';
-        return lang('firewall_address_invalid');
+        if ((! Network_Utils::is_valid_network($address)) && (! Network_Utils::is_valid_ip($address)))
+            return lang('firewall_address_invalid');
     }
 
     public static function validate_port($port)
     {
-        if ($port == '-' ||
-            preg_match('/^[0-9]+$/', $port) ||
-            preg_match('/^[0-9]+:[0-9]+$/', $port) ||
-            preg_match('/^[0-9,]+$/', $port)) return '';
+        if (preg_match('/^[0-9]+$/', $port)) {
+            if (($port > 0) && ($port <= 65535))
+                return '';
+            else
+                return lang('network_port_invalid');
+        }
+
+        if (($port == '-') || preg_match('/^[0-9]+:[0-9]+$/', $port) || preg_match('/^[0-9,]+$/', $port))
+            return '';
+
         return lang('network_port_invalid');
     }
 

@@ -33,3 +33,4 @@ $lang['qos_rate_to_quantum_auto'] = 'Automatic Rate-to-Quantum';
 $lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
 $lang['qos_reset'] = 'Reset';
 $lang['qos_source'] = 'Source';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocol must be set to TCP or UDP if using ports.';
