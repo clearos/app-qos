@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Добавить правило Класс Downstream Priority';
+$lang['qos_add_priomark_upstream_rule'] = 'Добавить Upstream правила приоритета класса';
+$lang['qos_any'] = 'Любые';
+$lang['qos_app_description'] = 'Приложение менеджер полосы пропускания и QoS это сетевая функция, которая позволяет администраторам определить приоритетность определенных типов интернет-трафика. Включение QoS уменьшает вероятность того, что в любой момент времени, один пользователь или устройство может оказывать неблагоприятное воздействие на производительность сети насыщением доступную полосу пропускания.';
+$lang['qos_app_name'] = 'Полоса пропускания и QoS менеджер';
+$lang['qos_destination'] = 'Место назначения';
+$lang['qos_direction'] = 'направление';
+$lang['qos_edit_priomark_downstream_rule'] = 'Редактирование правила класса приоритета Вниз по течению';
+$lang['qos_edit_priomark_upstream_rule'] = 'Редактирование Upstream правила приоритета класса';
+$lang['qos_enable_all'] = 'Включить все';
+$lang['qos_engine_disable'] = 'Отключить двигателя';
+$lang['qos_engine_enable'] = 'Включить двигатель';
+$lang['qos_equalize'] = 'уравнять';
+$lang['qos_interface_add_title'] = 'Добавить конфигурацию внешнего интерфейса';
+$lang['qos_interface_edit_title'] = 'Конфигурация интерфейса Редактировать Внешний';
+$lang['qos_interface_speed_not_set'] = 'Существует либо не вверх по течению или вниз по течению набор для этого интерфейса. Пожалуйста, запустить тест скорости на интерфейсе перед добавлением его к двигателю QoS.';
+$lang['qos_invalid_direction'] = 'Invalid направление.';
+$lang['qos_invalid_limit_value'] = 'Invalid предельное значение.';
+$lang['qos_invalid_r2q'] = 'Неверное значение R2q.';
+$lang['qos_invalid_reservation_value'] = 'Invalid правила бронирования.';
+$lang['qos_name'] = 'имя';
+$lang['qos_not'] = 'Не';
+$lang['qos_prioclass_limit_underflow'] = 'Предельный класс приоритета не может быть установлен на значение, меньшее, чем соответствующее резервирование полосы пропускания. Обратитесь к руководству пользователя для получения дополнительной информации. Предел сгущенного обнаружено класса приоритета #';
+$lang['qos_priomark_downstream_rules'] = 'Правила класса Downstream Priority';
+$lang['qos_priomark_invalid_interface'] = 'Неверный или несконфигурированным внешний интерфейс.';
+$lang['qos_priomark_not_found'] = 'Правило класс приоритета не найден';
+$lang['qos_priomark_upstream_rules'] = 'Правила класса Upstream Приоритетные';
+$lang['qos_priority'] = 'приоритет';
+$lang['qos_ramp'] = 'Скат';
+$lang['qos_rate_to_quantum_auto'] = 'Автоматический Rate к Quantum';
+$lang['qos_rate_to_quantum'] = 'Скорость к Quantum';
+$lang['qos_reset'] = 'Сброс';
+$lang['qos_source'] = 'Источник';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Протокол должен быть установлен TCP или UDP при использовании портов.';
