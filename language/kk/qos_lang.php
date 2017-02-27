@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Downstream басымдық Сынып ереже қосу';
+$lang['qos_add_priomark_upstream_rule'] = 'Upstream басымдық Сынып ереже қосу';
+$lang['qos_any'] = 'Кез келген';
+$lang['qos_app_description'] = 'Өткізу жолағы және QoS менеджері қолданба әкімшілері интернет-трафик жекелеген түрлерін басымдық мүмкіндік беретін желілік функциясы болып табылады. QoS қосу кез келген уақытта, бір пайдаланушы немесе құрылғы қол жетімді өткізу мүмкіндігін үлкеюін желі жұмысын нашарлатуы мүмкін ықтималдығын азайтады.';
+$lang['qos_app_name'] = 'Өткізу жолағы және QoS менеджері';
+$lang['qos_destination'] = 'тағайындалған орын';
+$lang['qos_direction'] = 'бағыт';
+$lang['qos_edit_priomark_downstream_rule'] = 'Downstream басымдық Сынып ережені өңдеу';
+$lang['qos_edit_priomark_upstream_rule'] = 'Upstream басымдық Сынып ережені өңдеу';
+$lang['qos_enable_all'] = 'Бәрін қосу';
+$lang['qos_engine_disable'] = 'өшіру Қозғалтқыш';
+$lang['qos_engine_enable'] = 'Қозғалтқышты қосу';
+$lang['qos_equalize'] = 'теңестіруге';
+$lang['qos_interface_add_title'] = 'Сыртқы интерфейсінің конфигурация қосу';
+$lang['qos_interface_edit_title'] = 'Өңдеу Сыртқы интерфейсінің конфигурация';
+$lang['qos_interface_speed_not_set'] = 'Осы интерфейсіне арналған кіру немесе шығу емес жиынтығы, не бар. QoS қозғалтқыштың қосу алдында интерфейсінде Speed ​​Test іске сұраймыз.';
+$lang['qos_invalid_direction'] = 'Жарамсыз бағыт.';
+$lang['qos_invalid_limit_value'] = 'Жарамсыз шекті мәні.';
+$lang['qos_invalid_r2q'] = 'Жарамсыз r2q мәні.';
+$lang['qos_invalid_reservation_value'] = 'Жарамсыз ереже брондау.';
+$lang['qos_name'] = 'ат';
+$lang['qos_not'] = 'емес';
+$lang['qos_prioclass_limit_underflow'] = 'Басымдық класс шегі тиісті өткізу жолағын резервтеу кем мәнге орнату мүмкін емес. Қосымша ақпарат алу үшін пайдаланушы нұсқаулығынан қараңыз. Limit термеген басым класс # үшін анықталған';
+$lang['qos_priomark_downstream_rules'] = 'Downstream басымдық Сынып ережесі';
+$lang['qos_priomark_invalid_interface'] = 'Жарамсыз немесе Теңшелмей сыртқы интерфейс.';
+$lang['qos_priomark_not_found'] = 'Басымдылық класс ереже табылған жоқ';
+$lang['qos_priomark_upstream_rules'] = 'Upstream басымдық Сынып ережесі';
+$lang['qos_priority'] = 'басымдық';
+$lang['qos_ramp'] = 'құлама';
+$lang['qos_rate_to_quantum_auto'] = 'Автоматты Rate үшін кванттық';
+$lang['qos_rate_to_quantum'] = 'Rate үшін кванттық';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'қайнар көз';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Хаттама порттары пайдаланған жағдайда TCP немесе UDP орнатылған болуы тиіс.';
