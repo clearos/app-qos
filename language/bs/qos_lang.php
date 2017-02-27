@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Dodaj Nizvodno Prioritet klasa pravilo';
+$lang['qos_add_priomark_upstream_rule'] = 'Dodaj Uzvodno Prioritet klasa pravilo';
+$lang['qos_any'] = 'bilo koji';
+$lang['qos_app_description'] = 'Propusnost i QoS Manager aplikaciju je funkcija mreže koja omogućava administratorima da prioritet određene vrste Internet saobraćaja. Omogućavanje QoS smanjuje vjerojatnost da u svakom trenutku, jednog korisnika ili uređaj može degradirati performanse mreže zasićenje dostupna propusnost.';
+$lang['qos_app_name'] = 'Propusnost i QoS Manager';
+$lang['qos_destination'] = 'odredište';
+$lang['qos_direction'] = 'pravac';
+$lang['qos_edit_priomark_downstream_rule'] = 'Uredite Nizvodno Prioritet klasa pravilo';
+$lang['qos_edit_priomark_upstream_rule'] = 'Uredite Uzvodno Prioritet klasa pravilo';
+$lang['qos_enable_all'] = 'omogućiti svim';
+$lang['qos_engine_disable'] = 'Onemogući motora';
+$lang['qos_engine_enable'] = 'Enable motora';
+$lang['qos_equalize'] = 'izjednačiti';
+$lang['qos_interface_add_title'] = 'Dodaj External Interface Konfiguracija';
+$lang['qos_interface_edit_title'] = 'Uredi External Interface Konfiguracija';
+$lang['qos_interface_speed_not_set'] = 'Tu je ili nije uzvodno ili nizvodno set za ovo sučelje. Pokrenite test brzine na interfejsu prije dodavanja ga motor QoS.';
+$lang['qos_invalid_direction'] = 'Nevažeći pravcu.';
+$lang['qos_invalid_limit_value'] = 'Nevažeći granična vrijednost.';
+$lang['qos_invalid_r2q'] = 'Nevažeći r2q vrijednost.';
+$lang['qos_invalid_reservation_value'] = 'Nevažeći pravilo rezervacije.';
+$lang['qos_name'] = 'ime';
+$lang['qos_not'] = 'ne';
+$lang['qos_prioclass_limit_underflow'] = 'A granica prioritet klase se ne može postaviti na vrijednost manja od odgovarajuće rezervacije propusnost. Pogledajte Vodič za korisnike za više informacija. Limit podljev otkrivene za prioritetne klase #';
+$lang['qos_priomark_downstream_rules'] = 'Nizvodno Prioritet Class Rules';
+$lang['qos_priomark_invalid_interface'] = 'Nevažeća ili konfigurirani vanjski sučelje.';
+$lang['qos_priomark_not_found'] = 'Prioritet pravilo klase nije pronađen';
+$lang['qos_priomark_upstream_rules'] = 'Uzvodno Prioritet Class Rules';
+$lang['qos_priority'] = 'prioritet';
+$lang['qos_ramp'] = 'Rampa';
+$lang['qos_rate_to_quantum_auto'] = 'Automatski Rate-u-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'Resetovati';
+$lang['qos_source'] = 'izvor';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokol mora biti postavljen na TCP ili UDP ako se koristi portove.';
