@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'ເພີ່ມກົດ Class ເຂດລຸ່ມແມ່ນໍ້າບູລິມະສິດ';
+$lang['qos_add_priomark_upstream_rule'] = 'ຕື່ມການກຽ່ວສໍາຄັນກົດລະບຽບ Class';
+$lang['qos_any'] = 'ໃດ';
+$lang['qos_app_description'] = 'ວາງຂອງສັນຍານແລະ QoS app Manager ແມ່ນຄຸນນະສົມບັດການເຄືອຂ່າຍທີ່ອະນຸຍາດໃຫ້ຜູ້ບໍລິຫານບໍລິຫານປະເພດໃດຫນຶ່ງຂອງການຈະລາຈອນອິນເຕີເນັດ. ເຮັດໃຫ້ QoS ຫຼຸດລົງຄວາມເປັນໄປໄດ້ວ່າໃນເວລາໃດກໍຕາມ, ຜູ້ໃຊ້ຄົນດຽວຫລືອຸປະກອນອາດຈະລົດປະສິດທິພາບເຄືອຂ່າຍໂດຍການອີ່ມຕົວວາງຂອງສັນຍານທີ່ມີຢູ່.';
+$lang['qos_app_name'] = 'ວາງຂອງສັນຍານແລະ QoS Manager';
+$lang['qos_destination'] = 'ຈຸດຫມາຍປາຍທາງ';
+$lang['qos_direction'] = 'ທິດທາງ';
+$lang['qos_edit_priomark_downstream_rule'] = 'ແກ້ໄຂກົດລະບຽບ Class ເຂດລຸ່ມແມ່ນໍ້າບູລິມະສິດ';
+$lang['qos_edit_priomark_upstream_rule'] = 'ແກ້ໄຂຂັ້ນຕົ້ນບູລິມະສິດລະດັບ';
+$lang['qos_enable_all'] = 'ເຮັດໃຫ້ທັງຫມົດ';
+$lang['qos_engine_disable'] = 'ປິດການໃຊ້ງານເຄື່ອງຈັກ';
+$lang['qos_engine_enable'] = 'ເຮັດໃຫ້ເຄື່ອງຈັກ';
+$lang['qos_equalize'] = 'ເທົ່າກັນ';
+$lang['qos_interface_add_title'] = 'ເພີ່ມການຕັ້ງຄ່າການເຊື່ອມຕໍ່ພາຍນອກ';
+$lang['qos_interface_edit_title'] = 'ແກ້ໄຂການຕັ້ງຄ່າການເຊື່ອມຕໍ່ພາຍນອກ';
+$lang['qos_interface_speed_not_set'] = 'ມີອາດຈະບໍ່ກໍານົດໄວ້ນ້ໍາຫຼືເຂດສໍາລັບການໂຕ້ຕອບນີ້ແມ່ນ. ກະລຸນາດໍາເນີນການເປັນການທົດສອບຄວາມໄວໃນການໂຕ້ຕອບກ່ອນທີ່ຈະເພີ່ມມັນກັບເຄື່ອງຈັກ QoS.';
+$lang['qos_invalid_direction'] = 'ທິດທາງທີ່ບໍ່ຖືກຕ້ອງ.';
+$lang['qos_invalid_limit_value'] = 'ຄາຈໍາກັດທີ່ບໍ່ຖືກຕ້ອງ.';
+$lang['qos_invalid_r2q'] = 'ມູນຄ່າ r2q ບໍ່ຖືກຕ້ອງ.';
+$lang['qos_invalid_reservation_value'] = 'ກົດລະບຽບການສັ່ງຈອງທີ່ບໍ່ຖືກຕ້ອງ.';
+$lang['qos_name'] = 'ຊື່';
+$lang['qos_not'] = 'ບໍ່';
+$lang['qos_prioclass_limit_underflow'] = 'A ກໍານົດຂອບເຂດລະດັບບູລິມະສິດບໍ່ສາມາດໄດ້ຮັບການກໍານົດການມູນຄ່າຫນ້ອຍກ່ວາການສັ່ງຈອງວາງຂອງສັນຍານທີ່ສອດຄ້ອງກັນ. ເບິ່ງຄູ່ມືຂອງຜູ້ໃຊ້ສໍາລັບຂໍ້ມູນເພີ່ມເຕີມ. ຂອບເຂດຈໍາກັດ underflow ກວດພົບສໍາລັບລະດັບບູລິມະສິດ:';
+$lang['qos_priomark_downstream_rules'] = 'ກົດລະບຽບການຫ້ອງນ້ໍາບູລິມະສິດ';
+$lang['qos_priomark_invalid_interface'] = 'ການໂຕ້ຕອບພາຍນອກທີ່ບໍ່ຖືກຕ້ອງຫຼື unconfigured.';
+$lang['qos_priomark_not_found'] = 'ບໍ່ໄດ້ພົບເຫັນການປົກຄອງລະດັບບູລິມະສິດ';
+$lang['qos_priomark_upstream_rules'] = 'ກົດລະບຽບການຫ້ອງນ້ໍາບູລິມະສິດ';
+$lang['qos_priority'] = 'ບູລິມະສິດ';
+$lang['qos_ramp'] = 'ramp';
+$lang['qos_rate_to_quantum_auto'] = 'ອັດຕະໂນມັດອັດຕາທີ່ຈະມີການ Quantum';
+$lang['qos_rate_to_quantum'] = 'ອັດຕາການກັບ Quantum';
+$lang['qos_reset'] = 'ປັບ';
+$lang['qos_source'] = 'ແຫຼ່ງຂໍ້ມູນ';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'ອະນຸສັນຍາຕ້ອງໄດ້ຮັບການກໍານົດໄວ້ເພື່ອ TCP ຫຼື UDP ຖ້າຫາກວ່າການນໍາໃຊ້ທ່າເຮືອ.';
