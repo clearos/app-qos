@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Προσθέστε Class Κανόνας μεταγενέστεροι Προτεραιότητα';
+$lang['qos_add_priomark_upstream_rule'] = 'Προσθέστε Upstream Class κανόνα προτεραιότητας';
+$lang['qos_any'] = 'Οποιος';
+$lang['qos_app_description'] = 'Η εφαρμογή Διαχείριση Bandwidth και QoS είναι μια λειτουργία δικτύου που επιτρέπει στους διαχειριστές να δώσουν προτεραιότητα σε ορισμένους τύπους της κίνησης στο Διαδίκτυο. Ενεργοποίηση QoS μειώνει την πιθανότητα ότι σε κάθε δεδομένη στιγμή, ένα μόνο χρήστη ή συσκευή μπορεί να υποβαθμίσει την απόδοση του δικτύου από κορεσμό διαθέσιμο εύρος ζώνης.';
+$lang['qos_app_name'] = 'Εύρους ζώνης και QoS Διαχειριστή';
+$lang['qos_destination'] = 'Προορισμός';
+$lang['qos_direction'] = 'Κατεύθυνση';
+$lang['qos_edit_priomark_downstream_rule'] = 'Επεξεργαστείτε Class Κανόνας μεταγενέστεροι Προτεραιότητα';
+$lang['qos_edit_priomark_upstream_rule'] = 'Επεξεργαστείτε Upstream Class κανόνα προτεραιότητας';
+$lang['qos_enable_all'] = 'Ενεργοποίηση όλων';
+$lang['qos_engine_disable'] = 'Απενεργοποίηση κινητήρα';
+$lang['qos_engine_enable'] = 'Ενεργοποίηση του κινητήρα';
+$lang['qos_equalize'] = 'εξισώσει';
+$lang['qos_interface_add_title'] = 'Προσθήκη διαμόρφωσης Εξωτερικές Interface';
+$lang['qos_interface_edit_title'] = 'Επεξεργασία Διαμόρφωση Εξωτερικού Interface';
+$lang['qos_interface_speed_not_set'] = 'Δεν υπάρχει είτε δεν ανάντη ή κατάντη σετ για τη διασύνδεση αυτή. Παρακαλείστε να εκτελέσετε μια δοκιμή ταχύτητας για το περιβάλλον πριν από την προσθήκη του κινητήρα QoS.';
+$lang['qos_invalid_direction'] = 'Μη έγκυρη διεύθυνση.';
+$lang['qos_invalid_limit_value'] = 'Μη έγκυρη οριακή τιμή.';
+$lang['qos_invalid_r2q'] = 'Μη έγκυρη τιμή r2q.';
+$lang['qos_invalid_reservation_value'] = 'Μη έγκυρη κανόνα κράτησης.';
+$lang['qos_name'] = 'Ονομα';
+$lang['qos_not'] = 'Δεν';
+$lang['qos_prioclass_limit_underflow'] = 'Ένα όριο κατηγορία προτεραιότητας δεν μπορεί να ρυθμιστεί σε μια τιμή μικρότερη από την αντίστοιχη κράτηση εύρος ζώνης. Δείτε τον Οδηγό χρήσης για περισσότερες πληροφορίες. Όριο υποχείλισης ανιχνεύονται για την κατηγορία προτεραιότητας #';
+$lang['qos_priomark_downstream_rules'] = 'Κανόνες Κατηγορίας κατάντη Προτεραιότητα';
+$lang['qos_priomark_invalid_interface'] = 'Άκυρη ή μη διαμορφωμένο εξωτερικό περιβάλλον εργασίας.';
+$lang['qos_priomark_not_found'] = 'κανόνας προτεραιότητας τάξη δεν βρέθηκε';
+$lang['qos_priomark_upstream_rules'] = 'Κανόνες Κατηγορίας ανάντη Προτεραιότητα';
+$lang['qos_priority'] = 'Προτεραιότητα';
+$lang['qos_ramp'] = 'Αναβαθμίδα';
+$lang['qos_rate_to_quantum_auto'] = 'Αυτόματη Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'Επαναφορά';
+$lang['qos_source'] = 'Πηγή';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Πρωτόκολλο πρέπει να οριστεί σε TCP ή UDP και αν χρησιμοποιούν τα λιμάνια.';
