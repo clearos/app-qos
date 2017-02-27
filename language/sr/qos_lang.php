@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Додај Низводно Приоритет класне владавине';
+$lang['qos_add_priomark_upstream_rule'] = 'Додај Упстреам Приоритет класне владавине';
+$lang['qos_any'] = 'Било који';
+$lang['qos_app_description'] = 'Пропусни опсег и КоС Апликација Менаџер је функција мреже која омогућава администраторима да одреде приоритете одређене врсте Интернет саобраћаја. Омогућавање КоС смањује вероватноћу да у сваком тренутку, један корисник или уређај може да деградира перформансе мреже од засићења пропусност.';
+$lang['qos_app_name'] = 'Пропусни опсег и КоС директор';
+$lang['qos_destination'] = 'дестинација';
+$lang['qos_direction'] = 'Правац';
+$lang['qos_edit_priomark_downstream_rule'] = 'Измена Низводно Приоритет класне владавине';
+$lang['qos_edit_priomark_upstream_rule'] = 'Измена Упстреам Приоритет класне владавине';
+$lang['qos_enable_all'] = 'Омогући све';
+$lang['qos_engine_disable'] = 'дисабле Мотор';
+$lang['qos_engine_enable'] = 'Омогући Енгине';
+$lang['qos_equalize'] = 'изједначити';
+$lang['qos_interface_add_title'] = 'Додати екстерну Интерфаце Цонфигуратион';
+$lang['qos_interface_edit_title'] = 'Едит Спољни Интерфејс Конфигурација';
+$lang['qos_interface_speed_not_set'] = 'Не постоји ни не узводно или низводно спремно за овај интерфејс. Молимо Вас да пре додавања у КоС механизам водити Спеед Тест на интерфејсу.';
+$lang['qos_invalid_direction'] = 'Инвалид правац.';
+$lang['qos_invalid_limit_value'] = 'Инвалид Гранична вредност.';
+$lang['qos_invalid_r2q'] = 'Инвалид р2к вредност.';
+$lang['qos_invalid_reservation_value'] = 'Инвалид резервације правило.';
+$lang['qos_name'] = 'име';
+$lang['qos_not'] = 'Не';
+$lang['qos_prioclass_limit_underflow'] = 'Лимит Приоритет класа не може да се подеси на вредност мања од одговарајуће резерве пропусни опсег. Погледајте упутство за употребу за више информација. Лимит ундерфлов открије приоритет класе #';
+$lang['qos_priomark_downstream_rules'] = 'Низводно Приоритетни Цласс Правила';
+$lang['qos_priomark_invalid_interface'] = 'Инвалид или неконфигурираног спољни интерфејс.';
+$lang['qos_priomark_not_found'] = 'Приоритет класа правило није пронађен';
+$lang['qos_priomark_upstream_rules'] = 'Узводно Приоритетни Цласс Правила';
+$lang['qos_priority'] = 'приоритет';
+$lang['qos_ramp'] = 'рампа';
+$lang['qos_rate_to_quantum_auto'] = 'Аутоматски курс-на-Куантум';
+$lang['qos_rate_to_quantum'] = 'Стопа-за-Куантум';
+$lang['qos_reset'] = 'Ресетовати';
+$lang['qos_source'] = 'Извор';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Протокол мора бити постављен на ТЦП или УДП ако користите луке.';
