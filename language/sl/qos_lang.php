@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Dodaj nadaljnjega prioritetnega razreda člen';
+$lang['qos_add_priomark_upstream_rule'] = 'Dodaj v smeri proti toku prioritetnega razreda člen';
+$lang['qos_any'] = 'Kaj';
+$lang['qos_app_description'] = 'Pasovne širine in QoS Manager app je omrežna funkcija, ki omogoča skrbnikom, da prednost nekaterih vrst internetnega prometa. Omogočanje QoS zmanjšuje verjetnost, da v danem trenutku, lahko en uporabnik ali naprava poslabša učinkovitost delovanja omrežja, ki jih prepojila razpoložljive pasovne širine.';
+$lang['qos_app_name'] = 'Pasovno širino in QoS direktor';
+$lang['qos_destination'] = 'destinacija';
+$lang['qos_direction'] = 'smer';
+$lang['qos_edit_priomark_downstream_rule'] = 'Urejanje nadaljnjega prioritetnega razreda člen';
+$lang['qos_edit_priomark_upstream_rule'] = 'Urejanje gorvodno prioritetnega razreda člen';
+$lang['qos_enable_all'] = 'Omogoči vse';
+$lang['qos_engine_disable'] = 'Onemogoči motorja';
+$lang['qos_engine_enable'] = 'Omogoči Motor';
+$lang['qos_equalize'] = 'izenačiti';
+$lang['qos_interface_add_title'] = 'Dodaj Configuration zunanji vmesnik';
+$lang['qos_interface_edit_title'] = 'Edit Configuration Zunanji vmesnik';
+$lang['qos_interface_speed_not_set'] = 'Je bodisi ni višje ali nižje set za ta vmesnik. Prosimo teči Speed ​​test na vmesniku, preden ga dodate na motorju QoS.';
+$lang['qos_invalid_direction'] = 'Neveljavna smer.';
+$lang['qos_invalid_limit_value'] = 'Neveljavna mejna vrednost.';
+$lang['qos_invalid_r2q'] = 'Neveljavna vrednost r2q.';
+$lang['qos_invalid_reservation_value'] = 'Neveljavna pravilo rezervacije.';
+$lang['qos_name'] = 'ime';
+$lang['qos_not'] = 'ne';
+$lang['qos_prioclass_limit_underflow'] = 'Omejitev prioritetni razred ni mogoče nastaviti na vrednost, ki je nižja od ustrezne rezervacijo pasovne širine. Preberite priročnik za več informacij. Omejitev underflow zaznal za prednostni razred #';
+$lang['qos_priomark_downstream_rules'] = 'Pravila razreda nižji stopnji Prednostne';
+$lang['qos_priomark_invalid_interface'] = 'Neveljavno ali nenastavljen zunanji vmesnik.';
+$lang['qos_priomark_not_found'] = 'Pravilo razred prednostna naloga ni bilo mogoče najti';
+$lang['qos_priomark_upstream_rules'] = 'Pravila razreda Upstream Prednostne';
+$lang['qos_priority'] = 'Prednost';
+$lang['qos_ramp'] = 'rampa';
+$lang['qos_rate_to_quantum_auto'] = 'Samodejno Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Stopnja do Quantum';
+$lang['qos_reset'] = 'Ponastaviti';
+$lang['qos_source'] = 'vir';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokol mora biti nastavljena na TCP ali UDP, če uporabljajo pristanišča.';
