@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Downstream Priority Class Qayda əlavə et';
+$lang['qos_add_priomark_upstream_rule'] = 'Upstream Priority Class Qayda əlavə et';
+$lang['qos_any'] = 'Hər hansı';
+$lang['qos_app_description'] = 'Bandwidth və QoS Manager app idarəçilər internet-trafikin müəyyən növ prioritet imkan verir ki, şəbəkə xüsusiyyətidir. QoS imkan hər hansı bir zamanda, bir istifadəçi və ya cihaz mövcud bant saturating şəbəkə performansını rüsvay edə bilər ehtimalını azaldır.';
+$lang['qos_app_name'] = 'Bandwidth və QoS Manager';
+$lang['qos_destination'] = 'Destination';
+$lang['qos_direction'] = 'istiqamət';
+$lang['qos_edit_priomark_downstream_rule'] = 'Downstream Priority Class qaydası redaktə';
+$lang['qos_edit_priomark_upstream_rule'] = 'Upstream Priority Class qaydası redaktə';
+$lang['qos_enable_all'] = 'bütün imkan';
+$lang['qos_engine_disable'] = 'Disable Engine';
+$lang['qos_engine_enable'] = 'Engine Enable';
+$lang['qos_equalize'] = 'bərabərləşdirmək';
+$lang['qos_interface_add_title'] = 'Xarici Interface Konfiqurasiya əlavə et';
+$lang['qos_interface_edit_title'] = 'Edit Xarici Interface Configuration';
+$lang['qos_interface_speed_not_set'] = 'Bu interfeys üçün upstream və ya aşağı set bilərsiniz var. QoS mühərrik üçün əlavə əvvəl interfeysi bir Speed ​​Test çalıştırın.';
+$lang['qos_invalid_direction'] = 'Yanlış istiqamətdə.';
+$lang['qos_invalid_limit_value'] = 'Yanlış limit dəyəri.';
+$lang['qos_invalid_r2q'] = 'Yanlış r2q dəyəri.';
+$lang['qos_invalid_reservation_value'] = 'Yanlış şərt qayda.';
+$lang['qos_name'] = 'ad';
+$lang['qos_not'] = 'yox';
+$lang['qos_prioclass_limit_underflow'] = 'A prioritet sinif limit müvafiq bant sifarişi az bir dəyəri müəyyən edilə bilməz. Daha ətraflı məlumat üçün istifadəçi təlimatına baxın. Limit underflow prioritet sinif # təsbit';
+$lang['qos_priomark_downstream_rules'] = 'Downstream Priority Class qaydaları';
+$lang['qos_priomark_invalid_interface'] = 'Yanlış və ya Yapılandırılmamış xarici interface.';
+$lang['qos_priomark_not_found'] = 'Priority sinif qayda tapılmadı';
+$lang['qos_priomark_upstream_rules'] = 'Upstream Priority Class qaydaları';
+$lang['qos_priority'] = 'Prioritet';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Avtomatik Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'mənbə';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'port istifadə əgər Protocol TCP və ya UDP olmalıdır.';
