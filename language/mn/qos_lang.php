@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Доош чиглэсэн Priority ангиллын дүрэм нэмж бичээрэй';
+$lang['qos_add_priomark_upstream_rule'] = 'Дээд талын тэргүүлэх ангиллын дүрэм нэмж бичээрэй';
+$lang['qos_any'] = 'аливаа';
+$lang['qos_app_description'] = 'Хурд ба QoS Manager апп администраторууд интернэт урсгалын тодорхой төрлийн ач холбогдлоор нь эрэмбэлэх боломжийг олгодог сүлжээний боломж юм. QoS идэвхжүүлэх нь ямар ч үед, нэг хэрэглэгч эсвэл төхөөрөмжийн бэлэн зурвасын өргөнийг дуусгах сүлжээний үйл ажиллагааг доройтуулах болох магадлалыг бууруулдаг.';
+$lang['qos_app_name'] = 'Хурд ба QoS менежер';
+$lang['qos_destination'] = 'Destination';
+$lang['qos_direction'] = 'чиглэл';
+$lang['qos_edit_priomark_downstream_rule'] = 'Доош чиглэсэн Priority ангиллын дүрэм засварлах';
+$lang['qos_edit_priomark_upstream_rule'] = 'Дээд талын тэргүүлэх ангиллын дүрэм засварлах';
+$lang['qos_enable_all'] = 'Бүгдийг идэвхжүүлэх';
+$lang['qos_engine_disable'] = 'идэвхгүй Engine';
+$lang['qos_engine_enable'] = 'Engine идэвхжүүлэх';
+$lang['qos_equalize'] = 'тэнцүүлж';
+$lang['qos_interface_add_title'] = 'Гадаад интерфэйс тохиргоог нэмэх';
+$lang['qos_interface_edit_title'] = 'Засах гадаад интерфэйс тохиргоо';
+$lang['qos_interface_speed_not_set'] = 'Энэ интерфэйс төлөө бус дээд, эсвэл доод багц бас байдаг. QoS хөдөлгүүртэй үүнийг нэмэхээсээ өмнө интерфэйс дээр нь хурд туршилтын ажиллуулна уу.';
+$lang['qos_invalid_direction'] = 'Буруу чиглэл.';
+$lang['qos_invalid_limit_value'] = 'Буруу хязгаар утга.';
+$lang['qos_invalid_r2q'] = 'Буруу r2q утга.';
+$lang['qos_invalid_reservation_value'] = 'захиалга дүрэм буруу.';
+$lang['qos_name'] = 'нэр';
+$lang['qos_not'] = 'бус,';
+$lang['qos_prioclass_limit_underflow'] = 'A ахлах анги хязгаар нь тухайн зурвасын өргөнийг тайлбар хүрэхгүй нь утгыг тогтоож чадахгүй байна. Дэлгэрэнгүй мэдээллийг хэрэглэгчийн гарын авлага үзнэ үү. Хязгаар шандны ахлах анги # нь илэрсэн';
+$lang['qos_priomark_downstream_rules'] = 'Адаг Priority ангиллын дүрэм';
+$lang['qos_priomark_invalid_interface'] = 'Буруу эсвэл unconfigured гадаад интерфэйс юм.';
+$lang['qos_priomark_not_found'] = 'Тэргүүлэх зэрэг дүрэм олж чадаагүй';
+$lang['qos_priomark_upstream_rules'] = 'Дээд талын Priority ангиллын дүрэм';
+$lang['qos_priority'] = 'тэргүүлэх';
+$lang['qos_ramp'] = 'налуу';
+$lang['qos_rate_to_quantum_auto'] = 'Автомат Rate-тулд-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-тулд-Quantum';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'Эх сурвалж';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'портуудыг ашигладаг бол протокол TCP эсвэл UDP тохируулсан байх ёстой.';
