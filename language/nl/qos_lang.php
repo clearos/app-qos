@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Voeg Downstream Priority Class Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Voeg Upstream Priority Class Rule';
+$lang['qos_any'] = 'Ieder';
+$lang['qos_app_description'] = 'De bandbreedte en QoS Manager app is een netwerkfunctie waarmee beheerders prioriteit bepaalde vormen van internetverkeer. Waardoor QoS vermindert de waarschijnlijkheid dat op een bepaald moment één gebruiker of apparaat kan netwerkprestatie verslechteren door verzadigen beschikbare bandbreedte.';
+$lang['qos_app_name'] = 'Bandbreedte en QoS Manager';
+$lang['qos_destination'] = 'Bestemming';
+$lang['qos_direction'] = 'Richting';
+$lang['qos_edit_priomark_downstream_rule'] = 'Bewerk Downstream Priority Class Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Bewerk Upstream Priority Class Rule';
+$lang['qos_enable_all'] = 'Schakel alles in';
+$lang['qos_engine_disable'] = 'uitschakelen Engine';
+$lang['qos_engine_enable'] = 'inschakelen Engine';
+$lang['qos_equalize'] = 'vereffenen';
+$lang['qos_interface_add_title'] = 'Schrijven Externe Interface Configuration';
+$lang['qos_interface_edit_title'] = 'Bewerken Externe Interface Configuration';
+$lang['qos_interface_speed_not_set'] = 'Er is ofwel niet stroomopwaarts of stroomafwaarts set voor deze interface. Voert u een Speed ​​Test op de interface voordat u deze aan de QoS motor.';
+$lang['qos_invalid_direction'] = 'Ongeldige richting.';
+$lang['qos_invalid_limit_value'] = 'Ongeldige grenswaarde.';
+$lang['qos_invalid_r2q'] = 'Ongeldige r2q waarde.';
+$lang['qos_invalid_reservation_value'] = 'Ongeldige reservering regel.';
+$lang['qos_name'] = 'Naam';
+$lang['qos_not'] = 'Niet';
+$lang['qos_prioclass_limit_underflow'] = 'Een prioriteit klasse limiet kan niet worden ingesteld op een waarde van minder dan de overeenkomstige bandbreedte reserveren. Zie de gebruikershandleiding voor meer informatie. Limiet onderstroom gedetecteerd prioriteit klasse #';
+$lang['qos_priomark_downstream_rules'] = 'Downstream Priority Class Rules';
+$lang['qos_priomark_invalid_interface'] = 'Ongeldige of niet-geconfigureerde externe interface.';
+$lang['qos_priomark_not_found'] = 'Priority klasse regel niet gevonden';
+$lang['qos_priomark_upstream_rules'] = 'Upstream Priority Class Rules';
+$lang['qos_priority'] = 'Prioriteit';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Automatische Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'Bron';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocol moet worden ingesteld op TCP of UDP bij gebruik van havens.';
