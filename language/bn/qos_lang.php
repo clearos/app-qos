@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'ভাটির অগ্রাধিকার ক্লাস বিধি যুক্ত করুন';
+$lang['qos_add_priomark_upstream_rule'] = 'আপস্ট্রিম অগ্রাধিকার ক্লাস বিধি যুক্ত করুন';
+$lang['qos_any'] = 'কোন';
+$lang['qos_app_description'] = 'ব্যান্ডউইথ এবং QoS ম্যানেজার অ্যাপ্লিকেশন একটি নেটওয়ার্ক বৈশিষ্ট্য যে অ্যাডমিনিস্ট্রেটররা ইন্টারনেট ট্রাফিকের নির্দিষ্ট ধরনের অগ্রাধিকার করতে সক্ষম হবেন. QoS সক্ষম করা হলে তা যে সম্ভাবনা যেকোন প্রদত্ত সময়ে, একটি একক ব্যবহারকারী বা ডিভাইস উপলব্ধ ব্যান্ডউইথ saturating দ্বারা নেটওয়ার্ক কর্মক্ষমতা অধ: পতন হতে পারে হ্রাস পায়.';
+$lang['qos_app_name'] = 'ব্যান্ডউইথ এবং QoS ম্যানেজার';
+$lang['qos_destination'] = 'গন্তব্য';
+$lang['qos_direction'] = 'অভিমুখ';
+$lang['qos_edit_priomark_downstream_rule'] = 'সম্পাদনা ডাউনস্ট্রীম অগ্রাধিকার ক্লাস রুল';
+$lang['qos_edit_priomark_upstream_rule'] = 'সম্পাদনা আপস্ট্রিম অগ্রাধিকার ক্লাস রুল';
+$lang['qos_enable_all'] = 'সকল সক্রিয়';
+$lang['qos_engine_disable'] = 'নিষ্ক্রিয় ইঞ্জিন';
+$lang['qos_engine_enable'] = 'ইঞ্জিন সক্রিয়';
+$lang['qos_equalize'] = 'সমকক্ষ করা';
+$lang['qos_interface_add_title'] = 'বাহ্যিক ইন্টারফেস কনফিগারেশন যোগ';
+$lang['qos_interface_edit_title'] = 'সম্পাদনা বাহ্যিক ইন্টারফেস কনফিগারেশন';
+$lang['qos_interface_speed_not_set'] = 'এই ইন্টারফেসের জন্য পারেন না উজানে বা স্রোতবরাবর সেট. QoS মধ্যে ইঞ্জিন থেকে এটি যোগ করার আগে ইন্টারফেসে একটি স্পিড টেস্ট চালনা করুন.';
+$lang['qos_invalid_direction'] = 'অবৈধ দিক.';
+$lang['qos_invalid_limit_value'] = 'অবৈধ সীমা মান.';
+$lang['qos_invalid_r2q'] = 'অবৈধ r2q মান.';
+$lang['qos_invalid_reservation_value'] = 'অবৈধ রিজার্ভেশন নিয়ম.';
+$lang['qos_name'] = 'নাম';
+$lang['qos_not'] = 'না';
+$lang['qos_prioclass_limit_underflow'] = 'একটি অগ্রাধিকার বর্গ সীমা সংশ্লিষ্ট ব্যান্ডউইডথ সংরক্ষণ কম মান নির্ধারণ করা যাবে না. আরও তথ্যের জন্য ইউজার গাইড দেখুন. সীমা underflow অগ্রাধিকার বর্গ # শনাক্ত';
+$lang['qos_priomark_downstream_rules'] = 'স্রোতবরাবর অগ্রাধিকার ক্লাস বিধি';
+$lang['qos_priomark_invalid_interface'] = 'অবৈধ বা অনির্দিষ্ট গঠনতন্ত্রের বাহ্যিক ইন্টারফেস.';
+$lang['qos_priomark_not_found'] = 'অগ্রাধিকার বর্গ নিয়ম পাওয়া যায়নি';
+$lang['qos_priomark_upstream_rules'] = 'আপস্ট্রিম অগ্রাধিকার ক্লাস বিধি';
+$lang['qos_priority'] = 'অগ্রাধিকার';
+$lang['qos_ramp'] = 'র্যাম্প';
+$lang['qos_rate_to_quantum_auto'] = 'স্বয়ংক্রিয় হার টু কোয়ান্টাম';
+$lang['qos_rate_to_quantum'] = 'হার টু কোয়ান্টাম';
+$lang['qos_reset'] = 'রিসেট';
+$lang['qos_source'] = 'উৎস';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'যদি পোর্ট ব্যবহার প্রোটোকল TCP অথবা UDP স্থাপন করা আবশ্যক.';
