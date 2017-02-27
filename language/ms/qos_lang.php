@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Tambahkan Keutamaan Hiliran Kelas Peraturan';
+$lang['qos_add_priomark_upstream_rule'] = 'Tambahkan Huluan Keutamaan Kelas Peraturan';
+$lang['qos_any'] = 'mana-mana';
+$lang['qos_app_description'] = 'The Bandwidth dan QoS apl Pengurus adalah ciri rangkaian yang membolehkan pentadbir untuk mengutamakan sesetengah jenis trafik Internet. Membolehkan QoS mengurangkan kemungkinan bahawa pada waktu tertentu, pengguna tunggal atau peranti mungkin menjejaskan prestasi rangkaian dengan tepu lebar jalur yang tersedia.';
+$lang['qos_app_name'] = 'Bandwidth dan QoS Pengurus';
+$lang['qos_destination'] = 'Destinasi';
+$lang['qos_direction'] = 'arah';
+$lang['qos_edit_priomark_downstream_rule'] = 'Edit Keutamaan Hiliran Kelas Peraturan';
+$lang['qos_edit_priomark_upstream_rule'] = 'Edit Huluan Keutamaan Kelas Peraturan';
+$lang['qos_enable_all'] = 'Hidupkan Semua';
+$lang['qos_engine_disable'] = 'Disable Engine';
+$lang['qos_engine_enable'] = 'membolehkan Engine';
+$lang['qos_equalize'] = 'Samakan';
+$lang['qos_interface_add_title'] = 'Tambahkan Interface Configuration Luar';
+$lang['qos_interface_edit_title'] = 'Edit Luar Interface Configuration';
+$lang['qos_interface_speed_not_set'] = 'Terdapat sama ada tidak huluan atau hiliran set untuk antara muka ini. Sila menjalankan Ujian Kelajuan pada antara muka sebelum menambah kepada enjin QoS itu.';
+$lang['qos_invalid_direction'] = 'arah yang tidak sah.';
+$lang['qos_invalid_limit_value'] = 'had nilai tidak sah.';
+$lang['qos_invalid_r2q'] = 'nilai r2q tidak sah.';
+$lang['qos_invalid_reservation_value'] = 'peraturan tempahan tidak sah.';
+$lang['qos_name'] = 'Nama';
+$lang['qos_not'] = 'tidak';
+$lang['qos_prioclass_limit_underflow'] = 'Had kelas keutamaan tidak boleh ditetapkan kepada nilai yang kurang daripada tempahan lebar jalur yang sama. Lihat Panduan Pengguna untuk maklumat lanjut. Had aliran bawah dikesan untuk kelas keutamaan #';
+$lang['qos_priomark_downstream_rules'] = 'Peraturan Kelas Keutamaan Hiliran';
+$lang['qos_priomark_invalid_interface'] = 'antara muka luaran tidak sah atau tidak dikonfigurasi.';
+$lang['qos_priomark_not_found'] = 'pemerintahan kelas keutamaan tidak dijumpai';
+$lang['qos_priomark_upstream_rules'] = 'Peraturan Kelas Keutamaan Upstream';
+$lang['qos_priority'] = 'keutamaan';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Automatik Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'Source';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokol mesti ditetapkan kepada TCP atau UDP jika menggunakan pelabuhan.';
