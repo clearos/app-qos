@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Pievienot pakārtots prioritātes grupa Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Pievienot augšpus prioritātes grupa Rule';
+$lang['qos_any'] = 'jebkurš';
+$lang['qos_app_description'] = 'Joslas platumu un QoS vadītājs app ir tīkla funkcija, kas ļauj administratoriem prioritāti noteikta veida interneta satiksmes. Iespējojot QoS samazina iespējamību, ka jebkurā brīdī, viens lietotājs vai ierīce var pazemināt tīkla veiktspēju, piesātinot pieejamo joslas platumu.';
+$lang['qos_app_name'] = 'Joslas platums un QoS vadītājs';
+$lang['qos_destination'] = 'galamērķis';
+$lang['qos_direction'] = 'virziens';
+$lang['qos_edit_priomark_downstream_rule'] = 'Rediģēt pakārtots prioritātes grupa Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Rediģēt augšpus prioritātes grupa Rule';
+$lang['qos_enable_all'] = 'lai visi';
+$lang['qos_engine_disable'] = 'Atslēgt Dzinējs';
+$lang['qos_engine_enable'] = 'Ieslēgt dzinējs';
+$lang['qos_equalize'] = 'nolīdzināt';
+$lang['qos_interface_add_title'] = 'Pievienot ārējo interfeisu konfigurācija';
+$lang['qos_interface_edit_title'] = 'Edit External Interface konfigurācija';
+$lang['qos_interface_speed_not_set'] = 'Tur ir vai nu nav augšup vai lejup komplekts šo interfeisu. Lūdzu palaist ātruma tests saskarni pirms pievienojot to QoS dzinēju.';
+$lang['qos_invalid_direction'] = 'Nederīga virzienā.';
+$lang['qos_invalid_limit_value'] = 'Nederīga robežvērtība.';
+$lang['qos_invalid_r2q'] = 'Nederīga r2q vērtība.';
+$lang['qos_invalid_reservation_value'] = 'Nederīga rezervēšana noteikums.';
+$lang['qos_name'] = 'nosaukums';
+$lang['qos_not'] = 'nav';
+$lang['qos_prioclass_limit_underflow'] = 'Prioritārs klase limits nevar iestatīt uz kuru vērtība ir mazāka nekā atbilstošā joslas rezervācijas. Skatiet lietotāja rokasgrāmatu, lai iegūtu vairāk informācijas. Limit underflow konstatēta prioritāte klases #';
+$lang['qos_priomark_downstream_rules'] = 'Lejpus prioritātes grupa Noteikumi';
+$lang['qos_priomark_invalid_interface'] = 'Nederīgs vai konfigurēta, ārējo interfeisu.';
+$lang['qos_priomark_not_found'] = 'Prioritāte klase noteikums nav atrasts';
+$lang['qos_priomark_upstream_rules'] = 'Augšpus prioritātes grupa Noteikumi';
+$lang['qos_priority'] = 'prioritāte';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Automātiska Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'avots';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokols ir iestatīts uz TCP vai UDP ja izmanto ostas.';
