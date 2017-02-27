@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'اضافه کردن اولویت پایین کلاس قانون';
+$lang['qos_add_priomark_upstream_rule'] = 'اضافه کردن اولویت بالادست کلاس قانون';
+$lang['qos_any'] = 'هر';
+$lang['qos_app_description'] = 'برنامه مدیریت پهنای باند و QoS یک ویژگی شبکه است که اجازه می دهد تا مدیران به اولویت بندی انواع خاصی از ترافیک اینترنت است. فعال کردن QoS را احتمال این که در هر زمان داده شده، یک کاربر و یا دستگاه واحد ممکن است عملکرد شبکه های اشباع پهنای باند در دسترس را کاهش کاهش می یابد.';
+$lang['qos_app_name'] = 'پهنای باند و QoS مدیر';
+$lang['qos_destination'] = 'مقصد';
+$lang['qos_direction'] = 'جهت';
+$lang['qos_edit_priomark_downstream_rule'] = 'ویرایش اولویت پایین کلاس قانون';
+$lang['qos_edit_priomark_upstream_rule'] = 'ویرایش اولویت بالادست کلاس قانون';
+$lang['qos_enable_all'] = 'فعال کردن همه';
+$lang['qos_engine_disable'] = 'موتور غیر فعال کردن';
+$lang['qos_engine_enable'] = 'فعال کردن موتور';
+$lang['qos_equalize'] = 'مساوی کردن';
+$lang['qos_interface_add_title'] = 'اضافه کردن خارجی پیکربندی اینترفیس';
+$lang['qos_interface_edit_title'] = 'ویرایش پیکربندی رابط خارجی';
+$lang['qos_interface_speed_not_set'] = 'است یا نه مجموعه ای بالادست یا پایین دست برای این رابط وجود دارد. لطفا یک تست سرعت در رابط قبل از اضافه کردن آن را به موتور QoS را اجرا کنید.';
+$lang['qos_invalid_direction'] = 'جهت نامعتبر است.';
+$lang['qos_invalid_limit_value'] = 'مقدار حد نامعتبر است.';
+$lang['qos_invalid_r2q'] = 'ارزش r2q نامعتبر است.';
+$lang['qos_invalid_reservation_value'] = 'حکومت رزرو نامعتبر است.';
+$lang['qos_name'] = 'نام';
+$lang['qos_not'] = 'نه';
+$lang['qos_prioclass_limit_underflow'] = 'حد کلاس اولویت می توانید به یک مقدار کمتر از رزرو پهنای باند مربوطه تنظیم شود. راهنمای کاربر برای اطلاعات بیشتر ببینید. سرریز حد شناسایی برای کلاس اولویت #';
+$lang['qos_priomark_downstream_rules'] = 'قوانین کلاس اولویت پایین دست';
+$lang['qos_priomark_invalid_interface'] = 'رابط خارجی نامعتبر است و یا پیکربندی نشود.';
+$lang['qos_priomark_not_found'] = 'حکومت طبقاتی اولویت یافت نشد';
+$lang['qos_priomark_upstream_rules'] = 'قوانین کلاس اولویت بالادست';
+$lang['qos_priority'] = 'اولویت';
+$lang['qos_ramp'] = 'سطح شیب دار';
+$lang['qos_rate_to_quantum_auto'] = 'خودکار نرخ به کوانتومی';
+$lang['qos_rate_to_quantum'] = 'نرخ به کوانتومی';
+$lang['qos_reset'] = 'تنظیم مجدد';
+$lang['qos_source'] = 'منبع';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'پروتکل باید به TCP و یا UDP اگر با استفاده از پورت های تنظیم شده است.';
