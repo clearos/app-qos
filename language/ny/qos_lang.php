@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Kuwonjezera kumunsi Patsogolo Maphunziro Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Kuwonjezera kumtunda Patsogolo Maphunziro Rule';
+$lang['qos_any'] = 'aliyense';
+$lang['qos_app_description'] = 'The bandiwifi ndi QoS app Manager ndi maukonde Mbali kuti amalola akuluakulu kusankha mitundu ina ya magalimoto Internet. Kuwapangitsa QoS amachepetsa imabwera kuti pa nthawi iliyonse, wosuta limodzi kapena chipangizo mwina amanyoza ntchito maukonde ndi kukhathamitsa zilipo bandiwifi.';
+$lang['qos_app_name'] = 'Bandiwifi ndi QoS Manager';
+$lang['qos_destination'] = 'kopita';
+$lang['qos_direction'] = 'malangizo';
+$lang['qos_edit_priomark_downstream_rule'] = 'Sinthani kumunsi Patsogolo Maphunziro Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Sinthani kumtunda Patsogolo Maphunziro Rule';
+$lang['qos_enable_all'] = 'Yambitsani onse';
+$lang['qos_engine_disable'] = 'kuletsa Engine';
+$lang['qos_engine_enable'] = 'Yambitsani Engine';
+$lang['qos_equalize'] = 'mwakufuna';
+$lang['qos_interface_add_title'] = 'Kuwonjezera Zowonekera kunja Chiyankhulo kasinthidwe';
+$lang['qos_interface_edit_title'] = 'Sinthani Zowonekera kunja Chiyankhulo kasinthidwe';
+$lang['qos_interface_speed_not_set'] = 'Pali mwina si kumtunda kapena pambuyo pake anasiyira mawonekedwe izi. Chonde kuthamanga liwiro Mayeso pa mawonekedwe pamaso kuwonjezera kwa injini QoS.';
+$lang['qos_invalid_direction'] = 'malangizo opanda pake.';
+$lang['qos_invalid_limit_value'] = 'mtengo opanda pake malire.';
+$lang['qos_invalid_r2q'] = 'mtengo opanda pake r2q.';
+$lang['qos_invalid_reservation_value'] = 'Chosavomerezeka malire ulamuliro.';
+$lang['qos_name'] = 'Name';
+$lang['qos_not'] = 'osati';
+$lang['qos_prioclass_limit_underflow'] = 'A malire patsogolo kalasi sangathe kugwira mtengo wochepa poyerekeza ndi malire lolingana bandiwifi. Onani Guide Wosuta mudziwe zambiri. Malire underflow atazindikira kuti patsogolo kalasi #';
+$lang['qos_priomark_downstream_rules'] = 'Pambuyo pake Patsogolo Maphunziro Malamulo';
+$lang['qos_priomark_invalid_interface'] = 'Opanda pake kapena unconfigured mawonekedwe akunja.';
+$lang['qos_priomark_not_found'] = 'Patsogolo kalasi ulamuliro sanapezeke';
+$lang['qos_priomark_upstream_rules'] = 'Kumtunda Patsogolo Maphunziro Malamulo';
+$lang['qos_priority'] = 'patsogolo';
+$lang['qos_ramp'] = 'limbikitsa';
+$lang['qos_rate_to_quantum_auto'] = 'Makinawa Mlingo ndi kwantamu';
+$lang['qos_rate_to_quantum'] = 'Mlingo ndi kwantamu';
+$lang['qos_reset'] = 'Bwezerani';
+$lang['qos_source'] = 'Source';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocol chiperekedwe kwa TCP kapena UDP ngati ntchito madoko.';
