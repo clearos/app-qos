@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Lisää Loppupään Priorisointiluokkaan Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Lisää Upstream Priorisointiluokkaan Rule';
+$lang['qos_any'] = 'Minkä tahansa';
+$lang['qos_app_description'] = 'Kaista ja QoS-sovelluksella on verkko-ominaisuus, jonka avulla järjestelmänvalvojat voivat priorisoida tietynlaisia ​​Internet-liikennettä. Ottaminen QoS todennäköisyys pienenee, että kulloinkin yksi ainoa käyttäjä tai laite saattaa heikentää verkon suorituskykyä kyllästämällä käytettävissä oleva kaistanleveys.';
+$lang['qos_app_name'] = 'Kaistanleveys ja QoS Manager';
+$lang['qos_destination'] = 'määränpää';
+$lang['qos_direction'] = 'Suunta';
+$lang['qos_edit_priomark_downstream_rule'] = 'Muokkaa Loppupään Priorisointiluokkaan Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Muokkaa Upstream Priorisointiluokkaan Rule';
+$lang['qos_enable_all'] = 'Ota kaikki';
+$lang['qos_engine_disable'] = 'Poista Engine';
+$lang['qos_engine_enable'] = 'Ota Engine';
+$lang['qos_equalize'] = 'tasoittaa';
+$lang['qos_interface_add_title'] = 'Lisää ulkoinen liitäntä Configuration';
+$lang['qos_interface_edit_title'] = 'Edit ulkoinen liitäntä Configuration';
+$lang['qos_interface_speed_not_set'] = 'On joko ole ylävirtaan tai alavirtaan asetettu tätä liittymää. Suorita Speed ​​Test käyttöliittymän ennen sen lisäämistä QoS moottori.';
+$lang['qos_invalid_direction'] = 'Virheellinen suunta.';
+$lang['qos_invalid_limit_value'] = 'Virheellinen raja-arvon.';
+$lang['qos_invalid_r2q'] = 'Virheellinen r2q arvo.';
+$lang['qos_invalid_reservation_value'] = 'Virheellinen varaus sääntö.';
+$lang['qos_name'] = 'Nimi';
+$lang['qos_not'] = 'Ei';
+$lang['qos_prioclass_limit_underflow'] = 'Prioriteettiluokka rajaa ei voida asettaa arvoon vähemmän kuin vastaava kaistanleveys varauksen. Katso käyttöoppaasta lisätietoja. Limit alivuoto havaittu prioriteettiluokalle #';
+$lang['qos_priomark_downstream_rules'] = 'Loppupään Priority luokkasäännöt';
+$lang['qos_priomark_invalid_interface'] = 'Virheellinen tai määrittelemätöntä ulkoisen liitännän.';
+$lang['qos_priomark_not_found'] = 'Prioriteettiluokka sääntö ei löytynyt';
+$lang['qos_priomark_upstream_rules'] = 'Upstream Priority luokkasäännöt';
+$lang['qos_priority'] = 'prioriteetti';
+$lang['qos_ramp'] = 'Ramppi';
+$lang['qos_rate_to_quantum_auto'] = 'Automaattinen nopeus-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Arvostele-to-Quantum';
+$lang['qos_reset'] = 'asettaa uudelleen';
+$lang['qos_source'] = 'Lähde';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Pöytäkirja on asetettava TCP tai UDP, jos käytetään satamissa.';
