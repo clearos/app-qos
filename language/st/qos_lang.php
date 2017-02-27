@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Add go didirisi tsa moela pele Class Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Add nyolosa pele Class Rule';
+$lang['qos_any'] = 'leha e le efe';
+$lang['qos_app_description'] = 'The kgonothebolo le QoS app e Manager ke netweke tšobotsi e lumellang batsamaisi ho ka bohlokwa bja mefuta e itseng ea sephethephethe Internet. Nolofalletsa QoS decreases monyetla ka nako leha e le efe, mosebedisi le masoha kapa sesebediswa ka &#39;na degrade tshebetso ya netweke ke saturating fumaneha kgonothebolo.';
+$lang['qos_app_name'] = 'Kgonothebolo le QoS Manager';
+$lang['qos_destination'] = 'eang teng';
+$lang['qos_direction'] = 'tataiso';
+$lang['qos_edit_priomark_downstream_rule'] = 'Fetola go didirisi tsa moela pele Class Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Fetola nyolosa pele Class Rule';
+$lang['qos_enable_all'] = 'nolofalletsa All';
+$lang['qos_engine_disable'] = 'tima Engine';
+$lang['qos_engine_enable'] = 'nolofalletsa Engine';
+$lang['qos_equalize'] = 'Equalize';
+$lang['qos_interface_add_title'] = 'Add External Interface phetolo';
+$lang['qos_interface_edit_title'] = 'Edit External Interface phetolo';
+$lang['qos_interface_speed_not_set'] = 'Ho na le e ka ba se ke nyolosa kapa tlaase ho linoka ao behetseng segokanyimmediamentsi sa sebolokigolo ena. Ka kōpo matha e Lebelo Test hodima segokanyimmediamentsi sa sebolokigolo ea pele phaella ka ho re e ho enjene QoS.';
+$lang['qos_invalid_direction'] = 'tataiso sebetse.';
+$lang['qos_invalid_limit_value'] = 'latela boleng ba lefeela ho ea bosoleng.';
+$lang['qos_invalid_r2q'] = 'latela boleng ba lefeela r2q.';
+$lang['qos_invalid_reservation_value'] = 'Loka pehelo busa.';
+$lang['qos_name'] = 'Name';
+$lang['qos_not'] = 'eseng';
+$lang['qos_prioclass_limit_underflow'] = 'A moedi etelletsa pele sehlopha sa ke keng behiloeng ka ho latela boleng ba sa ka tlaase ho e pehelo e lekanang kgonothebolo. Sheba Guide User bakeng sa tlhahisoleseding e eketsehileng. Tekanyong e underflow lemoha e lokelang tlelaseng #';
+$lang['qos_priomark_downstream_rules'] = 'Tlaase ho linoka pele Class Rules';
+$lang['qos_priomark_invalid_interface'] = 'Loka kapa unconfigured segokanyimmediamentsi sa sebolokigolo kantle.';
+$lang['qos_priomark_not_found'] = 'Etelletsa pele sehlopha sa puso ha le a fumanwa';
+$lang['qos_priomark_upstream_rules'] = 'Nyolosa pele Class Rules';
+$lang['qos_priority'] = 'etelletsa pele';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Jarolla ka ho iketsa Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'mohloli o moholo';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Melaoana lokela ho beha ho TCP kapa UDP haeba ho sebelisoa likoung tse.';
