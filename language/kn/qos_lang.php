@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'ಹರಿವಿನ ದಿಕ್ಕಿನಲ್ಲಿ ಆದ್ಯತಾ ವರ್ಗ ನಿಯಮ ಸೇರಿಸಿ';
+$lang['qos_add_priomark_upstream_rule'] = 'ಅಪ್ಸ್ಟ್ರೀಮ್ ಆದ್ಯತಾ ವರ್ಗ ನಿಯಮ ಸೇರಿಸಿ';
+$lang['qos_any'] = 'ಯಾವುದಾದರು';
+$lang['qos_app_description'] = 'ಬ್ಯಾಂಡ್ವಿಡ್ತ್ ಮತ್ತು QoS ಮ್ಯಾನೇಜರ್ ಅಪ್ಲಿಕೇಶನ್ ನಿರ್ವಾಹಕರು ಇಂಟರ್ನೆಟ್ ದಟ್ಟಣೆಯ ನಿಶ್ಚಿತ ಬಗೆಗಳಿಗೆ ಆದ್ಯತೆಯನ್ನು ಅನುಮತಿಸುವ ಒಂದು ಜಾಲಬಂಧ ಲಕ್ಷಣವಾಗಿದೆ. QoS ನ್ನು ಅನುವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ, ಒಂದು ಬಳಕೆದಾರ ಅಥವಾ ಸಾಧನ ಲಭ ಬ್ಯಾಂಡ್ವಿಡ್ತ್ ಕೂಡಿದ ನೆಟ್ವರ್ಕ್ ಪ್ರದರ್ಶನ ಕೆಳಮಟ್ಟಕ್ಕಿಳಿಸಬಲ್ಲದು ಎಂದು ಸಾಧ್ಯತೆ ಕಡಿಮೆಯಾಗುತ್ತದೆ.';
+$lang['qos_app_name'] = 'ಬ್ಯಾಂಡ್ವಿಡ್ತ್ ಮತ್ತು QoS ಮ್ಯಾನೇಜರ್';
+$lang['qos_destination'] = 'ಗಮ್ಯಸ್ಥಾನ';
+$lang['qos_direction'] = 'ನಿರ್ದೇಶನ';
+$lang['qos_edit_priomark_downstream_rule'] = 'ಹರಿವಿನ ದಿಕ್ಕಿನಲ್ಲಿ ಆದ್ಯತಾ ವರ್ಗ ರೂಲ್ ಸಂಪಾದಿಸಿ';
+$lang['qos_edit_priomark_upstream_rule'] = 'ಅಪ್ಸ್ಟ್ರೀಮ್ ಆದ್ಯತಾ ವರ್ಗ ರೂಲ್ ಸಂಪಾದಿಸಿ';
+$lang['qos_enable_all'] = 'ಎಲ್ಲಾ ಸಕ್ರಿಯಗೊಳಿಸಿ';
+$lang['qos_engine_disable'] = 'ಎಂಜಿನ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ';
+$lang['qos_engine_enable'] = 'ಎಂಜಿನ್ ಸಕ್ರಿಯಗೊಳಿಸಿ';
+$lang['qos_equalize'] = 'ಸಮೀಕರಿಸುವುದು';
+$lang['qos_interface_add_title'] = 'ಬಾಹ್ಯ ಇಂಟರ್ಫೇಸ್ ಸಂರಚನೆ ಸೇರಿಸಿ';
+$lang['qos_interface_edit_title'] = 'ಬಾಹ್ಯ ಇಂಟರ್ಫೇಸ್ ಸಂರಚನೆ ಸಂಪಾದಿಸಿ';
+$lang['qos_interface_speed_not_set'] = 'ಈ ಇಂಟರ್ಫೇಸ್ ಎರಡೂ ತಯಾರಿಕೆಯ ಹಂತದಲ್ಲಿ ಅಥವಾ ಮಾರಾಟದ ಸೆಟ್ ಇಲ್ಲ. QoS ನ್ನು ಎಂಜಿನ್ ಸೇರಿಸುವ ಮೊದಲು ಇಂಟರ್ಫೇಸ್ ಒಂದು ಸ್ಪೀಡ್ ಟೆಸ್ಟ್ ರನ್.';
+$lang['qos_invalid_direction'] = 'ಅಮಾನ್ಯ ದಿಕ್ಕಿನಲ್ಲಿ.';
+$lang['qos_invalid_limit_value'] = 'ಅಮಾನ್ಯ ಮಿತಿಯನ್ನು ಮೌಲ್ಯ.';
+$lang['qos_invalid_r2q'] = 'ಅಮಾನ್ಯ r2q ಮೌಲ್ಯ.';
+$lang['qos_invalid_reservation_value'] = 'ಅಮಾನ್ಯ ಮೀಸಲಾತಿ ನಿಯಮ.';
+$lang['qos_name'] = 'ಹೆಸರು';
+$lang['qos_not'] = 'ಮಾಡಿರುವುದಿಲ್ಲ';
+$lang['qos_prioclass_limit_underflow'] = 'ಒಂದು ಆದ್ಯತಾ ವರ್ಗ ಮಿತಿಯನ್ನು ಅನುಗುಣವಾದ ಬ್ಯಾಂಡ್ವಿಡ್ತ್ ಮೀಸಲಾತಿ ಕಡಿಮೆ ಮೌಲ್ಯವನ್ನು ಹೊಂದಿಸುವ ಸಾಧ್ಯವಿಲ್ಲ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ಬಳಕೆದಾರ ಗೈಡ್. ಮಿತಿ ಗುಪ್ತವಾಹಿನಿ ಆದ್ಯತೆ ವರ್ಗ # ಪತ್ತೆ';
+$lang['qos_priomark_downstream_rules'] = 'ಪ್ರವಾಹದ ಆದ್ಯತಾ ವರ್ಗ ನಿಯಮಗಳು';
+$lang['qos_priomark_invalid_interface'] = 'ಅಮಾನ್ಯ ಅಥವಾ ಕಾನ್ಫಿಗರ್ ಮಾಡದೆಯೆ ಬಾಹ್ಯ ಇಂಟರ್ಫೇಸ್.';
+$lang['qos_priomark_not_found'] = 'ಆದ್ಯತಾ ವರ್ಗ ನಿಯಮ ಕಂಡುಬಂದಿಲ್ಲ';
+$lang['qos_priomark_upstream_rules'] = 'ಅಪ್ಸ್ಟ್ರೀಮ್ ಆದ್ಯತಾ ವರ್ಗ ನಿಯಮಗಳು';
+$lang['qos_priority'] = 'ಆದ್ಯತೆ';
+$lang['qos_ramp'] = 'ಇಳಿಜಾರು';
+$lang['qos_rate_to_quantum_auto'] = 'ಸ್ವಯಂಚಾಲಿತ ದರ ಯಾ ಕ್ವಾಂಟಮ್';
+$lang['qos_rate_to_quantum'] = 'ದರ ಯಾ ಕ್ವಾಂಟಮ್';
+$lang['qos_reset'] = 'ಮರುಹೊಂದಿಸಿ';
+$lang['qos_source'] = 'ಮೂಲ';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'ಪೋರ್ಟುಗಳನ್ನು ಬಳಸಿಕೊಂಡು ವೇಳೆ ಪ್ರೊಟೊಕಾಲ್ TCP ಅಥವಾ ಯುಡಿಪಿ ಗೆ ಹೊಂದಿಸಿ.';
