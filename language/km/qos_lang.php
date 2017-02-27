@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'បន្ថែមថ្នាក់អាទិភាពក្រោមវិធាន';
+$lang['qos_add_priomark_upstream_rule'] = 'បន្ថែមវិធានថ្នាក់អាទិភាពដើមទឹក';
+$lang['qos_any'] = 'ណាមួយឡើយ';
+$lang['qos_app_description'] = 'នេះជាកម្មវិធី QoS និងកម្រិតបញ្ជូនគឺជាលក្ខណៈពិសេសបណ្តាញកម្មវិធីគ្រប់គ្រងមួយដែលអនុញ្ញាតឱ្យអ្នកគ្រប់គ្រងកំណត់អាទិភាពប្រភេទមួយចំនួននៃចរាចរណ៍អ៊ីនធើណិ។ ការធ្វើឱ្យថយចុះលទ្ធភាពដែលថា QoS នៅពេលដែលបានផ្តល់ឱ្យណា, អ្នកប្រើតែមួយឬឧបករណ៍ដែលអាចបន្ទាបដំណើរការបណ្តាញដោយបំប៉ោងការកម្រិតបញ្ជូនដែលអាចប្រើបាន។';
+$lang['qos_app_name'] = 'កម្រិតបញ្ជូននិងជាប្រធាន QoS';
+$lang['qos_destination'] = 'គោលដៅ';
+$lang['qos_direction'] = 'ទិសដៅ';
+$lang['qos_edit_priomark_downstream_rule'] = 'កែសម្រួលវិធានថ្នាក់អាទិភាពក្រោម';
+$lang['qos_edit_priomark_upstream_rule'] = 'កែសម្រួលវិធានថ្នាក់អាទិភាពដើមទឹក';
+$lang['qos_enable_all'] = 'អនុញ្ញាតទាំងអស់';
+$lang['qos_engine_disable'] = 'បិទម៉ាស៊ីន';
+$lang['qos_engine_enable'] = 'បើកម៉ាស៊ីន';
+$lang['qos_equalize'] = 'ស្មើ';
+$lang['qos_interface_add_title'] = 'ការកំណត់រចនាសម្ព័ន្ធចំណុចប្រទាក់ខាងក្រៅបន្ថែម';
+$lang['qos_interface_edit_title'] = 'កែសម្រួលការកំណត់រចនាសម្ព័ន្ធចំណុចប្រទាក់ខាងក្រៅ';
+$lang['qos_interface_speed_not_set'] = 'មិនមានខ្សែទឹកខាងលើឬផ្នែកខាងក្រោមសំណុំសម្រាប់ចំណុចប្រទាក់នេះ។ សូមរត់ធ្វើតេស្តល្បឿននៅលើចំណុចប្រទាក់មុននឹងបន្ថែមវាទៅម៉ាស៊ីន QoS ។';
+$lang['qos_invalid_direction'] = 'ទិសដៅមិនត្រឹមត្រូវ។';
+$lang['qos_invalid_limit_value'] = 'តម្លៃដែនកំណត់ដែលមិនត្រឹមត្រូវ។';
+$lang['qos_invalid_r2q'] = 'តម្លៃ r2q មិនត្រឹមត្រូវ។';
+$lang['qos_invalid_reservation_value'] = 'ក្បួនការកក់មិនត្រឹមត្រូវ។';
+$lang['qos_name'] = 'ឈ្មោះ';
+$lang['qos_not'] = 'មិនមាន';
+$lang['qos_prioclass_limit_underflow'] = 'កម្រិតថ្នាក់អាទិភាពមិនអាចត្រូវបានកំណត់ទៅតម្លៃតិចជាងការកក់កម្រិតបញ្ជូនដែលត្រូវគ្នាមួយ។ សូមមើលមគ្គុទ្ទេសក៍អ្នកប្រើសម្រាប់បន្ថែម។ ដំណើរដែនកំណត់ដែលបានរកឃើញសម្រាប់ថ្នាក់អាទិភាព #';
+$lang['qos_priomark_downstream_rules'] = 'ក្បួនថ្នាក់អាទិភាពផ្នែកខាងក្រោម';
+$lang['qos_priomark_invalid_interface'] = 'ចំណុចប្រទាក់ឬមិនត្រឹមត្រូវដែលមិនបានកំណត់រចនាសម្ព័ន្ធខាងក្រៅ។';
+$lang['qos_priomark_not_found'] = 'រកមិនឃើញក្បួនថ្នាក់អាទិភាព';
+$lang['qos_priomark_upstream_rules'] = 'ក្បួនថ្នាក់អាទិភាពខ្សែទឹក';
+$lang['qos_priority'] = 'អាទិភាព';
+$lang['qos_ramp'] = 'ជម្រាល';
+$lang['qos_rate_to_quantum_auto'] = 'ដោយស្វ័យប្រវត្តិអត្រាការប្រាក់ទៅ Quantum';
+$lang['qos_rate_to_quantum'] = 'អត្រាការប្រាក់ទៅ Quantum';
+$lang['qos_reset'] = 'កំណត់ឡើងវិញ';
+$lang['qos_source'] = 'ប្រភព';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'ពិធីការដែលត្រូវតែត្រូវបានកំណត់ទៅ TCP ឬ UDP ប្រសិនបើប្រើកំពង់ផែ។';
