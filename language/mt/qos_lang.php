@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Żid Klassi downstream Prijorità Regola';
+$lang['qos_add_priomark_upstream_rule'] = 'Żid Upstream Prijorità Klassi Regola';
+$lang['qos_any'] = 'kwalunkwe';
+$lang['qos_app_description'] = 'Il-bandwidth u QoS Maniġer app hija karatteristika netwerk li jippermetti lill-amministraturi biex jipprijoritizzaw ċerti tipi ta &#39;traffiku tal-internet. Abilitazzjoni QoS inaqqas il-probabbiltà li fi kwalunkwe ħin partikolari, utent wieħed jew apparat jista &#39;jiddegrada l-prestazzjoni tan-netwerk billi jitgħabba żżejjed bandwidth disponibbli.';
+$lang['qos_app_name'] = 'Bandwith u QoS Maniġer';
+$lang['qos_destination'] = 'destinazzjoni';
+$lang['qos_direction'] = 'direzzjoni';
+$lang['qos_edit_priomark_downstream_rule'] = 'Edit Klassi downstream Prijorità Regola';
+$lang['qos_edit_priomark_upstream_rule'] = 'Edit Upstream Prijorità Klassi Regola';
+$lang['qos_enable_all'] = 'jippermettu kollha';
+$lang['qos_engine_disable'] = 'magna Itfi';
+$lang['qos_engine_enable'] = 'jippermettu magna';
+$lang['qos_equalize'] = 'jiddaqqas';
+$lang['qos_interface_add_title'] = 'Żid Interface Konfigurazzjoni Esterna';
+$lang['qos_interface_edit_title'] = 'Jeditjaw Esterni Interface Konfigurazzjoni';
+$lang['qos_interface_speed_not_set'] = 'M&#39;hemm jew ma &#39;sett upstream jew downstream għal dan l-interface. Jekk jogħġbok tmexxi test tal-veloċità fuq l-interface qabel żżidu mal-magna QoS.';
+$lang['qos_invalid_direction'] = 'direzzjoni invalida.';
+$lang['qos_invalid_limit_value'] = 'valur ta &#39;limitu invalida.';
+$lang['qos_invalid_r2q'] = 'valur r2q invalida.';
+$lang['qos_invalid_reservation_value'] = 'regola riserva invalida.';
+$lang['qos_name'] = 'isem';
+$lang['qos_not'] = 'mhux';
+$lang['qos_prioclass_limit_underflow'] = 'Limitu klassi ta &#39;prijorità ma tistax tiġi stabbilita għal valur inqas mir-riżerva bandwidth korrispondenti. Ara l-Gwida għall-Utent għal aktar informazzjoni. underflow limitu skoperti għall-klassi ta &#39;prijorità #';
+$lang['qos_priomark_downstream_rules'] = 'Regoli Klassi downstream &#39;Prijorità';
+$lang['qos_priomark_invalid_interface'] = 'interface estern invalida jew unconfigured.';
+$lang['qos_priomark_not_found'] = 'regola klassi ta &#39;prijorità ma sabet';
+$lang['qos_priomark_upstream_rules'] = 'Regoli Klassi Upstream Prijorità';
+$lang['qos_priority'] = 'prijorità';
+$lang['qos_ramp'] = 'rampa';
+$lang['qos_rate_to_quantum_auto'] = 'Awtomatika Rata-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rata-to-Quantum';
+$lang['qos_reset'] = 'Irrisettja';
+$lang['qos_source'] = 'sors';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokoll għandha tiġi ssettjata għal TCP jew UDP jekk jużaw il-portijiet.';
