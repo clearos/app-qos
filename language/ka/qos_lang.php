@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'სანიშნეს ქვემოთ პრიორიტეტი კლასის Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'სანიშნეს დინების პრიორიტეტი კლასის Rule';
+$lang['qos_any'] = 'ნებისმიერი';
+$lang['qos_app_description'] = 'სიჩქარეს და QoS მენეჯერი app არის ქსელური ფუნქცია, რომელიც საშუალებას აძლევს ადმინისტრატორებს პრიორიტეტების გარკვეული სახის ინტერნეტ ტრაფიკი. საარსებო QoS ამცირებს ალბათობას, რომ ნებისმიერ დროს, ერთი მომხმარებლის ან მოწყობილობა შეიძლება დეგრადაცია ქსელი შესრულების saturating ხელმისაწვდომია სიჩქარეს.';
+$lang['qos_app_name'] = 'გამტარუნარიანობა და QoS Manager';
+$lang['qos_destination'] = 'დანიშნულების';
+$lang['qos_direction'] = 'Direction';
+$lang['qos_edit_priomark_downstream_rule'] = 'რედაქტირება ქვემოთ პრიორიტეტი კლასის Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'რედაქტირება დინების პრიორიტეტი კლასის Rule';
+$lang['qos_enable_all'] = 'ჩართვა ყველა';
+$lang['qos_engine_disable'] = 'ძრავის გათიშვა';
+$lang['qos_engine_enable'] = 'ჩართვა ძრავის';
+$lang['qos_equalize'] = 'გათანაბრება';
+$lang['qos_interface_add_title'] = 'სანიშნეს გარე ინტერფეისი კონფიგურაცია';
+$lang['qos_interface_edit_title'] = 'რედაქტირება გარე ინტერფეისი კონფიგურაცია';
+$lang['qos_interface_speed_not_set'] = 'არსებობს ან არ ზედა დინებაში და ქვემოთ დინებაში ნაკრები ამ ინტერფეისი. გთხოვთ, აწარმოებს სიჩქარე ტესტი ინტერფეისი ადრე დასძინა, რომ ეს QoS სისტემა.';
+$lang['qos_invalid_direction'] = 'არასწორი მიმართულებით.';
+$lang['qos_invalid_limit_value'] = 'არასწორი ზღვრული მნიშვნელობა.';
+$lang['qos_invalid_r2q'] = 'არასწორი r2q ღირებულება.';
+$lang['qos_invalid_reservation_value'] = 'არასწორი დაჯავშნა წესით.';
+$lang['qos_name'] = 'სახელი';
+$lang['qos_not'] = 'არა';
+$lang['qos_prioclass_limit_underflow'] = 'პრიორიტეტი კლასის ლიმიტი არ იყოს მითითებული, რომ მნიშვნელობა ნაკლებია შესაბამის სიჩქარეს დაჯავშნა. იხილეთ მომხმარებლის სახელმძღვანელო დამატებითი ინფორმაცია. Limit კალაპოტქვეშა აღმოჩენილი პრიორიტეტი კლასის #';
+$lang['qos_priomark_downstream_rules'] = 'ქვემო დინებაში პრიორიტეტი კლასის წესები';
+$lang['qos_priomark_invalid_interface'] = 'არასწორი ან unconfigured გარე ინტერფეისი.';
+$lang['qos_priomark_not_found'] = 'პრიორიტეტი კლასის წესი არ არის ნაპოვნი';
+$lang['qos_priomark_upstream_rules'] = 'დინების პრიორიტეტი კლასის წესები';
+$lang['qos_priority'] = 'პრიორიტეტი';
+$lang['qos_ramp'] = 'ramp';
+$lang['qos_rate_to_quantum_auto'] = 'ავტომატური Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'კურსი-to-Quantum';
+$lang['qos_reset'] = 'აღდგენა';
+$lang['qos_source'] = 'წყარო';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'ოქმი უნდა იყოს მითითებული TCP ან UDP თუ იყენებთ პორტი.';
