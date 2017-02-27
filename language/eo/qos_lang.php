@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Aldoni Laŭflue Prioritato Klaso Regulo';
+$lang['qos_add_priomark_upstream_rule'] = 'Aldoni Kontraŭflue Prioritato Klaso Regulo';
+$lang['qos_any'] = 'ajna';
+$lang['qos_app_description'] = 'La Bandwidth kaj QoS Manager app estas reto trajto kiu permesas administrantoj prioritatigi iujn tipojn de Interreto trafiko. Ebligante QoS malpliigas la verŝajnecon ke en momento donita, ununura uzanto aŭ mekanismo povus degradi reto agado de saturante havebla bandwidth.';
+$lang['qos_app_name'] = 'Bandwidth kaj QoS Direktisto';
+$lang['qos_destination'] = 'destination';
+$lang['qos_direction'] = 'direkto';
+$lang['qos_edit_priomark_downstream_rule'] = 'Redaktu Laŭflue Prioritato Klaso Regulo';
+$lang['qos_edit_priomark_upstream_rule'] = 'Redaktu Kontraŭflue Prioritato Klaso Regulo';
+$lang['qos_enable_all'] = 'ebligi Ĉiuj';
+$lang['qos_engine_disable'] = 'malebligi Motoro';
+$lang['qos_engine_enable'] = 'ebligi Motoro';
+$lang['qos_equalize'] = 'egaligi';
+$lang['qos_interface_add_title'] = 'Aldoni Eksteraj Interfaco Agordo';
+$lang['qos_interface_edit_title'] = 'Redakti Eksteraj Interfaco Agordo';
+$lang['qos_interface_speed_not_set'] = 'Ekzistas aŭ ne kontraŭflue aŭ laŭflue aro por tiu interfaco. Bonvolu ruli Rapido Testo sur la interfaco antaux aldonante ĝin al la QoS motoro.';
+$lang['qos_invalid_direction'] = 'Nevalida direkto.';
+$lang['qos_invalid_limit_value'] = 'Nevalida valoro limo.';
+$lang['qos_invalid_r2q'] = 'Nevalida r2q valoro.';
+$lang['qos_invalid_reservation_value'] = 'Nevalida rezervado regulo.';
+$lang['qos_name'] = 'nomo';
+$lang['qos_not'] = 'ne';
+$lang['qos_prioclass_limit_underflow'] = 'A prioritato klaso limo ne estas fiksita al valoro malpli ol la responda bandwidth rezervejo. Vidu la Uzanto Gvidilo por pli informo. Limo maltroo detektita por prioritato klaso #';
+$lang['qos_priomark_downstream_rules'] = 'Laŭflue Prioritato Klaso Reguloj';
+$lang['qos_priomark_invalid_interface'] = 'Nevalida aŭ unconfigured eksteran interfacon.';
+$lang['qos_priomark_not_found'] = 'Prioritato klaso regulo ne trovita';
+$lang['qos_priomark_upstream_rules'] = 'Kontraŭflue Prioritato Klaso Reguloj';
+$lang['qos_priority'] = 'prioritato';
+$lang['qos_ramp'] = 'deklivirejo';
+$lang['qos_rate_to_quantum_auto'] = 'Aŭtomata Imposto-al-Quantum';
+$lang['qos_rate_to_quantum'] = 'Imposto-al-Quantum';
+$lang['qos_reset'] = 'reset';
+$lang['qos_source'] = 'fonto';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokolo devas esti aro al TCP aŭ UDP se uzante havenoj.';
