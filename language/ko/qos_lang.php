@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = '다운 스트림 우선 순위 클래스 규칙 추가';
+$lang['qos_add_priomark_upstream_rule'] = '상류 우선 순위 클래스 규칙 추가';
+$lang['qos_any'] = '어떤';
+$lang['qos_app_description'] = '대역폭 및 QoS 관리자 응용 프로그램은 관리자가 인터넷 특정 유형의 트래픽에 우선 순위를 할 수있는 네트워크 기능입니다. QoS를 사용하여 임의의 주어진 시간에, 하나의 사용자 또는 장치가 사용 가능한 대역폭을 포화하여 네트워크 성능을 저하시킬 수있는 가능성을 감소시킨다.';
+$lang['qos_app_name'] = '대역폭 및 QoS 관리자';
+$lang['qos_destination'] = '목적지';
+$lang['qos_direction'] = '방향';
+$lang['qos_edit_priomark_downstream_rule'] = '다운 스트림 우선 순위 클래스 규칙을 편집';
+$lang['qos_edit_priomark_upstream_rule'] = '상류 우선 순위 클래스 규칙을 편집';
+$lang['qos_enable_all'] = '모든 사용';
+$lang['qos_engine_disable'] = '안 엔진';
+$lang['qos_engine_enable'] = '엔진 사용';
+$lang['qos_equalize'] = '같게 하다';
+$lang['qos_interface_add_title'] = '외부 인터페이스 구성 추가';
+$lang['qos_interface_edit_title'] = '편집 외부 인터페이스 구성';
+$lang['qos_interface_speed_not_set'] = '이 인터페이스되지 상류 또는 하류 세트 중 하나가 있습니다. 상기 QoS 엔진에 추가하기 전에 인터페이스의 속도 테스트를 실행하십시오.';
+$lang['qos_invalid_direction'] = '잘못된 방향.';
+$lang['qos_invalid_limit_value'] = '잘못된 한계 값.';
+$lang['qos_invalid_r2q'] = '잘못된 r2q 값입니다.';
+$lang['qos_invalid_reservation_value'] = '잘못된 예약 규칙.';
+$lang['qos_name'] = '이름';
+$lang['qos_not'] = '아니';
+$lang['qos_prioclass_limit_underflow'] = '우선 클래스 제한 해당 대역폭 예약보다 작은 값으로 설정 될 수 없다. 자세한 내용은 사용 설명서를 참조하십시오. 제한 언더 플로우는 우선 순위 클래스 번호 검색';
+$lang['qos_priomark_downstream_rules'] = '다운 스트림 우선 순위 클래스 규칙';
+$lang['qos_priomark_invalid_interface'] = '잘못되었거나 구성되지 않은 외부 인터페이스.';
+$lang['qos_priomark_not_found'] = '우선 순위 클래스 규칙을 찾을 수 없습니다';
+$lang['qos_priomark_upstream_rules'] = '상류 우선 순위 클래스 규칙';
+$lang['qos_priority'] = '우선 순위';
+$lang['qos_ramp'] = '비탈길';
+$lang['qos_rate_to_quantum_auto'] = '자동 속도 간 양자';
+$lang['qos_rate_to_quantum'] = '평점 간 양자';
+$lang['qos_reset'] = '다시 놓기';
+$lang['qos_source'] = '출처';
+$lang['qos_protocol_must_be_specified_using_ports'] = '포트를 사용하는 경우 프로토콜은 TCP 나 UDP로 설정해야합니다.';
