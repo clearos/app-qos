@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Lägg Nedströms prioritetsklass Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Lägg Upstream prioritetsklass Rule';
+$lang['qos_any'] = 'Några';
+$lang['qos_app_description'] = 'Bandbredd och QoS chef app är en nätverksfunktion som tillåter administratörer att prioritera vissa typer av Internet-trafik. Aktivera QoS minskar sannolikheten att vid varje given tidpunkt, kan en enskild användare eller enhet försämra nätverkets prestanda genom att mätta den tillgängliga bandbredden.';
+$lang['qos_app_name'] = 'Bandbredd och QoS chef';
+$lang['qos_destination'] = 'Destination';
+$lang['qos_direction'] = 'Riktning';
+$lang['qos_edit_priomark_downstream_rule'] = 'Redigera Nedströms prioritetsklass Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Redigera Upstream prioritetsklass Rule';
+$lang['qos_enable_all'] = 'Aktivera alla';
+$lang['qos_engine_disable'] = 'disable Engine';
+$lang['qos_engine_enable'] = 'aktivera Engine';
+$lang['qos_equalize'] = 'Utjämna';
+$lang['qos_interface_add_title'] = 'Lägg Externt gränssnitt konfiguration';
+$lang['qos_interface_edit_title'] = 'Redigera Externt gränssnitt konfiguration';
+$lang['qos_interface_speed_not_set'] = 'Det är antingen inte uppströms eller nedströms uppsättning för detta gränssnitt. Kör ett hastighetstest på gränssnittet innan den läggs till QoS motor.';
+$lang['qos_invalid_direction'] = 'Ogiltig riktning.';
+$lang['qos_invalid_limit_value'] = 'Ogiltigt gränsvärde.';
+$lang['qos_invalid_r2q'] = 'Ogiltigt r2q värde.';
+$lang['qos_invalid_reservation_value'] = 'Ogiltig reservation regel.';
+$lang['qos_name'] = 'namn';
+$lang['qos_not'] = 'Inte';
+$lang['qos_prioclass_limit_underflow'] = 'En prioritetsklass gräns kan inte ställas in på ett värde mindre än motsvarande reservation bandbredd. Se användarhandboken för mer information. Gräns ​​flödet detekteras under prioritetsklass #';
+$lang['qos_priomark_downstream_rules'] = 'Nedströms prioritetsklass regler';
+$lang['qos_priomark_invalid_interface'] = 'Ogiltig eller okonfigurerat externt gränssnitt.';
+$lang['qos_priomark_not_found'] = 'Prioritetsklass regel inte hittas';
+$lang['qos_priomark_upstream_rules'] = 'Upstream prioritetsklass regler';
+$lang['qos_priority'] = 'Prioritet';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Automatisk Rate till Quantum';
+$lang['qos_rate_to_quantum'] = 'Hastighet-till-Quantum';
+$lang['qos_reset'] = 'Återställa';
+$lang['qos_source'] = 'Källa';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokollet måste ställas in på TCP eller UDP om du använder portar.';
