@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'In Downstream-Priority-Klasse-Regel';
+$lang['qos_add_priomark_upstream_rule'] = 'In Upstream-Priority-Klasse-Regel';
+$lang['qos_any'] = 'Irgendein';
+$lang['qos_app_description'] = 'Die Bandbreite und QoS-Manager App ist ein Netzwerk-Feature, mit dem Administratoren bestimmte Arten von Internet-Datenverkehr zu priorisieren ermöglicht. QoS ermöglicht, verringert die Wahrscheinlichkeit, dass zu einem bestimmten Zeitpunkt eine einzelne Benutzer oder das Gerät kann durch Sättigen verfügbare Bandbreite der Netzwerkleistung verschlechtern.';
+$lang['qos_app_name'] = 'Bandbreite und QoS-Manager';
+$lang['qos_destination'] = 'Reiseziel';
+$lang['qos_direction'] = 'Richtung';
+$lang['qos_edit_priomark_downstream_rule'] = 'Bearbeiten Sie Downstream-Priority-Klasse-Regel';
+$lang['qos_edit_priomark_upstream_rule'] = 'Bearbeiten Upstream-Priority-Klasse-Regel';
+$lang['qos_enable_all'] = 'Alle aktivieren';
+$lang['qos_engine_disable'] = 'Disable-Engine';
+$lang['qos_engine_enable'] = 'Aktivieren Motor';
+$lang['qos_equalize'] = 'angleichen';
+$lang['qos_interface_add_title'] = 'In Externe Interface-Konfiguration';
+$lang['qos_interface_edit_title'] = 'Bearbeiten Externe Interface-Konfiguration';
+$lang['qos_interface_speed_not_set'] = 'Es ist entweder nicht vor oder hinter Satz für diese Schnittstelle. Bitte führen Sie einen Geschwindigkeitstest auf der Schnittstelle, bevor es an die QoS-Engine hinzufügen.';
+$lang['qos_invalid_direction'] = 'Ungültige Richtung.';
+$lang['qos_invalid_limit_value'] = 'Ungültige Grenzwert.';
+$lang['qos_invalid_r2q'] = 'Ungültige R2q Wert.';
+$lang['qos_invalid_reservation_value'] = 'Ungültige Reservierung Regel.';
+$lang['qos_name'] = 'Name';
+$lang['qos_not'] = 'Nicht';
+$lang['qos_prioclass_limit_underflow'] = 'Eine Prioritätsklasse Grenze kann nicht auf einen Wert gesetzt werden, um weniger als die entsprechende Bandbreitenreservierung. Finden Sie im Benutzerhandbuch für weitere Informationen. Grenzwertunterschreitung für Prioritätsklasse # erkannt';
+$lang['qos_priomark_downstream_rules'] = 'Downstream-Priority-Klasse-Regeln';
+$lang['qos_priomark_invalid_interface'] = 'Ungültige oder nicht konfigurierte externe Schnittstelle.';
+$lang['qos_priomark_not_found'] = 'Prioritätsklasse Regel nicht gefunden';
+$lang['qos_priomark_upstream_rules'] = 'Upstream-Priority-Klasse-Regeln';
+$lang['qos_priority'] = 'Priorität';
+$lang['qos_ramp'] = 'Rampe';
+$lang['qos_rate_to_quantum_auto'] = 'Automatic Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'zurückstellen';
+$lang['qos_source'] = 'Quelle';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokoll muss auf TCP oder UDP eingestellt werden, wenn Ports.';
