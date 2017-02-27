@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Добави Class Правило течението Приоритетна';
+$lang['qos_add_priomark_upstream_rule'] = 'Добави Upstream Class Правило Приоритетна';
+$lang['qos_any'] = 'който и да е';
+$lang['qos_app_description'] = 'приложението Мениджър на трафик и QoS е функция на мрежата, която позволява на администраторите да определят като приоритет на определени видове интернет трафик. Разрешаването на QoS намалява вероятността, че във всеки един момент, един и същи потребител или устройство може да намали производителността на мрежата чрез насищане на разположение на честотната лента.';
+$lang['qos_app_name'] = 'Bandwidth и QoS мениджър';
+$lang['qos_destination'] = 'Дестинация';
+$lang['qos_direction'] = 'Посока';
+$lang['qos_edit_priomark_downstream_rule'] = 'Редактирайте Class Правило течението Приоритетна';
+$lang['qos_edit_priomark_upstream_rule'] = 'Редактирайте Upstream Class Правило Приоритетна';
+$lang['qos_enable_all'] = 'Активиране на All';
+$lang['qos_engine_disable'] = 'Изключване на двигателя';
+$lang['qos_engine_enable'] = 'Активиране на двигателя';
+$lang['qos_equalize'] = 'изравнявам';
+$lang['qos_interface_add_title'] = 'Добави външно Configuration Interface';
+$lang['qos_interface_edit_title'] = 'Edit Външен интерфейс за конфигурация';
+$lang['qos_interface_speed_not_set'] = 'Там е или не преди или след комплект за този интерфейс. Моля, пуснете Speed ​​Test на интерфейса, преди да го добавите към двигателя QoS.';
+$lang['qos_invalid_direction'] = 'Невалиден посока.';
+$lang['qos_invalid_limit_value'] = 'Невалиден гранична стойност.';
+$lang['qos_invalid_r2q'] = 'Невалидна стойност r2q.';
+$lang['qos_invalid_reservation_value'] = 'Невалиден резервация правило.';
+$lang['qos_name'] = 'име';
+$lang['qos_not'] = 'Не';
+$lang['qos_prioclass_limit_underflow'] = 'Лимитът за приоритет клас не може да бъде установена на стойност по-малка от съответната лента резерва. Вижте Ръководство за потребителя за повече информация. Limit сгъстения открити за приоритет клас #';
+$lang['qos_priomark_downstream_rules'] = 'Правила клас течението Приоритетни';
+$lang['qos_priomark_invalid_interface'] = 'Невалиден или неконфигурирана външен интерфейс.';
+$lang['qos_priomark_not_found'] = 'правило Приоритет клас не е намерена';
+$lang['qos_priomark_upstream_rules'] = 'Правила клас Upstream Приоритетни';
+$lang['qos_priority'] = 'приоритет';
+$lang['qos_ramp'] = 'Рампа';
+$lang['qos_rate_to_quantum_auto'] = 'Автоматична скорост-до-Quantum';
+$lang['qos_rate_to_quantum'] = 'Курсове-да-Quantum';
+$lang['qos_reset'] = 'Нулиране';
+$lang['qos_source'] = 'източник';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Протокол трябва да бъде настроен на TCP или UDP, ако използват пристанища.';
