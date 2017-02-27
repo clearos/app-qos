@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'إضافة الأولوية المصب الدرجة القاعدة';
+$lang['qos_add_priomark_upstream_rule'] = 'إضافة المنبع الأولوية الدرجة القاعدة';
+$lang['qos_any'] = 'أي';
+$lang['qos_app_description'] = 'تطبيق مدير عرض النطاق الترددي وجودة الخدمة هو سمة من سمات الشبكة التي تسمح للمسؤولين لتحديد أولويات أنواع معينة من حركة المرور على الإنترنت. تمكين جودة الخدمة يقلل من احتمال أن في أي وقت من الأوقات، لمستخدم واحد أو جهاز قد يقل أداء الشبكة عن طريق تشبع عرض النطاق الترددي المتوفر.';
+$lang['qos_app_name'] = 'عرض النطاق الترددي ومدير جودة الخدمة';
+$lang['qos_destination'] = 'المكان المقصود';
+$lang['qos_direction'] = 'اتجاه';
+$lang['qos_edit_priomark_downstream_rule'] = 'تعديل الأولوية المصب الدرجة القاعدة';
+$lang['qos_edit_priomark_upstream_rule'] = 'تعديل المنبع الأولوية الدرجة القاعدة';
+$lang['qos_enable_all'] = 'تمكين جميع';
+$lang['qos_engine_disable'] = 'محرك تعطيل';
+$lang['qos_engine_enable'] = 'تمكين المحرك';
+$lang['qos_equalize'] = 'تعادل';
+$lang['qos_interface_add_title'] = 'إضافة تكوين واجهة خارجية';
+$lang['qos_interface_edit_title'] = 'تحرير تكوين واجهة خارجية';
+$lang['qos_interface_speed_not_set'] = 'هناك إما غير مجموعة المنبع أو المصب لهذه الواجهة. الرجاء تشغيل اختبار سرعة على الواجهة قبل إضافتها إلى المحرك جودة الخدمة.';
+$lang['qos_invalid_direction'] = 'الاتجاه غير صالح.';
+$lang['qos_invalid_limit_value'] = 'قيمة الحد غير صالحة.';
+$lang['qos_invalid_r2q'] = 'قيمة r2q غير صالحة.';
+$lang['qos_invalid_reservation_value'] = 'حكم حجز غير صالحة.';
+$lang['qos_name'] = 'اسم';
+$lang['qos_not'] = 'ليس';
+$lang['qos_prioclass_limit_underflow'] = 'لا يمكن تعيين حد فئة الأفضلية إلى قيمة أقل من التحفظ عرض النطاق الترددي المقابلة. راجع دليل المستخدم ل مزيد من المعلومات. حد تجاوز الحد الأدنى الكشف عن فئة الأفضلية #';
+$lang['qos_priomark_downstream_rules'] = 'قوانين الدرجة الأولوية المصب';
+$lang['qos_priomark_invalid_interface'] = 'غير صالحة أو غير مهيأة الواجهة الخارجية.';
+$lang['qos_priomark_not_found'] = 'حكم فئة الأفضلية لم يتم العثور على';
+$lang['qos_priomark_upstream_rules'] = 'قوانين الدرجة الأولوية المنبع';
+$lang['qos_priority'] = 'أفضلية';
+$lang['qos_ramp'] = 'المنحدر';
+$lang['qos_rate_to_quantum_auto'] = 'التلقائي السعر إلى الكم';
+$lang['qos_rate_to_quantum'] = 'معدل إلى الكم';
+$lang['qos_reset'] = 'إعادة تعيين';
+$lang['qos_source'] = 'مصدر';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'يجب تعيين بروتوكول TCP أو UDP في حالة استخدام الموانئ.';
