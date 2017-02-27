@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Downstream प्राधान्य वर्ग नियम जोडा';
+$lang['qos_add_priomark_upstream_rule'] = 'सर्वात नवीन अपस्ट्रिम प्राधान्य वर्ग नियम जोडा';
+$lang['qos_any'] = 'कोणत्याही';
+$lang['qos_app_description'] = 'बँडविड्थ आणि QoS व्यवस्थापक अनुप्रयोग की प्रशासक इंटरनेट रहदारी विशिष्ट प्रकारच्या प्राधान्य करण्यास परवानगी देते नेटवर्क वैशिष्ट्य आहे. QoS सक्षम कोणत्याही वेळी, एकाच वापरकर्ता किंवा डिव्हाइस उपलब्ध बँडविड्थ saturating करून नेटवर्क कामगिरी मानहानी यासाठी की संभव कमी होतो.';
+$lang['qos_app_name'] = 'बँडविड्थ आणि QoS व्यवस्थापक';
+$lang['qos_destination'] = 'गंतव्य';
+$lang['qos_direction'] = 'दिशा';
+$lang['qos_edit_priomark_downstream_rule'] = 'Downstream प्राधान्य वर्ग नियम संपादित करा';
+$lang['qos_edit_priomark_upstream_rule'] = 'सर्वात नवीन अपस्ट्रिम प्राधान्य वर्ग नियम संपादित करा';
+$lang['qos_enable_all'] = 'सर्व सक्षम';
+$lang['qos_engine_disable'] = 'इंजिन अक्षम करा';
+$lang['qos_engine_enable'] = 'इंजिन सक्षम';
+$lang['qos_equalize'] = 'बरोबरी';
+$lang['qos_interface_add_title'] = 'बाह्य संवाद संरचना जोडा';
+$lang['qos_interface_edit_title'] = 'संपादित करा बाह्य संवाद संरचना';
+$lang['qos_interface_speed_not_set'] = 'या संवादकरीता एकतर नाही अपस्ट्रीम किंवा या तीनही संच आहे. QoS इंजिन जोडून आधी संवादावर गती चाचणी चालू करा.';
+$lang['qos_invalid_direction'] = 'अवैध दिशा.';
+$lang['qos_invalid_limit_value'] = 'अवैध मर्यादा मूल्य.';
+$lang['qos_invalid_r2q'] = 'अवैध r2q मूल्य.';
+$lang['qos_invalid_reservation_value'] = 'अवैध आरक्षण नियम.';
+$lang['qos_name'] = 'नाव';
+$lang['qos_not'] = 'नाही';
+$lang['qos_prioclass_limit_underflow'] = 'एक प्राधान्य वर्ग मर्यादा याच बँडविड्थ आरक्षण कमी मूल्य सेट करू शकत नाही. अधिक माहितीसाठी वापरकर्ता मार्गदर्शक पहा. मर्यादा underflow प्राधान्य वर्ग # आढळले';
+$lang['qos_priomark_downstream_rules'] = 'या तीनही प्राधान्य वर्ग नियम';
+$lang['qos_priomark_invalid_interface'] = 'अवैध किंवा कॉन्फिगर न करता बाह्य इंटरफेस.';
+$lang['qos_priomark_not_found'] = 'प्राधान्य वर्ग नियम आढळले नाही';
+$lang['qos_priomark_upstream_rules'] = 'अपस्ट्रीम प्राधान्य वर्ग नियम';
+$lang['qos_priority'] = 'प्राधान्य';
+$lang['qos_ramp'] = 'रॅम्प';
+$lang['qos_rate_to_quantum_auto'] = 'स्वयंचलित दर-टू-क्वांटम';
+$lang['qos_rate_to_quantum'] = 'दर-टू-क्वांटम';
+$lang['qos_reset'] = 'रीसेट करा';
+$lang['qos_source'] = 'स्रोत';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'पोर्ट वापरत असल्यास प्रोटोकॉल TCP किंवा UDP सेट करणे आवश्यक आहे.';
