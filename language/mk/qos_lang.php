@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Додај класно владеење течението Приоритет';
+$lang['qos_add_priomark_upstream_rule'] = 'Додај Возводно класно владеење Приоритет';
+$lang['qos_any'] = 'Секое';
+$lang['qos_app_description'] = 'апликацијата менаџер на пропусен опсег и QoS е карактеристика мрежа која им овозможува на администраторите да се даде приоритет на одредени видови на интернет сообраќај. Овозможување на QoS се намалува веројатноста дека во било кое дадено време, еден корисник или уред може да деградира ефикасноста на мрежата од страна на saturating на располагање опсег.';
+$lang['qos_app_name'] = 'И QoS пропусен опсег менаџер';
+$lang['qos_destination'] = 'дестинација';
+$lang['qos_direction'] = 'насока';
+$lang['qos_edit_priomark_downstream_rule'] = 'Уредување на класно владеење течението Приоритет';
+$lang['qos_edit_priomark_upstream_rule'] = 'Уредување Возводно класно владеење Приоритет';
+$lang['qos_enable_all'] = 'им овозможи на сите';
+$lang['qos_engine_disable'] = 'Оневозможи мотор';
+$lang['qos_engine_enable'] = 'овозможи на мотор';
+$lang['qos_equalize'] = 'изедначат';
+$lang['qos_interface_add_title'] = 'Додадете надворешни конфигурација интерфејс';
+$lang['qos_interface_edit_title'] = 'Уреди за надворешни конфигурација интерфејс';
+$lang['qos_interface_speed_not_set'] = 'Таму е или не возводно или низводно во собата за овој интерфејс. Ве молиме да се кандидира на брзина тест за интерфејс пред да додадете на моторот QoS.';
+$lang['qos_invalid_direction'] = 'Невалиден насока.';
+$lang['qos_invalid_limit_value'] = 'Невалиден граничната вредност.';
+$lang['qos_invalid_r2q'] = 'Невалиден вредност r2q.';
+$lang['qos_invalid_reservation_value'] = 'Невалиден резервација правило.';
+$lang['qos_name'] = 'име';
+$lang['qos_not'] = 'Не';
+$lang['qos_prioclass_limit_underflow'] = 'граница Приоритет класа не може да се постави на вредност помала од соодветните пропусност резервација. Видете во Прирачникот за употреба за повеќе информации. Граница underflow откриени за приоритет класа #';
+$lang['qos_priomark_downstream_rules'] = 'Правила Класа низводно Приоритет';
+$lang['qos_priomark_invalid_interface'] = 'Невалиден или unconfigured надворешен интерфејс.';
+$lang['qos_priomark_not_found'] = 'правило приоритет класа не е пронајден';
+$lang['qos_priomark_upstream_rules'] = 'Правила Класа низводно Приоритет';
+$lang['qos_priority'] = 'приоритет';
+$lang['qos_ramp'] = 'рампата';
+$lang['qos_rate_to_quantum_auto'] = 'Автоматско стапка-на-Квантна';
+$lang['qos_rate_to_quantum'] = 'Стапка до Квантна';
+$lang['qos_reset'] = 'Ресетирај';
+$lang['qos_source'] = 'извор';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Протокол мора да се постави на TCP или UDP доколку се користат пристаништа.';
