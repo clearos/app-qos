@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Tilføj Downstream Priority Class Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Tilføj Upstream Priority Class Rule';
+$lang['qos_any'] = 'Nogen';
+$lang['qos_app_description'] = 'Båndbredde og QoS manager app er en netværksfunktion, der giver administratorer mulighed for at prioritere visse typer internettrafik. Aktivering QoS formindsker sandsynligheden for, at på et givet tidspunkt, kan en enkelt bruger eller enhed forringe netværkets ydeevne ved at mætte tilgængelige båndbredde.';
+$lang['qos_app_name'] = 'Båndbredde og QoS manager';
+$lang['qos_destination'] = 'Bestemmelsessted';
+$lang['qos_direction'] = 'Retning';
+$lang['qos_edit_priomark_downstream_rule'] = 'Rediger Downstream Priority Class Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Rediger Upstream Priority Class Rule';
+$lang['qos_enable_all'] = 'Aktiver alle';
+$lang['qos_engine_disable'] = 'Deaktiver Engine';
+$lang['qos_engine_enable'] = 'Aktivér Engine';
+$lang['qos_equalize'] = 'Udjævn';
+$lang['qos_interface_add_title'] = 'Tilføj ekstern interface konfiguration';
+$lang['qos_interface_edit_title'] = 'Edit Configuration Ekstern Grænseflade';
+$lang['qos_interface_speed_not_set'] = 'Der er enten ikke opstrøms eller nedstrøms sæt til denne grænseflade. Kør en Speed ​​Test på grænsefladen, før du tilføjer den til QoS motor.';
+$lang['qos_invalid_direction'] = 'Ugyldig retning.';
+$lang['qos_invalid_limit_value'] = 'Ugyldig grænseværdi.';
+$lang['qos_invalid_r2q'] = 'Ugyldig r2q værdi.';
+$lang['qos_invalid_reservation_value'] = 'Ugyldig reservation regel.';
+$lang['qos_name'] = 'Navn';
+$lang['qos_not'] = 'Ikke';
+$lang['qos_prioclass_limit_underflow'] = 'En prioritet klasse grænse kan ikke indstilles til en værdi mindre end de tilsvarende båndbredde reservation. Se brugervejledningen for yderligere oplysninger. Begræns underløb opdaget for prioriteret klasse #';
+$lang['qos_priomark_downstream_rules'] = 'Downstream prioriterede klasseregler';
+$lang['qos_priomark_invalid_interface'] = 'Ugyldig eller konfigureret eksterne grænseflade.';
+$lang['qos_priomark_not_found'] = 'Prioritet klasse regel ikke fundet';
+$lang['qos_priomark_upstream_rules'] = 'Upstream prioriterede klasseregler';
+$lang['qos_priority'] = 'Prioritet';
+$lang['qos_ramp'] = 'Rampe';
+$lang['qos_rate_to_quantum_auto'] = 'Automatisk Rate-til-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-til-Quantum';
+$lang['qos_reset'] = 'Nulstille';
+$lang['qos_source'] = 'Kilde';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokol skal være indstillet til TCP eller UDP, hvis du bruger porte.';
