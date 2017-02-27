@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Add ambany Priority Class Fitsipika';
+$lang['qos_add_priomark_upstream_rule'] = 'Add Tena voaro Priority Class Fitsipika';
+$lang['qos_any'] = 'Any';
+$lang['qos_app_description'] = 'Ny passante sy ny rindrambaiko QoS Manager dia tambajotra mampiavaka izay mamela ny mpitantana ny laharam-pahamehana sasany Internet karazana fifamoivoizana. Manome fahafahana QoS mihena ny mety fa na oviana na nanome fotoana, iray mpampiasa na ny fitaovana mety manambany tambajotra fampisehoana amin&#39;ny alalan&#39;ny mamonto misy passante.';
+$lang['qos_app_name'] = 'Passante sy QoS Manager';
+$lang['qos_destination'] = 'Destination';
+$lang['qos_direction'] = 'Direction';
+$lang['qos_edit_priomark_downstream_rule'] = 'Hanova ambany Priority Class Fitsipika';
+$lang['qos_edit_priomark_upstream_rule'] = 'Hanova Tena voaro Priority Class Fitsipika';
+$lang['qos_enable_all'] = 'Tadiavo rehetra';
+$lang['qos_engine_disable'] = 'Disable Engine';
+$lang['qos_engine_enable'] = 'Enable Engine';
+$lang['qos_equalize'] = 'Equalize';
+$lang['qos_interface_add_title'] = 'Add External Interface Configuration';
+$lang['qos_interface_edit_title'] = 'Edit External Interface Configuration';
+$lang['qos_interface_speed_not_set'] = 'Tsy misy na tsy manokana eo ambony na ambany ho an&#39;ny sehatra ity. Masìna ianao, mihazakazaka ny Speed ​​Test eo amin&#39;ny interface tsara alohan&#39;ny fanampiana izany ho any amin&#39;ny QoS maotera.';
+$lang['qos_invalid_direction'] = 'Tari-dalana tsy mety.';
+$lang['qos_invalid_limit_value'] = 'Tsy mety fetra sarobidy.';
+$lang['qos_invalid_r2q'] = 'Tsy mety r2q sarobidy.';
+$lang['qos_invalid_reservation_value'] = 'Famandrihan-toerana tsy mety fitsipika.';
+$lang['qos_name'] = 'Name';
+$lang['qos_not'] = 'tsy';
+$lang['qos_prioclass_limit_underflow'] = 'Ny laharam-pahamehana kilasy fetra tsy azo napetraka ho sanda latsaky ny mifandraika passante famandrihana. Jereo ny User Guide raha mila fanazavana fanampiny. Fetra underflow hita ho laharam-pahamehana ny mpianatra #';
+$lang['qos_priomark_downstream_rules'] = 'Ambany Priority Class Fitsipika';
+$lang['qos_priomark_invalid_interface'] = 'Tsy mety na unconfigured ivelany interface tsara.';
+$lang['qos_priomark_not_found'] = 'Lohalaharana kilasy fitsipika tsy hita';
+$lang['qos_priomark_upstream_rules'] = 'Manokana eo ambony Priority Class Fitsipika';
+$lang['qos_priority'] = 'laharam-pahamehana';
+$lang['qos_ramp'] = 'fiakarana';
+$lang['qos_rate_to_quantum_auto'] = 'Automatic Rate-to-atsangana hitondra';
+$lang['qos_rate_to_quantum'] = 'Rate-to-atsangana hitondra';
+$lang['qos_reset'] = 'Mamerina';
+$lang['qos_source'] = 'Source';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocol dia tsy maintsy hatao amin&#39;ny TCP na UDP raha mampiasa seranan-tsambo.';
