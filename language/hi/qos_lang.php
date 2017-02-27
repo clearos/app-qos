@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'डाउनस्ट्रीम प्राथमिकता कक्षा नियम जोड़ें';
+$lang['qos_add_priomark_upstream_rule'] = 'नदी के ऊपर प्राथमिकता कक्षा नियम जोड़ें';
+$lang['qos_any'] = 'कोई';
+$lang['qos_app_description'] = 'बैंडविड्थ और क्यूओएस प्रबंधक app एक नेटवर्क विशेषता यह है कि प्रशासकों इंटरनेट यातायात के कुछ प्रकार प्राथमिकता करने के लिए अनुमति देता है। क्यूओएस सक्षम करने की संभावना है कि किसी भी समय में, एक एकल उपयोगकर्ता या डिवाइस उपलब्ध बैंडविड्थ saturating द्वारा नेटवर्क के प्रदर्शन को नीचा हो सकता है कम हो जाती है।';
+$lang['qos_app_name'] = 'बैंडविड्थ और क्यूओएस प्रबंधक';
+$lang['qos_destination'] = 'गंतव्य';
+$lang['qos_direction'] = 'दिशा';
+$lang['qos_edit_priomark_downstream_rule'] = 'संपादित डाउनस्ट्रीम प्राथमिकता वर्ग नियम';
+$lang['qos_edit_priomark_upstream_rule'] = 'संपादित नदी के ऊपर प्राथमिकता वर्ग नियम';
+$lang['qos_enable_all'] = 'सभी को सक्षम करें';
+$lang['qos_engine_disable'] = 'अक्षम इंजन';
+$lang['qos_engine_enable'] = 'इंजन सक्षम';
+$lang['qos_equalize'] = 'बराबर करना';
+$lang['qos_interface_add_title'] = 'बाहरी अंतरफलक विन्यास जोड़े';
+$lang['qos_interface_edit_title'] = 'संपादित बाहरी अंतरफलक विन्यास';
+$lang['qos_interface_speed_not_set'] = 'इस इंटरफेस के लिए या तो नहीं नदी के ऊपर या नीचे की ओर तैयार है। क्यूओएस इंजन में जोड़ने से पहले इंटरफेस पर एक गति परीक्षण चलाएँ।';
+$lang['qos_invalid_direction'] = 'अमान्य दिशा।';
+$lang['qos_invalid_limit_value'] = 'अमान्य सीमा मान।';
+$lang['qos_invalid_r2q'] = 'अमान्य r2q मूल्य।';
+$lang['qos_invalid_reservation_value'] = 'अमान्य आरक्षण नियम।';
+$lang['qos_name'] = 'नाम';
+$lang['qos_not'] = 'नहीं';
+$lang['qos_prioclass_limit_underflow'] = 'एक प्राथमिकता वर्ग सीमा में इसी बैंडविड्थ आरक्षण से कम एक मूल्य के लिए सेट नहीं किया जा सकता है। अधिक जानकारी के लिए उपयोगकर्ता गाइड देखें। सीमा underflow प्राथमिकता वर्ग # के लिए पता लगाया';
+$lang['qos_priomark_downstream_rules'] = 'डाउनस्ट्रीम प्राथमिकता वर्ग नियमों';
+$lang['qos_priomark_invalid_interface'] = 'अमान्य या विन्यास नहीं किए गए बाहरी इंटरफ़ेस।';
+$lang['qos_priomark_not_found'] = 'प्राथमिकता वर्ग नियम नहीं मिला';
+$lang['qos_priomark_upstream_rules'] = 'नदी के ऊपर प्राथमिकता वर्ग नियमों';
+$lang['qos_priority'] = 'प्राथमिकता';
+$lang['qos_ramp'] = 'रैंप';
+$lang['qos_rate_to_quantum_auto'] = 'स्वचालित दर करने वाली क्वांटम';
+$lang['qos_rate_to_quantum'] = 'दर करने वाली क्वांटम';
+$lang['qos_reset'] = 'रीसेट';
+$lang['qos_source'] = 'स्रोत';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'यदि बंदरगाहों का उपयोग कर प्रोटोकॉल टीसीपी या यूडीपी के लिए सेट किया जाना चाहिए।';
