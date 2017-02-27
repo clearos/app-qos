@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'เพิ่มกฎคลาสลำดับความสำคัญของอุตสาหกรรมปลายน้ำ';
+$lang['qos_add_priomark_upstream_rule'] = 'เพิ่มความสำคัญต้นน้ำกฎชั้น';
+$lang['qos_any'] = 'ใด';
+$lang['qos_app_description'] = 'แบนด์วิดธ์และ QoS App Manager เป็นคุณลักษณะเครือข่ายที่ช่วยให้ผู้บริหารที่จะจัดลำดับความสำคัญบางประเภทของการจราจรทางอินเทอร์เน็ต การเปิดใช้งาน QoS ลดความเป็นไปได้ว่าในช่วงเวลาใดก็ตามที่ผู้ใช้คนเดียวหรืออุปกรณ์อาจลดประสิทธิภาพการทำงานของเครือข่ายโดย saturating แบนด์วิดท์';
+$lang['qos_app_name'] = 'แบนด์วิดธ์และ QoS ผู้จัดการ';
+$lang['qos_destination'] = 'ปลายทาง';
+$lang['qos_direction'] = 'ทิศทาง';
+$lang['qos_edit_priomark_downstream_rule'] = 'แก้ไขกฎคลาสลำดับความสำคัญของอุตสาหกรรมปลายน้ำ';
+$lang['qos_edit_priomark_upstream_rule'] = 'แก้ไขต้นน้ำลำดับความสำคัญกฎชั้น';
+$lang['qos_enable_all'] = 'เปิดใช้งานทั้งหมด';
+$lang['qos_engine_disable'] = 'ปิดการใช้งานเครื่องยนต์';
+$lang['qos_engine_enable'] = 'เปิดใช้งานเครื่องยนต์';
+$lang['qos_equalize'] = 'เกลี่ย';
+$lang['qos_interface_add_title'] = 'เพิ่มการกำหนดค่าการเชื่อมต่อภายนอก';
+$lang['qos_interface_edit_title'] = 'แก้ไขการกำหนดค่าการเชื่อมต่อภายนอก';
+$lang['qos_interface_speed_not_set'] = 'มีอย่างใดอย่างหนึ่งไม่ได้ตั้งค่าต้นน้ำหรือปลายน้ำสำหรับอินเตอร์เฟซนี้ โปรดเรียกใช้การทดสอบความเร็วบนอินเตอร์เฟซก่อนที่จะเพิ่มเครื่องยนต์ QoS';
+$lang['qos_invalid_direction'] = 'ทิศทางที่ไม่ถูกต้อง';
+$lang['qos_invalid_limit_value'] = 'ค่าขีด จำกัด ที่ไม่ถูกต้อง';
+$lang['qos_invalid_r2q'] = 'ค่า r2q ไม่ถูกต้อง';
+$lang['qos_invalid_reservation_value'] = 'กฎการสำรองห้องพักที่ไม่ถูกต้อง';
+$lang['qos_name'] = 'ชื่อ';
+$lang['qos_not'] = 'ไม่';
+$lang['qos_prioclass_limit_underflow'] = 'ขีด จำกัด ระดับความสำคัญไม่สามารถตั้งค่าให้เป็นค่าที่น้อยกว่าการจองห้องพักแบนด์วิดธ์ที่สอดคล้องกัน ดูคู่มือการใช้งานสำหรับข้อมูลเพิ่มเติม ขีด จำกัด underflow ตรวจพบระดับความสำคัญ #';
+$lang['qos_priomark_downstream_rules'] = 'กฎชั้นปลายน้ำลำดับความสำคัญ';
+$lang['qos_priomark_invalid_interface'] = 'อินเตอร์เฟซภายนอกที่ไม่ถูกต้องหรือไม่มีการกำหนดค่า';
+$lang['qos_priomark_not_found'] = 'ไม่พบการปกครองระดับลำดับความสำคัญ';
+$lang['qos_priomark_upstream_rules'] = 'กฎคลาสต้นน้ำลำดับความสำคัญ';
+$lang['qos_priority'] = 'ลำดับความสำคัญ';
+$lang['qos_ramp'] = 'ทางลาด';
+$lang['qos_rate_to_quantum_auto'] = 'อัตโนมัติอัตราการควอนตัม';
+$lang['qos_rate_to_quantum'] = 'อัตราการควอนตัม';
+$lang['qos_reset'] = 'รีเซ็ต';
+$lang['qos_source'] = 'แหล่ง';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'พิธีสารจะต้องตั้งค่า TCP หรือ UDP ถ้าใช้พอร์ต';
