@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Ajouter une classe Priorité aval Règle';
+$lang['qos_add_priomark_upstream_rule'] = 'Ajouter une règle de classe de priorité amont';
+$lang['qos_any'] = 'Tout';
+$lang['qos_app_description'] = 'L&#39;application de la bande passante et de QoS Manager est une fonction réseau qui permet aux administrateurs de prioriser certains types de trafic Internet. Activation de QoS diminue la probabilité que, à un moment donné, un seul utilisateur ou dispositif pourrait dégrader les performances du réseau en saturant la bande passante disponible.';
+$lang['qos_app_name'] = 'Bande passante et de QoS Gestionnaire';
+$lang['qos_destination'] = 'Destination';
+$lang['qos_direction'] = 'Direction';
+$lang['qos_edit_priomark_downstream_rule'] = 'Modifier la classe de priorité aval Règle';
+$lang['qos_edit_priomark_upstream_rule'] = 'Modifier une règle de classe de priorité amont';
+$lang['qos_enable_all'] = 'Activer tout';
+$lang['qos_engine_disable'] = 'Disable Engine';
+$lang['qos_engine_enable'] = 'Activer Engine';
+$lang['qos_equalize'] = 'Égaliser';
+$lang['qos_interface_add_title'] = 'Ajouter Configuration de l&#39;interface externe';
+$lang['qos_interface_edit_title'] = 'Modifier la configuration d&#39;interface externe';
+$lang['qos_interface_speed_not_set'] = 'Il est soit pas ensemble en amont ou en aval de cette interface. S&#39;il vous plaît exécuter un test de vitesse sur l&#39;interface avant de l&#39;ajouter au moteur QoS.';
+$lang['qos_invalid_direction'] = 'direction non valide.';
+$lang['qos_invalid_limit_value'] = 'valeur limite non valide.';
+$lang['qos_invalid_r2q'] = 'valeur r2q non valide.';
+$lang['qos_invalid_reservation_value'] = 'règle de réserve non valide.';
+$lang['qos_name'] = 'prénom';
+$lang['qos_not'] = 'ne pas';
+$lang['qos_prioclass_limit_underflow'] = 'Une limite de classe de priorité ne peut pas être réglé à une valeur inférieure à la réservation de bande passante correspondante. Voir le Guide de l&#39;utilisateur pour plus d&#39;informations. Limite underflow détectée pour la classe de priorité #';
+$lang['qos_priomark_downstream_rules'] = 'Règles de Classe prioritaires en aval';
+$lang['qos_priomark_invalid_interface'] = 'interface externe non valide ou non configuré.';
+$lang['qos_priomark_not_found'] = 'Priorité domination de classe ne se trouve pas';
+$lang['qos_priomark_upstream_rules'] = 'Règles de Classe prioritaires en amont';
+$lang['qos_priority'] = 'Priorité';
+$lang['qos_ramp'] = 'Rampe';
+$lang['qos_rate_to_quantum_auto'] = 'Automatique Taux à-Quantum';
+$lang['qos_rate_to_quantum'] = 'Taux-to-Quantum';
+$lang['qos_reset'] = 'Réinitialiser';
+$lang['qos_source'] = 'La source';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocole doit être réglé sur TCP ou UDP si vous utilisez des ports.';
