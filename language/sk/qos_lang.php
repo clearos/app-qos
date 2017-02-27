@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Pridajte Následný priorita Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Pridajte Upstream priorita Rule';
+$lang['qos_any'] = 'akýkoľvek';
+$lang['qos_app_description'] = 'Aplikácia šírky pásma a QoS Manager je sieťová funkcia, ktorá umožňuje administrátorom uprednostniť určité typy internetového prevádzky. Umožňujúci QoS znižuje pravdepodobnosť, že v danom okamihu, jeden používateľ alebo zariadenie môže znížiť výkon siete nasýtením dostupnú šírku pásma.';
+$lang['qos_app_name'] = 'Šírku pásma a QoS manager';
+$lang['qos_destination'] = 'Destinácia';
+$lang['qos_direction'] = 'smer';
+$lang['qos_edit_priomark_downstream_rule'] = 'Úprava Následný priorita Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Úprava Upstream priorita Rule';
+$lang['qos_enable_all'] = 'umožniť všetkým';
+$lang['qos_engine_disable'] = 'zakázať Engine';
+$lang['qos_engine_enable'] = 'aktivovať Engine';
+$lang['qos_equalize'] = 'vyrovnať';
+$lang['qos_interface_add_title'] = 'Pridajte Externé konfiguračné rozhranie';
+$lang['qos_interface_edit_title'] = 'Upraviť konfiguráciu Externé rozhranie';
+$lang['qos_interface_speed_not_set'] = 'K dispozícii je buď nie je pred alebo za sada pre toto rozhranie. Prosím spustiť Speed ​​Test na rozhraní pred pridaním do motora QoS.';
+$lang['qos_invalid_direction'] = 'Neplatný smer.';
+$lang['qos_invalid_limit_value'] = 'Neplatná hraničná hodnota.';
+$lang['qos_invalid_r2q'] = 'Neplatná hodnota r2q.';
+$lang['qos_invalid_reservation_value'] = 'Neplatné pravidlo rezervácie.';
+$lang['qos_name'] = 'názov';
+$lang['qos_not'] = 'nie';
+$lang['qos_prioclass_limit_underflow'] = 'Limit priorita nemôže byť nastavený na hodnotu menšiu, než zodpovedajúce rezerváciu šírky pásma. Nájdete v príručke pre viac informácií. Limit podtečení zistená pre prioritné triede #';
+$lang['qos_priomark_downstream_rules'] = 'Následný pravidiel prednosti Class';
+$lang['qos_priomark_invalid_interface'] = 'Neplatná alebo nenakonfigurované externé rozhrania.';
+$lang['qos_priomark_not_found'] = 'Pravidlo trieda prioritou nebol nájdený';
+$lang['qos_priomark_upstream_rules'] = 'Upstream pravidiel prednosti Class';
+$lang['qos_priority'] = 'priorita';
+$lang['qos_ramp'] = 'rampa';
+$lang['qos_rate_to_quantum_auto'] = 'Automatické Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'Reštartovať';
+$lang['qos_source'] = 'zdroj';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokol musí byť nastavená na TCP alebo UDP, ak používate porty.';
