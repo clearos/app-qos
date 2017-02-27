@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Add aval Prioritate Clasa Regula';
+$lang['qos_add_priomark_upstream_rule'] = 'Add upstream clasa de prioritate Regula';
+$lang['qos_any'] = 'Orice';
+$lang['qos_app_description'] = 'Lățime de bandă și QoS App Manager este o caracteristică de rețea care permite administratorilor să acorde prioritate anumitor tipuri de trafic pe Internet. QoS care permite scade probabilitatea ca la un moment dat, un singur utilizator sau dispozitiv ar putea degrada performanța rețelei prin saturarea lățimea de bandă disponibilă.';
+$lang['qos_app_name'] = 'Lățime de bandă și QoS Manager de';
+$lang['qos_destination'] = 'Destinaţie';
+$lang['qos_direction'] = 'Direcţie';
+$lang['qos_edit_priomark_downstream_rule'] = 'În aval modificați Prioritatea Clasa Regula';
+$lang['qos_edit_priomark_upstream_rule'] = 'Edita upstream clasa de prioritate Regula';
+$lang['qos_enable_all'] = 'Permite tuturor';
+$lang['qos_engine_disable'] = 'Dezactivați Motor';
+$lang['qos_engine_enable'] = 'activaţi Motor';
+$lang['qos_equalize'] = 'Egaliza';
+$lang['qos_interface_add_title'] = 'Interfață externă add Configurare';
+$lang['qos_interface_edit_title'] = 'Interfață externă Configurare de editare';
+$lang['qos_interface_speed_not_set'] = 'Există, fie nu sunt setate în amonte sau în aval de această interfață. Vă rugăm să rulați un test de viteză pe interfața înainte de a adăuga la motorul QoS.';
+$lang['qos_invalid_direction'] = 'Direcția nevalidă.';
+$lang['qos_invalid_limit_value'] = 'Valoarea limită nevalidă.';
+$lang['qos_invalid_r2q'] = 'Valoarea r2q nevalidă.';
+$lang['qos_invalid_reservation_value'] = 'regula de rezervare nevalidă.';
+$lang['qos_name'] = 'Nume';
+$lang['qos_not'] = 'Nu';
+$lang['qos_prioclass_limit_underflow'] = 'O limită de clasă de prioritate nu poate fi setată la o valoare mai mică decât lățimea de bandă corespunzătoare rezervării. A se vedea Ghidul utilizatorului pentru mai multe informații. Limita subîncărcare detectată pentru clasa de prioritate #';
+$lang['qos_priomark_downstream_rules'] = 'Reguli de clasă în aval de prioritate';
+$lang['qos_priomark_invalid_interface'] = 'Interfața externă nevalidă sau neconfigurat.';
+$lang['qos_priomark_not_found'] = 'regula clasă de prioritate nu a fost găsit';
+$lang['qos_priomark_upstream_rules'] = 'Reguli Clasa upstream prioritare';
+$lang['qos_priority'] = 'Prioritate';
+$lang['qos_ramp'] = 'Rampă';
+$lang['qos_rate_to_quantum_auto'] = 'Automată Rata-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rata de-la-Quantum';
+$lang['qos_reset'] = 'restabili';
+$lang['qos_source'] = 'Sursă';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocolul trebuie să fie setat la TCP sau UDP, dacă se utilizează porturi.';
