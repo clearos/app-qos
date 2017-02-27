@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Bæta Neðan Forgangur Flokkur reglu';
+$lang['qos_add_priomark_upstream_rule'] = 'Bæta Andstreymis Forgangur Flokkur reglu';
+$lang['qos_any'] = 'Einhver';
+$lang['qos_app_description'] = 'The Bandwidth og QoS Manager app er net eiginleiki sem gerir stjórnendum kleift að forgangsraða ákveðnar tegundir af umferð Internet. Virkjun QoS minnkar líkurnar á því að á hverjum tíma, einn notandi eða tækið gæti draga net flutningur af mettuð bandbreiddina.';
+$lang['qos_app_name'] = 'Bandbreidd og QoS Manager';
+$lang['qos_destination'] = 'Áfangastaður';
+$lang['qos_direction'] = 'stefna';
+$lang['qos_edit_priomark_downstream_rule'] = 'Breyta Neðan Forgangur Flokkur reglu';
+$lang['qos_edit_priomark_upstream_rule'] = 'Breyta Andstreymis Forgangur Flokkur reglu';
+$lang['qos_enable_all'] = 'gera öllum';
+$lang['qos_engine_disable'] = 'Slökkva Engine';
+$lang['qos_engine_enable'] = 'Virkja Engine';
+$lang['qos_equalize'] = 'jafna';
+$lang['qos_interface_add_title'] = 'Bæta Ytri tengi stillingar';
+$lang['qos_interface_edit_title'] = 'Breyta Ytri tengi stillingar';
+$lang['qos_interface_speed_not_set'] = 'Það er annað hvort ekki aðliggjandi sett fyrir þessu tengi. Vinsamlegast keyra Speed ​​Test á tengi áður en þú bætir það til QoS vél.';
+$lang['qos_invalid_direction'] = 'Ógild átt.';
+$lang['qos_invalid_limit_value'] = 'Ógilt viðmiðunarmörk.';
+$lang['qos_invalid_r2q'] = 'Ógilt gildi r2q.';
+$lang['qos_invalid_reservation_value'] = 'Ógild pöntun regla.';
+$lang['qos_name'] = 'heiti';
+$lang['qos_not'] = 'ekki';
+$lang['qos_prioclass_limit_underflow'] = 'A forgang flokki mörk er ekki hægt að stilla að verðmæti minna en samsvarandi bandbreidd fyrirvara. Sjá notendahandbókina til að fá nánari upplýsingar. Takmarka underflow greind fyrir forgang bekknum #';
+$lang['qos_priomark_downstream_rules'] = 'Downstream Forgangur Class Reglur';
+$lang['qos_priomark_invalid_interface'] = 'Ógildur eða stefnunni ytri tengi.';
+$lang['qos_priomark_not_found'] = 'Forgangur flokki regla fannst ekki';
+$lang['qos_priomark_upstream_rules'] = 'Andstreymis Forgangur Class Reglur';
+$lang['qos_priority'] = 'Forgangur';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Sjálfvirk Rate-til-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-til-Quantum';
+$lang['qos_reset'] = 'endurstilla';
+$lang['qos_source'] = 'Source';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Bókun þarf að vera stillt á TCP eða UDP ef nota hafnir.';
