@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'இதனுடைய முன்னுரிமை வர்க்க ஆட்சியின் சேர்';
+$lang['qos_add_priomark_upstream_rule'] = 'அப்ஸ்ட்ரீம் முன்னுரிமை வர்க்க ஆட்சியின் சேர்';
+$lang['qos_any'] = 'எந்த';
+$lang['qos_app_description'] = 'அலைவரிசை மற்றும் QoS மேலாளர் பயன்பாட்டை நிர்வாகிகள் இணைய போக்குவரத்து சில வகையான முன்னுரிமை அனுமதிக்கிறது என்று ஒரு நெட்வொர்க் அம்சம். QoS ஐ இயக்குவது எந்த நேரத்திலும், ஒரு பயனர் அல்லது சாதனம் கிடைக்க பட்டையகலம் தெவிட்டுநிலையடைய பிணைய செயல்திறன் சிதைக்கும் என்று வாய்ப்பு குறைகிறது.';
+$lang['qos_app_name'] = 'அலைவரிசை மற்றும் QoS மேலாளர்';
+$lang['qos_destination'] = 'இலக்கு';
+$lang['qos_direction'] = 'திசையில்';
+$lang['qos_edit_priomark_downstream_rule'] = 'இதனுடைய முன்னுரிமை வர்க்க ஆட்சியின் திருத்தவும்';
+$lang['qos_edit_priomark_upstream_rule'] = 'அப்ஸ்ட்ரீம் முன்னுரிமை வர்க்க ஆட்சியின் திருத்தவும்';
+$lang['qos_enable_all'] = 'அனைத்து இயக்கு';
+$lang['qos_engine_disable'] = 'பொறி முடக்கு';
+$lang['qos_engine_enable'] = 'என்ஜினை இயக்கும்';
+$lang['qos_equalize'] = 'சமமாக';
+$lang['qos_interface_add_title'] = 'வெளி இடைமுக கட்டமைப்பு சேர்';
+$lang['qos_interface_edit_title'] = 'திருத்த வெளி இடைமுக கட்டமைப்பு';
+$lang['qos_interface_speed_not_set'] = 'இந்த இடைமுகம் ஒன்று இல்லை அப்ஸ்ட்ரீம் அல்லது கீழ்நிலை தொகுப்பு உள்ளது. QoS ஐ இயந்திரம் சேர்ப்பதன் முன் முகப்பில் ஒரு வேகம் டெஸ்ட் ரன் கொள்ளவும்.';
+$lang['qos_invalid_direction'] = 'தவறான திசையில்.';
+$lang['qos_invalid_limit_value'] = 'தவறான வரம்பு மதிப்பு.';
+$lang['qos_invalid_r2q'] = 'தவறான r2q மதிப்பு.';
+$lang['qos_invalid_reservation_value'] = 'தவறான ஒதுக்கீடு ஆட்சி.';
+$lang['qos_name'] = 'பெயர்';
+$lang['qos_not'] = 'இல்லை';
+$lang['qos_prioclass_limit_underflow'] = 'ஒரு முன்னுரிமை பிரிவு எல்லை இல்லை இதே அலைவரிசையை ஒதுக்கீடு குறைவாக ஒரு மதிப்பு அமைக்க முடியும். மேலும் தகவலுக்கு பயனர் வழிகாட்டி. எல்லை குறையோட்டம் முன்னுரிமை வர்க்கம் # கண்டுபிடிக்கப்படும்';
+$lang['qos_priomark_downstream_rules'] = 'கீழே பாயும் முன்னுரிமை வர்க்கம் விதிகள்';
+$lang['qos_priomark_invalid_interface'] = 'தவறான அல்லது உள்ளமைக்கப்படாத வெளிப்புற இடைமுகம்.';
+$lang['qos_priomark_not_found'] = 'முன்னுரிமை வர்க்க ஆட்சியின் காணவில்லை';
+$lang['qos_priomark_upstream_rules'] = 'அப்ஸ்ட்ரீம் முன்னுரிமை வர்க்கம் விதிகள்';
+$lang['qos_priority'] = 'முன்னுரிமை';
+$lang['qos_ramp'] = 'வளைவில்';
+$lang['qos_rate_to_quantum_auto'] = 'தானியங்கி மதிப்பீடு-க்கு குவாண்டம்';
+$lang['qos_rate_to_quantum'] = 'மதிப்பீடு-க்கு குவாண்டம்';
+$lang['qos_reset'] = 'மீட்டமை';
+$lang['qos_source'] = 'மூல';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'துறைமுகங்கள் பயன்படுத்தி என்றால் நெறிமுறை TCP அல்லது UDP அமைக்கப்பட வேண்டும்.';
