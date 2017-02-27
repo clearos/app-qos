@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Alt Öncelik Sınıf Kuralı Ekle';
+$lang['qos_add_priomark_upstream_rule'] = 'Memba Öncelik Sınıf Kuralı Ekle';
+$lang['qos_any'] = 'herhangi';
+$lang['qos_app_description'] = 'Bant genişliği ve QoS Müdürü uygulaması yöneticileri Internet trafiğinin belirli türlerine öncelik sağlayan bir şebeke özelliğidir. QoS etkinleştirilmesi herhangi bir zamanda, tek bir kullanıcı veya aygıt kullanılabilir bant genişliği doyurarak ağ performansını düşürebilir olasılığını azaltır.';
+$lang['qos_app_name'] = 'Bant genişliği ve QoS Müdürü';
+$lang['qos_destination'] = 'Hedef';
+$lang['qos_direction'] = 'yön';
+$lang['qos_edit_priomark_downstream_rule'] = 'Alt Öncelik Sınıf Kuralını Düzenle';
+$lang['qos_edit_priomark_upstream_rule'] = 'Memba Öncelik Sınıf Kuralını Düzenle';
+$lang['qos_enable_all'] = 'Hepsini etkinleştir';
+$lang['qos_engine_disable'] = 'Devre Dışı Motor';
+$lang['qos_engine_enable'] = 'Motor etkinleştirme';
+$lang['qos_equalize'] = 'eşitlemek';
+$lang['qos_interface_add_title'] = 'Harici Arabirim Yapılandırması Ekle';
+$lang['qos_interface_edit_title'] = 'Düzenleme Harici Arayüz Yapılandırma';
+$lang['qos_interface_speed_not_set'] = 'Bu arabirim için değil yukarı veya aşağı ayarlamak ya yoktur. QoS motoru eklemeden önce arabirimde bir Hız Testi çalıştırın.';
+$lang['qos_invalid_direction'] = 'Geçersiz yönü.';
+$lang['qos_invalid_limit_value'] = 'Geçersiz limit değeri.';
+$lang['qos_invalid_r2q'] = 'Geçersiz r2q değer.';
+$lang['qos_invalid_reservation_value'] = 'Geçersiz rezervasyon kuralı.';
+$lang['qos_name'] = 'isim';
+$lang['qos_not'] = 'Değil';
+$lang['qos_prioclass_limit_underflow'] = 'Bir öncelik sınıfı sınırı karşılık gelen bant genişliği rezervasyon daha az bir değere ayarlanamaz. Daha fazla bilgi için Kullanım Kılavuzu&#39;na bakın. Sınır Yetersizlik öncelik sınıfı için # tespit';
+$lang['qos_priomark_downstream_rules'] = 'Mansap Öncelik Sınıf Kuralları';
+$lang['qos_priomark_invalid_interface'] = 'Geçersiz veya yapılandırılmamış dış arabirim.';
+$lang['qos_priomark_not_found'] = 'Öncelikli sınıf kuralı bulunamadı';
+$lang['qos_priomark_upstream_rules'] = 'Memba Öncelik Sınıf Kuralları';
+$lang['qos_priority'] = 'öncelik';
+$lang['qos_ramp'] = 'Rampa';
+$lang['qos_rate_to_quantum_auto'] = 'Otomatik Fiyat-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Puan-to-Quantum';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'Kaynak';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'bağlantı noktalarını kullanarak eğer Protokol TCP veya UDP olarak ayarlanması gerekir.';
