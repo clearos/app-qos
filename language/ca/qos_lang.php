@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Afegir regla de classe de prioritat descendent';
+$lang['qos_add_priomark_upstream_rule'] = 'Afegir regla de classe de prioritat en sentit ascendent';
+$lang['qos_any'] = 'Cap';
+$lang['qos_app_description'] = 'L&#39;aplicació d&#39;ample de banda i QoS Manager és una funció de xarxa que permet als administradors prioritzar determinats tipus de trànsit d&#39;Internet. Determinació de QoS disminueix la probabilitat que en qualsevol moment donat, un sol usuari o dispositiu poden degradar el rendiment de la xarxa mitjançant la saturació d&#39;ample de banda disponible.';
+$lang['qos_app_name'] = 'Ample de banda i qualitat de servei Administrador';
+$lang['qos_destination'] = 'destí';
+$lang['qos_direction'] = 'Direcció';
+$lang['qos_edit_priomark_downstream_rule'] = 'Edita regla classe de prioritat descendent';
+$lang['qos_edit_priomark_upstream_rule'] = 'Edita regla classe de prioritat en sentit ascendent';
+$lang['qos_enable_all'] = 'habilitar tot';
+$lang['qos_engine_disable'] = 'motor Desactivar';
+$lang['qos_engine_enable'] = 'Habilitar el motor';
+$lang['qos_equalize'] = 'igualar';
+$lang['qos_interface_add_title'] = 'Afegir configuració de la interfície externa';
+$lang['qos_interface_edit_title'] = 'Configuració de la interfície externa d&#39;edició';
+$lang['qos_interface_speed_not_set'] = 'Allà no es configura aigües amunt o aigües avall d&#39;aquesta interfície. Si us plau, feu una prova de velocitat en la interfície abans d&#39;afegir-la al motor QoS.';
+$lang['qos_invalid_direction'] = 'direcció no vàlida.';
+$lang['qos_invalid_limit_value'] = 'valor límit vàlid.';
+$lang['qos_invalid_r2q'] = 'r2q valor no vàlid.';
+$lang['qos_invalid_reservation_value'] = 'regla de reserva invàlida.';
+$lang['qos_name'] = 'Nom';
+$lang['qos_not'] = 'No';
+$lang['qos_prioclass_limit_underflow'] = 'Un límit de classe de prioritat no es pot ajustar a un valor inferior a la reserva d&#39;ample de banda corresponent. Consulteu la Guia de l&#39;usuari per obtenir més informació. desbordament límit detectada per classe de prioritat #';
+$lang['qos_priomark_downstream_rules'] = 'Regles de classe de prioritat aigües avall';
+$lang['qos_priomark_invalid_interface'] = 'interfície externa no vàlida o no configurat.';
+$lang['qos_priomark_not_found'] = 'domini de classe de prioritat no es va trobar';
+$lang['qos_priomark_upstream_rules'] = 'Regles de classe de prioritat aigües amunt';
+$lang['qos_priority'] = 'prioritat';
+$lang['qos_ramp'] = 'rampa';
+$lang['qos_rate_to_quantum_auto'] = 'Automàtic de la velocitat a Quantum';
+$lang['qos_rate_to_quantum'] = 'Taxa-de-Quantum';
+$lang['qos_reset'] = 'reajustar';
+$lang['qos_source'] = 'font';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocol s&#39;ha d&#39;establir en TCP o UDP si l&#39;ús dels ports.';
