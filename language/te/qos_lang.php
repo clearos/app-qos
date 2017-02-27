@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'విధాన ప్రాధాన్య క్లాస్ నియమాన్ని జోడించండి';
+$lang['qos_add_priomark_upstream_rule'] = 'అప్స్ట్రీమ్ ప్రాధాన్య క్లాస్ నియమాన్ని జోడించండి';
+$lang['qos_any'] = 'ఏ';
+$lang['qos_app_description'] = 'బ్యాండ్విడ్త్ మరియు QoS మేనేజర్ అనువర్తనం నిర్వాహకులు ఇంటర్నెట్ ట్రాఫిక్లో కొన్ని రకాల ప్రాధాన్యత అనుమతించే ఒక నెట్వర్క్ లక్షణం. QoS సమర్ధించే ఏదైనా సమయంలో, ఒకే యూజర్ లేదా పరికరం నెట్వర్క్ పనితీరు అధోకరణం ఉండవచ్చు అందుబాటులో బ్యాండ్విడ్త్ సంతృప్త ద్వారా సంభావ్యతను తగ్గించవచ్చు.';
+$lang['qos_app_name'] = 'బ్యాండ్విడ్త్ మరియు QoS మేనేజర్';
+$lang['qos_destination'] = 'గమ్యం';
+$lang['qos_direction'] = 'దర్శకత్వం';
+$lang['qos_edit_priomark_downstream_rule'] = 'విధాన ప్రాధాన్య క్లాస్ రూల్ సవరించు';
+$lang['qos_edit_priomark_upstream_rule'] = 'అప్స్ట్రీమ్ ప్రాధాన్య క్లాస్ రూల్ సవరించు';
+$lang['qos_enable_all'] = 'అన్ని ప్రారంభించు';
+$lang['qos_engine_disable'] = 'ఇంజిన్ ఆపివేయి';
+$lang['qos_engine_enable'] = 'ఇంజిన్ ప్రారంభించు';
+$lang['qos_equalize'] = 'సరిచేయు';
+$lang['qos_interface_add_title'] = 'బాహ్య ఇంటర్ఫేస్ ఆకృతీకరణ జోడించండి';
+$lang['qos_interface_edit_title'] = 'బాహ్య ఇంటర్ఫేస్ ఆకృతీకరణ మార్చు';
+$lang['qos_interface_speed_not_set'] = 'ఈ ఇంటర్ఫేస్ కోసం కాదు అప్స్ట్రీమ్ లేదా దిగువ ప్రాంతానికి సెట్ ను ఉంది. QoS ఇంజిన్ కలిపే ముందుగా ఇంటర్ఫేస్ స్పీడ్ పరీక్ష అమలు చేయండి.';
+$lang['qos_invalid_direction'] = 'చెల్లని దిశలో.';
+$lang['qos_invalid_limit_value'] = 'చెల్లని పరిమితి విలువ.';
+$lang['qos_invalid_r2q'] = 'చెల్లని r2q విలువ.';
+$lang['qos_invalid_reservation_value'] = 'చెల్లని రిజర్వేషన్ నియమం.';
+$lang['qos_name'] = 'పేరు';
+$lang['qos_not'] = 'కాదు';
+$lang['qos_prioclass_limit_underflow'] = 'ప్రాధాన్యత తరగతి పరిమితి ఇదే బ్యాండ్విడ్త్ రిజర్వేషన్ కంటే తక్కువ విలువకు సెట్ చేయడం సాధ్యం కాదు. మరింత సమాచారం కోసం యూజర్ గైడ్. పరిమితి తక్కువ ప్రవాహం ప్రాధాన్యత తరగతి # కనుగొనబడింది';
+$lang['qos_priomark_downstream_rules'] = 'దిగువ ప్రాంతానికి ప్రాధాన్య క్లాస్ రూల్స్';
+$lang['qos_priomark_invalid_interface'] = 'చెల్లని లేదా కాన్ఫిగర్ బాహ్య ఇంటర్ఫేస్.';
+$lang['qos_priomark_not_found'] = 'ప్రాధాన్య తరగతి పాలన దొరకలేదు';
+$lang['qos_priomark_upstream_rules'] = 'అప్స్ట్రీమ్ ప్రాధాన్య క్లాస్ రూల్స్';
+$lang['qos_priority'] = 'ప్రాధాన్యత';
+$lang['qos_ramp'] = 'ర్యాంప్';
+$lang['qos_rate_to_quantum_auto'] = 'స్వయంచాలక వడ్డీరేట్లతో టు క్వాంటం';
+$lang['qos_rate_to_quantum'] = 'వడ్డీరేట్లతో టు క్వాంటం';
+$lang['qos_reset'] = 'రీసెట్';
+$lang['qos_source'] = 'మూల';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'పోర్ట్సు ఉపయోగించి ఉంటే ప్రోటోకాల్ TCP లేదా UDP అమర్చాలి.';
