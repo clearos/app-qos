@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Add nisa da tushe Fifiko Class Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Add cirewa Fifiko Class Rule';
+$lang['qos_any'] = 'Duk wani';
+$lang['qos_app_description'] = 'The Bandwidth da QoS Manager app ne cibiyar sadarwa alama da damar ma&#39;aikata prioritize wani iri Internet zirga-zirga. Kunna QoS rage-rage da alama cewa a kowane lokaci, guda mai amfani ko na&#39;urar zai kaskantar cibiyar sadarwa yi ta saturating available bandwidth.';
+$lang['qos_app_name'] = 'Bandwidth da QoS Manager';
+$lang['qos_destination'] = 'manufa';
+$lang['qos_direction'] = 'direction';
+$lang['qos_edit_priomark_downstream_rule'] = 'Shirya nisa da tushe Fifiko Class Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Shirya cirewa Fifiko Class Rule';
+$lang['qos_enable_all'] = 'Enable All';
+$lang['qos_engine_disable'] = 'Musaki Engine';
+$lang['qos_engine_enable'] = 'Enable Engine';
+$lang['qos_equalize'] = 'equalize';
+$lang['qos_interface_add_title'] = 'Add External Interface Kanfigareshan';
+$lang['qos_interface_edit_title'] = 'Shirya External Interface Kanfigareshan';
+$lang['qos_interface_speed_not_set'] = 'Akwai ko dai ba cirewa ko nisa da tushe sa wannan ke dubawa. Don Allah gudu a Speed ​​Test a kan dubawa da ƙara da shi zuwa ga QoS engine.';
+$lang['qos_invalid_direction'] = 'Mara inganci shugabanci.';
+$lang['qos_invalid_limit_value'] = 'Mara iyaka darajar.';
+$lang['qos_invalid_r2q'] = 'Mara inganci r2q darajar.';
+$lang['qos_invalid_reservation_value'] = 'Mara inganci ajiyar mulki.';
+$lang['qos_name'] = 'name';
+$lang['qos_not'] = 'ba';
+$lang['qos_prioclass_limit_underflow'] = 'A fifiko aji iyaka ba za a iya saita zuwa wani daraja kasa da daidai bandwidth ajiyar. Dubi User Guide don ƙarin bayani. Yawan underflow gano for fifiko aji #';
+$lang['qos_priomark_downstream_rules'] = 'Nisa da tushe Fifiko Class Dokokin';
+$lang['qos_priomark_invalid_interface'] = 'Mara inganci ko unconfigured external dubawa.';
+$lang['qos_priomark_not_found'] = 'Fifiko aji mulkin ba su samu';
+$lang['qos_priomark_upstream_rules'] = 'Cirewa Fifiko Class Dokokin';
+$lang['qos_priority'] = 'Fifiko';
+$lang['qos_ramp'] = 'gangara';
+$lang['qos_rate_to_quantum_auto'] = 'Atomatik Rate-to-jimla';
+$lang['qos_rate_to_quantum'] = 'Rate-to-jimla';
+$lang['qos_reset'] = 'Sake saitin';
+$lang['qos_source'] = 'source';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Layinhantsaki dole ne a saita zuwa TCP ko UDP idan ta amfani da tashoshin jiragen ruwa.';
