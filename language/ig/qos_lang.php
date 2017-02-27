@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Tinye downstream Ibu ụzọ Class Ọma ahụ';
+$lang['qos_add_priomark_upstream_rule'] = 'Tinye upstream Ibu ụzọ Class Ọma ahụ';
+$lang['qos_any'] = 'ọ bụla';
+$lang['qos_app_description'] = 'The Bandwit na QoS Manager ngwa bụ a netwọk Atụmatụ na-ekwe ndị ọchịchị Hazie ụdị ụfọdụ nke Internet okporo ụzọ. Enyere QoS mbelata likelihood na n&#39;oge ọ bụla e nyere n&#39;oge, otu onye ọrụ ma ọ bụ ngwaọrụ nwere ike degrade netwọk arụmọrụ site na ide dị bandwit.';
+$lang['qos_app_name'] = 'Bandwit na QoS Manager';
+$lang['qos_destination'] = 'Destination';
+$lang['qos_direction'] = 'Direction';
+$lang['qos_edit_priomark_downstream_rule'] = 'Dezie downstream Ibu ụzọ Class Ọma ahụ';
+$lang['qos_edit_priomark_upstream_rule'] = 'Dezie upstream Ibu ụzọ Class Ọma ahụ';
+$lang['qos_enable_all'] = 'Kwado All';
+$lang['qos_engine_disable'] = 'Gbanyụọ Engine';
+$lang['qos_engine_enable'] = 'Kwado Engine';
+$lang['qos_equalize'] = 'equalize';
+$lang['qos_interface_add_title'] = 'Tinye Mpụga Interface nhazi';
+$lang['qos_interface_edit_title'] = 'Dezie Mpụga Interface nhazi';
+$lang['qos_interface_speed_not_set'] = 'E nwere ma ọ bụghị upstream ma ọ bụ downstream set maka nke a interface. Biko na-agba ọsọ a Speed ​​Test na interface n&#39;ihu na-agbakwunye ya ndị na-QoS engine.';
+$lang['qos_invalid_direction'] = 'Ghara ịdị irè direction.';
+$lang['qos_invalid_limit_value'] = 'Ghara ịdị irè ịgba uru.';
+$lang['qos_invalid_r2q'] = 'Ghara ịdị irè r2q uru.';
+$lang['qos_invalid_reservation_value'] = 'Ghara ịdị irè ndoputa na-achị.';
+$lang['qos_name'] = 'aha';
+$lang['qos_not'] = 'ọ bụghị';
+$lang['qos_prioclass_limit_underflow'] = 'A mkpa klas ịgba apụghị ịtọ ka a bara uru na-erughị kwekọrọ ekwekọ bandwit ndoputa. -Ahụ Ịnye Ntuziaka maka ozi ndị ọzọ. Ịgba underflow ahụrụ maka mkpa klas #';
+$lang['qos_priomark_downstream_rules'] = 'Downstream Ibu ụzọ Class Rules';
+$lang['qos_priomark_invalid_interface'] = 'Ghara ịdị irè ma ọ bụ unconfigured mpụga interface.';
+$lang['qos_priomark_not_found'] = 'Ibu ụzọ na klas na-achị achọtaghi';
+$lang['qos_priomark_upstream_rules'] = 'Upstream Ibu ụzọ Class Rules';
+$lang['qos_priority'] = 'Ibu ụzọ';
+$lang['qos_ramp'] = 'ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Akpaka Rate na-kwantum';
+$lang['qos_rate_to_quantum'] = 'Rate na-kwantum';
+$lang['qos_reset'] = 'Tọgharia';
+$lang['qos_source'] = 'isi iyi';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocol ga-ga-TCP ma ọ bụ UDP ma ọ bụrụ na-eji ọdụ ụgbọ mmiri.';
