@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Tambahkan Hilir Prioritas Kelas Aturan';
+$lang['qos_add_priomark_upstream_rule'] = 'Tambahkan Hulu Prioritas Kelas Aturan';
+$lang['qos_any'] = 'Apa saja';
+$lang['qos_app_description'] = 'Bandwidth dan QoS Manajer aplikasi adalah fitur jaringan yang memungkinkan administrator untuk memprioritaskan beberapa jenis lalu lintas internet. Mengaktifkan QoS mengurangi kemungkinan bahwa pada waktu tertentu, satu pengguna atau perangkat mungkin menurunkan kinerja jaringan dengan menjenuhkan bandwidth yang tersedia.';
+$lang['qos_app_name'] = 'Bandwidth dan QoS Manajer';
+$lang['qos_destination'] = 'Tujuan';
+$lang['qos_direction'] = 'Arah';
+$lang['qos_edit_priomark_downstream_rule'] = 'Mengedit Hilir Prioritas Kelas Aturan';
+$lang['qos_edit_priomark_upstream_rule'] = 'Mengedit Hulu Prioritas Kelas Aturan';
+$lang['qos_enable_all'] = 'aktifkan Semua';
+$lang['qos_engine_disable'] = 'Nonaktifkan Mesin';
+$lang['qos_engine_enable'] = 'aktifkan Mesin';
+$lang['qos_equalize'] = 'Menyamakan';
+$lang['qos_interface_add_title'] = 'Tambahkan Eksternal Antarmuka Konfigurasi';
+$lang['qos_interface_edit_title'] = 'Edit Konfigurasi Antarmuka Eksternal';
+$lang['qos_interface_speed_not_set'] = 'Ada baik tidak hulu atau hilir ditetapkan untuk interface ini. Jalankan Test Kecepatan pada antarmuka sebelum menambahkannya ke mesin QoS.';
+$lang['qos_invalid_direction'] = 'arah valid.';
+$lang['qos_invalid_limit_value'] = 'nilai batas yang tidak valid.';
+$lang['qos_invalid_r2q'] = 'nilai r2q valid.';
+$lang['qos_invalid_reservation_value'] = 'Aturan reservasi tidak valid.';
+$lang['qos_name'] = 'Nama';
+$lang['qos_not'] = 'Tidak';
+$lang['qos_prioclass_limit_underflow'] = 'Batas kelas prioritas tidak dapat diatur ke nilai kurang dari reservasi bandwidth yang sesuai. Lihat Panduan Pengguna untuk informasi lebih lanjut. Batas underflow terdeteksi untuk kelas prioritas #';
+$lang['qos_priomark_downstream_rules'] = 'Aturan Kelas hilir Prioritas';
+$lang['qos_priomark_invalid_interface'] = 'antarmuka eksternal yang tidak valid atau belum dikonfigurasi.';
+$lang['qos_priomark_not_found'] = 'kekuasaan kelas prioritas tidak ditemukan';
+$lang['qos_priomark_upstream_rules'] = 'Aturan Kelas hulu Prioritas';
+$lang['qos_priority'] = 'Prioritas';
+$lang['qos_ramp'] = 'Lereng';
+$lang['qos_rate_to_quantum_auto'] = 'Otomatis Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'ulang';
+$lang['qos_source'] = 'Sumber';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokol harus diatur ke TCP atau UDP jika menggunakan port.';
