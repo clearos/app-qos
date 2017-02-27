@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Tambah Hilir Prioritas Kelas Aturan';
+$lang['qos_add_priomark_upstream_rule'] = 'Tambah Hulu Prioritas Kelas Aturan';
+$lang['qos_any'] = 'Sakur';
+$lang['qos_app_description'] = 'Nu Bandwidth jeung QoS Manager app téh ciri jaringan anu ngamungkinkeun pangurus méré prioritas tipe tangtu lalu lintas Internet. Sangkan QoS nurun likelihood nu iraha wae dibikeun, pamaké single atawa alat bisa nguraikeun kinerja jaringan ku saturating bandwidth sadia.';
+$lang['qos_app_name'] = 'Bandwidth jeung QoS Manager';
+$lang['qos_destination'] = 'tujuan';
+$lang['qos_direction'] = 'tuju';
+$lang['qos_edit_priomark_downstream_rule'] = 'Ngédit Hilir Prioritas Kelas Aturan';
+$lang['qos_edit_priomark_upstream_rule'] = 'Ngédit Hulu Prioritas Kelas Aturan';
+$lang['qos_enable_all'] = 'Aktipkeun Sadaya';
+$lang['qos_engine_disable'] = 'Pareuman Engine';
+$lang['qos_engine_enable'] = 'Aktipkeun Engine';
+$lang['qos_equalize'] = 'Equalize';
+$lang['qos_interface_add_title'] = 'Tambah kaluar Interface Konfigurasi';
+$lang['qos_interface_edit_title'] = 'Édit Konfigurasi Interface kaluar';
+$lang['qos_interface_speed_not_set'] = 'Aya boh teu hulu atawa hilir set pikeun interface ieu. Mangga ngajalankeun Test Speed ​​dina interface saméméh nambahan ka engine QoS.';
+$lang['qos_invalid_direction'] = 'arah sah.';
+$lang['qos_invalid_limit_value'] = 'nilai limit sah.';
+$lang['qos_invalid_r2q'] = 'nilai r2q sah.';
+$lang['qos_invalid_reservation_value'] = 'aturan ngumpulkeun sah.';
+$lang['qos_name'] = 'nami';
+$lang['qos_not'] = 'teu';
+$lang['qos_prioclass_limit_underflow'] = 'A limit kelas prioritas teu bisa disetel ka nilai kurang ti ngumpulkeun bandwidth alkana. Tempo Guide Pamaké kanggo inpormasi lengkep. Wates underflow kauninga keur kelas prioritas #';
+$lang['qos_priomark_downstream_rules'] = 'Aturan Kelas hilir Prioritas';
+$lang['qos_priomark_invalid_interface'] = 'interface luar sah atawa unconfigured.';
+$lang['qos_priomark_not_found'] = 'aturan kelas prioritas teu kapanggih';
+$lang['qos_priomark_upstream_rules'] = 'Aturan Kelas hulu Prioritas';
+$lang['qos_priority'] = 'prioritas';
+$lang['qos_ramp'] = 'lamping';
+$lang['qos_rate_to_quantum_auto'] = 'Otomatis Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Laju-to-Quantum';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'sumber';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocol kudu disetel ka TCP atawa UDP lamun ngagunakeun palabuhan.';
