@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Engeza Priority Ezansi Class Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Engeza Enhla Priority Class Rule';
+$lang['qos_any'] = 'Noma iyiphi';
+$lang['qos_app_description'] = 'Imenenja lokusebenza koumkhawulokudonsa futhi QoS yisici inethiwekhi evumela ukuthi abalawuli lokubekwa eqhulwini kodaba lokuvulwa izinhlobo ezithile traffic Internet. Ukunika amandla QoS kunciphisa amathuba okuthi nganoma isiphi isikhathi, oyedwa noma idivayisi angase zilulaza ukusebenza inethiwekhi yokumatisa bandwidth etholakalayo.';
+$lang['qos_app_name'] = 'Komkhawulokudonsa futhi QoS Manager';
+$lang['qos_destination'] = 'Destination';
+$lang['qos_direction'] = 'Direction';
+$lang['qos_edit_priomark_downstream_rule'] = 'Hlela Priority Ezansi Class Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Hlela Enhla Priority Class Rule';
+$lang['qos_enable_all'] = 'Vumela Konke';
+$lang['qos_engine_disable'] = 'Khubaza Engine';
+$lang['qos_engine_enable'] = 'Vumela injini';
+$lang['qos_equalize'] = 'ukulinganisa';
+$lang['qos_interface_add_title'] = 'Engeza Lwangaphandle Interface Ukucushwa';
+$lang['qos_interface_edit_title'] = 'Hlela Lwangaphandle Interface Ukucushwa';
+$lang['qos_interface_speed_not_set'] = 'Kukhona kungenzeka isethi umfula noma ezansi salokhu interface. Sicela run a Test Speed ​​esibonakalayo ngaphambi ukulifaka leli QoS injini.';
+$lang['qos_invalid_direction'] = 'isiqondiso engavumelekile.';
+$lang['qos_invalid_limit_value'] = 'Inani umkhawulo engavumelekile.';
+$lang['qos_invalid_r2q'] = 'Inani r2q engavumelekile.';
+$lang['qos_invalid_reservation_value'] = 'Ukubusa ukubhuka engavumelekile.';
+$lang['qos_name'] = 'Igama';
+$lang['qos_not'] = 'Not';
+$lang['qos_prioclass_limit_underflow'] = 'A Umkhawulo class kambaphambili ayikwazi isethwe kunani esingaphansi bandwidth ukubhuka esihambelanayo. Sicela ubone Isiqondisi Somsebenzisi ukuze uthole ulwazi oluthe xaxa. Limit underflow kutholelwe ekilasini kambaphambili #';
+$lang['qos_priomark_downstream_rules'] = 'Priority Ezansi Class Rules';
+$lang['qos_priomark_invalid_interface'] = 'isikhombimsebenzisi yangaphandle engavumelekile noma unconfigured.';
+$lang['qos_priomark_not_found'] = 'Priority class rule ayitholakalanga';
+$lang['qos_priomark_upstream_rules'] = 'Priority Enhla Class Rules';
+$lang['qos_priority'] = 'Priority';
+$lang['qos_ramp'] = 'ngamasondo';
+$lang['qos_rate_to_quantum_auto'] = 'Automatic Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'Setha kabusha';
+$lang['qos_source'] = 'Umthombo';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'UHlelo Lokudlulisa kufanele isethelwe ku-TCP noma UDP uma usebenzisa nezimbobo.';
