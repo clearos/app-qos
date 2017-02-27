@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Agregar regla de clase de prioridad descendente';
+$lang['qos_add_priomark_upstream_rule'] = 'Agregar regla de clase de prioridad en sentido ascendente';
+$lang['qos_any'] = 'Alguna';
+$lang['qos_app_description'] = 'La aplicación de ancho de banda y QoS Manager es una función de red que permite a los administradores priorizar determinados tipos de tráfico de Internet. Activación de QoS disminuye la probabilidad de que en cualquier momento dado, un solo usuario o dispositivo pueden degradar el rendimiento de la red mediante la saturación de ancho de banda disponible.';
+$lang['qos_app_name'] = 'Ancho de banda y calidad de servicio Administrador';
+$lang['qos_destination'] = 'Destino';
+$lang['qos_direction'] = 'Dirección';
+$lang['qos_edit_priomark_downstream_rule'] = 'Editar regla clase de prioridad descendente';
+$lang['qos_edit_priomark_upstream_rule'] = 'Editar regla clase de prioridad en sentido ascendente';
+$lang['qos_enable_all'] = 'Activar todo';
+$lang['qos_engine_disable'] = 'motor Desactivar';
+$lang['qos_engine_enable'] = 'Habilitar el motor';
+$lang['qos_equalize'] = 'Igualar';
+$lang['qos_interface_add_title'] = 'Agregar configuración de la interfaz externa';
+$lang['qos_interface_edit_title'] = 'Configuración de la interfaz externa de edición';
+$lang['qos_interface_speed_not_set'] = 'Allí no se configura aguas arriba o aguas abajo de esta interfaz. Por favor, ejecute una prueba de velocidad en la interfaz antes de añadirla al motor QoS.';
+$lang['qos_invalid_direction'] = 'dirección no válida.';
+$lang['qos_invalid_limit_value'] = 'valor límite válido.';
+$lang['qos_invalid_r2q'] = 'r2q valor no válido.';
+$lang['qos_invalid_reservation_value'] = 'regla de reserva inválida.';
+$lang['qos_name'] = 'Nombre';
+$lang['qos_not'] = 'No';
+$lang['qos_prioclass_limit_underflow'] = 'Un límite de clase de prioridad no se puede ajustar a un valor inferior a la reserva de ancho de banda correspondiente. Consulte la Guía del usuario para obtener más información. desbordamiento límite detectada por clase de prioridad #';
+$lang['qos_priomark_downstream_rules'] = 'Reglas de clase de prioridad aguas abajo';
+$lang['qos_priomark_invalid_interface'] = 'interfaz externa no válida o no configurado.';
+$lang['qos_priomark_not_found'] = 'dominio de clase de prioridad no se encontró';
+$lang['qos_priomark_upstream_rules'] = 'Reglas de clase de prioridad aguas arriba';
+$lang['qos_priority'] = 'Prioridad';
+$lang['qos_ramp'] = 'Rampa';
+$lang['qos_rate_to_quantum_auto'] = 'Automático de la velocidad a Quantum';
+$lang['qos_rate_to_quantum'] = 'Tasa-de-Quantum';
+$lang['qos_reset'] = 'Reiniciar';
+$lang['qos_source'] = 'Fuente';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocolo debe establecerse en TCP o UDP si el uso de los puertos.';
