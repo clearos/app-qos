@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Dodaj Downstream Priority Class Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Dodaj Upstream Priority Class Rule';
+$lang['qos_any'] = 'Każdy';
+$lang['qos_app_description'] = 'Aplikacja pasmem i QoS Manager to funkcja sieciowa, która pozwala administratorom priorytetu niektórym rodzajom ruchu internetowego. Włączanie QoS zmniejsza prawdopodobieństwo, że w danym momencie, jeden użytkownik lub urządzenie może obniżyć wydajność sieci poprzez nasycanie dostępnego pasma.';
+$lang['qos_app_name'] = 'Pasma i QoS Menedżer';
+$lang['qos_destination'] = 'przeznaczenie';
+$lang['qos_direction'] = 'Kierunek';
+$lang['qos_edit_priomark_downstream_rule'] = 'Edycja Poniżej Priority Class Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'Edycja Upstream Priority Class Rule';
+$lang['qos_enable_all'] = 'Włącz wszystkie';
+$lang['qos_engine_disable'] = 'Wyłączenie silnika';
+$lang['qos_engine_enable'] = 'Włączenie silnika';
+$lang['qos_equalize'] = 'Wyrównać';
+$lang['qos_interface_add_title'] = 'Dodaj Konfiguracja zewnętrznego interfejsu';
+$lang['qos_interface_edit_title'] = 'Edit Configuration Interfejs zewnętrzny';
+$lang['qos_interface_speed_not_set'] = 'Jest albo nie przed lub za zestaw dla tego interfejsu. Proszę uruchomić test prędkości na interfejsie przed dodaniem go do silnika QoS.';
+$lang['qos_invalid_direction'] = 'Nieprawidłowy kierunek.';
+$lang['qos_invalid_limit_value'] = 'Nieprawidłowa wartość graniczna.';
+$lang['qos_invalid_r2q'] = 'Nieprawidłowa wartość r2q.';
+$lang['qos_invalid_reservation_value'] = 'Nieprawidłowa reguła rezerwacja.';
+$lang['qos_name'] = 'Nazwa';
+$lang['qos_not'] = 'Nie';
+$lang['qos_prioclass_limit_underflow'] = 'Limit priorytet klasy nie może być ustawiona na wartość mniejszą niż w analogicznym rezerwacji pasma. Zobacz w instrukcji obsługi, aby uzyskać więcej informacji. Limit dolny wykryty priorytet klasy #';
+$lang['qos_priomark_downstream_rules'] = 'Dalszy priorytetowe Przepisy klasowe';
+$lang['qos_priomark_invalid_interface'] = 'Błędne lub skonfigurowany interfejs zewnętrzny.';
+$lang['qos_priomark_not_found'] = 'Zasada priorytet klasy Nie znaleziono';
+$lang['qos_priomark_upstream_rules'] = 'Upstream priorytetowe Przepisy klasowe';
+$lang['qos_priority'] = 'Priorytet';
+$lang['qos_ramp'] = 'Rampa';
+$lang['qos_rate_to_quantum_auto'] = 'Automatyczna Cena do Quantum';
+$lang['qos_rate_to_quantum'] = 'Szybkość do Quantum';
+$lang['qos_reset'] = 'Nastawić';
+$lang['qos_source'] = 'Źródło';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokół musi być ustawiony na TCP lub UDP w przypadku korzystania z portów.';
