@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'بہاو ​​ترجیحی طبقاتی حکمرانی کے لئے شامل کریں';
+$lang['qos_add_priomark_upstream_rule'] = 'upstream کے ترجیحی طبقاتی حکمرانی کے لئے شامل کریں';
+$lang['qos_any'] = 'کوئی';
+$lang['qos_app_description'] = 'بینڈوتھ اور QoS Manager اپلی کیشن انٹرنیٹ ٹریفک کی بعض اقسام کو ترجیح کرنے کے منتظمین کی اجازت دیتا ہے کہ ایک نیٹ ورک خصوصیت ہے. سروس چالو کرنے سے امکان کسی بھی وقت، کسی ایک صارف یا آلہ دستیاب بینڈوڈتھ saturating کی طرف سے نیٹ ورک کی کارکردگی کو رسوا کرے کمی واقع ہوتی ہے.';
+$lang['qos_app_name'] = 'بینڈوتھ اور QoS کے مینیجر';
+$lang['qos_destination'] = 'مقصود';
+$lang['qos_direction'] = 'سمت';
+$lang['qos_edit_priomark_downstream_rule'] = 'بہاو ​​ترجیحی طبقاتی حکمرانی میں ترمیم کریں';
+$lang['qos_edit_priomark_upstream_rule'] = 'upstream کے ترجیحی طبقاتی حکمرانی میں ترمیم کریں';
+$lang['qos_enable_all'] = 'تمام فعال کریں';
+$lang['qos_engine_disable'] = 'غیر فعال انجن';
+$lang['qos_engine_enable'] = 'انجن فعال';
+$lang['qos_equalize'] = 'برابر';
+$lang['qos_interface_add_title'] = 'بیرونی انٹرفیس ترتیب کا اضافہ کریں';
+$lang['qos_interface_edit_title'] = 'تصیح بیرونی انٹرفیس ترتیب';
+$lang['qos_interface_speed_not_set'] = 'اس انٹرفیس کے لیے نہیں upstream کے یا بہاو سیٹ یا تو نہیں ہے. QoS کے انجن کے لئے اسے شامل کرنے سے پہلے انٹرفیس پر ایک رفتار ٹیسٹ چلائیں مہربانی.';
+$lang['qos_invalid_direction'] = 'غلط سمت.';
+$lang['qos_invalid_limit_value'] = 'غلط حد قیمت.';
+$lang['qos_invalid_r2q'] = 'غلط r2q قدر.';
+$lang['qos_invalid_reservation_value'] = 'غلط بکنگ حکمرانی.';
+$lang['qos_name'] = 'نام';
+$lang['qos_not'] = 'نہیں';
+$lang['qos_prioclass_limit_underflow'] = 'ایک ترجیح طبقے کی حد اسی بینڈوڈتھ بکنگ سے کم قیمت پر مقرر نہیں کیا جا سکتا. مزید معلومات کے لئے صارف گائیڈ ملاحظہ کریں. حد underflow لئے ترجیح طبقے # پتہ چلنے';
+$lang['qos_priomark_downstream_rules'] = 'بہاو ​​ترجیح کلاس کے قواعد';
+$lang['qos_priomark_invalid_interface'] = 'غلط یا unconfigured بیرونی انٹرفیس.';
+$lang['qos_priomark_not_found'] = 'ترجیحی طبقاتی حکمرانی نہیں ملا';
+$lang['qos_priomark_upstream_rules'] = 'upstream کے ترجیحی کلاس کے قواعد';
+$lang['qos_priority'] = 'ترجیح';
+$lang['qos_ramp'] = 'ریمپ';
+$lang['qos_rate_to_quantum_auto'] = 'خودکار شرح ٹو کوانٹم';
+$lang['qos_rate_to_quantum'] = 'شرح ٹو کوانٹم';
+$lang['qos_reset'] = 'پھر سیٹ کریں';
+$lang['qos_source'] = 'ذریعہ';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'بندرگاہوں استعمال کرتے ہوئے اگر پروٹوکول TCP یا UDP کے لئے مقرر کیا جائے ضروری ہے.';
