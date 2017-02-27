@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Ajoute Downstream Priyorite Règ Gwoup';
+$lang['qos_add_priomark_upstream_rule'] = 'Ajoute En Priyorite Règ Gwoup';
+$lang['qos_any'] = 'Nenpòt';
+$lang['qos_app_description'] = 'Bandwidth ak QoS Manadjè App a se yon karakteristik rezo ki pèmèt administratè bay pweferans sèten kalite trafik entènèt. Pèmèt QoS diminye chans pou ke a nenpòt ki lè yo bay yo, yon itilizatè yon selibatè oubyen aparèy ta ka degrade pèfòmans rezo pa sature Pleasant disponib.';
+$lang['qos_app_name'] = 'Bandwidth ak QoS Manadjè';
+$lang['qos_destination'] = 'destinasyon';
+$lang['qos_direction'] = 'Direksyon';
+$lang['qos_edit_priomark_downstream_rule'] = 'Edit Downstream Priyorite Règ Gwoup';
+$lang['qos_edit_priomark_upstream_rule'] = 'Edit En Priyorite Règ Gwoup';
+$lang['qos_enable_all'] = 'pèmèt tout';
+$lang['qos_engine_disable'] = 'Enfim Engine';
+$lang['qos_engine_enable'] = 'pèmèt Engine';
+$lang['qos_equalize'] = 'egalize';
+$lang['qos_interface_add_title'] = 'Ajoute Eksteryè Entèfas konte genyen';
+$lang['qos_interface_edit_title'] = 'Edit Eksteryè Entèfas konte genyen';
+$lang['qos_interface_speed_not_set'] = 'Gen swa pa en oswa en seri pou koòdone sa a. Tanpri kouri nan yon Egzamen vitès sou koòdone nan avan ou ajoute li nan motè a QoS.';
+$lang['qos_invalid_direction'] = 'Envalid direksyon.';
+$lang['qos_invalid_limit_value'] = 'Envalid valè limit.';
+$lang['qos_invalid_r2q'] = 'Envalid valè r2q.';
+$lang['qos_invalid_reservation_value'] = 'Envalid règ rezèvasyon.';
+$lang['qos_name'] = 'Non';
+$lang['qos_not'] = 'Pa';
+$lang['qos_prioclass_limit_underflow'] = 'Yon limit klas priyorite pa ka mete nan yon valè mwens pase rezèvasyon an Pleasant koresponn lan. Wè Gid a Itilizatè pou plis enfòmasyon. Limite underflow detekte pou klas priyorite #';
+$lang['qos_priomark_downstream_rules'] = 'Downstream Priyorite Gwoup Règ';
+$lang['qos_priomark_invalid_interface'] = 'Envalid oswa unconfigured koòdone ekstèn.';
+$lang['qos_priomark_not_found'] = 'Priyorite klas règ pa jwenn';
+$lang['qos_priomark_upstream_rules'] = 'En Priyorite Gwoup Règ';
+$lang['qos_priority'] = 'Priyorite';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Otomatik To-a-kwantik';
+$lang['qos_rate_to_quantum'] = 'To-a-kwantik';
+$lang['qos_reset'] = 'Reyajiste';
+$lang['qos_source'] = 'sous';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'dwe Pwotokòl dwe mete nan tchp oswa udp si lè l sèvi avèk pò.';
