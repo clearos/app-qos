@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Idagdag Downstream Priority Class Rule';
+$lang['qos_add_priomark_upstream_rule'] = 'Idagdag Upstream Priority Class Rule';
+$lang['qos_any'] = 'anumang';
+$lang['qos_app_description'] = 'Ang Bandwidth at QoS Manager app ay isang tampok ng network na nagpapahintulot sa mga administrator upang unahin ang ilang uri ng Internet trapiko. Ang pagpapaandar ng QoS nababawasan ang posibilidad na sa anumang naibigay na oras, ang isang solong user o aparato ay maaaring pababain ang sarili sa pagganap ng network sa pamamagitan ng saturating magagamit na bandwidth.';
+$lang['qos_app_name'] = 'Bandwidth at QoS Manager';
+$lang['qos_destination'] = 'destinasyon';
+$lang['qos_direction'] = 'direksiyon';
+$lang['qos_edit_priomark_downstream_rule'] = 'I-edit ang Downstream Priority Class Rule';
+$lang['qos_edit_priomark_upstream_rule'] = 'I-edit ang Upstream Priority Class Rule';
+$lang['qos_enable_all'] = 'paganahin lahat';
+$lang['qos_engine_disable'] = 'Huwag paganahin ang Engine';
+$lang['qos_engine_enable'] = 'paganahin Engine';
+$lang['qos_equalize'] = 'equalize';
+$lang['qos_interface_add_title'] = 'Magdagdag ng mga panlabas Interface Configuration';
+$lang['qos_interface_edit_title'] = 'Edit Panlabas Interface Configuration';
+$lang['qos_interface_speed_not_set'] = 'May ay alinman sa hindi upstream o sa ibaba ng agos na itinakda para sa interface na ito. Mangyaring patakbuhin ang isang Bilis ng Test sa interface bago ito idagdag sa ang QoS engine.';
+$lang['qos_invalid_direction'] = 'Hindi wastong direksyon.';
+$lang['qos_invalid_limit_value'] = 'Di-wastong halaga limit.';
+$lang['qos_invalid_r2q'] = 'Di-wastong halaga r2q.';
+$lang['qos_invalid_reservation_value'] = 'Hindi wastong reservation panuntunan.';
+$lang['qos_name'] = 'pangalan';
+$lang['qos_not'] = 'hindi';
+$lang['qos_prioclass_limit_underflow'] = 'Ang limitasyon priority klase ay hindi maaaring itakda sa isang halaga na mas mababa kaysa sa kaukulang bandwidth reserbasyon. Tingnan ang Gabay sa Gumagamit para sa karagdagang impormasyon. Limit underflow nakita para sa priority klase #';
+$lang['qos_priomark_downstream_rules'] = 'Sa ibaba ng agos Priority Class Rules';
+$lang['qos_priomark_invalid_interface'] = 'Hindi wastong o unconfigured panlabas na interface.';
+$lang['qos_priomark_not_found'] = 'Priority makauring paghahari hindi natagpuan';
+$lang['qos_priomark_upstream_rules'] = 'Upstream Priority Class Rules';
+$lang['qos_priority'] = 'karapatang mauna';
+$lang['qos_ramp'] = 'ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Automatic Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'I-reset';
+$lang['qos_source'] = 'pinagmulan';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protocol ay dapat na itakda sa TCP o UDP kung gumagamit ng port.';
