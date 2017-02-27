@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Class regula Add Downstream Priority';
+$lang['qos_add_priomark_upstream_rule'] = 'Class regula Add Upstream Priority';
+$lang['qos_any'] = 'omnis';
+$lang['qos_app_description'] = 'Et QoS Manager Sed in app est a network administratores prioritize pluma quod sino certain typus of Internet traffic. Cuius QoS decrescit in verisimili quod in aliquo tempore, a user ratio ut proicimus, vel per saturating available Sed in retiacula perficientur.';
+$lang['qos_app_name'] = 'Sed in est et QoS Manager';
+$lang['qos_destination'] = 'Destination';
+$lang['qos_direction'] = 'Directio';
+$lang['qos_edit_priomark_downstream_rule'] = 'Edit Downstream Priority Class regula';
+$lang['qos_edit_priomark_upstream_rule'] = 'Edit Upstream Priority Class regula';
+$lang['qos_enable_all'] = 'enable omnes';
+$lang['qos_engine_disable'] = 'Disable Engine';
+$lang['qos_engine_enable'] = 'enable Engine';
+$lang['qos_equalize'] = 'EXAEQUO';
+$lang['qos_interface_add_title'] = 'Configuration exteriorem Interface';
+$lang['qos_interface_edit_title'] = 'Configuration Edit External Interface';
+$lang['qos_interface_speed_not_set'] = 'Aut non est vel flumine ad amni Set hoc interface. Vade cito in in test, ante addendo ad QoS search interface.';
+$lang['qos_invalid_direction'] = 'Nullam partem.';
+$lang['qos_invalid_limit_value'] = 'Nullam pretium terminum.';
+$lang['qos_invalid_r2q'] = 'Nullam pretium r2q.';
+$lang['qos_invalid_reservation_value'] = 'Nullam exceptionem regulariter.';
+$lang['qos_name'] = 'nomine';
+$lang['qos_not'] = 'non';
+$lang['qos_prioclass_limit_underflow'] = 'Quoddam genus non potest esse terminus minus congruum Sed pretium exceptione. Vide User Guide pro magis notitia. Manifestum enim modus prioritatis genere # underflow';
+$lang['qos_priomark_downstream_rules'] = 'Prior amni classis Rules';
+$lang['qos_priomark_invalid_interface'] = 'Nullam vel unconfigured external interface.';
+$lang['qos_priomark_not_found'] = 'Prioritate ordinis regula non inveni';
+$lang['qos_priomark_upstream_rules'] = 'Class flumine Priority Rules';
+$lang['qos_priority'] = 'PRAECELLENTIA';
+$lang['qos_ramp'] = 'RAPINA';
+$lang['qos_rate_to_quantum_auto'] = 'Automatic Rate: Quantum est,';
+$lang['qos_rate_to_quantum'] = 'Quantum-to Rate,';
+$lang['qos_reset'] = 'Reset';
+$lang['qos_source'] = 'Source';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'UDP et TCP oportet, ut, si usus Protocol p.';
