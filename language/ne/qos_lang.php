@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Downstream प्राथमिकता क्लास नियम थप्न';
+$lang['qos_add_priomark_upstream_rule'] = 'अपस्ट्रिम प्राथमिकता क्लास नियम थप्न';
+$lang['qos_any'] = 'कुनै पनि';
+$lang['qos_app_description'] = 'बैंडविड्थ र QoS प्रबन्धक अनुप्रयोग नेटवर्क सुविधा भनेर प्रशासकहरूले इन्टरनेट ट्राफिक केहि प्रकारको प्राथमिकता अनुमति दिन्छ। QoS सक्षम कुनै पनि समयमा, एक प्रयोगकर्ता वा उपकरण उपलब्ध ब्यान्डविथ saturating सञ्जाल प्रदर्शन घटाउन सक्छ कि likelihood घट्छ।';
+$lang['qos_app_name'] = 'ब्यान्डविथ र QoS प्रबन्धक';
+$lang['qos_destination'] = 'गन्तव्य';
+$lang['qos_direction'] = 'दिशा';
+$lang['qos_edit_priomark_downstream_rule'] = 'Downstream प्राथमिकता क्लास नियम सम्पादन';
+$lang['qos_edit_priomark_upstream_rule'] = 'अपस्ट्रिम प्राथमिकता क्लास नियम सम्पादन';
+$lang['qos_enable_all'] = 'सबै सक्षम';
+$lang['qos_engine_disable'] = 'इन्जिन अक्षम';
+$lang['qos_engine_enable'] = 'इन्जिन सक्षम';
+$lang['qos_equalize'] = 'Equalize';
+$lang['qos_interface_add_title'] = 'बाहिरी इन्टरफेस कन्फिगरेसन थप्न';
+$lang['qos_interface_edit_title'] = 'बाहिरी इन्टरफेस कन्फिगरेसन सम्पादन गर्नुहोस्';
+$lang['qos_interface_speed_not_set'] = 'यो इन्टरफेस लागि या त अपस्ट्रिम वा downstream सेट छ। कृपया QoS इन्जिन यसलाई थप गर्नु अघि इन्टरफेस मा एक गति परीक्षण चलान।';
+$lang['qos_invalid_direction'] = 'अवैध निर्देशन।';
+$lang['qos_invalid_limit_value'] = 'अवैध सीमा मान।';
+$lang['qos_invalid_r2q'] = 'अवैध r2q मान।';
+$lang['qos_invalid_reservation_value'] = 'अवैध आरक्षण नियम।';
+$lang['qos_name'] = 'नाम';
+$lang['qos_not'] = 'छैन';
+$lang['qos_prioclass_limit_underflow'] = 'संगत ब्यान्डविथ आरक्षण भन्दा कम मान गर्न एक प्राथमिकता वर्ग सीमा सेट गर्न सकिँदैन। थप जानकारीको लागि प्रयोगकर्ता गाइड हेर्नुहोस्। सीमा underflow प्राथमिकता वर्ग # लागि पत्ता';
+$lang['qos_priomark_downstream_rules'] = 'Downstream प्राथमिकता क्लास नियम';
+$lang['qos_priomark_invalid_interface'] = 'अवैध वा कन्फिगर नभई छोडेमा बाह्य इन्टरफेस।';
+$lang['qos_priomark_not_found'] = 'प्राथमिकता वर्ग नियम फेला परेन';
+$lang['qos_priomark_upstream_rules'] = 'अपस्ट्रिम प्राथमिकता क्लास नियम';
+$lang['qos_priority'] = 'प्राथमिकता';
+$lang['qos_ramp'] = 'र्याम्प';
+$lang['qos_rate_to_quantum_auto'] = 'स्वचालित दर-गर्न-क्वान्टम';
+$lang['qos_rate_to_quantum'] = 'दर-गर्न-क्वान्टम';
+$lang['qos_reset'] = 'रिसेट गर्नुहोस्';
+$lang['qos_source'] = 'मुहान';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'बन्दरगाह प्रयोग भएमा प्रोटोकल TCP वा UDP गर्न सेट गर्नुपर्छ।';
