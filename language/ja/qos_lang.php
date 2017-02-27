@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'ダウンストリームの優先度クラスのルールを追加します。';
+$lang['qos_add_priomark_upstream_rule'] = '上流優先クラスのルールの追加';
+$lang['qos_any'] = 'どれか';
+$lang['qos_app_description'] = '帯域幅およびQoSマネージャアプリは、管理者がインターネットトラフィックの特定の種類に優先順位を付けることができ、ネットワーク機能です。 QoSを有効にすると、任意の時点で、単一のユーザーまたはデバイスが利用可能な帯域幅を飽和させることによって、ネットワークのパフォーマンスが低下することがあります可能性を減少させます。';
+$lang['qos_app_name'] = '帯域幅およびQoSマネージャ';
+$lang['qos_destination'] = '先';
+$lang['qos_direction'] = '方向';
+$lang['qos_edit_priomark_downstream_rule'] = 'ダウンストリームの優先度クラスのルールを編集します';
+$lang['qos_edit_priomark_upstream_rule'] = '上流優先クラスのルールを編集します';
+$lang['qos_enable_all'] = 'すべて有効';
+$lang['qos_engine_disable'] = '無効にするエンジン';
+$lang['qos_engine_enable'] = 'エンジンを有効にします';
+$lang['qos_equalize'] = 'イコライズ';
+$lang['qos_interface_add_title'] = '外部インターフェイス設定を追加します。';
+$lang['qos_interface_edit_title'] = '編集外部インターフェイス設定';
+$lang['qos_interface_speed_not_set'] = 'このインターフェイスのための上流または下流のないセットのいずれかがあります。 QoSエンジンに追加する前に、インターフェイス上のスピードテストを実行してください。';
+$lang['qos_invalid_direction'] = '無効な方向。';
+$lang['qos_invalid_limit_value'] = '無効な制限値。';
+$lang['qos_invalid_r2q'] = '無効なr2q値。';
+$lang['qos_invalid_reservation_value'] = '無効な予約ルール。';
+$lang['qos_name'] = '名';
+$lang['qos_not'] = 'しません';
+$lang['qos_prioclass_limit_underflow'] = '優先クラスの上限は、対応する帯域予約よりも小さい値に設定することができません。 詳細については、ユーザーガイドを参照してください。 リミットアンダーフローは、優先度クラスの＃のための検出します';
+$lang['qos_priomark_downstream_rules'] = '下流の優先順位クラスルール';
+$lang['qos_priomark_invalid_interface'] = '無効または未設定の外部インタフェース。';
+$lang['qos_priomark_not_found'] = '優先クラスのルールが見つかりません';
+$lang['qos_priomark_upstream_rules'] = '上流優先クラスルール';
+$lang['qos_priority'] = '優先';
+$lang['qos_ramp'] = 'ランプ';
+$lang['qos_rate_to_quantum_auto'] = '自動レート・ツー・量子';
+$lang['qos_rate_to_quantum'] = 'レート対量子';
+$lang['qos_reset'] = 'リセット';
+$lang['qos_source'] = 'ソース';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'ポートを使用する場合は、プロトコルはTCPまたはUDPに設定する必要があります。';
