@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'לייג צו דאַונסטרים פּריאָריטי קלאַס הערשן';
+$lang['qos_add_priomark_upstream_rule'] = 'לייג צו אַפּסטרים פּריאָריטי קלאַס הערשן';
+$lang['qos_any'] = 'אַני';
+$lang['qos_app_description'] = 'די באַנדווידט און קאָס מאַנאַגער אַפּ איז אַ נעץ שטריך אַז אַלאַוז אַדמיניסטראַטאָרס צו פּרייאָראַטייז זיכער טייפּס פון אינטערנעט פאַרקער. ענייבאַלינג קאָס דיקריסאַז די ליקעליהאָאָד אַז בייַ קיין געגעבן צייַט, אַ איין באַניצער אָדער מיטל זאל דיגרייד נעץ אויפֿפֿירונג דורך סאַטשערייטינג פאַראַנען באַנדווידט.';
+$lang['qos_app_name'] = 'באַנדווידט און קאָס מאַנאַגער';
+$lang['qos_destination'] = 'דעסטינאַטיאָן';
+$lang['qos_direction'] = 'ריכטונג';
+$lang['qos_edit_priomark_downstream_rule'] = 'רעדאַגירן דאַונסטרים פּריאָריטי קלאַס הערשן';
+$lang['qos_edit_priomark_upstream_rule'] = 'רעדאַגירן אַפּסטרים פּריאָריטי קלאַס הערשן';
+$lang['qos_enable_all'] = 'געבן אַלע';
+$lang['qos_engine_disable'] = 'דיסאַבלע ענגינע';
+$lang['qos_engine_enable'] = 'געבן ענגינע';
+$lang['qos_equalize'] = 'יקוואַלייז';
+$lang['qos_interface_add_title'] = 'לייג צו עקסטערנאַל צובינד קאָנפיגוראַטיאָן';
+$lang['qos_interface_edit_title'] = 'רעדאַגירן עקסטערנאַל צובינד קאָנפיגוראַטיאָן';
+$lang['qos_interface_speed_not_set'] = 'עס איז אָדער ניט אַפּסטרים אָדער דאַונסטרים שטעלן פֿאַר דעם צובינד. ביטע לויפן אַ ספּיד טעסט אויף די צובינד איידער אַדינג עס צו די קאָס מאָטאָר.';
+$lang['qos_invalid_direction'] = 'אינוואליד ריכטונג.';
+$lang['qos_invalid_limit_value'] = 'אינוואליד שיעור ווערט.';
+$lang['qos_invalid_r2q'] = 'אינוואליד ר2ק ווערט.';
+$lang['qos_invalid_reservation_value'] = 'אינוואליד באַוואָרעניש הערשן.';
+$lang['qos_name'] = 'נאָמען';
+$lang['qos_not'] = 'נישט';
+$lang['qos_prioclass_limit_underflow'] = 'א בילכערקייַט קלאַס שיעור קענען ניט זיין באַשטימט צו אַ ווערט ווייניקער ווי די קאָראַספּאַנדינג באַנדווידט רעזערוואַציע. זען די באַניצער גייד פֿאַר מער אינפֿאָרמאַציע. לימיט ונדערפלאָוו דיטעקטיד פֿאַר בילכערקייַט קלאַס #';
+$lang['qos_priomark_downstream_rules'] = 'דאַונסטרים פּריאָריטי קלאַס רולעס';
+$lang['qos_priomark_invalid_interface'] = 'אינוואליד אָדער ונקאָנפיגורעד פונדרויסנדיק צובינד.';
+$lang['qos_priomark_not_found'] = 'בילכערקייַט קלאַס הערשן ניט געפֿונען';
+$lang['qos_priomark_upstream_rules'] = 'אַפּסטרים פּריאָריטי קלאַס רולעס';
+$lang['qos_priority'] = 'בילכערקייַט';
+$lang['qos_ramp'] = 'ראַמפּע';
+$lang['qos_rate_to_quantum_auto'] = 'אָטאַמאַטיק קורס-צו-קוואַנטום';
+$lang['qos_rate_to_quantum'] = 'קורס-צו-קוואַנטום';
+$lang['qos_reset'] = 'באַשטעטיק';
+$lang['qos_source'] = 'מאָקער';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'פּראָטאָקאָל מוזן ווערן באַשטימט צו טקפּ אָדער ודפּ אויב ניצן פּאָרץ.';
