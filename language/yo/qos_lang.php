@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Fi ibosile ayo Class Ofin';
+$lang['qos_add_priomark_upstream_rule'] = 'Fi ilosoke ayo Class Ofin';
+$lang['qos_any'] = 'eyikeyi';
+$lang['qos_app_description'] = 'The Bandiwidi ati QoS Manager app ni nẹtiwọki kan ẹya-ara ti o fun laaye alakoso lati prioritize awọn orisi ti Internet ijabọ. Muu QoS dinku awọn ti o ṣeeṣe ti o ni eyikeyi fi fun akoko, a nikan olumulo tabi ẹrọ le degrade nẹtiwọki išẹ nipa saturating wa bandiwidi.';
+$lang['qos_app_name'] = 'Bandiwidi ati QoS Manager';
+$lang['qos_destination'] = 'nlo';
+$lang['qos_direction'] = 'itọsọna';
+$lang['qos_edit_priomark_downstream_rule'] = 'Satunkọ awọn ibosile ayo Class Ofin';
+$lang['qos_edit_priomark_upstream_rule'] = 'Satunkọ awọn ilosoke ayo Class Ofin';
+$lang['qos_enable_all'] = 'jeki Gbogbo';
+$lang['qos_engine_disable'] = 'Muu engine';
+$lang['qos_engine_enable'] = 'jeki engine';
+$lang['qos_equalize'] = 'equalize';
+$lang['qos_interface_add_title'] = 'Fi Ita Interface iṣeto ni';
+$lang['qos_interface_edit_title'] = 'Ṣatunkọ Ita Interface iṣeto ni';
+$lang['qos_interface_speed_not_set'] = 'Nibẹ ni boya ko ilosoke tabi ibosile ṣeto fun yi ni wiwo. Jọwọ ṣiṣe a Iyara igbeyewo lori awọn wiwo ṣaaju ki o to fifi o si QoS engine.';
+$lang['qos_invalid_direction'] = 'Invalid itọsọna.';
+$lang['qos_invalid_limit_value'] = 'Invalid iye iye.';
+$lang['qos_invalid_r2q'] = 'Invalid r2q iye.';
+$lang['qos_invalid_reservation_value'] = 'Invalid ifiṣura ofin.';
+$lang['qos_name'] = 'Name';
+$lang['qos_not'] = 'ko';
+$lang['qos_prioclass_limit_underflow'] = 'A ni ayo kilasi iye ko le wa ni ṣeto si a iye kere ju awọn ti o baamu bandiwidi ifiṣura. Wo awọn Itọsọna Olumulo fun alaye siwaju sii. Iye underflow-ri fun ni ayo kilasi #';
+$lang['qos_priomark_downstream_rules'] = 'Ibosile ayo Class Ofin';
+$lang['qos_priomark_invalid_interface'] = 'Invalid tabi unconfigured ita ni wiwo.';
+$lang['qos_priomark_not_found'] = 'Ni ayo kilasi ofin ko ba ri';
+$lang['qos_priomark_upstream_rules'] = 'Ilosoke ayo Class Ofin';
+$lang['qos_priority'] = 'ni ayo';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Laifọwọyi Rate-to-kuatomu';
+$lang['qos_rate_to_quantum'] = 'Oṣuwọn-to-kuatomu';
+$lang['qos_reset'] = 'tun';
+$lang['qos_source'] = 'orisun';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Ilana gbọdọ wa ni ṣeto si TCP tabi UDP ti o ba ti lilo ebute oko.';
