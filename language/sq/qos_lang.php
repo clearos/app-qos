@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Shto Klasa Prioriteti Downstream Rregullën';
+$lang['qos_add_priomark_upstream_rule'] = 'Shto në rrjedhën e sipërme Klasa Prioriteti Rregullën';
+$lang['qos_any'] = 'ndonjë';
+$lang['qos_app_description'] = 'App Bandwidth dhe QoS Manager është një tipar i rrjetit që lejon administratorët për prioritizimin e lloje të caktuara të trafikut të internetit. Mundësimi QoS zvogëlon gjasat që në çdo kohë të dhënë, një përdorues të vetëm ose pajisje mund të degradojnë performancën e rrjetit nga saturating bandwidth në dispozicion.';
+$lang['qos_app_name'] = 'Bandwidth dhe QoS Menaxher';
+$lang['qos_destination'] = 'destinacion';
+$lang['qos_direction'] = 'drejtim';
+$lang['qos_edit_priomark_downstream_rule'] = 'Edit Klasa Prioriteti Downstream Rregullën';
+$lang['qos_edit_priomark_upstream_rule'] = 'Edit rrjedhën e sipërme Klasa Prioriteti Rregullën';
+$lang['qos_enable_all'] = 'mundësuar të gjithë';
+$lang['qos_engine_disable'] = 'Engine Disable';
+$lang['qos_engine_enable'] = 'Aktivizo Engine';
+$lang['qos_equalize'] = 'barazoj';
+$lang['qos_interface_add_title'] = 'Shto jashtme Interface Konfigurimi';
+$lang['qos_interface_edit_title'] = 'Edit jashtëm Interface Configuration';
+$lang['qos_interface_speed_not_set'] = 'Nuk ka ose nuk set sipërm apo të poshtëm për këtë ndërfaqe. Ju lutemi të drejtuar një Test Speed ​​në ndërfaqen e para se të shtoni atë në motor QoS.';
+$lang['qos_invalid_direction'] = 'drejtimi i pavlefshëm.';
+$lang['qos_invalid_limit_value'] = 'Vlera e pavlefshme limit.';
+$lang['qos_invalid_r2q'] = 'Vlera e pavlefshme r2q.';
+$lang['qos_invalid_reservation_value'] = 'Rregulli i pavlefshëm rezervë.';
+$lang['qos_name'] = 'emër';
+$lang['qos_not'] = 'nuk';
+$lang['qos_prioclass_limit_underflow'] = 'Një kufizim klasë përparësi nuk mund të vendoset në një vlerë më të vogël se rezerva përkatëse Bandwidth. Shikoni udhëzuesin e përdoruesit për më shumë informacion. Limit underflow zbuluar për klasën prioriteti #';
+$lang['qos_priomark_downstream_rules'] = 'Prioritare në drejtim të rrymës Klasa Rregullat';
+$lang['qos_priomark_invalid_interface'] = 'Pavlefshme ose pakonfiguruar ndërfaqe të jashtme.';
+$lang['qos_priomark_not_found'] = 'Prioritet sundimi klasës nuk u gjet';
+$lang['qos_priomark_upstream_rules'] = 'Prioriteti Upstream Klasa Rregullat';
+$lang['qos_priority'] = 'prioritet';
+$lang['qos_ramp'] = 'Ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Automatike Vlerësoni-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Shkalla e-to-Quantum';
+$lang['qos_reset'] = 'Rivendos';
+$lang['qos_source'] = 'burim';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokolli duhet të jetë vendosur për të TCP ose UDP qoftë se duke përdorur portet.';
