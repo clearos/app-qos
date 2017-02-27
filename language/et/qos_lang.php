@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Lisa Allavoolu prioriteet reegel';
+$lang['qos_add_priomark_upstream_rule'] = 'Lisa Ülesvoolu prioriteet reegel';
+$lang['qos_any'] = 'mistahes';
+$lang['qos_app_description'] = 'Bandwidth ja QoS Manager app on võrgu funktsioon, mis võimaldab administraatoritel esikohale teatud tüüpi Interneti-liiklust. Soodustavad QoS vähendab tõenäosust, et igal ajahetkel, ühe kasutaja või seade võib laguneda võrgu jõudlust niisuta kättesaadav ribalaius.';
+$lang['qos_app_name'] = 'Bandwidth ja QoS Manager';
+$lang['qos_destination'] = 'sihtpunkt';
+$lang['qos_direction'] = 'suund';
+$lang['qos_edit_priomark_downstream_rule'] = 'Muuda Allavoolu prioriteet reegel';
+$lang['qos_edit_priomark_upstream_rule'] = 'Muuda Ülesvoolu prioriteet reegel';
+$lang['qos_enable_all'] = 'Luba kõik';
+$lang['qos_engine_disable'] = 'Lülita Mootor';
+$lang['qos_engine_enable'] = 'Luba Mootor';
+$lang['qos_equalize'] = 'võrdsustama';
+$lang['qos_interface_add_title'] = 'Lisa Väline liidese konfiguratsiooni';
+$lang['qos_interface_edit_title'] = 'Edit Väline liidese konfiguratsiooni';
+$lang['qos_interface_speed_not_set'] = 'Seal ei ole kas ees- või tagapool seatud selle liidese. Palun käivita Speed ​​Test liides enne selle lisamist QoS mootor.';
+$lang['qos_invalid_direction'] = 'Vale suunas.';
+$lang['qos_invalid_limit_value'] = 'Vale piirväärtust.';
+$lang['qos_invalid_r2q'] = 'Vale r2q väärtus.';
+$lang['qos_invalid_reservation_value'] = 'Vale broneerimine reegel.';
+$lang['qos_name'] = 'nimi';
+$lang['qos_not'] = 'Mitte';
+$lang['qos_prioclass_limit_underflow'] = 'Prioriteediks klassi piiri ei saa määrata väärtus on väiksem kui vastav ribalaius reservatsiooni. Vaata Kasutusjuhend rohkem teavet. Limit allavoolusaaduse avastatud prioriteet #';
+$lang['qos_priomark_downstream_rules'] = 'Allavoolu prioriteet reeglid';
+$lang['qos_priomark_invalid_interface'] = 'Vale või seadistamata välist liidest.';
+$lang['qos_priomark_not_found'] = 'Prioriteet klassi reegel ei leitud';
+$lang['qos_priomark_upstream_rules'] = 'Ülesvoolu prioriteet reeglid';
+$lang['qos_priority'] = 'Prioriteet';
+$lang['qos_ramp'] = 'ramp';
+$lang['qos_rate_to_quantum_auto'] = 'Automaatne Rate-to-Quantum';
+$lang['qos_rate_to_quantum'] = 'Rate-to-Quantum';
+$lang['qos_reset'] = 'lähtestama';
+$lang['qos_source'] = 'allikas';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokoll peab olema seatud TCP või UDP kui kasutatakse sadamates.';
