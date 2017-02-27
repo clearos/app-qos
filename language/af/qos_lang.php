@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Voeg Stroomaf Prioriteit Klas Reël';
+$lang['qos_add_priomark_upstream_rule'] = 'Voeg Stroomop Prioriteit Klas Reël';
+$lang['qos_any'] = 'Enige';
+$lang['qos_app_description'] = 'Die bandwydte en QoS Bestuurder app is &#39;n netwerk funksie waarmee administrateurs te prioritiseer sekere tipes Internet verkeer. Enabling QoS verminder die waarskynlikheid dat op enige gegewe tyd, &#39;n enkele persoon of toestel dalk netwerk prestasie verneder deur saturating beskikbaar bandwydte.';
+$lang['qos_app_name'] = 'Bandwydte en QoS Bestuurder';
+$lang['qos_destination'] = 'bestemming';
+$lang['qos_direction'] = 'rigting';
+$lang['qos_edit_priomark_downstream_rule'] = 'Wysig Stroomaf Prioriteit Klas Reël';
+$lang['qos_edit_priomark_upstream_rule'] = 'Wysig Stroomop Prioriteit Klas Reël';
+$lang['qos_enable_all'] = 'Alle Aktiveer';
+$lang['qos_engine_disable'] = 'Skakel enjin';
+$lang['qos_engine_enable'] = 'Aktiveer Engine';
+$lang['qos_equalize'] = 'gelyk';
+$lang['qos_interface_add_title'] = 'Voeg Eksterne Interface Konfigurasie';
+$lang['qos_interface_edit_title'] = 'Wysig Eksterne Interface Konfigurasie';
+$lang['qos_interface_speed_not_set'] = 'Daar is óf nie stroomop of stroomaf stel vir hierdie koppelvlak. Voer &#39;n spoed toets op die koppelvlak voordat dit by die QoS enjin.';
+$lang['qos_invalid_direction'] = 'Ongeldige rigting.';
+$lang['qos_invalid_limit_value'] = 'Ongeldige limiet waarde.';
+$lang['qos_invalid_r2q'] = 'Ongeldige r2q waarde.';
+$lang['qos_invalid_reservation_value'] = 'Ongeldige bespreking reël.';
+$lang['qos_name'] = 'naam';
+$lang['qos_not'] = 'nie';
+$lang['qos_prioclass_limit_underflow'] = '&#39;N prioriteit klas limiet kan nie ingestel word om &#39;n waarde minder as die ooreenstemmende bandwydte bespreking. Sien die gebruikers handleiding vir meer inligting. Limiet onderloop opgespoor vir prioriteit klas #';
+$lang['qos_priomark_downstream_rules'] = 'Stroomaf Prioriteit klasreëls';
+$lang['qos_priomark_invalid_interface'] = 'Ongeldig of ongekonfigureerde eksterne skakeling.';
+$lang['qos_priomark_not_found'] = 'Prioriteit klas reël nie gevind';
+$lang['qos_priomark_upstream_rules'] = 'Stroomop Prioriteit klasreëls';
+$lang['qos_priority'] = 'prioriteit';
+$lang['qos_ramp'] = 'oprit';
+$lang['qos_rate_to_quantum_auto'] = 'Outomatiese Tempo-tot-Quantum';
+$lang['qos_rate_to_quantum'] = 'Koers-tot-Quantum';
+$lang['qos_reset'] = 'Herstel';
+$lang['qos_source'] = 'Bron';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Protokol moet ingestel word om TCP of UDP as die gebruik van hawens.';
