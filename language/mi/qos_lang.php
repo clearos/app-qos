@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Tāpiri matua awa Ture Class';
+$lang['qos_add_priomark_upstream_rule'] = 'Tāpiri whakarunga Matua Ture Class';
+$lang['qos_any'] = 'tetahi';
+$lang['qos_app_description'] = 'Ko te Kaiwhakahaere taupānga Aratuku me QoS he āhuatanga whatunga e taea kaiwhakahaere ki te whakaraupapa i etahi momo o te waka Ipurangi. Whakahohe QoS heke te tūponotanga e i tetahi wa i homai, he kaiwhakamahi kotahi pūrere ranei kia whakanoatia mahi whatunga mā te saturating hōkaiipurangi wātea.';
+$lang['qos_app_name'] = 'Aratuku ko Kaiwhakahaere QoS';
+$lang['qos_destination'] = 'ūnga';
+$lang['qos_direction'] = 'aronga';
+$lang['qos_edit_priomark_downstream_rule'] = 'Whakatikaina matua awa Ture Class';
+$lang['qos_edit_priomark_upstream_rule'] = 'Whakatika whakarunga Matua Ture Class';
+$lang['qos_enable_all'] = 'Whakahohea katoa';
+$lang['qos_engine_disable'] = 'Engine Monokia';
+$lang['qos_engine_enable'] = 'Whakahohe Engine';
+$lang['qos_equalize'] = 'whakaōrite';
+$lang['qos_interface_add_title'] = 'Tāpiri Waho Atanga Whirihoranga';
+$lang['qos_interface_edit_title'] = 'Whakatika waho Whirihoranga Atanga';
+$lang['qos_interface_speed_not_set'] = 'He rānei e kore huinga whakarunga awa ranei mo tenei atanga. Koa rere he Test Tere i runga i te atanga i mua i te tāpiri i te reira ki te pūkaha QoS.';
+$lang['qos_invalid_direction'] = 'aronga muhu.';
+$lang['qos_invalid_limit_value'] = 'uara rohe muhu.';
+$lang['qos_invalid_r2q'] = 'uara r2q muhu.';
+$lang['qos_invalid_reservation_value'] = 'tikanga rāhui muhu.';
+$lang['qos_name'] = 'ingoa';
+$lang['qos_not'] = 'e kore';
+$lang['qos_prioclass_limit_underflow'] = 'e kore te rohe akomanga matua e taea te whakaturia ki te uara iti iho i te rāhui hōkaiipurangi hāngai. Kite i te Aratohu Kaiwhakamahi mō ētahi atu mōhiohio. Whakatepe underflow kitea hoki te piha matua #';
+$lang['qos_priomark_downstream_rules'] = 'Ture Class matua awa';
+$lang['qos_priomark_invalid_interface'] = 'atanga waho muhu tē whirihoratia ranei.';
+$lang['qos_priomark_not_found'] = 'Matua tikanga o te piha haapiiraa e kore i kitea';
+$lang['qos_priomark_upstream_rules'] = 'Ture Class matua whakarunga';
+$lang['qos_priority'] = 'Manakē';
+$lang['qos_ramp'] = 'rōnaki';
+$lang['qos_rate_to_quantum_auto'] = 'Aunoa Auau-ki-Quantum';
+$lang['qos_rate_to_quantum'] = 'Auau-ki-Quantum';
+$lang['qos_reset'] = 'Tautuhi anō';
+$lang['qos_source'] = 'pūtake';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Me whakaturia Kawa ki te TCP UDP ranei ki te whakamahi i tauranga.';
