@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'ਵਹਾਓ ਤਰਜੀਹ ਕਲਾਸ ਨਿਯਮ ਜੋੜੋ';
+$lang['qos_add_priomark_upstream_rule'] = 'ਅੱਪਸਟਰੀਮ ਤਰਜੀਹ ਕਲਾਸ ਨਿਯਮ ਜੋੜੋ';
+$lang['qos_any'] = 'ਕੋਈ ਵੀ';
+$lang['qos_app_description'] = 'ਨੂੰ ਦਰਸਾਈ ਅਤੇ QoS ਮੈਨੇਜਰ ਐਪਲੀਕੇਸ਼ ਨੂੰ ਇੱਕ ਨੈੱਟਵਰਕ ਫੀਚਰ ਹੈ ਜੋ ਪਰਬੰਧਕ ਨੂੰ ਇੰਟਰਨੈੱਟ ਆਵਾਜਾਈ ਦੇ ਕੁਝ ਕਿਸਮ ਤਰਜੀਹ ਕਰਨ ਲਈ ਸਹਾਇਕ ਹੈ. QoS ਯੋਗ ਕਰਨ ਸੰਭਾਵਨਾ ਹੈ, ਜੋ ਕਿ ਕਿਸੇ ਵੀ ਦਿੱਤੇ ਵੇਲੇ &#39;ਤੇ, ਇੱਕ ਸਿੰਗਲ ਯੂਜ਼ਰ ਨੂੰ ਜ ਜੰਤਰ ਉਪਲੱਬਧ ਚੌਡ਼ਾਈ ਨੂੰ ਸਿੰਜਦੇ ਨੇ ਨੈੱਟਵਰਕ ਦੀ ਕਾਰਗੁਜ਼ਾਰੀ ਡੀਗਰੇਡ ਹੋ ਸਕਦਾ ਹੈ ਘਟਦੀ ਹੈ.';
+$lang['qos_app_name'] = 'ਨੂੰ ਦਰਸਾਈ ਅਤੇ QoS ਮੈਨੇਜਰ';
+$lang['qos_destination'] = 'ਨਿਸ਼ਾਨਾ';
+$lang['qos_direction'] = 'ਦਿਸ਼ਾ';
+$lang['qos_edit_priomark_downstream_rule'] = 'ਸੋਧ ਵਹਾਓ ਤਰਜੀਹ ਕਲਾਸ ਨਿਯਮ';
+$lang['qos_edit_priomark_upstream_rule'] = 'ਸੋਧ ਨੂੰ ਅੱਪਸਟਰੀਮ ਤਰਜੀਹ ਕਲਾਸ ਨਿਯਮ';
+$lang['qos_enable_all'] = 'ਸਾਰੇ ਯੋਗ ਕਰੋ';
+$lang['qos_engine_disable'] = 'ਅਯੋਗ ਇੰਜਣ';
+$lang['qos_engine_enable'] = 'ਇੰਜਣ ਯੋਗ ਕਰੋ';
+$lang['qos_equalize'] = 'ਬਰਾਬਰੀ';
+$lang['qos_interface_add_title'] = 'ਬਾਹਰੀ ਇੰਟਰਫੇਸ ਸੰਰਚਨਾ ਜੋੜੋ';
+$lang['qos_interface_edit_title'] = 'ਸੋਧ ਬਾਹਰੀ ਇੰਟਰਫੇਸ ਸੰਰਚਨਾ';
+$lang['qos_interface_speed_not_set'] = 'ਇਸ ਇੰਟਰਫੇਸ ਲਈ ਕੋਈ ਨਾ ਅੱਪਸਟਰੀਮ ਜ ਵਹਾਓ ਤਿਆਰ ਹੈ. QoS ਇੰਜਣ ਨੂੰ ਇਸ ਨੂੰ ਸ਼ਾਮਿਲ ਕਰਨ ਦੇ ਅੱਗੇ ਇੰਟਰਫੇਸ ਤੇ ਇੱਕ ਸਪੀਡ ਟੈਸਟ ਚਲਾਉਣ ਜੀ.';
+$lang['qos_invalid_direction'] = 'ਗਲਤ ਦਿਸ਼ਾ.';
+$lang['qos_invalid_limit_value'] = 'ਗਲਤ ਸੀਮਾ ਮੁੱਲ.';
+$lang['qos_invalid_r2q'] = 'ਗਲਤ r2q ਮੁੱਲ.';
+$lang['qos_invalid_reservation_value'] = 'ਗਲਤ ਰਿਜ਼ਰਵੇਸ਼ਨ ਦੇ ਰਾਜ.';
+$lang['qos_name'] = 'ਦਾ ਨਾਮ';
+$lang['qos_not'] = 'ਨਾ';
+$lang['qos_prioclass_limit_underflow'] = 'ਇੱਕ ਤਰਜੀਹ ਕਲਾਸ ਸੀਮਾ ਇਸੇ ਚੌਡ਼ਾਈ ਨੂੰ ਰਿਜ਼ਰਵੇਸ਼ਨ ਵੱਧ ਘੱਟ ਮੁੱਲ ਲਈ ਸੈੱਟ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ. ਹੋਰ ਜਾਣਕਾਰੀ ਲਈ ਯੂਜ਼ਰ ਗਾਈਡ ਵੇਖੋ. ਸੀਮਾ underflow ਤਰਜੀਹ ਕਲਾਸ # ਲਈ ਖੋਜਿਆ';
+$lang['qos_priomark_downstream_rules'] = 'ਵਹਾਓ ਤਰਜੀਹ ਕਲਾਸ ਨਿਯਮ';
+$lang['qos_priomark_invalid_interface'] = 'ਗਲਤ ਜ ਸੰਰਚਿਤ ਬਾਹਰੀ ਇੰਟਰਫੇਸ ਹੈ.';
+$lang['qos_priomark_not_found'] = 'ਤਰਜੀਹ ਕਲਾਸ ਦੇ ਰਾਜ ਵਿੱਚ ਨਾ ਲੱਭਿਆ';
+$lang['qos_priomark_upstream_rules'] = 'ਅੱਪਸਟਰੀਮ ਤਰਜੀਹ ਕਲਾਸ ਨਿਯਮ';
+$lang['qos_priority'] = 'ਤਰਜੀਹ';
+$lang['qos_ramp'] = 'ਰੈਮਪ';
+$lang['qos_rate_to_quantum_auto'] = 'ਆਟੋਮੈਟਿਕ ਦਰ-ਨੂੰ-ਕੁਅੰਟਮ';
+$lang['qos_rate_to_quantum'] = 'ਦਰ-ਨੂੰ-ਕੁਅੰਟਮ';
+$lang['qos_reset'] = 'ਰੀਸੈਟ';
+$lang['qos_source'] = 'ਸਰੋਤ';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'ਜੇ ਪੋਰਟ ਵਰਤ ਪ੍ਰੋਟੋਕੋਲ TCP ਜ UDP ਕਰਨ ਲਈ ਸੈੱਟ ਕੀਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ.';
