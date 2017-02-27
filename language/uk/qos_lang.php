@@ -1,0 +1,36 @@
+<?php
+
+$lang['qos_add_priomark_downstream_rule'] = 'Додати правило Клас Downstream Priority';
+$lang['qos_add_priomark_upstream_rule'] = 'Додати Upstream правила пріоритету класу';
+$lang['qos_any'] = 'будь-який';
+$lang['qos_app_description'] = 'Додаток менеджер смуги пропускання і QoS це функція мережі, яка дозволяє адміністраторам визначити пріоритетність певних типів інтернет-трафіку. Включення QoS зменшує ймовірність того, що в будь-який момент часу, один користувач або пристрій може впливати на продуктивність мережі насиченням доступну смугу пропускання.';
+$lang['qos_app_name'] = 'Смуга пропускання і QoS менеджер';
+$lang['qos_destination'] = 'призначення';
+$lang['qos_direction'] = 'напрямок';
+$lang['qos_edit_priomark_downstream_rule'] = 'Редагування правила класу пріоритету Вниз за течією';
+$lang['qos_edit_priomark_upstream_rule'] = 'Редагування Upstream правила пріоритету класу';
+$lang['qos_enable_all'] = 'включити всі';
+$lang['qos_engine_disable'] = 'відключити двигуна';
+$lang['qos_engine_enable'] = 'включити двигун';
+$lang['qos_equalize'] = 'зрівняти';
+$lang['qos_interface_add_title'] = 'Додати конфігурацію зовнішнього інтерфейсу';
+$lang['qos_interface_edit_title'] = 'Конфігурація інтерфейсу Редагувати Зовнішній';
+$lang['qos_interface_speed_not_set'] = 'Існує або не вгору за течією або вниз за течією набір для цього інтерфейсу. Будь ласка, запустити тест швидкості на інтерфейсі перед додаванням його до двигуна QoS.';
+$lang['qos_invalid_direction'] = 'Invalid напрямок.';
+$lang['qos_invalid_limit_value'] = 'Invalid граничне значення.';
+$lang['qos_invalid_r2q'] = 'Некоректна R2q.';
+$lang['qos_invalid_reservation_value'] = 'Invalid правила бронювання.';
+$lang['qos_name'] = 'ім&#39;я';
+$lang['qos_not'] = 'НЕ';
+$lang['qos_prioclass_limit_underflow'] = 'Граничний клас пріоритету не може бути встановлений на значення, менше, ніж відповідне резервування смуги пропускання. Зверніться до керівництва користувача для отримання додаткової інформації. Межа згущеного виявлено класу пріоритету #';
+$lang['qos_priomark_downstream_rules'] = 'Правила класу Downstream Priority';
+$lang['qos_priomark_invalid_interface'] = 'Невірний або несконфігурірованним зовнішній інтерфейс.';
+$lang['qos_priomark_not_found'] = 'Правило клас пріоритету не найден';
+$lang['qos_priomark_upstream_rules'] = 'Правила класу Upstream Пріоритетні';
+$lang['qos_priority'] = 'пріоритет';
+$lang['qos_ramp'] = 'скат';
+$lang['qos_rate_to_quantum_auto'] = 'Автоматичний Rate до Quantum';
+$lang['qos_rate_to_quantum'] = 'Швидкість до Quantum';
+$lang['qos_reset'] = 'скидання';
+$lang['qos_source'] = 'джерело';
+$lang['qos_protocol_must_be_specified_using_ports'] = 'Протокол повинен бути встановлений TCP або UDP при використанні портів.';
