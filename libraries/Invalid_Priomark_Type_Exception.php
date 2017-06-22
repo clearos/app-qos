@@ -4,12 +4,12 @@
  * Invalid priomark type exception class.
  *
  * @category   Apps
- * @package    QoS
+ * @package    qos
  * @subpackage Exceptions
  * @author     Darryl Sokoloski <dsokoloski@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/base/
+ * @link       http://www.clearfoundation.com/docs/developer/apps/qos/
  */
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -65,12 +65,12 @@ clearos_load_library('base/Engine_Exception');
  * Invalid priomark type exception class.
  *
  * @category   Apps
- * @package    QoS
+ * @package    qos
  * @subpackage Exceptions
  * @author     Darryl Sokoloski <dsokoloski@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/base/
+ * @link       http://www.clearfoundation.com/docs/developer/apps/qos/
  */
 
 class Invalid_Priomark_Type_Exception extends Engine_Exception

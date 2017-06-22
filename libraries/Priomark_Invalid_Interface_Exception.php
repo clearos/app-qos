@@ -4,12 +4,12 @@
  * Priomark rule interface value is invalid exception class.
  *
  * @category   Apps
- * @package    QoS
+ * @package    qos
  * @subpackage Exceptions
  * @author     Darryl Sokoloski <dsokoloski@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/base/
+ * @link       http://www.clearfoundation.com/docs/developer/apps/qos/
  */
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -65,12 +65,12 @@ clearos_load_library('base/Engine_Exception');
  * Priomark rule interface value is invalid exception class.
  *
  * @category   Apps
- * @package    QoS
+ * @package    qos
  * @subpackage Exceptions
  * @author     Darryl Sokoloski <dsokoloski@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/base/
+ * @link       http://www.clearfoundation.com/docs/developer/apps/qos/
  */
 
 class Priomark_Invalid_Interface_Exception extends Engine_Exception
