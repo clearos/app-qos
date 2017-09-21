@@ -342,9 +342,16 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
     local chain_qos
 
     if direction == 1 then
-        execute(string.format("%s %s numdevs=%d",
-            MODPROBE, "imq",
-            TableCount(QOS_IFLIST)))
+        if QOS_ENABLE_IFB == "no" then
+            execute(string.format("%s %s numdevs=%d",
+                MODPROBE, "imq",
+                TableCount(QOS_IFLIST)))
+        else
+            execute(string.format("%s %s numifbs=%d",
+                MODPROBE, "ifb",
+                TableCount(QOS_IFLIST)))
+            execute(string.format("%s %s", MODPROBE, "act_mirred"))
+        end
     end
 
     for _, ifn in pairs(QOS_IFLIST) do
@@ -353,7 +360,11 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
             chain_qos = "BWQOS_UP_" .. ifn
             execute(IPBIN .. " link set dev " .. ifn .. " qlen 30")
         else
-            ifn_name = "imq" .. id
+            if QOS_ENABLE_IFB == "no" then
+                ifn_name = "imq" .. id
+            else
+                ifn_name = "ifb" .. id
+            end
             chain_qos = "BWQOS_DOWN_" .. ifn
             execute(IPBIN .. " link set " .. ifn_name .. " up")
         end
@@ -397,8 +408,14 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
             iptables("mangle",
                 "-I POSTROUTING -o " .. ifn .. " -j " .. chain_qos)
         else
-            iptables("mangle",
-                "-A " .. chain_qos .. " -j IMQ --todev " .. id)
+            if QOS_ENABLE_IFB == "no" then
+                iptables("mangle",
+                    "-A " .. chain_qos .. " -j IMQ --todev " .. id)
+            else
+                execute(TCBIN .. " filter add dev " .. ifn ..
+                    " parent 1: protocol all u32 match u32 0 0 " ..
+                    " action mirred egress redirect dev " .. ifn_name)
+            end
             iptables("mangle",
                 "-I PREROUTING -i " .. ifn .. " -j " .. chain_qos)
         end

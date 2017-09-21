@@ -1,7 +1,7 @@
 
 Name: app-qos
 Epoch: 1
-Version: 2.2.1
+Version: 2.2.2
 Release: 1%{dist}
 Summary: Bandwidth and QoS Manager
 License: GPLv3
@@ -22,7 +22,7 @@ Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-base >= 1:2.0.12
 Requires: app-network-core
-Requires: app-firewall-core >= 1:2.2.21
+Requires: app-firewall-core >= 1:2.4.1
 
 %description core
 The Bandwidth and QoS Manager app is a network feature that allows administrators to prioritize certain types of Internet traffic.  Enabling QoS decreases the likelihood that at any given time, a single user or device might degrade network performance by saturating available bandwidth.
@@ -76,6 +76,7 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/qos/packaging
+%exclude /usr/clearos/apps/qos/unify.json
 %dir /usr/clearos/apps/qos
 %dir /var/clearos/qos
 /usr/clearos/apps/qos/deploy
