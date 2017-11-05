@@ -277,7 +277,7 @@ function AddRules(direction, ifn, chain_qos, rules, rules_custom)
                 else
                     multiport_src = false
                 end
-                if string.find(rule.dport, ':') ~= nil or string.find(rule.sport, ',') ~= nil then
+                if string.find(rule.dport, ':') ~= nil or string.find(rule.dport, ',') ~= nil then
                     multiport_dst = true
                 else
                     multiport_dst = false
