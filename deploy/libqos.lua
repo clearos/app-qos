@@ -8,7 +8,7 @@
 ------------------------------------------------------------------------------
 --
 -- Copyright (C) 2012-2013 ClearFoundation
--- 
+--
 -- This program is free software; you can redistribute it and/or
 -- modify it under the terms of the GNU General Public License
 -- as published by the Free Software Foundation; either version 2
@@ -324,7 +324,7 @@ function AddRules(direction, ifn, chain_qos, rules, rules_custom)
         if tonumber(rule.enabled) == 1 and (rule.ifn == ifn or rule.ifn == '*') then
             param = " "
             if tonumber(rule.type) == direction then
-                iptables("mangle", "-A " .. chain_qos .. 
+                iptables("mangle", "-A " .. chain_qos ..
                     " " .. rule.param ..
                     " -j MARK --set-mark " .. (id + 1) .. rule.prio)
             end
@@ -342,15 +342,15 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
     local chain_qos
 
     if direction == 1 then
-        if QOS_ENABLE_IFB == "no" then
-            execute(string.format("%s %s numdevs=%d",
-                MODPROBE, "imq",
-                TableCount(QOS_IFLIST)))
-        else
+        if QOS_ENABLE_IFB == "yes" then
             execute(string.format("%s %s numifbs=%d",
                 MODPROBE, "ifb",
                 TableCount(QOS_IFLIST)))
             execute(string.format("%s %s", MODPROBE, "act_mirred"))
+        else
+            execute(string.format("%s %s numdevs=%d",
+                MODPROBE, "imq",
+                TableCount(QOS_IFLIST)))
         end
     end
 
@@ -360,10 +360,10 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
             chain_qos = "BWQOS_UP_" .. ifn
             execute(IPBIN .. " link set dev " .. ifn .. " qlen 30")
         else
-            if QOS_ENABLE_IFB == "no" then
-                ifn_name = "imq" .. id
-            else
+            if QOS_ENABLE_IFB == "yes" then
                 ifn_name = "ifb" .. id
+            else
+                ifn_name = "imq" .. id
             end
             chain_qos = "BWQOS_DOWN_" .. ifn
             execute(IPBIN .. " link set " .. ifn_name .. " up")
@@ -408,13 +408,13 @@ function QosExecute(direction, rate_ifn, rate_res, rate_limit, priomark)
             iptables("mangle",
                 "-I POSTROUTING -o " .. ifn .. " -j " .. chain_qos)
         else
-            if QOS_ENABLE_IFB == "no" then
-                iptables("mangle",
-                    "-A " .. chain_qos .. " -j IMQ --todev " .. id)
-            else
+            if QOS_ENABLE_IFB == "yes" then
                 execute(TCBIN .. " filter add dev " .. ifn ..
                     " parent 1: protocol all u32 match u32 0 0 " ..
                     " action mirred egress redirect dev " .. ifn_name)
+            else
+                iptables("mangle",
+                    "-A " .. chain_qos .. " -j IMQ --todev " .. id)
             end
             iptables("mangle",
                 "-I PREROUTING -i " .. ifn .. " -j " .. chain_qos)
@@ -519,7 +519,7 @@ function RunBandwidthExternal()
     rate_up_limit = ParseBandwidthValue(QOS_UPSTREAM_BWLIMIT, rate_up_limit)
     rate_down_res = ParseBandwidthValue(QOS_DOWNSTREAM_BWRES, rate_down_res)
     rate_down_limit = ParseBandwidthValue(QOS_DOWNSTREAM_BWLIMIT, rate_down_limit)
-  
+
     rate_up_res = InitializeBandwidthReserved(rate_up, rate_up_res)
     rate_up_limit = InitializeBandwidthLimit(rate_up, rate_up_limit)
     rate_down_res = InitializeBandwidthReserved(rate_down, rate_down_res)
